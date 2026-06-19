@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>5-2 up. Limping. Thanks Pavel. Feel better. — #ZOOM IN</title>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{--cream:#f0ede4;--nook:#4a7c5f;--nook-l:#e6efe9;--dark:#1e1e1e;--coral:#ec5a3c;--ocre:#f5b32e;--blue:#3d6db5;--muted:#a09880;--border:#e0d9cc;}
+body{font-family:'Inter',sans-serif;background:var(--cream);}
+.h{color:var(--nook);}
+.nav{background:var(--dark);border-bottom:2px solid var(--nook);display:flex;align-items:center;justify-content:space-between;padding:16px 32px;}
+.nav-logo{font-family:'Spectral',serif;font-size:20px;color:#fff;letter-spacing:-.02em;text-decoration:none;}
+.nav-links{display:flex;gap:28px;}
+.nav-links a{font-size:15px;font-weight:700;color:rgba(255,255,255,.55);text-decoration:none;}
+.nav-links a.active{color:var(--nook);}
+.btn-sub{background:var(--coral);color:#fff;font-size:12px;font-weight:700;padding:8px 18px;border-radius:100px;border:none;cursor:pointer;}
+
+.art-header{background:var(--dark);padding:36px 44px 32px;border-bottom:2px solid var(--nook);}
+.art-issue{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--muted);letter-spacing:.12em;display:flex;justify-content:space-between;margin-bottom:16px;padding-bottom:10px;border-bottom:1px solid #3d3830;}
+.art-back{font-size:10px;color:var(--muted);text-decoration:none;}
+.art-back:hover{color:#fff;}
+.art-kicker{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.18em;color:var(--nook);margin-bottom:14px;}
+.art-hl{font-family:'Spectral',serif;font-size:40px;font-weight:700;color:#fff;line-height:1.05;letter-spacing:-.03em;margin-bottom:12px;}
+.art-rule{height:2px;background:var(--nook);margin:12px 0;}
+.art-sf{font-family:'Spectral',serif;font-size:16px;font-style:italic;color:rgba(160,152,128,.9);line-height:1.55;margin-bottom:16px;}
+.art-meta{font-size:11px;color:#7a7060;display:flex;gap:12px;flex-wrap:wrap;}
+.art-tags{display:flex;gap:7px;margin-top:14px;flex-wrap:wrap;}
+.ztag{font-size:10px;font-weight:700;padding:4px 10px;border-radius:100px;}
+.zt-nook{background:rgba(74,124,95,.2);color:var(--nook);}
+.zt-coral{background:rgba(236,90,60,.15);color:var(--coral);}
+.zt-ocre{background:rgba(245,179,46,.2);color:#b8840f;}
+
+.art-content{display:grid;grid-template-columns:1fr 300px;gap:0;}
+.art-col-left{padding:36px 40px 48px;border-right:1.5px solid var(--border);}
+.art-col-right{padding:28px 24px;background:#f8f5ef;}
+
+.signal-block{border:1px solid var(--border);border-left:3px solid var(--nook);background:#fff;border-radius:0 8px 8px 0;padding:16px 18px;margin-bottom:20px;}
+.signal-header{display:flex;align-items:center;gap:8px;margin-bottom:10px;}
+.signal-emoji{font-size:18px;line-height:1;}
+.signal-title{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--dark);}
+.signal-attr{display:flex;align-items:flex-start;gap:6px;margin-bottom:8px;}
+.signal-check{font-size:13px;flex-shrink:0;margin-top:1px;}
+.signal-attr-text{font-size:12px;color:var(--dark);line-height:1.4;}
+.signal-attr-text strong{font-weight:700;}
+.signal-meta{display:flex;flex-direction:column;gap:5px;font-size:11px;color:#7a7060;}
+.signal-meta-item{display:flex;align-items:flex-start;gap:6px;}
+.signal-meta-arrow{color:var(--muted);flex-shrink:0;}
+.signal-link{color:var(--nook);text-decoration:underline;word-break:break-all;}
+.signal-context{font-size:13px;color:#3d3830;line-height:1.65;margin-top:10px;padding-top:10px;border-top:1px solid var(--border);}
+
+.art-p{font-family:'Spectral',serif;font-size:16px;line-height:1.85;color:#3d3830;margin-bottom:18px;}
+.art-h2{font-family:'Spectral',serif;font-size:20px;font-weight:700;color:var(--dark);margin:28px 0 12px;border-top:1.5px solid var(--border);padding-top:18px;}
+.author-cut{background:var(--dark);border-left:3px solid var(--nook);padding:16px 20px;margin:16px 0;}
+.author-cut p{font-family:'Spectral',serif;font-size:16px;font-style:italic;color:#fff;line-height:1.55;}
+.author-sig{font-size:8px;text-transform:uppercase;letter-spacing:.1em;color:var(--nook);margin-top:8px;}
+.art-divider{border:none;border-top:1px solid var(--border);margin:22px 0;}
+
+/* ODDS COMPARISON */
+.odds-compare{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin:18px 0;}
+.odds-item{background:#fff;border:1.5px solid var(--border);border-radius:8px;padding:14px 12px;text-align:center;}
+.odds-item.highlight{background:var(--dark);border-color:var(--dark);}
+.odds-n{font-family:'Spectral',serif;font-size:28px;font-weight:700;line-height:1;margin-bottom:4px;}
+.odds-n.bad{color:var(--coral);}
+.odds-n.good{color:var(--nook);}
+.odds-n.neutral{color:#fff;}
+.odds-l{font-size:9px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);}
+.odds-l.light{color:rgba(255,255,255,.5);}
+
+/* TIMELINE */
+.timeline{margin:20px 0;display:flex;flex-direction:column;gap:0;}
+.tl-item{display:flex;gap:14px;padding-bottom:16px;position:relative;}
+.tl-item:last-child{padding-bottom:0;}
+.tl-item:not(:last-child)::before{content:'';position:absolute;left:13px;top:28px;bottom:0;width:1.5px;background:var(--border);}
+.tl-dot{width:26px;height:26px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:12px;border:2px solid var(--border);background:#fff;}
+.tl-dot.warn{background:var(--ocre);border-color:var(--ocre);}
+.tl-dot.act{background:var(--nook);border-color:var(--nook);}
+.tl-dot.win{background:var(--coral);border-color:var(--coral);}
+.tl-dot.ko{background:#555;border-color:#555;}
+.tl-content{flex:1;padding-top:3px;}
+.tl-time{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--muted);margin-bottom:3px;text-transform:uppercase;letter-spacing:.1em;}
+.tl-text{font-size:13px;color:#3d3830;line-height:1.5;}
+.tl-text strong{font-weight:700;color:var(--dark);}
+
+/* SLIP B */
+.slip-b{background:#fff;border:2px solid var(--dark);overflow:hidden;margin-bottom:20px;}
+.slip-b-head{background:var(--nook);padding:9px 14px;display:flex;justify-content:space-between;}
+.slip-b-head span{font-family:'JetBrains Mono',monospace;font-size:9px;color:rgba(255,255,255,.8);}
+.slip-b-inner{padding:14px 14px 0;}
+.slip-b-tourn{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--nook);margin-bottom:5px;}
+.slip-b-match{font-family:'Spectral',serif;font-size:18px;font-weight:700;color:var(--dark);line-height:1.2;margin-bottom:4px;}
+.slip-b-market{font-size:12px;color:#7a7060;border-left:2px solid var(--nook);padding-left:8px;margin-bottom:12px;}
+.slip-b-rule{height:1.5px;background:var(--dark);margin-bottom:12px;}
+.slip-b-nums{display:flex;justify-content:space-between;align-items:flex-end;padding-bottom:12px;}
+.slip-b-lbl{font-size:7px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:3px;}
+.slip-b-odd{font-family:'Spectral',serif;font-size:34px;font-weight:700;color:var(--dark);line-height:1;}
+.slip-b-profit{font-family:'Spectral',serif;font-size:24px;font-weight:700;color:var(--nook);text-align:right;}
+.slip-b-grid{display:grid;grid-template-columns:1fr 1fr 1fr;background:#f8f5ef;border-top:1px solid var(--border);}
+.slip-b-cell{padding:10px;text-align:center;border-right:1px solid var(--border);}
+.slip-b-cell:last-child{border:none;}
+.slip-b-cell-lbl{font-size:8px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:3px;}
+.slip-b-cell-val{font-family:'Spectral',serif;font-size:15px;font-weight:700;color:var(--dark);}
+.slip-b-cell-val.won{color:var(--nook);}
+.slip-b-footer{display:flex;justify-content:space-between;align-items:center;padding:9px 14px;border-top:2px solid var(--dark);}
+.slip-b-won{font-size:10px;font-weight:700;color:var(--nook);text-transform:uppercase;}
+.slip-b-date{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--muted);}
+
+.score-block{border-radius:10px;overflow:hidden;margin-bottom:18px;}
+
+.side-stats{background:#fff;border:1.5px solid var(--border);border-radius:10px;padding:12px 14px;margin-bottom:16px;}
+.side-stats-title{font-size:9px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:10px;font-weight:600;}
+.side-stat-row{display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px solid #f0ebe0;}
+.side-stat-row:last-child{border:none;}
+.side-stat-label{font-size:11px;color:#7a7060;}
+.side-stat-val{font-family:'Spectral',serif;font-size:14px;font-weight:700;}
+.side-stat-val.bad{color:var(--coral);}
+.side-stat-val.good{color:var(--nook);}
+.side-stat-val.neutral{color:var(--dark);}
+
+.profit-row{display:grid;grid-template-columns:repeat(3,1fr);border:2px solid var(--dark);margin-top:20px;}
+.profit-cell{padding:14px 10px;text-align:center;border-right:2px solid var(--dark);}
+.profit-cell:last-child{border:none;}
+.profit-lbl{font-size:8px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:4px;}
+.profit-val{font-family:'Spectral',serif;font-size:20px;font-weight:700;}
+.profit-val.g{color:var(--nook);}
+.profit-val.w{color:var(--dark);}
+.profit-val.o{color:#b8840f;}
+
+/* THANK YOU CARD */
+.thankyou{background:linear-gradient(135deg,var(--dark),#2a2a2a);border-radius:10px;padding:16px 18px;margin-bottom:16px;text-align:center;}
+.thankyou-emoji{font-size:28px;margin-bottom:8px;}
+.thankyou-text{font-family:'Spectral',serif;font-size:14px;font-style:italic;color:rgba(255,255,255,.75);line-height:1.5;}
+.thankyou-sig{font-size:9px;text-transform:uppercase;letter-spacing:.14em;color:var(--nook);margin-top:8px;}
+
+.tags-footer{padding:22px 44px 28px;border-top:2px solid var(--dark);}
+.tags-footer-lbl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:#7a7060;margin-bottom:10px;}
+.tags-row{display:flex;flex-wrap:wrap;gap:7px;}
+
+.footer{background:var(--dark);border-top:2px solid var(--nook);padding:18px 32px;display:flex;align-items:center;justify-content:space-between;}
+.footer-logo{font-family:'Spectral',serif;font-size:16px;color:#fff;text-decoration:none;}
+.footer-links{display:flex;gap:18px;font-size:11px;}
+.footer-links a{color:#555;text-decoration:none;}
+.footer-by{font-size:11px;color:#555;font-style:italic;}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="index.html" class="nav-logo"><span class="h">#</span>sportsbetting</a>
+  <div class="nav-links">
+    <a href="trackrecord.html">#TRACK RECORD</a>
+    <a href="zoomin.html" class="active">#ZOOM IN</a>
+    <a href="funfacts.html">#FUN FACTS</a>
+  </div>
+  <a href="https://abettorlife.blogabet.com" class="btn-sub">#SUBSCRIBE →</a>
+</nav>
+
+<div class="art-header">
+  <div class="art-issue">
+    <span>VOL. 1 · ISSUE #5 · JUNE 17, 2026</span>
+    <span>#ZOOM IN · TENNIS · ATP CHALLENGER ROYAN · LIVE BET</span>
+  </div>
+  <a href="zoomin.html" class="art-back">← Back to #ZOOM IN</a>
+  <div style="margin-bottom:14px;"></div>
+  <div class="art-kicker">🎾 Tennis · ATP Challenger · Royan · Live bet · June 17, 2026</div>
+  <div class="art-hl">5-2 up. Limping.<br>Retired in Game 1 of Set 2.<br>Thanks Pavel. Feel better.</div>
+  <div class="art-rule"></div>
+  <div class="art-sf">Kotov was the 1.12 favourite. Ranked No.251 but seeded 3rd in Royan, three Challenger titles this year. He led 5-2 in the first set against a wildcard ranked 699. Then he asked for a medical timeout. Then Raquillet won 7-5. Then Kotov retired in game one of Set 2. We were in at 1.78 with 75€. Quick evening.</div>
+  <div class="art-meta">
+    <span>Charles Chambers Farah</span>
+    <span>·</span>
+    <span>June 17, 2026</span>
+    <span>·</span>
+    <span>Raquillet vs Kotov · ATP Challenger Royan · Clay · R2</span>
+  </div>
+  <div class="art-tags">
+    <span class="ztag zt-coral">⚡ #livebet</span>
+    <span class="ztag zt-nook">#tennis</span>
+    <span class="ztag zt-nook">#challenger</span>
+    <span class="ztag zt-ocre">#mto</span>
+    <span class="ztag zt-nook">#clay</span>
+    <span class="ztag zt-coral">#remontada</span>
+    <span class="ztag zt-nook">#royan</span>
+  </div>
+</div>
+
+<div class="art-content">
+  <div class="art-col-left">
+
+    <p class="art-p">The pre-match market had one opinion. Kotov at 1.12. Implied probability of 89%. A seeded Russian who'd won three Challengers in 2026, against a French wildcard ranked 699th in the world. On paper, it's a walkover. On court, it was something else entirely.</p>
+
+    <div class="art-h2">The setup</div>
+
+    <div class="signal-block">
+      <div class="signal-header">
+        <span class="signal-emoji">📊</span>
+        <div class="signal-title">Signal 1 — Le contexte pré-match</div>
+      </div>
+      <div class="signal-context" style="margin-top:0;padding-top:0;border:none;">
+        Kotov arrive à Royan en tête de série N°3. Sur le papier, c'est une formalité. Mais sous la surface : il est à <strong>2-3 sur clay en 2026</strong>, avec une défaite R1 à Lyon la semaine précédente contre Trungelliti. Il ne gagne pas sur terre. Il gagne sur dur et indoor.
+      </div>
+      <div class="signal-meta" style="margin-top:10px;">
+        <div class="signal-meta-item"><span class="signal-meta-arrow">↳</span><span>Kotov bilan clay 2026 : <strong>2-3</strong>. Défaite Lyon R1 (Trungelliti, 9 juin). Ses 3 titres 2026 : Koblenz, Cherbourg, Wuning — tous indoor ou hard.</span></div>
+        <div class="signal-meta-item"><span class="signal-meta-arrow">↳</span><span>Raquillet (WC, N°699) : vient de battre Manoj Dhamne 7-5 2-6 6-3 au R1. En forme, à domicile, sur sa surface.</span></div>
+        <div class="signal-meta-item"><span class="signal-meta-arrow">↳</span><a class="signal-link" href="https://tennistonic.com/tennis-news/1013895/h2h-prediction-of-pavel-kotov-vs-leo-raquillet-in-royan-challenger-with-odds-preview-pick-17th-june-2026-2/" target="_blank">tennistonic.com · preview pré-match ✅</a></div>
+      </div>
+    </div>
+
+    <!-- ODDS ANOMALY -->
+    <div class="odds-compare">
+      <div class="odds-item">
+        <div class="odds-n bad">1.12</div>
+        <div class="odds-l">Kotov pré-match</div>
+      </div>
+      <div class="odds-item highlight">
+        <div class="odds-n neutral">1.78</div>
+        <div class="odds-l light">Notre entrée live</div>
+      </div>
+      <div class="odds-item">
+        <div class="odds-n good">5.15</div>
+        <div class="odds-l">Raquillet pré-match</div>
+      </div>
+    </div>
+
+    <div class="art-h2">Le match — ce qu'on a vu en live</div>
+
+    <div class="signal-block">
+      <div class="signal-header">
+        <span class="signal-emoji">🩹</span>
+        <div class="signal-title">Signal 2 — MTO Kotov à 5-2</div>
+      </div>
+      <div class="signal-context" style="margin-top:0;padding-top:0;border:none;">
+        Kotov mène <strong>5-2</strong> dans le premier set. Raquillet est dans les cordes. Puis Kotov s'arrête. Medical timeout. Il boîte. Le physique qui lâche sur une surface qu'il n'aime pas, contre un adversaire qui se bat à domicile. Le momentum bascule immédiatement.
+      </div>
+      <div class="signal-meta" style="margin-top:10px;">
+        <div class="signal-meta-item"><span class="signal-meta-arrow">↳</span><span>5-2 pour Kotov → MTO → Raquillet remonte break par break → <strong>7-5 Raquillet</strong>. Remontada complète.</span></div>
+        <div class="signal-meta-item"><span class="signal-meta-arrow">↳</span><span>Cote Raquillet remonte mécaniquement à <strong>1.78</strong> — le marché surréagit à la remontada mais ne voit pas encore l'ampleur du problème physique.</span></div>
+      </div>
+    </div>
+
+    <div class="author-cut">
+      <p>A player who limps through a 5-2 lead, takes a medical timeout, and still loses the set doesn't recover in game one of the next. This was not a bet. This was reading what was already written on the court.</p>
+      <div class="author-sig">— C.C. Farah</div>
+    </div>
+
+    <div class="art-h2">L'entrée et le dénouement</div>
+
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-dot">📊</div>
+        <div class="tl-content">
+          <div class="tl-time">Pré-match</div>
+          <div class="tl-text">Kotov favori à <strong>1.12</strong> (89% implied). Raquillet wildcard à 5.15. Marché clair. On regarde.</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot warn">5-2</div>
+        <div class="tl-content">
+          <div class="tl-time">Set 1 · Kotov mène 5-2</div>
+          <div class="tl-text">Kotov domine. Raquillet en difficulté. Rien d'anormal. Puis le MTO arrive. <strong>Il boîte.</strong></div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot warn">🩹</div>
+        <div class="tl-content">
+          <div class="tl-time">Medical timeout — Kotov</div>
+          <div class="tl-text">Le MTO change tout. Physique défaillant. Raquillet sent l'ouverture et remonte break par break. <strong>7-5 Raquillet</strong>.</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot act">💰</div>
+        <div class="tl-content">
+          <div class="tl-time">17:01 — Entrée live</div>
+          <div class="tl-text"><strong>75€ sur Raquillet W1 à 1.78</strong>. Break en main, Kotov qui boîte. Patience. L'entrée est évidente.</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot ko">✕</div>
+        <div class="tl-content">
+          <div class="tl-time">Jeu 1, Set 2 — Kotov retire</div>
+          <div class="tl-text">Kotov abandonne dès le premier jeu du deuxième set. Score final : <strong>7-5 ret.</strong> Gain rapide. <strong>+58.50€</strong>.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="author-cut">
+      <p>Thanks Pavel. Feel better. We appreciate the thoroughness — limping through a 5-2 lead, losing the set, and then retiring in game one so we didn't have to spend the evening watching. Very considerate.</p>
+      <div class="author-sig">— C.C. Farah</div>
+    </div>
+
+    <div class="signal-block">
+      <div class="signal-header">
+        <span class="signal-emoji">📰</span>
+        <div class="signal-title">Confirmation post-match — presse spécialisée</div>
+      </div>
+      <div class="signal-attr">
+        <span class="signal-check">✅</span>
+        <div class="signal-attr-text">TennisTonic, lendemain du match : <em>"Raquillet had a free pass after Kotov <strong>retired on a 7-5 scoreline</strong>."</em></div>
+      </div>
+      <div class="signal-meta">
+        <div class="signal-meta-item"><span class="signal-meta-arrow">↳</span><a class="signal-link" href="https://tennistonic.com/tennis-news/1014411/h2h-prediction-of-kilian-feldbausch-vs-leo-raquillet-in-royan-challenger-with-odds-preview-pick-18th-june-2026/" target="_blank">tennistonic.com · Feldbausch vs Raquillet preview QF ✅</a></div>
+        <div class="signal-meta-item"><span class="signal-meta-arrow">↳</span><span>Résultat officiel ATP Tour : Raquillet (WC) def. Kotov (3) 7-5 ret. · Clay · Royan · R2</span></div>
+      </div>
+    </div>
+
+    <hr class="art-divider">
+
+    <p class="art-p" style="font-size:14px;color:#7a7060;">+58.50€ sur 75€ misés. Le bet le plus large de la journée — justifié par la clarté du signal. Un MTO à 5-2 sur une surface défavorite, contre un adversaire à domicile, ça ne se récupère pas en trois jeux. Le marché ne l'a pas vu. Nous, si.</p>
+
+  </div>
+
+  <!-- RIGHT -->
+  <div class="art-col-right">
+
+    <div class="slip-b">
+      <div class="slip-b-head">
+        <span>Bet #5 · Single · Live</span>
+        <span>Nº 83213688001</span>
+      </div>
+      <div class="slip-b-inner">
+        <div class="slip-b-tourn">🎾 ATP Challenger · Royan · Clay</div>
+        <div class="slip-b-match">Raquillet vs Kotov</div>
+        <div class="slip-b-market">1X2 W1 — Leo Raquillet</div>
+        <div class="slip-b-rule"></div>
+        <div class="slip-b-nums">
+          <div>
+            <div class="slip-b-lbl">Odds</div>
+            <div class="slip-b-odd">1.78</div>
+          </div>
+          <div>
+            <div class="slip-b-lbl" style="text-align:right">Profit</div>
+            <div class="slip-b-profit">+58.50€</div>
+          </div>
+        </div>
+      </div>
+      <div class="slip-b-grid">
+        <div class="slip-b-cell"><div class="slip-b-cell-lbl">Stake</div><div class="slip-b-cell-val">75€</div></div>
+        <div class="slip-b-cell"><div class="slip-b-cell-lbl">Return</div><div class="slip-b-cell-val">133.50€</div></div>
+        <div class="slip-b-cell"><div class="slip-b-cell-lbl">Status</div><div class="slip-b-cell-val won">Won</div></div>
+      </div>
+      <div class="slip-b-footer">
+        <span class="slip-b-won">✓ Paid out</span>
+        <span class="slip-b-date">17.06.2026 · 17:01</span>
+      </div>
+    </div>
+
+    <!-- SCORE — clay -->
+    <div class="score-block">
+      <svg width="100%" height="180" viewBox="0 0 280 180" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <pattern id="ct" x="0" y="0" width="5" height="5" patternUnits="userSpaceOnUse"><circle cx="2.5" cy="2.5" r="1" fill="rgba(0,0,0,.12)"/></pattern>
+          <linearGradient id="clayg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#c4622e"/><stop offset="100%" stop-color="#8b3d18"/></linearGradient>
+        </defs>
+        <rect width="280" height="180" fill="url(#clayg)"/>
+        <rect width="280" height="180" fill="url(#ct)"/>
+        <line x1="0" y1="90" x2="280" y2="90" stroke="rgba(255,255,255,.28)" stroke-width="2"/>
+        <rect x="16" y="14" width="248" height="152" fill="none" stroke="rgba(255,255,255,.18)" stroke-width="1.2"/>
+        <rect x="16" y="50" width="248" height="80" fill="none" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
+        <line x1="140" y1="50" x2="140" y2="130" stroke="rgba(255,255,255,.08)" stroke-width="1"/>
+        <rect width="280" height="26" fill="rgba(0,0,0,.45)"/>
+        <text x="14" y="17" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.6)" letter-spacing="1">ATP CHALLENGER · R2 · CLAY · ROYAN</text>
+        <rect x="0" y="86" width="280" height="80" fill="rgba(0,0,0,.55)"/>
+        <text x="14" y="112" font-family="Inter,sans-serif" font-size="13" font-weight="700" fill="white">L. Raquillet 🇫🇷 (WC)</text>
+        <rect x="224" y="96" width="46" height="26" rx="3" fill="rgba(255,255,255,.9)"/><text x="247" y="114" font-family="Inter,sans-serif" font-size="12" font-weight="700" fill="#8b3d18" text-anchor="middle">7-5</text>
+        <line x1="14" y1="128" x2="266" y2="128" stroke="rgba(255,255,255,.12)" stroke-width="1"/>
+        <text x="14" y="152" font-family="Inter,sans-serif" font-size="13" font-weight="400" fill="rgba(255,255,255,.38)">P. Kotov 🇷🇺 [3] 🩹</text>
+        <rect x="224" y="136" width="46" height="26" rx="3" fill="rgba(0,0,0,.35)"/><text x="247" y="154" font-family="Inter,sans-serif" font-size="11" font-weight="700" fill="rgba(255,255,255,.3)" text-anchor="middle">ret.</text>
+        <text x="14" y="175" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.28)" font-style="italic">7-5 ret. · MTO S1 · Retired G1 S2</text>
+      </svg>
+    </div>
+
+    <!-- Kotov stats -->
+    <div class="side-stats">
+      <div class="side-stats-title">📊 Kotov clay 2026 — before Royan</div>
+      <div class="side-stat-row"><div class="side-stat-label">Clay bilan 2026</div><div class="side-stat-val bad">2-3</div></div>
+      <div class="side-stat-row"><div class="side-stat-label">Dernier match clay</div><div class="side-stat-val bad">Lyon R1 L</div></div>
+      <div class="side-stat-row"><div class="side-stat-label">Ses 3 titres 2026</div><div class="side-stat-val neutral">Hard/Indoor</div></div>
+      <div class="side-stat-row"><div class="side-stat-label">Cote pré-match</div><div class="side-stat-val bad">1.12 (89%)</div></div>
+      <div class="side-stat-row"><div class="side-stat-label">Notre entrée live</div><div class="side-stat-val good">1.78</div></div>
+    </div>
+
+    <!-- Thank you card -->
+    <div class="thankyou">
+      <div class="thankyou-emoji">🙏</div>
+      <div class="thankyou-text">"Thanks Pavel. Feel better. Retiring in game one was very efficient of you — we had other matches to watch."</div>
+      <div class="thankyou-sig">— C.C. Farah · Royan, 17 juin 2026</div>
+    </div>
+
+    <div class="profit-row">
+      <div class="profit-cell"><div class="profit-lbl">Profit</div><div class="profit-val g">+58.50€</div></div>
+      <div class="profit-cell"><div class="profit-lbl">Record</div><div class="profit-val w">5/5</div></div>
+      <div class="profit-cell"><div class="profit-lbl">Stake</div><div class="profit-val o">75€</div></div>
+    </div>
+
+  </div>
+</div>
+
+<div class="tags-footer">
+  <div class="tags-footer-lbl">Filed under</div>
+  <div class="tags-row">
+    <span class="ztag zt-nook">#tennis</span>
+    <span class="ztag zt-coral">#zoomin</span>
+    <span class="ztag zt-coral">#livebet</span>
+    <span class="ztag zt-nook">#challenger</span>
+    <span class="ztag zt-nook">#clay</span>
+    <span class="ztag zt-ocre">#mto</span>
+    <span class="ztag zt-coral">#remontada</span>
+    <span class="ztag zt-nook">#raquillet</span>
+    <span class="ztag zt-coral">#kotov</span>
+    <span class="ztag zt-nook">#royan2026</span>
+    <span class="ztag zt-ocre">#processoverpnl</span>
+  </div>
+</div>
+
+<footer class="footer">
+  <a href="index.html" class="footer-logo"><span class="h">#</span>sportsbetting</a>
+  <div class="footer-links">
+    <a href="trackrecord.html">#trackrecord</a>
+    <a href="zoomin.html">#zoomin</a>
+    <a href="funfacts.html">#funfacts</a>
+    <a href="privacy.html">Privacy Policy</a>
+  </div>
+  <div class="footer-by">A Charles Chambers Farah strategy</div>
+</footer>
+</body>
+</html>

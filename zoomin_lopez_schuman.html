@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A coinflip at 3.48. The press wasn't there. We were. — #ZOOM IN</title>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{--cream:#f0ede4;--nook:#4a7c5f;--nook-l:#e6efe9;--dark:#1e1e1e;--coral:#ec5a3c;--ocre:#f5b32e;--blue:#3d6db5;--muted:#a09880;--border:#e0d9cc;}
+body{font-family:'Inter',sans-serif;background:var(--cream);}
+.h{color:var(--nook);}
+.nav{background:var(--dark);border-bottom:2px solid var(--nook);display:flex;align-items:center;justify-content:space-between;padding:16px 32px;}
+.nav-logo{font-family:'Spectral',serif;font-size:20px;color:#fff;letter-spacing:-.02em;text-decoration:none;}
+.nav-links{display:flex;gap:28px;}
+.nav-links a{font-size:15px;font-weight:700;color:rgba(255,255,255,.55);text-decoration:none;}
+.nav-links a.active{color:var(--nook);}
+.btn-sub{background:var(--coral);color:#fff;font-size:12px;font-weight:700;padding:8px 18px;border-radius:100px;border:none;cursor:pointer;}
+
+/* HEADER */
+.art-header{background:var(--dark);padding:36px 44px 32px;border-bottom:2px solid var(--nook);}
+.art-issue{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--muted);letter-spacing:.12em;display:flex;justify-content:space-between;margin-bottom:16px;padding-bottom:10px;border-bottom:1px solid #3d3830;}
+.art-back{font-size:10px;color:var(--muted);text-decoration:none;}
+.art-back:hover{color:#fff;}
+.art-kicker{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.18em;color:var(--nook);margin-bottom:14px;}
+.art-hl{font-family:'Spectral',serif;font-size:38px;font-weight:700;color:#fff;line-height:1.05;letter-spacing:-.03em;margin-bottom:12px;}
+.art-rule{height:2px;background:var(--nook);margin:12px 0;}
+.art-sf{font-family:'Spectral',serif;font-size:16px;font-style:italic;color:rgba(160,152,128,.9);line-height:1.55;margin-bottom:16px;}
+.art-meta{font-size:11px;color:#7a7060;display:flex;gap:12px;flex-wrap:wrap;}
+.art-tags{display:flex;gap:7px;margin-top:14px;flex-wrap:wrap;}
+.ztag{font-size:10px;font-weight:700;padding:4px 10px;border-radius:100px;}
+.zt-nook{background:rgba(74,124,95,.2);color:var(--nook);}
+.zt-coral{background:rgba(236,90,60,.15);color:var(--coral);}
+.zt-ocre{background:rgba(245,179,46,.2);color:#b8840f;}
+
+/* 2-COL */
+.art-content{display:grid;grid-template-columns:1fr 300px;gap:0;}
+.art-col-left{padding:36px 40px 48px;border-right:1.5px solid var(--border);}
+.art-col-right{padding:28px 24px;background:#f8f5ef;}
+
+/* SIGNAL */
+.signal-block{border:1px solid var(--border);border-left:3px solid var(--nook);background:#fff;border-radius:0 8px 8px 0;padding:16px 18px;margin-bottom:20px;}
+.signal-header{display:flex;align-items:center;gap:8px;margin-bottom:10px;}
+.signal-emoji{font-size:18px;line-height:1;}
+.signal-title{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--dark);}
+.signal-quote{background:var(--cream);border-left:3px solid var(--dark);padding:12px 16px;margin-bottom:10px;border-radius:0 6px 6px 0;}
+.signal-quote-text{font-family:'Spectral',serif;font-size:15px;font-style:italic;color:var(--dark);line-height:1.5;}
+.signal-attr{display:flex;align-items:flex-start;gap:6px;margin-bottom:8px;}
+.signal-check{font-size:13px;flex-shrink:0;margin-top:1px;}
+.signal-attr-text{font-size:12px;color:var(--dark);line-height:1.4;}
+.signal-attr-text strong{font-weight:700;}
+.signal-meta{display:flex;flex-direction:column;gap:5px;font-size:11px;color:#7a7060;padding-left:2px;}
+.signal-meta-item{display:flex;align-items:flex-start;gap:6px;}
+.signal-meta-arrow{color:var(--muted);flex-shrink:0;}
+.signal-context{font-size:13px;color:#3d3830;line-height:1.65;margin-top:10px;padding-top:10px;border-top:1px solid var(--border);}
+
+/* NO CITATION BLOCK — honest sourcing */
+.no-cite-block{background:#fffbf0;border-left:3px solid var(--ocre);padding:14px 18px;margin-bottom:20px;border-radius:0 8px 8px 0;}
+.no-cite-label{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:#b8840f;margin-bottom:6px;}
+.no-cite-body{font-size:13px;color:#3d3830;line-height:1.65;}
+
+/* EDITORIAL */
+.art-p{font-family:'Spectral',serif;font-size:16px;line-height:1.85;color:#3d3830;margin-bottom:18px;}
+.author-cut{background:var(--dark);border-left:3px solid var(--nook);padding:16px 20px;margin:16px 0;}
+.author-cut p{font-family:'Spectral',serif;font-size:16px;font-style:italic;color:#fff;line-height:1.55;}
+.author-sig{font-size:8px;text-transform:uppercase;letter-spacing:.1em;color:var(--nook);margin-top:8px;}
+.art-divider{border:none;border-top:1px solid var(--border);margin:22px 0;}
+.art-h2{font-family:'Spectral',serif;font-size:20px;font-weight:700;color:var(--dark);margin:28px 0 12px;border-top:1.5px solid var(--border);padding-top:18px;}
+
+/* TIMELINE */
+.timeline{margin:20px 0;display:flex;flex-direction:column;gap:0;}
+.tl-item{display:flex;gap:16px;padding-bottom:16px;position:relative;}
+.tl-item:last-child{padding-bottom:0;}
+.tl-item:not(:last-child)::before{content:'';position:absolute;left:15px;top:28px;bottom:0;width:1.5px;background:var(--border);}
+.tl-dot{width:30px;height:30px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:13px;border:2px solid var(--border);background:#fff;}
+.tl-dot.act{background:var(--nook);border-color:var(--nook);}
+.tl-dot.warn{background:var(--ocre);border-color:var(--ocre);}
+.tl-dot.win{background:var(--coral);border-color:var(--coral);}
+.tl-content{flex:1;padding-top:4px;}
+.tl-time{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--muted);margin-bottom:3px;text-transform:uppercase;letter-spacing:.1em;}
+.tl-text{font-size:13px;color:#3d3830;line-height:1.5;}
+.tl-text strong{font-weight:700;color:var(--dark);}
+
+/* SLIP B */
+.slip-b{background:#fff;border:2px solid var(--dark);overflow:hidden;margin-bottom:20px;}
+.slip-b-head{background:var(--nook);padding:9px 14px;display:flex;justify-content:space-between;}
+.slip-b-head span{font-family:'JetBrains Mono',monospace;font-size:9px;color:rgba(255,255,255,.8);}
+.slip-b-inner{padding:14px 14px 0;}
+.slip-b-tourn{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--nook);margin-bottom:5px;}
+.slip-b-match{font-family:'Spectral',serif;font-size:18px;font-weight:700;color:var(--dark);line-height:1.2;margin-bottom:4px;}
+.slip-b-market{font-size:12px;color:#7a7060;border-left:2px solid var(--nook);padding-left:8px;margin-bottom:12px;}
+.slip-b-rule{height:1.5px;background:var(--dark);margin-bottom:12px;}
+.slip-b-nums{display:flex;justify-content:space-between;align-items:flex-end;padding-bottom:12px;}
+.slip-b-lbl{font-size:7px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:3px;}
+.slip-b-odd{font-family:'Spectral',serif;font-size:34px;font-weight:700;color:var(--dark);line-height:1;}
+.slip-b-profit{font-family:'Spectral',serif;font-size:24px;font-weight:700;color:var(--nook);text-align:right;}
+.slip-b-grid{display:grid;grid-template-columns:1fr 1fr 1fr;background:#f8f5ef;border-top:1px solid var(--border);}
+.slip-b-cell{padding:10px;text-align:center;border-right:1px solid var(--border);}
+.slip-b-cell:last-child{border:none;}
+.slip-b-cell-lbl{font-size:8px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:3px;}
+.slip-b-cell-val{font-family:'Spectral',serif;font-size:15px;font-weight:700;color:var(--dark);}
+.slip-b-cell-val.won{color:var(--nook);}
+.slip-b-footer{display:flex;justify-content:space-between;align-items:center;padding:9px 14px;border-top:2px solid var(--dark);}
+.slip-b-won{font-size:10px;font-weight:700;color:var(--nook);text-transform:uppercase;}
+.slip-b-date{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--muted);}
+
+/* SCORE — clay */
+.score-block{border-radius:10px;overflow:hidden;margin-bottom:18px;}
+
+/* PROFIT ROW */
+.profit-row{display:grid;grid-template-columns:repeat(3,1fr);border:2px solid var(--dark);margin-top:20px;}
+.profit-cell{padding:14px 10px;text-align:center;border-right:2px solid var(--dark);}
+.profit-cell:last-child{border:none;}
+.profit-lbl{font-size:8px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:4px;}
+.profit-val{font-family:'Spectral',serif;font-size:20px;font-weight:700;}
+.profit-val.g{color:var(--nook);}
+.profit-val.w{color:var(--dark);}
+.profit-val.o{color:#b8840f;}
+
+/* EDGE BOX */
+.edge-box{background:var(--dark);border-radius:10px;padding:14px 16px;margin-bottom:16px;}
+.edge-box-title{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--nook);margin-bottom:10px;}
+.edge-row{display:flex;justify-content:space-between;align-items:center;padding:5px 0;border-bottom:1px solid #3d3830;font-size:11px;}
+.edge-row:last-child{border:none;}
+.edge-label{color:rgba(255,255,255,.5);}
+.edge-val{font-weight:700;color:#fff;}
+.edge-val.g{color:var(--nook);}
+.edge-val.o{color:var(--ocre);}
+
+/* TAGS FOOTER */
+.tags-footer{padding:22px 44px 28px;border-top:2px solid var(--dark);}
+.tags-footer-lbl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:#7a7060;margin-bottom:10px;}
+.tags-row{display:flex;flex-wrap:wrap;gap:7px;}
+
+.footer{background:var(--dark);border-top:2px solid var(--nook);padding:18px 32px;display:flex;align-items:center;justify-content:space-between;}
+.footer-logo{font-family:'Spectral',serif;font-size:16px;color:#fff;text-decoration:none;}
+.footer-links{display:flex;gap:18px;font-size:11px;}
+.footer-links a{color:#555;text-decoration:none;}
+.footer-by{font-size:11px;color:#555;font-style:italic;}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="index.html" class="nav-logo"><span class="h">#</span>sportsbetting</a>
+  <div class="nav-links">
+    <a href="trackrecord.html">#TRACK RECORD</a>
+    <a href="zoomin.html" class="active">#ZOOM IN</a>
+    <a href="funfacts.html">#FUN FACTS</a>
+  </div>
+  <a href="https://abettorlife.blogabet.com" class="btn-sub">#SUBSCRIBE →</a>
+</nav>
+
+<!-- HEADER -->
+<div class="art-header">
+  <div class="art-issue">
+    <span>VOL. 1 · ISSUE #4 · JUNE 17, 2026</span>
+    <span>#ZOOM IN · TENNIS · ITF MONASTIR · LIVE BET</span>
+  </div>
+  <a href="zoomin.html" class="art-back">← Back to #ZOOM IN</a>
+  <div style="margin-bottom:14px;"></div>
+  <div class="art-kicker">🎾 Tennis · ITF W25 · Monastir · Live bet · June 17, 2026</div>
+  <div class="art-hl">A coinflip at 3.48.<br>The press wasn't there.<br>We were.</div>
+  <div class="art-rule"></div>
+  <div class="art-sf">ITF Monastir, Women. No cameras, no journalists, no coverage. Just a medical timeout in the previous match, a player we'd been tracking, and a live entry after Set 1 that the bookmaker hadn't priced correctly. Patience and live monitoring. That's the whole story.</div>
+  <div class="art-meta">
+    <span>Charles Chambers Farah</span>
+    <span>·</span>
+    <span>June 17, 2026</span>
+    <span>·</span>
+    <span>Lopez vs Schuman · ITF W25 Monastir · Clay</span>
+  </div>
+  <div class="art-tags">
+    <span class="ztag zt-coral">🎾 #livebet</span>
+    <span class="ztag zt-nook">#tennis</span>
+    <span class="ztag zt-nook">#itf</span>
+    <span class="ztag zt-ocre">#mto</span>
+    <span class="ztag zt-nook">#clay</span>
+    <span class="ztag zt-coral">#informationedge</span>
+    <span class="ztag zt-nook">#monastir</span>
+  </div>
+</div>
+
+<!-- 2-COL -->
+<div class="art-content">
+
+  <div class="art-col-left">
+
+    <p class="art-p">ITF W25 Monastir. No press. No live blog. No Twitter thread. Flashscore ticking silently. The bookmaker sees two players, a score, and a set of career stats. We saw something else — something that happened the match before, something that doesn't appear in any database.</p>
+
+    <div class="art-h2">The pre-selection</div>
+
+    <!-- SIGNAL 1 — MTO -->
+    <div class="signal-block">
+      <div class="signal-header">
+        <span class="signal-emoji">🩹</span>
+        <div class="signal-title">Signal 1 — Medical timeout, match précédent</div>
+      </div>
+      <div class="no-cite-block" style="margin-bottom:0;border-radius:6px;">
+        <div class="no-cite-label">⚠️ Information non indexée — observation directe</div>
+        <div class="no-cite-body">Aspen Schuman a demandé un medical timeout lors de son match précédent dans ce tournoi. Aucun article de presse, aucune source en ligne. C'est le niveau ITF — personne ne couvre ça. Nous, si.</div>
+      </div>
+      <div class="signal-context">Un MTO à ce stade du tournoi sur cette surface est un signal clair. Soit physique, soit mental. Dans les deux cas : flag. Le joueur entre dans la liste de surveillance. On ne bet pas encore — on observe.</div>
+    </div>
+
+    <div class="author-cut">
+      <p>The Medical Timeout is the most under-priced piece of information in tennis betting. It happens. Nobody reports it at the ITF level. The bookmaker doesn't know. That's not a leak — that's called watching the match.</p>
+      <div class="author-sig">— C.C. Farah</div>
+    </div>
+
+    <div class="art-h2">The entry</div>
+
+    <!-- SIGNAL 2 — Live entry -->
+    <div class="signal-block">
+      <div class="signal-header">
+        <span class="signal-emoji">⚡</span>
+        <div class="signal-title">Signal 2 — Entrée live après perte du Set 1 par Lopez</div>
+      </div>
+      <div class="signal-context" style="margin-top:0;padding-top:0;border:none;">
+        Lopez perd le Set 1. La cote sur Lopez remonte à <strong>3.48</strong>. Le marché surréagit à un set perdu — c'est mécanique. Nous, on a un signal supplémentaire : Schuman portait déjà un drapeau physique du match précédent. Lopez est la meilleure joueuse sur le papier. Le 3.48 est une anomalie.
+      </div>
+      <div class="signal-meta" style="margin-top:10px;">
+        <div class="signal-meta-item"><span class="signal-meta-arrow">↳</span><span>Entrée : 16:26 · Set 1 perdu par Lopez · cote remontée mécaniquement à 3.48</span></div>
+        <div class="signal-meta-item"><span class="signal-meta-arrow">↳</span><span>Stake : 15€ — mise unitaire standard. Pas un pari de conviction absolue. Un coinflip correctement pricé.</span></div>
+        <div class="signal-meta-item"><span class="signal-meta-arrow">↳</span><span>Résultat final : Lopez W 7:6 7:5 — deux sets serrés, deux tiebreaks. Schuman s'est battu. Le MTO n'a pas empêché la résistance. Mais Lopez a tenu.</span></div>
+      </div>
+    </div>
+
+    <!-- TIMELINE -->
+    <div class="art-h2">Comment s'est jouée la session</div>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-dot">👁️</div>
+        <div class="tl-content">
+          <div class="tl-time">Match précédent — présélection</div>
+          <div class="tl-text">Schuman prend un <strong>medical timeout</strong>. Flag. Elle entre dans la liste de surveillance pour le reste du tournoi.</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot warn">S1</div>
+        <div class="tl-content">
+          <div class="tl-time">Set 1 — Schuman gagne 7:6</div>
+          <div class="tl-text">Lopez perd le Set 1. La cote remonte à <strong>3.48</strong>. Le marché surréagit. Nous, on a contexte supplémentaire. Entrée confirmée.</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot act">💰</div>
+        <div class="tl-content">
+          <div class="tl-time">16:26 — Entrée live</div>
+          <div class="tl-text">15€ sur Lopez W1 à <strong>3.48</strong>. Patience. Retour en arrière sur le MTO. Mise unitaire standard.</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot warn">S2</div>
+        <div class="tl-content">
+          <div class="tl-time">Set 2 — Lopez 7:5</div>
+          <div class="tl-text">Lopez revient. Schuman résiste mais ne répond plus en fin de set. Le drapeau physique commence à jouer.</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot win">✓</div>
+        <div class="tl-content">
+          <div class="tl-time">Final — Lopez W 7:6 7:5</div>
+          <div class="tl-text">Paid out. <strong>+37.20€</strong>. Un coinflip correctement identifié qui paye à 3.48.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="author-cut">
+      <p>Patience. Suivi live. Ce bet n'existe pas sans les deux. La cote de 3.48 n'existe pas sans le MTO du match précédent. Et le MTO du match précédent n'existe dans aucune base de données. C'est ça, l'edge.</p>
+      <div class="author-sig">— C.C. Farah</div>
+    </div>
+
+    <hr class="art-divider">
+
+    <p class="art-p" style="font-size:14px;color:#7a7060;">+37.20€ sur 15€ misés. Le profit n'est pas le point — la méthode l'est. Un coinflip à 3.48 sur information invisible au marché. C'est pour ça qu'on suit les ITF.</p>
+
+  </div>
+
+  <!-- RIGHT COL -->
+  <div class="art-col-right">
+
+    <!-- SLIP B -->
+    <div class="slip-b">
+      <div class="slip-b-head">
+        <span>Bet #4 · Single · Live</span>
+        <span>Nº 83212182707</span>
+      </div>
+      <div class="slip-b-inner">
+        <div class="slip-b-tourn">🎾 ITF W25 · Monastir · Clay</div>
+        <div class="slip-b-match">Lopez vs Schuman</div>
+        <div class="slip-b-market">1X2 W1 — Eva Lopez</div>
+        <div class="slip-b-rule"></div>
+        <div class="slip-b-nums">
+          <div>
+            <div class="slip-b-lbl">Odds</div>
+            <div class="slip-b-odd">3.48</div>
+          </div>
+          <div>
+            <div class="slip-b-lbl" style="text-align:right">Profit</div>
+            <div class="slip-b-profit">+37.20€</div>
+          </div>
+        </div>
+      </div>
+      <div class="slip-b-grid">
+        <div class="slip-b-cell"><div class="slip-b-cell-lbl">Stake</div><div class="slip-b-cell-val">15€</div></div>
+        <div class="slip-b-cell"><div class="slip-b-cell-lbl">Return</div><div class="slip-b-cell-val">52.20€</div></div>
+        <div class="slip-b-cell"><div class="slip-b-cell-lbl">Status</div><div class="slip-b-cell-val won">Won</div></div>
+      </div>
+      <div class="slip-b-footer">
+        <span class="slip-b-won">✓ Paid out</span>
+        <span class="slip-b-date">17.06.2026 · 16:26</span>
+      </div>
+    </div>
+
+    <!-- SCORE — clay -->
+    <div class="score-block">
+      <svg width="100%" height="180" viewBox="0 0 280 180" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <pattern id="ct" x="0" y="0" width="5" height="5" patternUnits="userSpaceOnUse"><circle cx="2.5" cy="2.5" r="1" fill="rgba(0,0,0,.12)"/></pattern>
+          <linearGradient id="clayg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#c4622e"/><stop offset="100%" stop-color="#8b3d18"/></linearGradient>
+        </defs>
+        <rect width="280" height="180" fill="url(#clayg)"/>
+        <rect width="280" height="180" fill="url(#ct)"/>
+        <line x1="0" y1="90" x2="280" y2="90" stroke="rgba(255,255,255,.28)" stroke-width="2"/>
+        <rect x="16" y="14" width="248" height="152" fill="none" stroke="rgba(255,255,255,.18)" stroke-width="1.2"/>
+        <rect x="16" y="50" width="248" height="80" fill="none" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
+        <line x1="140" y1="50" x2="140" y2="130" stroke="rgba(255,255,255,.08)" stroke-width="1"/>
+        <rect width="280" height="26" fill="rgba(0,0,0,.45)"/>
+        <text x="14" y="17" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.6)" letter-spacing="1">ITF W25 · CLAY · MONASTIR</text>
+        <rect x="0" y="86" width="280" height="80" fill="rgba(0,0,0,.55)"/>
+        <!-- Lopez winner -->
+        <text x="14" y="112" font-family="Inter,sans-serif" font-size="13" font-weight="700" fill="white">E. Lopez 🇦🇺</text>
+        <rect x="204" y="96" width="26" height="26" rx="3" fill="rgba(255,255,255,.12)"/><text x="217" y="114" font-family="Inter,sans-serif" font-size="11" font-weight="400" fill="rgba(255,255,255,.4)" text-anchor="middle">6</text>
+        <rect x="234" y="96" width="26" height="26" rx="3" fill="rgba(255,255,255,.9)"/><text x="247" y="114" font-family="Inter,sans-serif" font-size="12" font-weight="700" fill="#8b3d18" text-anchor="middle">7</text>
+        <line x1="14" y1="128" x2="266" y2="128" stroke="rgba(255,255,255,.12)" stroke-width="1"/>
+        <!-- Schuman loser -->
+        <text x="14" y="152" font-family="Inter,sans-serif" font-size="13" font-weight="400" fill="rgba(255,255,255,.38)">A. Schuman 🇺🇸 🩹</text>
+        <rect x="204" y="136" width="26" height="26" rx="3" fill="rgba(255,255,255,.9)"/><text x="217" y="154" font-family="Inter,sans-serif" font-size="12" font-weight="700" fill="#8b3d18" text-anchor="middle">7</text>
+        <rect x="234" y="136" width="26" height="26" rx="3" fill="rgba(0,0,0,.35)"/><text x="247" y="154" font-family="Inter,sans-serif" font-size="11" font-weight="700" fill="rgba(255,255,255,.28)" text-anchor="middle">5</text>
+        <text x="14" y="175" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.28)" font-style="italic">7-6 7-5 · Live entry after S1 · MTO flag</text>
+      </svg>
+    </div>
+
+    <!-- Edge box -->
+    <div class="edge-box">
+      <div class="edge-box-title">Why 3.48 was wrong</div>
+      <div class="edge-row"><div class="edge-label">Market implied prob.</div><div class="edge-val">28.7%</div></div>
+      <div class="edge-row"><div class="edge-label">Our read (w/ MTO flag)</div><div class="edge-val g">~48%</div></div>
+      <div class="edge-row"><div class="edge-label">Edge identified</div><div class="edge-val o">~19pts</div></div>
+      <div class="edge-row"><div class="edge-label">Information source</div><div class="edge-val">Live · Not indexed</div></div>
+      <div class="edge-row"><div class="edge-label">Entry</div><div class="edge-val">After Set 1</div></div>
+    </div>
+
+    <!-- Profit -->
+    <div class="profit-row">
+      <div class="profit-cell"><div class="profit-lbl">Profit</div><div class="profit-val g">+37.20€</div></div>
+      <div class="profit-cell"><div class="profit-lbl">Record</div><div class="profit-val w">4/4</div></div>
+      <div class="profit-cell"><div class="profit-lbl">Stake</div><div class="profit-val o">15€</div></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- TAGS -->
+<div class="tags-footer">
+  <div class="tags-footer-lbl">Filed under</div>
+  <div class="tags-row">
+    <span class="ztag zt-nook">#tennis</span>
+    <span class="ztag zt-coral">#zoomin</span>
+    <span class="ztag zt-coral">#livebet</span>
+    <span class="ztag zt-nook">#itf</span>
+    <span class="ztag zt-nook">#clay</span>
+    <span class="ztag zt-ocre">#mto</span>
+    <span class="ztag zt-coral">#informationedge</span>
+    <span class="ztag zt-nook">#monastir2026</span>
+    <span class="ztag zt-ocre">#patience</span>
+    <span class="ztag zt-nook">#processoverpnl</span>
+  </div>
+</div>
+
+<footer class="footer">
+  <a href="index.html" class="footer-logo"><span class="h">#</span>sportsbetting</a>
+  <div class="footer-links">
+    <a href="trackrecord.html">#trackrecord</a>
+    <a href="zoomin.html">#zoomin</a>
+    <a href="funfacts.html">#funfacts</a>
+    <a href="privacy.html">Privacy Policy</a>
+  </div>
+  <div class="footer-by">A Charles Chambers Farah strategy</div>
+</footer>
+
+</body>
+</html>
