@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{--cream:#f0ede4;--nook:#4a7c5f;--nook-l:#e6efe9;--dark:#1e1e1e;--coral:#ec5a3c;--ocre:#f5b32e;--blue:#3d6db5;--muted:#a09880;--border:#e0d9cc;}
+body{font-family:'Inter',sans-serif;background:var(--cream);}
+.h{color:var(--nook);}
+.nav{background:var(--dark);border-bottom:2px solid var(--nook);display:flex;align-items:center;justify-content:space-between;padding:16px 32px;}
+.nav-logo{font-family:'Spectral',serif;font-size:20px;color:#fff;letter-spacing:-.02em;text-decoration:none;}
+.nav-links{display:flex;gap:28px;}
+.nav-links a{font-size:15px;font-weight:700;color:rgba(255,255,255,.55);text-decoration:none;}
+.nav-links a.active{color:var(--nook);}
+.btn-sub{background:var(--coral);color:#fff;font-size:12px;font-weight:700;padding:8px 18px;border-radius:100px;border:none;cursor:pointer;text-decoration:none;}
+.art-header{background:var(--dark);padding:36px 44px 32px;border-bottom:2px solid var(--coral);}
+.art-issue{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--muted);letter-spacing:.12em;display:flex;justify-content:space-between;margin-bottom:16px;padding-bottom:10px;border-bottom:1px solid #3d3830;}
+.art-back{font-size:10px;color:var(--muted);text-decoration:none;}
+.art-back:hover{color:#fff;}
+.art-kicker{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.18em;color:var(--coral);margin-bottom:14px;}
+.art-hl{font-family:'Spectral',serif;font-size:40px;font-weight:700;color:#fff;line-height:1.05;letter-spacing:-.03em;margin-bottom:12px;}
+.art-rule{height:2px;background:var(--coral);margin:12px 0;}
+.art-sf{font-family:'Spectral',serif;font-size:16px;font-style:italic;color:rgba(160,152,128,.9);line-height:1.55;margin-bottom:16px;}
+.art-meta{font-size:11px;color:#7a7060;display:flex;gap:12px;flex-wrap:wrap;}
+.art-tags{display:flex;gap:7px;margin-top:14px;flex-wrap:wrap;}
+.ztag{font-size:10px;font-weight:700;padding:4px 10px;border-radius:100px;}
+.zt-nook{background:rgba(74,124,95,.2);color:var(--nook);}
+.zt-coral{background:rgba(236,90,60,.15);color:var(--coral);}
+.zt-ocre{background:rgba(245,179,46,.2);color:#b8840f;}
+.art-content{display:grid;grid-template-columns:1fr 300px;gap:0;}
+.art-col-left{padding:36px 40px 48px;border-right:1.5px solid var(--border);}
+.art-col-right{padding:28px 24px;background:#f8f5ef;}
+.signal-block{border:1px solid var(--border);border-left:3px solid var(--coral);background:#fff;border-radius:0 8px 8px 0;padding:16px 18px;margin-bottom:20px;}
+.signal-header{display:flex;align-items:center;gap:8px;margin-bottom:10px;}
+.signal-emoji{font-size:18px;line-height:1;}
+.signal-title{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--dark);}
+.signal-attr{display:flex;align-items:flex-start;gap:6px;margin-bottom:8px;}
+.signal-check{font-size:13px;flex-shrink:0;margin-top:1px;}
+.signal-attr-text{font-size:12px;color:var(--dark);line-height:1.4;}
+.signal-attr-text strong{font-weight:700;}
+.signal-meta{display:flex;flex-direction:column;gap:5px;font-size:11px;color:#7a7060;}
+.signal-meta-item{display:flex;align-items:flex-start;gap:6px;}
+.signal-meta-arrow{color:var(--muted);flex-shrink:0;}
+.signal-link{color:var(--nook);text-decoration:underline;word-break:break-all;}
+.signal-context{font-size:13px;color:#3d3830;line-height:1.65;margin-top:10px;padding-top:10px;border-top:1px solid var(--border);}
+.art-p{font-family:'Spectral',serif;font-size:16px;line-height:1.85;color:#3d3830;margin-bottom:18px;}
+.art-h2{font-family:'Spectral',serif;font-size:20px;font-weight:700;color:var(--dark);margin:28px 0 12px;border-top:1.5px solid var(--border);padding-top:18px;}
+.author-cut{background:var(--dark);border-left:3px solid var(--coral);padding:16px 20px;margin:16px 0;}
+.author-cut p{font-family:'Spectral',serif;font-size:16px;font-style:italic;color:#fff;line-height:1.55;}
+.author-sig{font-size:8px;text-transform:uppercase;letter-spacing:.1em;color:var(--coral);margin-top:8px;}
+.art-divider{border:none;border-top:1px solid var(--border);margin:22px 0;}
+.odds-compare{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin:18px 0;}
+.odds-item{background:#fff;border:1.5px solid var(--border);border-radius:8px;padding:14px 12px;text-align:center;}
+.odds-item.highlight{background:var(--dark);border-color:var(--dark);}
+.odds-n{font-family:'Spectral',serif;font-size:28px;font-weight:700;line-height:1;margin-bottom:4px;}
+.odds-n.bad{color:var(--coral);}
+.odds-n.good{color:var(--nook);}
+.odds-n.neutral{color:#fff;}
+.odds-l{font-size:9px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);}
+.odds-l.light{color:rgba(255,255,255,.5);}
+.timeline{margin:20px 0;display:flex;flex-direction:column;gap:0;}
+.tl-item{display:flex;gap:14px;padding-bottom:16px;position:relative;}
+.tl-item:last-child{padding-bottom:0;}
+.tl-item:not(:last-child)::before{content:'';position:absolute;left:13px;top:28px;bottom:0;width:1.5px;background:var(--border);}
+.tl-dot{width:26px;height:26px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:12px;border:2px solid var(--border);background:#fff;}
+.tl-dot.warn{background:var(--ocre);border-color:var(--ocre);}
+.tl-dot.act{background:var(--nook);border-color:var(--nook);}
+.tl-dot.win{background:var(--nook);border-color:var(--nook);}
+.tl-dot.ko{background:var(--coral);border-color:var(--coral);}
+.tl-content{flex:1;padding-top:3px;}
+.tl-time{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--muted);margin-bottom:3px;text-transform:uppercase;letter-spacing:.1em;}
+.tl-text{font-size:13px;color:#3d3830;line-height:1.5;}
+.tl-text strong{font-weight:700;color:var(--dark);}
+.slip-b{background:#fff;border:2px solid var(--dark);overflow:hidden;margin-bottom:20px;}
+.slip-b-head{background:var(--coral);padding:9px 14px;display:flex;justify-content:space-between;}
+.slip-b-head span{font-family:'JetBrains Mono',monospace;font-size:9px;color:rgba(255,255,255,.85);}
+.slip-b-inner{padding:14px 14px 0;}
+.slip-b-tourn{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--coral);margin-bottom:5px;}
+.slip-b-match{font-family:'Spectral',serif;font-size:18px;font-weight:700;color:var(--dark);line-height:1.2;margin-bottom:4px;}
+.slip-b-market{font-size:12px;color:#7a7060;border-left:2px solid var(--coral);padding-left:8px;margin-bottom:12px;}
+.slip-b-rule{height:1.5px;background:var(--dark);margin-bottom:12px;}
+.slip-b-nums{display:flex;justify-content:space-between;align-items:flex-end;padding-bottom:12px;}
+.slip-b-lbl{font-size:7px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:3px;}
+.slip-b-odd{font-family:'Spectral',serif;font-size:34px;font-weight:700;color:var(--dark);line-height:1;}
+.slip-b-profit{font-family:'Spectral',serif;font-size:24px;font-weight:700;color:var(--coral);text-align:right;}
+.slip-b-grid{display:grid;grid-template-columns:1fr 1fr 1fr;background:#f8f5ef;border-top:1px solid var(--border);}
+.slip-b-cell{padding:10px;text-align:center;border-right:1px solid var(--border);}
+.slip-b-cell:last-child{border:none;}
+.slip-b-cell-lbl{font-size:8px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:3px;}
+.slip-b-cell-val{font-family:'Spectral',serif;font-size:15px;font-weight:700;color:var(--dark);}
+.slip-b-cell-val.won{color:var(--nook);}
+.slip-b-cell-val.lost{color:var(--coral);}
+.slip-b-footer{display:flex;justify-content:space-between;align-items:center;padding:9px 14px;border-top:2px solid var(--dark);}
+.slip-b-won{font-size:10px;font-weight:700;color:var(--coral);text-transform:uppercase;}
+.slip-b-date{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--muted);}
+.score-block{border-radius:10px;overflow:hidden;margin-bottom:18px;}
+.legs-list{background:#fff;border:1.5px solid var(--border);border-radius:10px;padding:6px 0;margin-bottom:16px;overflow:hidden;}
+.legs-title{font-size:9px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);font-weight:600;padding:8px 14px 6px;}
+.leg-row{display:flex;justify-content:space-between;align-items:center;padding:8px 14px;border-top:1px solid #f0ebe0;}
+.leg-name{font-size:12px;color:#3d3830;line-height:1.3;}
+.leg-name strong{font-weight:700;color:var(--dark);}
+.leg-stat{font-size:11px;font-weight:700;flex-shrink:0;margin-left:8px;}
+.leg-stat.w{color:var(--nook);}
+.leg-stat.l{color:var(--coral);}
+.side-stats{background:#fff;border:1.5px solid var(--border);border-radius:10px;padding:12px 14px;margin-bottom:16px;}
+.side-stats-title{font-size:9px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:10px;font-weight:600;}
+.side-stat-row{display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px solid #f0ebe0;}
+.side-stat-row:last-child{border:none;}
+.side-stat-label{font-size:11px;color:#7a7060;}
+.side-stat-val{font-family:'Spectral',serif;font-size:14px;font-weight:700;}
+.side-stat-val.bad{color:var(--coral);}
+.side-stat-val.good{color:var(--nook);}
+.side-stat-val.neutral{color:var(--dark);}
+.profit-row{display:grid;grid-template-columns:repeat(3,1fr);border:2px solid var(--dark);margin-top:20px;}
+.profit-cell{padding:14px 10px;text-align:center;border-right:2px solid var(--dark);}
+.profit-cell:last-child{border:none;}
+.profit-lbl{font-size:8px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:4px;}
+.profit-val{font-family:'Spectral',serif;font-size:20px;font-weight:700;}
+.profit-val.g{color:var(--nook);}
+.profit-val.w{color:var(--dark);}
+.profit-val.o{color:#b8840f;}
+.profit-val.r{color:var(--coral);}
+.thankyou{background:linear-gradient(135deg,var(--dark),#2a2a2a);border-radius:10px;padding:16px 18px;margin-bottom:16px;text-align:center;}
+.thankyou-emoji{font-size:28px;margin-bottom:8px;}
+.thankyou-text{font-family:'Spectral',serif;font-size:14px;font-style:italic;color:rgba(255,255,255,.78);line-height:1.5;}
+.thankyou-sig{font-size:9px;text-transform:uppercase;letter-spacing:.14em;color:var(--coral);margin-top:8px;}
+.tags-footer{padding:22px 44px 28px;border-top:2px solid var(--dark);}
+.tags-footer-lbl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:#7a7060;margin-bottom:10px;}
+.tags-row{display:flex;flex-wrap:wrap;gap:7px;}
+.footer{background:var(--dark);border-top:2px solid var(--nook);padding:18px 32px;display:flex;align-items:center;justify-content:space-between;}
+.footer-logo{font-family:'Spectral',serif;font-size:16px;color:#fff;text-decoration:none;}
+.footer-links{display:flex;gap:18px;font-size:11px;}
+.footer-links a{color:#555;text-decoration:none;}
+.footer-by{font-size:11px;color:#555;font-style:italic;}
+@media(max-width:820px){.art-content{grid-template-columns:1fr;}.art-col-left{border-right:none;}.art-hl{font-size:30px;}.nav-links{display:none;}}
+</style>
+  <title>Beaten by One Point in Overtime: an Eight-Leg Near-Miss on the Liga ACB Final | hashtagsportsbetting</title>
+  <meta name="description" content="Seven legs landed; the eighth lost by a single point in the overtime of the Spanish league final, after Valencia led by four in the dying seconds. What the market hadn't priced.">
+  <meta name="keywords" content="accumulator near miss, liga acb final analysis, valencia barcelona overtime, one point parlay loss, sports betting variance, basketball betting analysis">
+  <meta name="author" content="Charles Chambers Farah">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://hashtagsportsbetting.com/one-point-overtime-acb-final-near-miss.html">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Beaten by One Point in Overtime: an Eight-Leg Near-Miss on the Liga ACB Final">
+  <meta property="og:description" content="Seven legs landed; the eighth lost by a single point in the overtime of the Spanish league final, after Valencia led by four in the dying seconds. What the market hadn't priced.">
+  <meta property="og:url" content="https://hashtagsportsbetting.com/one-point-overtime-acb-final-near-miss.html">
+  <meta property="og:site_name" content="hashtagsportsbetting">
+  <meta property="og:locale" content="en_GB">
+  <meta property="article:published_time" content="2026-06-18">
+  <meta property="article:author" content="Charles Chambers Farah">
+  <meta property="article:section" content="Sports Betting Analysis">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Beaten by One Point in Overtime: an Eight-Leg Near-Miss on the Liga ACB Final">
+  <meta name="twitter:description" content="Seven legs landed; the eighth lost by a single point in the overtime of the Spanish league final, after Valencia led by four in the dying seconds. What the market hadn't priced.">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Beaten by One Point in Overtime: an Eight-Leg Near-Miss on the Liga ACB Final",
+      "description": "Seven legs landed; the eighth lost by a single point in the overtime of the Spanish league final, after Valencia led by four in the dying seconds. What the market hadn't priced.",
+      "datePublished": "2026-06-18",
+      "dateModified": "2026-06-18",
+      "author": { "@type": "Person", "name": "Charles Chambers Farah", "url": "https://hashtagsportsbetting.com" },
+      "publisher": { "@type": "Organization", "name": "hashtagsportsbetting", "url": "https://hashtagsportsbetting.com" },
+      "mainEntityOfPage": { "@type": "WebPage", "@id": "https://hashtagsportsbetting.com/one-point-overtime-acb-final-near-miss.html" },
+      "articleSection": "Sports Betting Analysis",
+      "inLanguage": "en-GB",
+      "keywords": "accumulator near miss, liga acb final analysis, valencia barcelona overtime, one point parlay loss, sports betting variance, basketball betting analysis"
+    },
+    {
+      "@type": "SportsEvent",
+      "name": "FC Barcelona vs Valencia Basket",
+      "startDate": "2026-06-18",
+      "sport": "Basketball",
+      "location": { "@type": "Place", "name": "Liga ACB Final, Game 1, Roig Arena" },
+      "competitor": [
+        { "@type": "SportsTeam", "name": "FC Barcelona" },
+        { "@type": "SportsTeam", "name": "Valencia Basket" }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://hashtagsportsbetting.com" },
+        { "@type": "ListItem", "position": 2, "name": "Zoom In", "item": "https://hashtagsportsbetting.com/#zoom-in" },
+        { "@type": "ListItem", "position": 3, "name": "Beaten by One Point in Overtime: an Eight-Leg Near-Miss on the Liga ACB Final", "item": "https://hashtagsportsbetting.com/one-point-overtime-acb-final-near-miss.html" }
+      ]
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+<nav class="nav">
+  <a href="index.html" class="nav-logo"><span class="h">#</span>sportsbetting</a>
+  <div class="nav-links">
+    <a href="index.html#track-record">#TRACK RECORD</a>
+    <a href="index.html#zoom-in" class="active">#ZOOM IN</a>
+    <a href="index.html#fun-facts">#FUN FACTS</a>
+  </div>
+  <a href="https://abettorlife.blogabet.com" class="btn-sub">#SUBSCRIBE &#x2192;</a>
+</nav>
+
+<div class="art-header">
+  <div class="art-issue">
+    <span>VOL. 1 &middot; ISSUE #7 &middot; JUNE 18, 2026</span>
+    <span>#ZOOM IN &middot; ACCUMULATOR &middot; 8 LEGS &middot; NEAR-MISS</span>
+  </div>
+  <a href="index.html#zoom-in" class="art-back">&#x2190; Back to #ZOOM IN</a>
+  <div style="margin-bottom:14px;"></div>
+  <div class="art-kicker">&#x1F3C0; Accumulator &middot; 8 legs &middot; Liga ACB final &middot; June 18, 2026</div>
+  <h1 class="art-hl">One point. One overtime.<br>One dead slip.</h1>
+  <div class="art-rule"></div>
+  <div class="art-sf">Eight legs. Seven landed. The eighth lost by a single point in overtime &mdash; in Game 1 of the Spanish league final. Valencia led 99-95 with seconds left. Then Clyburn happened. 112-113. &euro;86.76 evaporated on a buzzer.</div>
+  <p class="seo-index" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);">FC Barcelona vs Valencia Basket, Liga ACB Final, Game 1, Roig Arena, June 18, 2026. Final score 113-112 (OT). Result: bet lost (-15.00€). A Charles Chambers Farah sports betting analysis.</p>
+  <div class="art-meta">
+    <span>Charles Chambers Farah</span><span>&middot;</span><span>June 18, 2026</span><span>&middot;</span><span>8-leg acca &middot; Mixed &middot; Lost</span>
+  </div>
+  <div class="art-tags">
+    <span class="ztag zt-coral">#parlay</span>
+    <span class="ztag zt-ocre">#nearmiss</span>
+    <span class="ztag zt-coral">#onepoint</span>
+    <span class="ztag zt-nook">#overtime</span>
+    <span class="ztag zt-ocre">#processoverpnl</span>
+  </div>
+</div>
+<div class="art-content">
+  <div class="art-col-left">
+    <p class="art-p">The slip the day before died at leg six of seven. This one went one better and one worse: it survived all the way to a basketball court in Valencia, where it needed one team &mdash; leading by four with seconds left in regulation &mdash; to simply close the door. It did not.</p>
+    <div class="art-h2">The seven that landed</div>
+    <p class="art-p">A clean card, not a lucky one. Fritz beat Marozsan 6-2 6-4; Poland and Italy both came through 3-1 and 3-2 in the volleyball; Shelton edged Quinn in three; Paul saw off Van de Zandschulp 7-6 6-3; Collignon completed a comeback over Bellucci to reach his first ATP 500 quarter-final and cover the &minus;1.5 sets; and Chopra handled Phillips in Kayseri. Seven correct reads. The eighth picked the worst possible night to be a coin flip.</p>
+    <div class="signal-block">
+      <div class="signal-header"><span class="signal-emoji">&#x1F4CA;</span><div class="signal-title">The leg &mdash; Valencia at 1.473</div></div>
+      <div class="signal-context" style="margin-top:0;padding-top:0;border:none;">Game 1 of the Liga Endesa final. Valencia Basket &mdash; better regular-season record, home floor at the Roig Arena &mdash; backed at <strong>1.473</strong> to hold serve. The one detail I read as noise: <strong>Bar&ccedil;a had won every away game of the play-offs.</strong> It was the signal.</div>
+      <div class="signal-meta" style="margin-top:10px;">
+        <div class="signal-meta-item"><span class="signal-meta-arrow">&#x21B3;</span><a class="signal-link" href="https://www.naiz.eus/eu/info/noticia/20260618/el-barca-voltea-el-facgor-cancha-de-la-final-de-la-liga-acb-merced-a-un-partidazo-112-113" target="_blank">Naiz &middot; Bar&ccedil;a 112-113, OT &#x2705;</a></div>
+      </div>
+    </div>
+    <div class="author-cut"><p>That last detail was in the data. I read it as noise. It was the signal.</p><div class="author-sig">&mdash; C.C. Farah</div></div>
+    <div class="art-h2">The four-point lead that wasn&rsquo;t enough</div>
+    <div class="signal-block">
+      <div class="signal-header"><span class="signal-emoji">&#x23F1;</span><div class="signal-title">The moment &mdash; Valencia 99, Bar&ccedil;a 95, final seconds</div></div>
+      <div class="signal-context" style="margin-top:0;padding-top:0;border:none;">With the clock almost gone, Valencia led 99-95. The leg was as good as won. Then Will Clyburn hit two threes to force overtime at <strong>101-101</strong> &mdash; and Bar&ccedil;a, unbeaten on the road all post-season, controlled the extra five minutes. Valencia clawed back to <strong>112-113</strong>, and Kameron Taylor had a final shot to flip it. The last grains of sand ran out first.</div>
+    </div>
+    <div class="author-cut"><p>Seven correct legs, one coin flip, lost by a single point in the overtime of a final. There is no analytical lesson buried in there. Sometimes the read is right and the basketball is just unkind. The market hadn&rsquo;t priced Clyburn going nuclear from three with the game already gone. Neither had I. Nobody had. That one I&rsquo;ll take.</p><div class="author-sig">&mdash; C.C. Farah</div></div>
+    <hr class="art-divider">
+    <p class="art-p" style="font-size:14px;color:#7a7060;">&minus;&euro;15.00. My leg needed Valencia to win by any margin, including overtime. They lost by one, in the one frame nobody had priced.</p>
+  </div>
+  <div class="art-col-right">
+    <div class="slip-b">
+      <div class="slip-b-head"><span>Accumulator &middot; 8 legs</span><span>N&ordm; 83245231485</span></div>
+      <div class="slip-b-inner">
+        <div class="slip-b-tourn">&#x1F3C0; Multi-sport &middot; Mixed</div>
+        <div class="slip-b-match">8-leg parlay</div>
+        <div class="slip-b-market">7 won &middot; 1 lost (Valencia, OT)</div>
+        <div class="slip-b-rule"></div>
+        <div class="slip-b-nums"><div><div class="slip-b-lbl">Odds</div><div class="slip-b-odd">5.784</div></div><div><div class="slip-b-lbl" style="text-align:right">P&amp;L</div><div class="slip-b-profit">&minus;15.00&euro;</div></div></div>
+      </div>
+      <div class="slip-b-grid">
+        <div class="slip-b-cell"><div class="slip-b-cell-lbl">Stake</div><div class="slip-b-cell-val">15&euro;</div></div>
+        <div class="slip-b-cell"><div class="slip-b-cell-lbl">Would-be</div><div class="slip-b-cell-val">86.76&euro;</div></div>
+        <div class="slip-b-cell"><div class="slip-b-cell-lbl">Status</div><div class="slip-b-cell-val lost">Lost</div></div>
+      </div>
+      <div class="slip-b-footer"><span class="slip-b-won">&#x2715; Lost</span><span class="slip-b-date">18.06.2026 &middot; 10:04</span></div>
+    </div>
+    <div class="legs-list">
+      <div class="legs-title">&#x1F3AF; The 8 legs</div>
+      <div class="leg-row"><div class="leg-name">Fritz d. Marozsan</div><div class="leg-stat w">&#x2713; W</div></div>
+      <div class="leg-row"><div class="leg-name">Poland d. Ukraine 3-1</div><div class="leg-stat w">&#x2713; W</div></div>
+      <div class="leg-row"><div class="leg-name">Italy d. Serbia 3-2</div><div class="leg-stat w">&#x2713; W</div></div>
+      <div class="leg-row"><div class="leg-name">Shelton d. Quinn</div><div class="leg-stat w">&#x2713; W</div></div>
+      <div class="leg-row"><div class="leg-name">Paul d. Van de Zandschulp</div><div class="leg-stat w">&#x2713; W</div></div>
+      <div class="leg-row"><div class="leg-name"><strong>Valencia</strong> v Barcelona (OT)</div><div class="leg-stat l">&#x2715; L</div></div>
+      <div class="leg-row"><div class="leg-name">Collignon d. Bellucci (&minus;1.5)</div><div class="leg-stat w">&#x2713; W</div></div>
+      <div class="leg-row"><div class="leg-name">Chopra d. Phillips</div><div class="leg-stat w">&#x2713; W</div></div>
+    </div>
+    <div class="score-block">
+      <svg width="100%" height="180" viewBox="0 0 280 180" xmlns="http://www.w3.org/2000/svg">
+        <defs><linearGradient id="hardP8" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#2a5090"/><stop offset="100%" stop-color="#0d2d5a"/></linearGradient></defs>
+        <rect width="280" height="180" fill="url(#hardP8)"/>
+        <rect width="280" height="26" fill="rgba(0,0,0,.4)"/>
+        <text x="14" y="17" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.6)" letter-spacing="1">THE POINT THAT KILLED IT &middot; LIGA ACB FINAL G1</text>
+        <rect x="0" y="88" width="280" height="78" fill="rgba(0,0,0,.5)"/>
+        <text x="14" y="114" font-family="Inter,sans-serif" font-size="13" font-weight="700" fill="white">FC Barcelona</text>
+        <rect x="206" y="98" width="54" height="24" rx="3" fill="rgba(255,255,255,.92)"/><text x="233" y="115" font-family="Inter,sans-serif" font-size="14" font-weight="700" fill="#0d2d5a" text-anchor="middle">113</text>
+        <line x1="14" y1="130" x2="266" y2="130" stroke="rgba(255,255,255,.12)" stroke-width="1"/>
+        <text x="14" y="152" font-family="Inter,sans-serif" font-size="13" font-weight="400" fill="rgba(255,255,255,.45)">Valencia Basket</text>
+        <rect x="206" y="136" width="54" height="24" rx="3" fill="rgba(0,0,0,.35)"/><text x="233" y="153" font-family="Inter,sans-serif" font-size="14" font-weight="700" fill="rgba(255,255,255,.5)" text-anchor="middle">112</text>
+        <text x="14" y="175" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.32)" font-style="italic">Regulation 101-101 &middot; decided in OT &middot; Taylor missed the last shot</text>
+      </svg>
+    </div>
+    <div class="profit-row">
+      <div class="profit-cell"><div class="profit-lbl">Result</div><div class="profit-val r">&minus;15.00&euro;</div></div>
+      <div class="profit-cell"><div class="profit-lbl">Legs</div><div class="profit-val w">7/8</div></div>
+      <div class="profit-cell"><div class="profit-lbl">Odds</div><div class="profit-val o">5.784</div></div>
+    </div>
+  </div>
+</div>
+<div class="tags-footer">
+  <div class="tags-footer-lbl">Filed under</div>
+  <div class="tags-row">
+    <span class="ztag zt-coral">#parlay</span><span class="ztag zt-coral">#zoomin</span><span class="ztag zt-ocre">#nearmiss</span><span class="ztag zt-coral">#onepoint</span><span class="ztag zt-nook">#overtime</span><span class="ztag zt-nook">#basketball</span><span class="ztag zt-nook">#informationedge</span><span class="ztag zt-ocre">#processoverpnl</span>
+  </div>
+</div>
+
+<section class="related" style="padding:24px 44px 32px;border-top:1px solid var(--border);background:#f8f5ef;">
+  <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:#7a7060;margin-bottom:12px;">More #ZOOM IN analyses</div>
+  <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px;">
+    <li style="font-family:'Spectral',serif;font-size:15px;line-height:1.4;"><a style="color:var(--nook);text-decoration:none;border-bottom:1px solid rgba(74,124,95,.3);" href="de-minaur-nakashima-upset-parlay-analysis.html">When a Grass Favourite Runs Out of Road: the De Minaur Upset That Sank a Parlay</a></li>
+<li style="font-family:'Spectral',serif;font-size:15px;line-height:1.4;"><a style="color:var(--nook);text-decoration:none;border-bottom:1px solid rgba(74,124,95,.3);" href="live-betting-medical-timeout-signal-riera-oz.html">Reading a Medical Timeout: How a Live In-Play Signal Beat the Price in Blois</a></li>
+<li style="font-family:'Spectral',serif;font-size:15px;line-height:1.4;"><a style="color:var(--nook);text-decoration:none;border-bottom:1px solid rgba(74,124,95,.3);" href="favourites-betray-the-price-hurkacz-gauff-parlay.html">When Two Favourites Betray the Price: the Hurkacz and Gauff Upsets That Killed a Parlay</a></li>
+
+  </ul>
+</section>
+<footer class="footer">
+  <a href="index.html" class="footer-logo"><span class="h">#</span>sportsbetting</a>
+  <div class="footer-links">
+    <a href="index.html">#trackrecord</a>
+    <a href="index.html">#zoomin</a>
+    <a href="index.html">#funfacts</a>
+  </div>
+  <div class="footer-by">A Charles Chambers Farah strategy</div>
+</footer>
+</body>
+</html>

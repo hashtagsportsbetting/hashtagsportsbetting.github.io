@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{--cream:#f0ede4;--nook:#4a7c5f;--nook-l:#e6efe9;--dark:#1e1e1e;--coral:#ec5a3c;--ocre:#f5b32e;--blue:#3d6db5;--muted:#a09880;--border:#e0d9cc;--card:#3d3830;}
+body{font-family:'Inter',sans-serif;background:var(--cream);}
+.h{color:var(--nook);}
+
+.nav{background:var(--dark);border-bottom:2px solid var(--nook);display:flex;align-items:center;justify-content:space-between;padding:16px 32px;}
+.nav-logo{font-family:'Spectral',serif;font-size:20px;color:#fff;letter-spacing:-.02em;text-decoration:none;}
+.nav-links{display:flex;gap:28px;}
+.nav-links a{font-size:15px;font-weight:700;color:rgba(255,255,255,.55);text-decoration:none;}
+.nav-links a.active{color:var(--nook);}
+.btn-sub{background:var(--coral);color:#fff;font-size:12px;font-weight:700;padding:8px 18px;border-radius:100px;border:none;cursor:pointer;}
+
+/* ARTICLE HEADER */
+.art-header{background:var(--dark);padding:36px 44px 32px;border-bottom:2px solid var(--nook);}
+.art-issue{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--muted);letter-spacing:.12em;display:flex;justify-content:space-between;margin-bottom:16px;padding-bottom:10px;border-bottom:1px solid #3d3830;}
+.art-back{font-size:10px;color:var(--muted);text-decoration:none;transition:color .15s;}
+.art-back:hover{color:#fff;}
+.art-kicker{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.18em;color:var(--nook);margin-bottom:14px;}
+.art-hl{font-family:'Spectral',serif;font-size:40px;font-weight:700;color:#fff;line-height:1.05;letter-spacing:-.03em;margin-bottom:12px;}
+.art-rule{height:2px;background:var(--nook);margin:12px 0;}
+.art-sf{font-family:'Spectral',serif;font-size:16px;font-style:italic;color:rgba(160,152,128,.9);line-height:1.55;margin-bottom:16px;}
+.art-meta{font-size:11px;color:#7a7060;display:flex;gap:12px;flex-wrap:wrap;}
+.art-tags{display:flex;gap:7px;margin-top:14px;flex-wrap:wrap;}
+.ztag{font-size:10px;font-weight:700;padding:4px 10px;border-radius:100px;}
+.zt-nook{background:rgba(74,124,95,.2);color:var(--nook);}
+.zt-coral{background:rgba(236,90,60,.15);color:var(--coral);}
+.zt-ocre{background:rgba(245,179,46,.2);color:#b8840f;}
+
+/* 2-COL */
+.art-content{display:grid;grid-template-columns:1fr 300px;gap:0;}
+.art-col-left{padding:36px 40px 48px;border-right:1.5px solid var(--border);}
+.art-col-right{padding:28px 24px;background:#f8f5ef;}
+
+/* SIGNAL BLOCK */
+.signal-block{border:1px solid var(--border);border-left:3px solid var(--nook);background:#fff;border-radius:0 8px 8px 0;padding:16px 18px;margin-bottom:20px;}
+.signal-header{display:flex;align-items:center;gap:8px;margin-bottom:10px;}
+.signal-emoji{font-size:18px;line-height:1;}
+.signal-title{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--dark);}
+.signal-quote{background:var(--cream);border-left:3px solid var(--dark);padding:12px 16px;margin-bottom:10px;border-radius:0 6px 6px 0;}
+.signal-quote-orig{font-family:'Spectral',serif;font-size:15px;font-style:italic;color:var(--dark);line-height:1.5;margin-bottom:0;}
+.signal-attr{display:flex;align-items:flex-start;gap:6px;margin-bottom:8px;}
+.signal-check{font-size:13px;flex-shrink:0;margin-top:1px;}
+.signal-attr-text{font-size:12px;color:var(--dark);line-height:1.4;}
+.signal-attr-text strong{font-weight:700;}
+.signal-meta{display:flex;flex-direction:column;gap:5px;font-size:11px;color:#7a7060;padding-left:2px;}
+.signal-meta-item{display:flex;align-items:flex-start;gap:6px;}
+.signal-meta-arrow{color:var(--muted);flex-shrink:0;}
+.signal-link{color:var(--nook);text-decoration:underline;word-break:break-all;}
+.signal-context{font-size:13px;color:#3d3830;line-height:1.65;margin-top:10px;padding-top:10px;border-top:1px solid var(--border);}
+
+/* STAT BLOCK */
+.stat-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin:18px 0;}
+.stat-item{background:#fff;border:1px solid var(--border);border-radius:8px;padding:12px 14px;text-align:center;}
+.stat-n{font-family:'Spectral',serif;font-size:26px;font-weight:700;line-height:1;margin-bottom:3px;}
+.stat-n.bad{color:var(--coral);}
+.stat-n.good{color:var(--nook);}
+.stat-n.neutral{color:var(--dark);}
+.stat-l{font-size:9px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);}
+
+/* EDITORIAL */
+.art-p{font-family:'Spectral',serif;font-size:16px;line-height:1.85;color:#3d3830;margin-bottom:18px;}
+.author-cut{background:var(--dark);border-left:3px solid var(--nook);padding:16px 20px;margin:16px 0;}
+.author-cut p{font-family:'Spectral',serif;font-size:16px;font-style:italic;color:#fff;line-height:1.55;}
+.author-sig{font-size:8px;text-transform:uppercase;letter-spacing:.1em;color:var(--nook);margin-top:8px;}
+.art-divider{border:none;border-top:1px solid var(--border);margin:22px 0;}
+
+/* SLIP B */
+.slip-b{background:#fff;border:2px solid var(--dark);overflow:hidden;margin-bottom:20px;}
+.slip-b-head{background:var(--nook);padding:9px 14px;display:flex;justify-content:space-between;}
+.slip-b-head span{font-family:'JetBrains Mono',monospace;font-size:9px;color:rgba(255,255,255,.8);}
+.slip-b-inner{padding:14px 14px 0;}
+.slip-b-tourn{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--nook);margin-bottom:5px;}
+.slip-b-match{font-family:'Spectral',serif;font-size:18px;font-weight:700;color:var(--dark);line-height:1.2;margin-bottom:4px;}
+.slip-b-market{font-size:12px;color:#7a7060;border-left:2px solid var(--nook);padding-left:8px;margin-bottom:12px;}
+.slip-b-rule{height:1.5px;background:var(--dark);margin-bottom:12px;}
+.slip-b-nums{display:flex;justify-content:space-between;align-items:flex-end;padding-bottom:12px;}
+.slip-b-odd{font-family:'Spectral',serif;font-size:34px;font-weight:700;color:var(--dark);line-height:1;}
+.slip-b-profit{font-family:'Spectral',serif;font-size:24px;font-weight:700;color:var(--nook);text-align:right;}
+.slip-b-lbl{font-size:7px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:3px;}
+.slip-b-grid{display:grid;grid-template-columns:1fr 1fr 1fr;background:#f8f5ef;border-top:1px solid var(--border);}
+.slip-b-cell{padding:10px;text-align:center;border-right:1px solid var(--border);}
+.slip-b-cell:last-child{border:none;}
+.slip-b-cell-lbl{font-size:8px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:3px;}
+.slip-b-cell-val{font-family:'Spectral',serif;font-size:15px;font-weight:700;color:var(--dark);}
+.slip-b-cell-val.won{color:var(--nook);}
+.slip-b-footer{display:flex;justify-content:space-between;align-items:center;padding:9px 14px;border-top:2px solid var(--dark);}
+.slip-b-won{font-size:10px;font-weight:700;color:var(--nook);text-transform:uppercase;}
+.slip-b-date{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--muted);}
+
+/* SCORE — grass */
+.score-block{border-radius:10px;overflow:hidden;margin-bottom:18px;}
+
+/* SIDEBAR STATS */
+.side-stats{background:#fff;border:1.5px solid var(--border);border-radius:10px;padding:12px 14px;margin-bottom:16px;}
+.side-stats-title{font-size:9px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:10px;font-weight:600;}
+.side-stat-row{display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px solid #f0ebe0;}
+.side-stat-row:last-child{border:none;}
+.side-stat-label{font-size:11px;color:#7a7060;}
+.side-stat-val{font-family:'Spectral',serif;font-size:14px;font-weight:700;}
+.side-stat-val.bad{color:var(--coral);}
+.side-stat-val.good{color:var(--nook);}
+
+/* PROFIT ROW */
+.profit-row{display:grid;grid-template-columns:repeat(3,1fr);border:2px solid var(--dark);margin-top:20px;}
+.profit-cell{padding:14px 10px;text-align:center;border-right:2px solid var(--dark);}
+.profit-cell:last-child{border:none;}
+.profit-lbl{font-size:8px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:4px;}
+.profit-val{font-family:'Spectral',serif;font-size:20px;font-weight:700;}
+.profit-val.g{color:var(--nook);}
+.profit-val.w{color:var(--dark);}
+.profit-val.o{color:#b8840f;}
+
+/* TAGS FOOTER */
+.tags-footer{padding:22px 44px 28px;border-top:2px solid var(--dark);}
+.tags-footer-lbl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:#7a7060;margin-bottom:10px;}
+.tags-row{display:flex;flex-wrap:wrap;gap:7px;}
+
+.footer{background:var(--dark);border-top:2px solid var(--nook);padding:18px 32px;display:flex;align-items:center;justify-content:space-between;}
+.footer-logo{font-family:'Spectral',serif;font-size:16px;color:#fff;text-decoration:none;}
+.footer-links{display:flex;gap:18px;font-size:11px;}
+.footer-links a{color:#555;text-decoration:none;}
+.footer-by{font-size:11px;color:#555;font-style:italic;}
+.footer-disclaimer{font-size:10px;color:#444;line-height:1.6;border-top:1px solid #2a2a2a;padding-top:12px;margin-top:14px;}
+</style>
+  <title>A Pre-Match Handicap That Read the Surface: the Zheng Grass Signal | hashtagsportsbetting</title>
+  <meta name="description" content="Not every edge is live. A pre-match handicap bet built on a clear, quantifiable grass-court surface weakness — and why the price was wrong.">
+  <meta name="keywords" content="pre-match handicap betting, grass court surface weakness, tennis handicap analysis, value pre-match bet, wta nottingham">
+  <meta name="author" content="Charles Chambers Farah">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://hashtagsportsbetting.com/a-pre-match-handicap-on-grass-zheng.html">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="A Pre-Match Handicap That Read the Surface: the Zheng Grass Signal">
+  <meta property="og:description" content="Not every edge is live. A pre-match handicap bet built on a clear, quantifiable grass-court surface weakness — and why the price was wrong.">
+  <meta property="og:url" content="https://hashtagsportsbetting.com/a-pre-match-handicap-on-grass-zheng.html">
+  <meta property="og:site_name" content="hashtagsportsbetting">
+  <meta property="og:locale" content="en_GB">
+  <meta property="article:published_time" content="2026-06-17">
+  <meta property="article:author" content="Charles Chambers Farah">
+  <meta property="article:section" content="Sports Betting Analysis">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="A Pre-Match Handicap That Read the Surface: the Zheng Grass Signal">
+  <meta name="twitter:description" content="Not every edge is live. A pre-match handicap bet built on a clear, quantifiable grass-court surface weakness — and why the price was wrong.">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "A Pre-Match Handicap That Read the Surface: the Zheng Grass Signal",
+      "description": "Not every edge is live. A pre-match handicap bet built on a clear, quantifiable grass-court surface weakness — and why the price was wrong.",
+      "datePublished": "2026-06-17",
+      "dateModified": "2026-06-17",
+      "author": { "@type": "Person", "name": "Charles Chambers Farah", "url": "https://hashtagsportsbetting.com" },
+      "publisher": { "@type": "Organization", "name": "hashtagsportsbetting", "url": "https://hashtagsportsbetting.com" },
+      "mainEntityOfPage": { "@type": "WebPage", "@id": "https://hashtagsportsbetting.com/a-pre-match-handicap-on-grass-zheng.html" },
+      "articleSection": "Sports Betting Analysis",
+      "inLanguage": "en-GB",
+      "keywords": "pre-match handicap betting, grass court surface weakness, tennis handicap analysis, value pre-match bet, wta nottingham"
+    },
+    {
+      "@type": "SportsEvent",
+      "name": "T. Gibson vs Q. Zheng",
+      "startDate": "2026-06-17",
+      "sport": "Tennis",
+      "location": { "@type": "Place", "name": "WTA Nottingham" },
+      "competitor": [
+        { "@type": "SportsTeam", "name": "T. Gibson" },
+        { "@type": "SportsTeam", "name": "Q. Zheng" }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://hashtagsportsbetting.com" },
+        { "@type": "ListItem", "position": 2, "name": "Zoom In", "item": "https://hashtagsportsbetting.com/#zoom-in" },
+        { "@type": "ListItem", "position": 3, "name": "A Pre-Match Handicap That Read the Surface: the Zheng Grass Signal", "item": "https://hashtagsportsbetting.com/a-pre-match-handicap-on-grass-zheng.html" }
+      ]
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="index.html" class="nav-logo"><span class="h">#</span>sportsbetting</a>
+  <div class="nav-links">
+    <a href="trackrecord.html">#TRACK RECORD</a>
+    <a href="zoomin.html" class="active">#ZOOM IN</a>
+    <a href="funfacts.html">#FUN FACTS</a>
+  </div>
+  <a href="https://abettorlife.blogabet.com" class="btn-sub">#SUBSCRIBE →</a>
+</nav>
+
+<!-- ARTICLE HEADER -->
+<div class="art-header">
+  <div class="art-issue">
+    <span>VOL. 1 · ISSUE #3 · JUNE 17, 2026</span>
+    <span>#ZOOM IN · TENNIS · WTA NOTTINGHAM · GRASS</span>
+  </div>
+  <a href="zoomin.html" class="art-back">← Back to #ZOOM IN</a>
+  <div style="margin-bottom:14px;"></div>
+  <div class="art-kicker">🎾 Tennis · WTA 250 · Nottingham · Pre-match · June 17, 2026</div>
+  <h1 class="art-hl">"On grass, it's not easy for me."<br>Wow. Me too, Qinwen.<br>Winnings as well.</h1>
+  <div class="art-rule"></div>
+  <div class="art-sf">She said it herself — three days before we bet against her. 35% career win rate on grass. Ranked No.160. First-round loss the week prior. Sets Handicap at 1.65 was not a market. It was a gift.</div>
+  <p class="seo-index" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);">T. Gibson vs Q. Zheng, WTA Nottingham, June 17, 2026. Final score 7, 6. Result: bet won (+9.75€). A Charles Chambers Farah sports betting analysis.</p>
+  <div class="art-meta">
+    <span>Charles Chambers Farah</span>
+    <span>·</span>
+    <span>June 17, 2026</span>
+    <span>·</span>
+    <span>Gibson vs Zheng · WTA Nottingham R2 · Grass</span>
+  </div>
+  <div class="art-tags">
+    <span class="ztag zt-nook">🎾 #tennis</span>
+    <span class="ztag zt-coral">#prematch</span>
+    <span class="ztag zt-nook">#grass</span>
+    <span class="ztag zt-nook">#wta</span>
+    <span class="ztag zt-ocre">#surfaceweakness</span>
+    <span class="ztag zt-coral">#zheng</span>
+    <span class="ztag zt-nook">#nottingham</span>
+  </div>
+</div>
+
+<!-- 2-COL CONTENT -->
+<div class="art-content">
+
+  <!-- LEFT — editorial -->
+  <div class="art-col-left">
+
+    <p class="art-p">The market priced Qinwen Zheng at 1.42 to win. That's a 70% implied probability. Against a player ranked No.66, on a surface where she wins 35% of her matches. We didn't overthink it.</p>
+
+    <!-- SIGNAL 1 — Her own words -->
+    <div class="signal-block">
+      <div class="signal-header">
+        <span class="signal-emoji">🎙️</span>
+        <div class="signal-title">Signal 1 — She said it herself</div>
+      </div>
+      <div class="signal-quote">
+        <div class="signal-quote-orig">"On grass, anything can happen, it's not easy for me so I just want to enjoy the tennis."</div>
+      </div>
+      <div class="signal-attr">
+        <span class="signal-check">✅</span>
+        <div class="signal-attr-text">— <strong>Qinwen Zheng</strong>, post-match press conference, Lexus Nottingham Open R1, LTA.org.uk, 14/06/2026</div>
+      </div>
+      <div class="signal-meta">
+        <div class="signal-meta-item"><span class="signal-meta-arrow">↳</span><span>Said three days before her R2 match against Gibson — the one we bet on.</span></div>
+        <div class="signal-meta-item"><span class="signal-meta-arrow">↳</span><a class="signal-link" href="https://www.lta.org.uk/fan-zone/international/lexus-nottingham-open/news/2026/former-top-10-stars-qinwen-zheng-and-emma-navarro-get-off-to-a-winning-start/" target="_blank">lta.org.uk · source vérifiée ✅</a></div>
+      </div>
+    </div>
+
+    <div class="author-cut">
+      <p>"On grass, it's not easy for me so I just want to enjoy the tennis." Wow. Me too, Qinwen. Winnings as well. Let's both continue enjoying.</p>
+      <div class="author-sig">— C.C. Farah</div>
+    </div>
+
+    <!-- SIGNAL 2 — The stats -->
+    <div class="signal-block">
+      <div class="signal-header">
+        <span class="signal-emoji">📊</span>
+        <div class="signal-title">Signal 2 — The numbers were not a secret</div>
+      </div>
+      <div class="signal-context" style="margin-top:0;padding-top:0;border:none;">
+        Zheng's grass record isn't a recent dip — it's a structural flaw baked into her game. Her heavy topspin and long swing mechanics, built for clay, simply don't translate to low-bounce grass courts. The stats have been public for years.
+      </div>
+      <div class="signal-meta" style="margin-top:10px;">
+        <div class="signal-meta-item"><span class="signal-meta-arrow">↳</span><span><strong>Career grass win rate : 35%</strong> (5W–11L) — lowest of any surface. Clay : 75% (94-32).</span></div>
+        <div class="signal-meta-item"><span class="signal-meta-arrow">↳</span><span>All 5 career WTA titles won on hard courts or clay. Zero on grass.</span></div>
+        <div class="signal-meta-item"><span class="signal-meta-arrow">↳</span><span>Ranking in freefall : ex-No.4 WTA → No.160 at time of match.</span></div>
+        <div class="signal-meta-item"><span class="signal-meta-arrow">↳</span><span>Lost R1 Queen's the previous week to Jaqueline Cristian (No.38), 6-4 7-6(4).</span></div>
+        <div class="signal-meta-item"><span class="signal-meta-arrow">↳</span><a class="signal-link" href="https://matchstat.com/predictions-tips/tennis-prediction-pick-odds-gibson-zheng-h2h-lexus-nottingham-open-nottingham-2026-day-3/" target="_blank">matchstat.com · surface analysis ✅</a></div>
+      </div>
+    </div>
+
+    <!-- STAT VISUAL -->
+    <div class="stat-row">
+      <div class="stat-item">
+        <div class="stat-n bad">35%</div>
+        <div class="stat-l">Grass win rate</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-n good">75%</div>
+        <div class="stat-l">Clay win rate</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-n neutral">No.160</div>
+        <div class="stat-l">WTA ranking</div>
+      </div>
+    </div>
+
+    <!-- SIGNAL 3 — Market mispricing -->
+    <div class="signal-block">
+      <div class="signal-header">
+        <span class="signal-emoji">💰</span>
+        <div class="signal-title">Signal 3 — The market was being sentimental</div>
+      </div>
+      <div class="signal-context" style="margin-top:0;padding-top:0;border:none;">
+        The market priced Zheng at <strong>1.42 implied (70%)</strong> — based on her former No.4 ranking and Olympic gold medal pedigree. Gibson was priced at 3.06 (32%). The market was betting on reputation. We bet on grass win rates.
+      </div>
+      <div class="signal-meta" style="margin-top:10px;">
+        <div class="signal-meta-item"><span class="signal-meta-arrow">↳</span><span>Gibson (No.66) vs Zheng (No.160) — the ranking gap favoured Gibson. The market ignored it.</span></div>
+        <div class="signal-meta-item"><span class="signal-meta-arrow">↳</span><span>Sets Handicap 1 (1.5) at <strong>1.65</strong> — Gibson to win by at least 2 sets or win 2-0. That's what happened : <strong>6-3, 7-6</strong>.</span></div>
+      </div>
+    </div>
+
+    <div class="author-cut">
+      <p>The market remembered the Olympic gold. The 2024 Australian Open final. The girl who beat Swiatek in Paris. We remembered the 35% grass win rate and the first-round exit at Queen's the week before. One of us was right.</p>
+      <div class="author-sig">— C.C. Farah</div>
+    </div>
+
+    <p class="art-p">Gibson won 6-3, 7-6. Two sets. Clean. The handicap hit without a sweat. The process was simple: surface data + her own words + market mispricing on reputation. Three signals, one direction. Entry confirmed.</p>
+
+    <hr class="art-divider">
+
+    <p class="art-p" style="font-size:14px;color:#7a7060;">The profit is 9.75€. Modest. The point is the process — a structural weakness identified, confirmed by the player herself, ignored by the market. We'll see Zheng on grass again this summer. We'll be ready.</p>
+
+  </div>
+
+  <!-- RIGHT COL -->
+  <div class="art-col-right">
+
+    <!-- SLIP B -->
+    <div class="slip-b">
+      <div class="slip-b-head">
+        <span>Bet #3 · Single · Pre-match</span>
+        <span>Nº 83211729885</span>
+      </div>
+      <div class="slip-b-inner">
+        <div class="slip-b-tourn">🎾 WTA Nottingham · R2 · Grass</div>
+        <div class="slip-b-match">Gibson vs Zheng</div>
+        <div class="slip-b-market">Sets Handicap 1 (1.5) — Gibson</div>
+        <div class="slip-b-rule"></div>
+        <div class="slip-b-nums">
+          <div>
+            <div class="slip-b-lbl">Odds</div>
+            <div class="slip-b-odd">1.65</div>
+          </div>
+          <div>
+            <div class="slip-b-lbl" style="text-align:right">Profit</div>
+            <div class="slip-b-profit">+9.75€</div>
+          </div>
+        </div>
+      </div>
+      <div class="slip-b-grid">
+        <div class="slip-b-cell"><div class="slip-b-cell-lbl">Stake</div><div class="slip-b-cell-val">15€</div></div>
+        <div class="slip-b-cell"><div class="slip-b-cell-lbl">Return</div><div class="slip-b-cell-val">24.75€</div></div>
+        <div class="slip-b-cell"><div class="slip-b-cell-lbl">Status</div><div class="slip-b-cell-val won">Won</div></div>
+      </div>
+      <div class="slip-b-footer">
+        <span class="slip-b-won">✓ Paid out</span>
+        <span class="slip-b-date">17.06.2026 · 16:15</span>
+      </div>
+    </div>
+
+    <!-- SCORE — grass -->
+    <div class="score-block">
+      <svg width="100%" height="180" viewBox="0 0 280 180" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <pattern id="mg" x="0" y="0" width="20" height="180" patternUnits="userSpaceOnUse"><rect width="10" height="180" fill="rgba(0,0,0,.055)"/><rect x="10" width="10" height="180" fill="rgba(255,255,255,.055)"/></pattern>
+          <linearGradient id="gg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#3a7d4a"/><stop offset="100%" stop-color="#1d4d2a"/></linearGradient>
+        </defs>
+        <rect width="280" height="180" fill="url(#gg)"/>
+        <rect width="280" height="180" fill="url(#mg)"/>
+        <line x1="0" y1="90" x2="280" y2="90" stroke="rgba(255,255,255,.2)" stroke-width="1.5"/>
+        <rect x="16" y="14" width="248" height="152" fill="none" stroke="rgba(255,255,255,.15)" stroke-width="1"/>
+        <!-- header -->
+        <rect width="280" height="26" fill="rgba(0,0,0,.45)"/>
+        <text x="14" y="17" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.6)" letter-spacing="1">WTA R2 · GRASS · NOTTINGHAM</text>
+        <!-- score block -->
+        <rect x="0" y="86" width="280" height="80" fill="rgba(0,0,0,.55)"/>
+        <!-- Gibson winner -->
+        <text x="14" y="112" font-family="Inter,sans-serif" font-size="13" font-weight="700" fill="white">T. Gibson 🇦🇺</text>
+        <rect x="194" y="96" width="26" height="26" rx="3" fill="rgba(255,255,255,.92)"/><text x="207" y="114" font-family="Inter,sans-serif" font-size="12" font-weight="700" fill="#1a5229" text-anchor="middle">6</text>
+        <rect x="224" y="96" width="26" height="26" rx="3" fill="rgba(255,255,255,.92)"/><text x="237" y="114" font-family="Inter,sans-serif" font-size="12" font-weight="700" fill="#1a5229" text-anchor="middle">7</text>
+        <line x1="14" y1="128" x2="266" y2="128" stroke="rgba(255,255,255,.12)" stroke-width="1"/>
+        <!-- Zheng loser -->
+        <text x="14" y="152" font-family="Inter,sans-serif" font-size="13" font-weight="400" fill="rgba(255,255,255,.38)">Q. Zheng 🇨🇳</text>
+        <rect x="194" y="136" width="26" height="26" rx="3" fill="rgba(0,0,0,.35)"/><text x="207" y="154" font-family="Inter,sans-serif" font-size="12" font-weight="700" fill="rgba(255,255,255,.28)" text-anchor="middle">3</text>
+        <rect x="224" y="136" width="26" height="26" rx="3" fill="rgba(0,0,0,.35)"/><text x="237" y="154" font-family="Inter,sans-serif" font-size="12" font-weight="700" fill="rgba(255,255,255,.28)" text-anchor="middle">6</text>
+        <text x="14" y="175" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.28)" font-style="italic">6-3 7-6 · Sets Handicap ✓</text>
+      </svg>
+    </div>
+
+    <!-- Zheng grass stats -->
+    <div class="side-stats">
+      <div class="side-stats-title">📊 Zheng on grass — career</div>
+      <div class="side-stat-row">
+        <div class="side-stat-label">Win rate</div>
+        <div class="side-stat-val bad">35%</div>
+      </div>
+      <div class="side-stat-row">
+        <div class="side-stat-label">W–L record</div>
+        <div class="side-stat-val bad">5–11</div>
+      </div>
+      <div class="side-stat-row">
+        <div class="side-stat-label">WTA titles on grass</div>
+        <div class="side-stat-val bad">0</div>
+      </div>
+      <div class="side-stat-row">
+        <div class="side-stat-label">Queen's R1 (week prior)</div>
+        <div class="side-stat-val bad">Lost</div>
+      </div>
+      <div class="side-stat-row">
+        <div class="side-stat-label">Market implied prob.</div>
+        <div class="side-stat-val bad">70%</div>
+      </div>
+      <div class="side-stat-row">
+        <div class="side-stat-label">Our read</div>
+        <div class="side-stat-val good">~42%</div>
+      </div>
+    </div>
+
+    <!-- Profit -->
+    <div class="profit-row">
+      <div class="profit-cell"><div class="profit-lbl">Profit</div><div class="profit-val g">+9.75€</div></div>
+      <div class="profit-cell"><div class="profit-lbl">Record</div><div class="profit-val w">3/3</div></div>
+      <div class="profit-cell"><div class="profit-lbl">Stake</div><div class="profit-val o">15€</div></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- TAGS FOOTER -->
+<div class="tags-footer">
+  <div class="tags-footer-lbl">Filed under</div>
+  <div class="tags-row">
+    <span class="ztag zt-nook">#tennis</span>
+    <span class="ztag zt-coral">#zoomin</span>
+    <span class="ztag zt-nook">#wta</span>
+    <span class="ztag zt-nook">#grass</span>
+    <span class="ztag zt-ocre">#surfaceweakness</span>
+    <span class="ztag zt-coral">#zheng</span>
+    <span class="ztag zt-nook">#gibson</span>
+    <span class="ztag zt-coral">#marketmispricing</span>
+    <span class="ztag zt-nook">#nottingham2026</span>
+    <span class="ztag zt-ocre">#processoverpnl</span>
+  </div>
+</div>
+
+
+<section class="related" style="padding:24px 44px 32px;border-top:1px solid var(--border);background:#f8f5ef;">
+  <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:#7a7060;margin-bottom:12px;">More #ZOOM IN analyses</div>
+  <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px;">
+    <li style="font-family:'Spectral',serif;font-size:15px;line-height:1.4;"><a style="color:var(--nook);text-decoration:none;border-bottom:1px solid rgba(74,124,95,.3);" href="de-minaur-nakashima-upset-parlay-analysis.html">When a Grass Favourite Runs Out of Road: the De Minaur Upset That Sank a Parlay</a></li>
+<li style="font-family:'Spectral',serif;font-size:15px;line-height:1.4;"><a style="color:var(--nook);text-decoration:none;border-bottom:1px solid rgba(74,124,95,.3);" href="live-betting-medical-timeout-signal-riera-oz.html">Reading a Medical Timeout: How a Live In-Play Signal Beat the Price in Blois</a></li>
+<li style="font-family:'Spectral',serif;font-size:15px;line-height:1.4;"><a style="color:var(--nook);text-decoration:none;border-bottom:1px solid rgba(74,124,95,.3);" href="one-point-overtime-acb-final-near-miss.html">Beaten by One Point in Overtime: an Eight-Leg Near-Miss on the Liga ACB Final</a></li>
+
+  </ul>
+</section>
+<footer class="footer">
+  <a href="index.html" class="footer-logo"><span class="h">#</span>sportsbetting</a>
+  <div class="footer-links">
+    <a href="trackrecord.html">#trackrecord</a>
+    <a href="zoomin.html">#zoomin</a>
+    <a href="funfacts.html">#funfacts</a>
+    <a href="privacy.html">Privacy Policy</a>
+  </div>
+  <div class="footer-by">A Charles Chambers Farah strategy</div>
+</footer>
+
+</body>
+</html>
