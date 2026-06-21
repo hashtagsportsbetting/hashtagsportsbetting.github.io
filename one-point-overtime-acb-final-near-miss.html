@@ -194,6 +194,22 @@ body{font-family:'Inter',sans-serif;background:var(--cream);}
   ]
 }
   </script>
+<style>
+.ppnarr-sec{max-width:680px;margin:0 auto;background:linear-gradient(135deg,#fbfaf6,#f4efe5);border:1px solid var(--border);border-radius:12px;padding:24px 28px;}
+.ppnarr-sec.lost{background:linear-gradient(135deg,#fdf3f1,#f9e9e6);}
+.ppnarr-line{font-family:'Spectral',serif;font-size:17px;font-style:italic;line-height:1.55;color:#3d3830;margin-bottom:20px;}
+.ppnarr-line strong{font-style:normal;font-weight:700;color:var(--nook);}
+.ppnarr-sec.lost .ppnarr-line strong{color:var(--coral);}
+.ppv3-tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:13px;}
+.ppv3-t{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;background:#fff;border:1px solid var(--border);border-bottom:5px solid var(--nook);border-radius:10px;padding:20px 14px;text-align:center;min-height:148px;}
+.ppv3-t.e2{border-bottom-color:var(--blue);}
+.ppv3-t.e3{border-bottom-color:var(--ocre);}
+.ppv3-t.lost{border-bottom-color:var(--coral);}
+.ppv3-flag{font-size:44px;line-height:1;}
+.ppv3-buy{font-family:'Spectral',serif;font-size:18px;font-weight:700;line-height:1.15;color:var(--dark);}
+.ppv3-country{line-height:1.4;margin-top:2px;}.ppv3-cname{display:block;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--nook);}.ppv3-t.lost .ppv3-cname{color:var(--coral);}.ppv3-ctag{display:block;font-size:12px;color:#5a5346;margin-top:3px;}
+@media(max-width:560px){.ppv3-tiles{grid-template-columns:1fr;}.ppv3-t{min-height:0;flex-direction:row;gap:14px;text-align:left;padding:14px 16px;}.ppv3-flag{font-size:34px;}}
+</style>
 </head>
 <body>
 <nav class="nav">
@@ -308,6 +324,8 @@ body{font-family:'Inter',sans-serif;background:var(--cream);}
   </div>
 </div>
 
+
+<div style="padding:18px 0 4px;"><section class="ppnarr-sec lost"><div class="ppnarr-line">That <strong>&minus;15.00&euro;</strong> would have been 3 kg of chicken in Montenegro, 12 pastéis de nata in Portugal, or &mdash; if you insist &mdash; 0.0003 m² of an apartment in Monaco. The same number, three different planets.</div><div class="ppv3-tiles"><div class="ppv3-t e1 lost"><div class="ppv3-flag">🇲🇪</div><div class="ppv3-buy">3 kg of chicken</div><div class="ppv3-country"><span class="ppv3-cname">Montenegro</span><span class="ppv3-ctag">a genuinely full freezer</span></div></div><div class="ppv3-t e2 lost"><div class="ppv3-flag">🇵🇹</div><div class="ppv3-buy">12 pastéis de nata</div><div class="ppv3-country"><span class="ppv3-cname">Portugal</span><span class="ppv3-ctag">a bakery's worth of nata</span></div></div><div class="ppv3-t e3 lost"><div class="ppv3-flag">🇲🇨</div><div class="ppv3-buy">0.0003 m² of an apartment</div><div class="ppv3-country"><span class="ppv3-cname">Monaco</span><span class="ppv3-ctag">a generous doormat</span></div></div></div></section></div>
 <section class="related" style="padding:24px 44px 32px;border-top:1px solid var(--border);background:#f8f5ef;">
   <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:#7a7060;margin-bottom:12px;">More #ZOOM IN analyses</div>
   <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px;">
