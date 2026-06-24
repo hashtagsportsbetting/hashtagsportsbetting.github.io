@@ -273,8 +273,9 @@ body{font-family:'Inter',sans-serif;background:var(--cream);}
 .mleg-dot.won{background:var(--nook);}
 .mleg-dot.lost{background:var(--coral);}
 .mleg-main{flex:1;min-width:0;}
-.mleg-sel{font-family:'Spectral',serif;font-size:14px;font-weight:700;color:var(--dark);line-height:1.15;}
-.mleg-mk{font-size:10.5px;color:var(--muted);margin-top:1px;}
+.mleg-match{font-family:'Spectral',serif;font-size:14px;font-weight:700;color:var(--dark);line-height:1.15;}
+.mleg-pick{font-size:11px;font-weight:600;color:var(--nook);margin-top:2px;}
+.mleg-mk{font-size:10px;color:var(--muted);margin-top:1px;}
 .mleg-score{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:var(--dark);letter-spacing:.03em;margin-right:4px;}
 .mleg-odds{font-family:'Spectral',serif;font-size:16px;font-weight:800;color:var(--dark);flex-shrink:0;}
 .mns{display:flex;justify-content:space-between;align-items:flex-end;padding-bottom:13px;}
@@ -1147,8 +1148,8 @@ const SLIPS=[
   {id:"83245231485",date:"18.06",tourn:"Accumulator · 8 legs",match:"Multi-sport parlay",market:"8-leg acca · Mixed",odds:"5.784",stake:"15",ret:"0.00",profit:"-15.00€",sport:"tennis",entry:"mixed",surface:"mixed",profitN:-15.00,stakeN:15,won:false,slug:"parlay-8"},
   {id:"83248956369",date:"18.06",tourn:"ITF W75 Blois · Clay",match:"Riera vs Oz",market:"W2 · Live",odds:"1.45",stake:"50",ret:"72.50",profit:"+22.50€",sport:"tennis",entry:"live",surface:"clay",profitN:22.50,stakeN:50,won:true,slug:"riera-oz"},
   {id:"83287761763",date:"19.06",tourn:"Accumulator · 6 legs",match:"Multi-sport parlay",market:"6-leg acca · Mixed",odds:"9.417",stake:"15",ret:"0.00",profit:"-15.00€",sport:"tennis",entry:"mixed",surface:"mixed",profitN:-15.00,stakeN:15,won:false,slug:"parlay-6"},
-  {id:"83495775305",date:"24.06",tourn:"Accumulator · 3 legs",match:"Grass-court outright parlay",market:"3-leg acca · Pre-match",odds:"3.635",stake:"5",ret:"18.18",profit:"&mdash;",sport:"tennis",entry:"pre-match",surface:"grass",profitN:0,stakeN:5,pending:true,slug:"parlay-bold-grass",legs:[{sel:"Toby Samuel",mk:"To win · ATP Eastbourne, R16",odds:"1.599"},{sel:"Billy Harris",mk:"To win · Wimbledon Qualifying",odds:"1.57"},{sel:"Mackenzie McDonald",mk:"To win · Wimbledon Qualifying",odds:"1.448"}]},
-  {id:"83494615331",date:"24.06",tourn:"Accumulator · 5 legs",match:"Set-handicap parlay (+1.5)",market:"5-leg acca · Pre-match",odds:"2.504",stake:"15",ret:"37.57",profit:"&mdash;",sport:"tennis",entry:"pre-match",surface:"grass",profitN:0,stakeN:15,pending:true,slug:"parlay-safe-handicap",legs:[{sel:"Gabriel Diallo",mk:"+1.5 sets · ATP Eastbourne, R16",odds:"1.22"},{sel:"Toby Samuel",mk:"+1.5 sets · ATP Eastbourne, R16",odds:"1.22"},{sel:"Billy Harris",mk:"+1.5 sets · Wimbledon Qualifying",odds:"1.21"},{sel:"Mackenzie McDonald",mk:"+1.5 sets · Wimbledon Qualifying",odds:"1.159"},{sel:"Tristan Schoolkate",mk:"+1.5 sets · Wimbledon Qualifying",odds:"1.2"}]},
+  {id:"83495775305",date:"24.06",tourn:"Accumulator · 3 legs",match:"Grass-court outright parlay",market:"3-leg acca · Pre-match",odds:"3.635",stake:"5",ret:"18.18",profit:"&mdash;",sport:"tennis",entry:"pre-match",surface:"grass",profitN:0,stakeN:5,pending:true,slug:"parlay-bold-grass",legs:[{match:"Samuel vs Tirante",sel:"Toby Samuel to win",mk:"ATP Eastbourne, R16 · Grass",odds:"1.599"},{match:"Harris vs Piros",sel:"Billy Harris to win",mk:"Wimbledon Qualifying · Grass",odds:"1.57"},{match:"McDonald vs Carballés Baena",sel:"Mackenzie McDonald to win",mk:"Wimbledon Qualifying · Grass",odds:"1.448"}]},
+  {id:"83494615331",date:"24.06",tourn:"Accumulator · 5 legs",match:"Set-handicap parlay (+1.5)",market:"5-leg acca · Pre-match",odds:"2.504",stake:"15",ret:"37.57",profit:"&mdash;",sport:"tennis",entry:"pre-match",surface:"grass",profitN:0,stakeN:15,pending:true,slug:"parlay-safe-handicap",legs:[{match:"Diallo vs Etcheverry",sel:"Gabriel Diallo +1.5 sets",mk:"ATP Eastbourne, R16 · Grass",odds:"1.22"},{match:"Samuel vs Tirante",sel:"Toby Samuel +1.5 sets",mk:"ATP Eastbourne, R16 · Grass",odds:"1.22"},{match:"Piros vs Harris",sel:"Billy Harris +1.5 sets",mk:"Wimbledon Qualifying · Grass",odds:"1.21"},{match:"McDonald vs Carballés Baena",sel:"Mackenzie McDonald +1.5 sets",mk:"Wimbledon Qualifying · Grass",odds:"1.159"},{match:"Evans vs Schoolkate",sel:"Tristan Schoolkate +1.5 sets",mk:"Wimbledon Qualifying · Grass",odds:"1.2"}]},
 ];
 
 /* ===== PURCHASING POWER ENGINE ===== */
@@ -1355,7 +1356,7 @@ function openMo(s){
         var st=l.st||'pending';
         var dot=st==='won'?'<span class="mleg-dot won">&#x2713;</span>':(st==='lost'?'<span class="mleg-dot lost">&#x2715;</span>':'<span class="mleg-dot pend">&#9203;</span>');
         var sc=l.score?'<div class="mleg-score">'+l.score+'</div>':'';
-        return '<div class="mleg">'+dot+'<div class="mleg-main"><div class="mleg-sel">'+l.sel+'</div><div class="mleg-mk">'+l.mk+'</div></div>'+sc+'<div class="mleg-odds">'+l.odds+'</div></div>';
+        return '<div class="mleg">'+dot+'<div class="mleg-main"><div class="mleg-match">'+(l.match||l.sel)+'</div><div class="mleg-pick">'+l.sel+'</div><div class="mleg-mk">'+l.mk+'</div></div>'+sc+'<div class="mleg-odds">'+l.odds+'</div></div>';
       }).join('');
     }else{ml.style.display='none';ml.innerHTML='';}
   }
