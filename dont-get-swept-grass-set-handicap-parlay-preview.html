@@ -3,79 +3,87 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700&family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>*{margin:0;padding:0;box-sizing:border-box;}
-:root{--cream:#f0ede4;--nook:#4a7c5f;--coral:#ec5a3c;--ocre:#f5b32e;--blue:#3d6db5;--dark:#1e1e1e;--muted:#a09880;--border:#e0d9cc;}
-body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--dark);}
-.h{color:var(--nook);}
-.nav{background:var(--dark);border-bottom:2px solid var(--nook);display:flex;align-items:center;justify-content:space-between;padding:16px 32px;}
-.nav-logo{font-family:'Spectral',serif;font-size:20px;color:#fff;letter-spacing:-.02em;text-decoration:none;}
-.nav-links{display:flex;gap:28px;}
-.nav-links a{font-size:15px;font-weight:700;color:rgba(255,255,255,.55);text-decoration:none;}
-.nav-links a.active{color:var(--nook);}
-.btn-sub{background:var(--coral);color:#fff;font-size:12px;font-weight:700;padding:8px 18px;border-radius:100px;border:none;cursor:pointer;text-decoration:none;}
-.wrap{max-width:760px;margin:0 auto;padding:0 0 40px;}
-.backbar{max-width:760px;margin:0 auto;padding:16px 4px 0;}
-.art-back{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--muted);text-decoration:none;letter-spacing:.06em;}
-.art-back:hover{color:var(--dark);}
-.live-dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--ocre);margin-right:7px;animation:pulse 1.6s infinite;}
-@keyframes pulse{0%,100%{opacity:1;}50%{opacity:.35;}}
-.eng{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:9.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#fff;background:var(--blue);padding:3px 8px;border-radius:3px;}
-.canvas{background:#fff;border:1px solid var(--border);border-radius:6px;overflow:hidden;margin-top:14px;box-shadow:0 1px 3px rgba(30,30,30,.04);}
-.a-head{padding:24px 28px;background:var(--nook);color:#fff;}
-.a-kick{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;opacity:.9;margin-bottom:14px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
-.a-state{padding:2px 9px;border-radius:20px;font-weight:700;display:inline-flex;align-items:center;background:rgba(245,179,46,.2);color:var(--ocre);}
-.a-title{font-family:'Spectral',serif;font-size:30px;font-weight:800;line-height:1.12;letter-spacing:-.015em;margin-bottom:12px;}
-.a-sub{font-family:'Spectral',serif;font-style:italic;font-size:15px;line-height:1.45;color:rgba(255,255,255,.82);max-width:600px;}
-.a-meta{display:flex;gap:0;border-top:1px solid rgba(255,255,255,.2);padding-top:15px;margin-top:16px;}
-.a-mcell{flex:1;}
-.a-mcell .l{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;opacity:.7;margin-bottom:3px;}
-.a-mcell .v{font-family:'Spectral',serif;font-size:20px;font-weight:700;}
-.a-intro{padding:22px 28px 4px;font-size:15px;line-height:1.6;color:#2a2620;}
-.a-body{padding:14px 28px 26px;}
-.a-card{background:#fff;border:1px solid var(--border);border-radius:6px;padding:17px 19px;margin-bottom:13px;border-left:4px solid var(--ocre);}
-.a-cardtop{display:flex;justify-content:space-between;align-items:flex-start;gap:14px;margin-bottom:11px;}
-.a-tag{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);margin-bottom:4px;}
-.a-match{font-family:'Spectral',serif;font-size:18px;font-weight:700;line-height:1.18;}
-.a-vs{color:var(--muted);font-weight:400;}
-.a-pick{font-size:12.5px;color:#5a5346;margin-top:3px;}
-.a-pick b{color:var(--nook);}
-.a-rightcol{text-align:right;white-space:nowrap;}
-.a-odds{font-family:'Spectral',serif;font-size:25px;font-weight:800;color:var(--dark);}
-.a-statepill{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:8.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-top:3px;padding:2px 7px;border-radius:10px;color:#b8860b;background:#fdf3d9;}
-.a-quote{font-family:'Spectral',serif;font-style:italic;font-size:14px;line-height:1.42;color:#3a352c;border-left:2px solid var(--coral);padding-left:12px;margin:11px 0;}
-.a-quote .src{display:block;font-style:normal;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.04em;color:var(--muted);margin-top:4px;text-transform:uppercase;}
-.a-take{font-size:13.5px;line-height:1.5;color:#2a2620;}
-.a-stat{display:flex;gap:8px;margin-top:12px;align-items:center;}
-.a-statbar{flex:1;height:7px;border-radius:4px;background:#ece8de;overflow:hidden;display:flex;}
-.a-statbar .grass{background:var(--nook);}
-.a-statbar .clay{background:var(--coral);}
-.a-statlbl{font-family:'JetBrains Mono',monospace;font-size:10px;white-space:nowrap;}
-.a-foreng{margin-top:11px;font-family:'Spectral',serif;font-style:italic;font-size:13px;color:var(--blue);display:flex;align-items:center;gap:8px;}
-.a-fun{background:linear-gradient(120deg,#28241d,#3d3830);color:#f0ede4;border-radius:6px;padding:15px 19px;margin-top:3px;}
-.a-fun .fh{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--ocre);margin-bottom:6px;}
-.a-fun .ft{font-family:'Spectral',serif;font-size:14px;line-height:1.42;}
-.a-close{padding:6px 28px 24px;font-size:14px;line-height:1.6;color:#2a2620;}
-.a-status-line{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted);margin-top:14px;padding-top:14px;border-top:1px solid var(--border);letter-spacing:.04em;}
-.a-status-line b{color:var(--ocre);}
-.related{max-width:760px;margin:26px auto 0;padding:0 4px;}
-.related-h{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:12px;}
-.related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
-.related-card{background:#fff;border:1px solid var(--border);border-radius:6px;padding:13px 15px;text-decoration:none;color:var(--dark);display:block;}
-.related-card .rt{font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;}
-.related-card .rh{font-family:'Spectral',serif;font-size:14px;font-weight:600;line-height:1.25;}
-.footer{background:var(--dark);border-top:2px solid var(--nook);display:flex;align-items:center;justify-content:space-between;padding:18px 32px;margin-top:30px;}
-.footer-logo{font-family:'Spectral',serif;font-size:16px;color:#fff;text-decoration:none;}
-.footer-links{display:flex;gap:18px;font-size:11px;}
-.footer-links a{color:rgba(255,255,255,.5);text-decoration:none;}
-.footer-by{font-size:11px;color:#555;font-style:italic;}
+:root{--cream:#f0ede4;--paper:#f7f4ec;--nook:#3f7257;--grass1:#1c4a29;--grass2:#2f6b40;--coral:#e8502f;--ocre:#f5b32e;--blue:#3361a8;--dark:#161513;--ink:#211e18;--muted:#8f897a;--border:#ddd6c7;}
+body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--ink);-webkit-font-smoothing:antialiased;font-weight:450;}
+.h{color:var(--ocre);}
+.nav{background:var(--dark);display:flex;align-items:center;justify-content:space-between;padding:15px 40px;}
+.nav-logo{font-family:'Spectral',serif;font-size:20px;font-weight:700;color:#fff;text-decoration:none;}.nav-logo .h{color:var(--ocre);}
+.nav-mid{display:flex;gap:30px;font-size:14px;font-weight:700;}
+.nav-mid a{color:rgba(255,255,255,.55);text-decoration:none;}.nav-mid a.on{color:#fff;border-bottom:2px solid var(--ocre);padding-bottom:3px;}
+.btn-sub{background:var(--coral);color:#fff;font-size:12px;font-weight:800;padding:9px 18px;border-radius:3px;letter-spacing:.02em;text-decoration:none;}
+.pdot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--ocre);margin-right:6px;animation:pulse 1.6s infinite;}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.eng{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#fff;background:var(--blue);padding:3px 8px;border-radius:2px;}
+.backbar{max-width:1060px;margin:0 auto;padding:16px 56px 0;}
+.art-back{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:600;color:rgba(255,255,255,.85);text-decoration:none;letter-spacing:.05em;}
+.phead{background:linear-gradient(160deg,var(--grass1),var(--grass2));color:#fff;padding:42px 56px 58px;}
+.phead .backrow{margin-bottom:18px;}
+.phead .backrow a{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:600;color:rgba(255,255,255,.7);text-decoration:none;letter-spacing:.05em;}
+.pk{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.82);margin-bottom:20px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+.pk .st{color:var(--ocre);font-weight:700;display:inline-flex;align-items:center;}
+.ptitle{font-family:'Spectral',serif;font-size:46px;font-weight:800;line-height:1.05;letter-spacing:-.02em;max-width:860px;margin-bottom:16px;}
+.psub{font-family:'Spectral',serif;font-style:italic;font-size:18px;line-height:1.45;color:#fff;max-width:660px;font-weight:500;}
+.wrap{max-width:1060px;margin:0 auto;padding:0 56px 64px;}
+.coupon-wrap{margin:-30px auto 40px;max-width:780px;position:relative;z-index:2;}
+.coupon{border:1.5px solid var(--ink);border-radius:5px;overflow:hidden;background:#fff;box-shadow:0 10px 30px rgba(28,74,41,.18);}
+.cphead{background:linear-gradient(150deg,var(--grass1),var(--grass2));color:#fff;padding:20px 26px;display:flex;justify-content:space-between;align-items:center;border-bottom:3px solid var(--ocre);gap:16px;}
+.cphead .lg{font-family:'Spectral',serif;font-size:19px;font-weight:800;}.cphead .lg b{color:var(--ocre);}
+.cphead .id{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:500;color:rgba(255,255,255,.72);margin-top:5px;}
+.cphead .fig{text-align:right;flex-shrink:0;}
+.cphead .fig .o{font-family:'Spectral',serif;font-size:38px;font-weight:800;line-height:1;}
+.cphead .fig .s{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;color:rgba(255,255,255,.85);margin-top:5px;}
+.cprow{display:flex;justify-content:space-between;align-items:center;padding:14px 26px;border-bottom:1px solid #ece6d8;gap:14px;}
+.cprow:last-of-type{border-bottom:none;}
+.cprow .lft{display:flex;align-items:center;gap:13px;min-width:0;}
+.cprow .sport{font-family:'JetBrains Mono',monospace;font-size:8px;font-weight:700;letter-spacing:.05em;color:#fff;background:var(--blue);padding:3px 7px;border-radius:2px;flex-shrink:0;}
+.cprow .mt{font-family:'Spectral',serif;font-size:16px;font-weight:800;color:var(--ink);line-height:1.12;}
+.cprow .mk{font-size:10.5px;font-weight:500;color:var(--muted);margin-top:1px;}
+.cprow .rt{display:flex;align-items:center;gap:9px;flex-shrink:0;}
+.cprow .od{font-family:'Spectral',serif;font-size:19px;font-weight:800;}
+.cprow .pd{width:7px;height:7px;border-radius:50%;background:var(--ocre);}
+.cpfoot{background:rgba(245,179,46,.18);color:#8a6000;text-align:center;padding:12px;font-family:'JetBrains Mono',monospace;font-size:9.5px;font-weight:700;letter-spacing:.06em;}
+.body{max-width:700px;margin:0 auto;}
+.lead{font-family:'Spectral',serif;font-size:20px;font-weight:500;line-height:1.5;color:var(--ink);margin-bottom:32px;}
+.leg{padding:28px 0;border-top:2px solid var(--ink);}
+.leg:first-of-type{border-top:none;}
+.kick{font-family:'JetBrains Mono',monospace;font-size:9.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--coral);margin-bottom:8px;}
+.match{font-family:'Spectral',serif;font-size:26px;font-weight:800;line-height:1.06;letter-spacing:-.01em;color:var(--ink);}
+.match .vs{color:var(--muted);font-weight:500;font-style:italic;font-size:18px;}
+.pick{font-size:13px;font-weight:700;color:var(--nook);margin-top:5px;text-transform:uppercase;letter-spacing:.03em;}
+.q{margin:16px 0 14px;}
+.q-txt{font-family:'Spectral',serif;font-style:italic;font-weight:500;font-size:20px;line-height:1.38;color:var(--ink);}
+.q-src{font-family:'JetBrains Mono',monospace;font-size:9.5px;font-weight:600;letter-spacing:.05em;color:var(--muted);text-transform:uppercase;margin-top:9px;}
+.com{font-size:15.5px;font-weight:450;line-height:1.6;color:var(--ink);}
+.eng-line{margin-top:14px;font-family:'Spectral',serif;font-style:italic;font-weight:600;font-size:14px;color:var(--blue);display:flex;gap:9px;align-items:center;}
+.funfact{margin-top:36px;background:linear-gradient(155deg,var(--grass1),var(--grass2));color:#fff;border-radius:4px;padding:22px 26px;border-left:5px solid var(--ocre);}
+.funfact .fh{font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ocre);margin-bottom:8px;}
+.funfact .ft{font-family:'Spectral',serif;font-size:16px;font-weight:500;line-height:1.45;font-style:italic;}
+.closing{font-family:'Spectral',serif;font-style:italic;font-weight:500;font-size:15.5px;line-height:1.5;color:#4a4538;margin-top:26px;padding-top:20px;border-top:2px solid var(--ink);}
+.status-line{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;color:var(--muted);margin-top:16px;padding-top:16px;border-top:1px solid var(--border);letter-spacing:.03em;}
+.status-line b{color:#8a6000;}
+.related{max-width:700px;margin:34px auto 0;}
+.related-h{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:13px;}
+.related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:11px;}
+.related-card{background:#fff;border:1px solid var(--border);border-radius:5px;padding:14px 16px;text-decoration:none;color:var(--ink);display:block;}
+.related-card .rt{font-family:'JetBrains Mono',monospace;font-size:8.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--coral);margin-bottom:7px;}
+.related-card .rh{font-family:'Spectral',serif;font-size:14px;font-weight:700;line-height:1.22;}
+.footer{background:var(--dark);display:flex;align-items:center;justify-content:space-between;padding:20px 40px;margin-top:36px;}
+.footer-logo{font-family:'Spectral',serif;font-size:17px;font-weight:700;color:#fff;text-decoration:none;}.footer-logo .h{color:var(--ocre);}
+.footer-links{display:flex;gap:18px;font-size:11px;font-weight:600;}
+.footer-links a{color:rgba(255,255,255,.55);text-decoration:none;}
+.footer-by{font-size:11px;color:#6a6658;font-style:italic;}
 .seo-index{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);}
 @media(max-width:820px){
-.nav{padding:14px 18px;}.nav-links{display:none;}
-.a-title{font-size:24px;}.a-head{padding:20px 20px;}.a-intro{padding:18px 20px 2px;}.a-body{padding:12px 20px 22px;}.a-close{padding:4px 20px 20px;}
+.nav{padding:13px 18px;}.nav-mid{display:none;}
+.phead{padding:30px 22px 48px;}.ptitle{font-size:30px;}.psub{font-size:16px;}
+.wrap{padding:0 18px 44px;}.coupon-wrap{margin:-26px auto 32px;}
+.cphead{flex-direction:column;align-items:flex-start;gap:12px;}.cphead .fig{text-align:left;}.cphead .fig .o{font-size:32px;}
+.cprow{flex-wrap:wrap;gap:8px;}
+.match{font-size:22px;}.q-txt{font-size:18px;}
 .related-grid{grid-template-columns:1fr;}
-.footer{flex-direction:column;gap:10px;text-align:center;padding:18px 20px;}.footer-links{flex-wrap:wrap;justify-content:center;}
-.a-meta{flex-wrap:wrap;gap:12px 0;}.a-mcell{flex:0 0 50%;}
+.footer{flex-direction:column;gap:12px;text-align:center;padding:20px;}.footer-links{flex-wrap:wrap;justify-content:center;}
 }</style>
   <title>Diallo, Samuel, Harris, McDonald, Evans: a Set-Handicap Parlay Preview | hashtagsportsbetting</title>
   <meta name="description" content="A pre-match set-handicap (+1.5) accumulator preview across Eastbourne and Wimbledon qualifying: Diallo, Samuel, Harris, McDonald and a Schoolkate handicap against the retiring Dan Evans. Sourced and timestamped before kickoff.">
@@ -87,10 +95,9 @@ body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--dark);}
   <meta property="og:title" content="Five Players. One Modest Request: Don't Get Swept Off The Lawn.">
   <meta property="og:description" content="A pre-match set-handicap (+1.5) accumulator preview across Eastbourne and Wimbledon qualifying: Diallo, Samuel, Harris, McDonald and a Schoolkate handicap against the retiring Dan Evans. Sourced and timestamped before kickoff.">
   <meta property="og:url" content="https://hashtagsportsbetting.com/dont-get-swept-grass-set-handicap-parlay-preview.html">
-  <meta property="og:site_name" content="hashtagsportsbetting">
+  <meta property="og:site_name" content="#sportsbetting">
   <meta property="og:locale" content="en_GB">
   <meta property="article:published_time" content="2026-06-24">
-  <meta property="article:section" content="Sports Betting Analysis">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Five Players. One Modest Request: Don't Get Swept Off The Lawn.">
   <meta name="twitter:description" content="A pre-match set-handicap (+1.5) accumulator preview across Eastbourne and Wimbledon qualifying: Diallo, Samuel, Harris, McDonald and a Schoolkate handicap against the retiring Dan Evans. Sourced and timestamped before kickoff.">
@@ -99,11 +106,11 @@ body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--dark);}
   "@context":"https://schema.org",
   "@graph":[
     {"@type":"Article","headline":"Five Players. One Modest Request: Don't Get Swept Off The Lawn.","description":"A pre-match set-handicap (+1.5) accumulator preview across Eastbourne and Wimbledon qualifying: Diallo, Samuel, Harris, McDonald and a Schoolkate handicap against the retiring Dan Evans. Sourced and timestamped before kickoff.","datePublished":"2026-06-24","author":{"@type":"Person","name":"Charles Chambers Farah","url":"https://hashtagsportsbetting.com"},"publisher":{"@type":"Organization","name":"hashtagsportsbetting"},"inLanguage":"en-GB","keywords":"set handicap parlay preview, +1.5 sets tennis betting, diallo etcheverry prediction, schoolkate evans prediction, eastbourne wimbledon qualifying preview, grass court handicap"},
-    {"@type":"SportsEvent","name":"Gabriel Diallo vs Tomas Mart&iacute;n Etcheverry","sport":"Tennis","startDate":"2026-06-24","location":{"@type":"Place","name":"Eastbourne"},"competitor":[{"@type":"Person","name":"Gabriel Diallo"},{"@type":"Person","name":"Tomas Mart&iacute;n Etcheverry"}]},
-    {"@type":"SportsEvent","name":"Toby Samuel vs Thiago Agust&iacute;n Tirante","sport":"Tennis","startDate":"2026-06-24","location":{"@type":"Place","name":"Eastbourne"},"competitor":[{"@type":"Person","name":"Toby Samuel"},{"@type":"Person","name":"Thiago Agust&iacute;n Tirante"}]},
-    {"@type":"SportsEvent","name":"Billy Harris vs Zsombor Piros","sport":"Tennis","startDate":"2026-06-24","location":{"@type":"Place","name":"Wimbledon Qualifying"},"competitor":[{"@type":"Person","name":"Billy Harris"},{"@type":"Person","name":"Zsombor Piros"}]},
-    {"@type":"SportsEvent","name":"Mackenzie McDonald vs Roberto Carball&eacute;s Baena","sport":"Tennis","startDate":"2026-06-24","location":{"@type":"Place","name":"Wimbledon Qualifying"},"competitor":[{"@type":"Person","name":"Mackenzie McDonald"},{"@type":"Person","name":"Roberto Carball&eacute;s Baena"}]},
-    {"@type":"SportsEvent","name":"Tristan Schoolkate vs Daniel Evans","sport":"Tennis","startDate":"2026-06-24","location":{"@type":"Place","name":"Wimbledon Qualifying"},"competitor":[{"@type":"Person","name":"Tristan Schoolkate"},{"@type":"Person","name":"Daniel Evans"}]},
+    {"@type":"SportsEvent","name":"Diallo &mdash; Etcheverry","sport":"Tennis","startDate":"2026-06-24","location":{"@type":"Place","name":"ATP Eastbourne &middot; R16"}},
+    {"@type":"SportsEvent","name":"Samuel &mdash; Tirante","sport":"Tennis","startDate":"2026-06-24","location":{"@type":"Place","name":"ATP Eastbourne &middot; R16"}},
+    {"@type":"SportsEvent","name":"Harris &mdash; Piros","sport":"Tennis","startDate":"2026-06-24","location":{"@type":"Place","name":"Wimbledon Qualifying"}},
+    {"@type":"SportsEvent","name":"McDonald &mdash; Carball&eacute;s Baena","sport":"Tennis","startDate":"2026-06-24","location":{"@type":"Place","name":"Wimbledon Qualifying"}},
+    {"@type":"SportsEvent","name":"Schoolkate &mdash; Evans","sport":"Tennis","startDate":"2026-06-24","location":{"@type":"Place","name":"Wimbledon Qualifying"}},
     {"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"A Parlay Story","item":"https://hashtagsportsbetting.com/#parlay-story"},{"@type":"ListItem","position":2,"name":"Five Players. One Modest Request: Don't Get Swept Off The Lawn.","item":"https://hashtagsportsbetting.com/dont-get-swept-grass-set-handicap-parlay-preview.html"}]}
   ]
 }
@@ -112,40 +119,36 @@ body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--dark);}
 <body>
 <nav class="nav">
   <a href="index.html" class="nav-logo"><span class="h">#</span>sportsbetting</a>
-  <div class="nav-links">
-    <a href="index.html#track-record">#TRACK RECORD</a>
-    <a href="index.html#parlay-story" class="active">#A PARLAY STORY</a>
-    <a href="index.html#fun-facts">#FUN FACTS</a>
-  </div>
-  <a href="https://abettorlife.blogabet.com" class="btn-sub">#SUBSCRIBE &#x2192;</a>
+  <div class="nav-mid"><a href="index.html#track-record">#TRACK RECORD</a><a href="index.html#parlay-story" class="on">#A PARLAY STORY</a><a href="index.html#fun-facts">#FUN FACTS</a></div>
+  <a href="https://abettorlife.blogabet.com" class="btn-sub">#SUBSCRIBE</a>
 </nav>
 <p class="seo-index">Set-handicap accumulator preview for 24 June 2026. Selections, all +1.5 sets: Gabriel Diallo against Tomas Martin Etcheverry at ATP Eastbourne; Toby Samuel against Thiago Agustin Tirante; Billy Harris against Zsombor Piros in Wimbledon qualifying; Mackenzie McDonald against Roberto Carballes Baena in Wimbledon qualifying; Tristan Schoolkate against Daniel Evans in Wimbledon qualifying. Total odds 2.504, stake 15 euros, maximum return 37.57 euros. Published pre-match.</p>
-<div class="backbar"><a href="index.html#parlay-story" class="art-back">&#x2190; Back to #A PARLAY STORY</a></div>
+<div class="phead">
+  <div class="backrow"><a href="index.html#parlay-story">&#8592; Back to #A PARLAY STORY</a></div>
+  <div class="pk"><span>A Parlay Story</span><span>&middot;</span><span>Grass &middot; Wimbledon Week</span><span class="st"><span class="pdot"></span>PRE-MATCH</span></div>
+  <div class="ptitle">Five Players. One Modest Request: Don't Get Swept Off The Lawn.</div>
+  <div class="psub">A +1.5 set handicap on every leg, &euro;15 to win &euro;37.57 &mdash; posted before a single ball was struck. Not asking anyone to win, only to steal a set.</div>
+</div>
 <div class="wrap">
-  <div class="canvas">
-    <div class="a-head">
-      <div class="a-kick"><span>&#127934; A Parlay Story &middot; Grass &middot; Wimbledon Week &middot; 24 June 2026</span><span class="a-state"><span class="live-dot"></span>PRE-MATCH</span></div>
-      <div class="a-title">Five Players. One Modest Request: Don't Get Swept Off The Lawn.</div>
-      <div class="a-sub">A +1.5 set handicap on every leg, &euro;15 to win &euro;37.57. I'm not asking anyone to win today &mdash; only to steal a single set before the afternoon's done. Posted at 22:38 last night, before a ball was struck.</div>
-      <div class="a-meta">
-        <div class="a-mcell"><div class="l">Total odds</div><div class="v">2.504</div></div>
-        <div class="a-mcell"><div class="l">Stake</div><div class="v">&euro;15</div></div>
-        <div class="a-mcell"><div class="l">Max win</div><div class="v">&euro;37.57</div></div>
-        <div class="a-mcell"><div class="l">Legs</div><div class="v" style="font-size:15px;">5 &middot; all +1.5</div></div>
-      </div>
-    </div>
-    <div class="a-intro">Here's a quieter way to back a hunch. A +1.5 set handicap means my man can lose the match outright and I still collect, provided he takes one set on the way down. It's grass season, the lawn rewards the players built for it, and I've found five matches where the favourite &mdash; or the man on the right surface &mdash; only has to avoid a straight-sets collapse. Five legs, odds of 2.504. Here's the order of play.</div>
-    <div class="a-body">
-<div class="a-card"><div class="a-cardtop"><div><div class="a-tag">ATP Eastbourne &middot; R16 &middot; Grass</div><div class="a-match">Gabriel Diallo <span class="a-vs">vs</span> Tomas Mart&iacute;n Etcheverry</div><div class="a-pick"><b>Diallo +1.5 sets &middot; 1.22</b></div></div><div class="a-rightcol"><div class="a-odds">1.22</div><span class="a-statepill">&#9203; pending</span></div></div><div class="a-quote">"Horrendous 5-13 all time on grass &mdash; can't be the favourite whatever the ranking says."<span class="src">&mdash; Tenngrand</span></div><div class="a-take">Both men are off-form, but only one can play on grass, and it isn't the Argentine (5-13 there against 317 clay wins). Diallo has a real grass pedigree &mdash; 9-3 on it in 2025 &mdash; and the room agrees: Dimers 55%, bookmakers -140. I only need him competitive. The +1.5 does the rest.</div><div class="a-stat"><span class="a-statlbl" style="color:var(--coral)">Etcheverry grass 5-13</span><div class="a-statbar"><span class="grass" style="width:12%"></span><span class="clay" style="width:88%"></span></div><span class="a-statlbl" style="color:var(--nook)">clay 317-170</span></div></div>
-<div class="a-card"><div class="a-cardtop"><div><div class="a-tag">ATP Eastbourne &middot; R16 &middot; Grass</div><div class="a-match">Toby Samuel <span class="a-vs">vs</span> Thiago Agust&iacute;n Tirante</div><div class="a-pick"><b>Samuel +1.5 sets &middot; 1.22</b></div></div><div class="a-rightcol"><div class="a-odds">1.22</div><span class="a-statepill">&#9203; pending</span></div></div><div class="a-quote">"A natural clay-courter" &mdash; heavier ball, built for slower surfaces.<span class="src">&mdash; Last Word on Sports</span></div><div class="a-take">For this leg to fail, a clay specialist (3-5 on grass) has to sweep a home grass-courter in straight sets, in front of his own crowd. Samuel is at home on the surface with the local support. I'll take that price.</div><div class="a-foreng"><span class="eng">For England</span> Samuel &mdash; a set will do.</div></div>
-<div class="a-card"><div class="a-cardtop"><div><div class="a-tag">Wimbledon Qualifying &middot; Grass</div><div class="a-match">Billy Harris <span class="a-vs">vs</span> Zsombor Piros</div><div class="a-pick"><b>Harris +1.5 sets &middot; 1.21</b></div></div><div class="a-rightcol"><div class="a-odds">1.21</div><span class="a-statepill">&#9203; pending</span></div></div><div class="a-quote">In "imperious form" &mdash; dropped Napolitano 6-2 6-2.<span class="src">&mdash; Isle of Man press</span></div><div class="a-take">Piros is off a first-round clay loss in Parma, playing his first grass match of the year. For me to lose this leg, the rusty man has to win in two clean sets on a surface he hasn't touched all season. Unlikely &mdash; and Harris has a set in hand regardless.</div><div class="a-foreng"><span class="eng">For England</span> Harris &mdash; hold a set and we're fine.</div></div>
-<div class="a-card"><div class="a-cardtop"><div><div class="a-tag">Wimbledon Qualifying &middot; Grass</div><div class="a-match">Mackenzie McDonald <span class="a-vs">vs</span> Roberto Carball&eacute;s Baena</div><div class="a-pick"><b>McDonald +1.5 sets &middot; 1.159</b></div></div><div class="a-rightcol"><div class="a-odds">1.159</div><span class="a-statepill">&#9203; pending</span></div></div><div class="a-quote">Favourite surface: clay. Favourite tournament: Roland-Garros.<span class="src">&mdash; Carball&eacute;s Baena, ATP profile</span></div><div class="a-take">The shortest price here, and you can see why. Asking a clay terrier (7-17 on grass against 522-321 on clay) to beat a fast-court American by two clear sets on grass is asking a great deal. I'm not asking it. I just need McDonald upright.</div><div class="a-stat"><span class="a-statlbl" style="color:var(--coral)">grass 7-17</span><div class="a-statbar"><span class="grass" style="width:5%"></span><span class="clay" style="width:95%"></span></div><span class="a-statlbl" style="color:var(--nook)">clay 522-321</span></div></div>
-<div class="a-card"><div class="a-cardtop"><div><div class="a-tag">Wimbledon Qualifying &middot; Grass</div><div class="a-match">Tristan Schoolkate <span class="a-vs">vs</span> Daniel Evans</div><div class="a-pick"><b>Schoolkate +1.5 sets &middot; 1.2</b></div></div><div class="a-rightcol"><div class="a-odds">1.2</div><span class="a-statepill">&#9203; pending</span></div></div><div class="a-quote">"My body hasn't been great, and I no longer want to put myself through the training."<span class="src">&mdash; Dan Evans, on retiring</span></div><div class="a-take">The one I take no pleasure in, so let me be careful. Evans is a grass legend in the literal sense &mdash; a three-time champion on home grass and the first man in 23 years to win three Challenger titles on the surface. The talent never left. But the body has, and he's said so himself. Thirty-six, a chronic wrist problem, ranked 244th, one last Wimbledon to chase. I'm not betting against the player &mdash; I'm betting the body can no longer produce a clean straight-sets win. The +1.5 on Schoolkate says exactly that. <strong>Total respect.</strong> The lawn just doesn't hand out fairytales on demand.</div></div>
-<div class="a-fun"><div class="fh">&#127934; Fun fact &middot; two of these legs share a history</div><div class="ft">Harris and Samuel &mdash; two of these five legs &mdash; met in the M25 Nottingham final last year. Samuel won 6-4, 6-4. Today they're on the same slip.</div></div>
-    </div>
-    <div class="a-close">So there it is: five players, none of whom I need to win, all of whom I need to stay on their feet. &euro;15 in, &euro;37.57 out if grass behaves and nobody gets swept. First balls at noon, the Diallo leg at half four.
-      <div class="a-status-line">Status: <b>&#9203; PRE-MATCH</b> &middot; published before kickoff. This page flips to SETTLED, leg by leg, once the lawn has its say.</div>
-    </div>
+  <div class="coupon-wrap"><div class="coupon">
+    <div class="cphead"><div><div class="lg"><b>#</b>betslip &middot; Accumulator</div><div class="id">Bet slip #83494615331 &middot; 23.06.2026 (22:38) &middot; 5 selections</div></div><div class="fig"><div class="o">2.504</div><div class="s">&euro;15 &rarr; &euro;37.57</div></div></div>
+<div class="cprow"><div class="lft"><span class="sport">TENNIS</span><div><div class="mt">Diallo &mdash; Etcheverry</div><div class="mk">ATP Eastbourne &middot; R16 &middot; +1.5 sets &middot; 24.06 16:30</div></div></div><div class="rt"><span class="od">1.22</span><span class="pd"></span></div></div>
+<div class="cprow"><div class="lft"><span class="sport">TENNIS</span><div><div class="mt">Samuel &mdash; Tirante</div><div class="mk">ATP Eastbourne &middot; R16 &middot; +1.5 sets &middot; 24.06 12:00</div></div></div><div class="rt"><span class="od">1.22</span><span class="pd"></span></div></div>
+<div class="cprow"><div class="lft"><span class="sport">TENNIS</span><div><div class="mt">Harris &mdash; Piros</div><div class="mk">Wimbledon Qualifying &middot; +1.5 sets &middot; 24.06 12:00</div></div></div><div class="rt"><span class="od">1.21</span><span class="pd"></span></div></div>
+<div class="cprow"><div class="lft"><span class="sport">TENNIS</span><div><div class="mt">McDonald &mdash; Carball&eacute;s Baena</div><div class="mk">Wimbledon Qualifying &middot; +1.5 sets &middot; 24.06 13:30</div></div></div><div class="rt"><span class="od">1.159</span><span class="pd"></span></div></div>
+<div class="cprow"><div class="lft"><span class="sport">TENNIS</span><div><div class="mt">Schoolkate &mdash; Evans</div><div class="mk">Wimbledon Qualifying &middot; +1.5 sets &middot; 24.06 12:00</div></div></div><div class="rt"><span class="od">1.2</span><span class="pd"></span></div></div>
+    <div class="cpfoot">&#9203; PRE-MATCH &middot; AWAITING RESULT</div>
+  </div></div>
+  <div class="body">
+    <div class="lead">Here's a quieter way to back a hunch. A +1.5 set handicap means my man can lose the match outright and I still collect, provided he takes one set on the way down. It's grass season, the lawn rewards the players built for it, and I've found five matches where the favourite &mdash; or the man on the right surface &mdash; only has to avoid a straight-sets collapse.</div>
+<div class="leg"><div class="kick">ATP Eastbourne &middot; R16 &middot; Grass</div><div class="match">Gabriel Diallo <span class="vs">v</span> Tomas Mart&iacute;n Etcheverry</div><div class="pick">Diallo +1.5 sets</div><div class="q"><div class="q-txt">&ldquo;Horrendous 5-13 all time on grass &mdash; can't be the favourite whatever the ranking says.&rdquo;</div><div class="q-src">&mdash; Tenngrand</div></div><div class="com">Both men are off-form, but only one can play on grass, and it isn't the Argentine (5-13 there against 317 clay wins). Diallo has a real grass pedigree &mdash; 9-3 on it in 2025 &mdash; and the room agrees: Dimers 55%, bookmakers -140. I only need him competitive. The +1.5 does the rest.</div></div>
+<div class="leg"><div class="kick">ATP Eastbourne &middot; R16 &middot; Grass</div><div class="match">Toby Samuel <span class="vs">v</span> Thiago Agust&iacute;n Tirante</div><div class="pick">Samuel +1.5 sets</div><div class="q"><div class="q-txt">&ldquo;A natural clay-courter &mdash; heavier ball, built for slower surfaces.&rdquo;</div><div class="q-src">&mdash; Last Word on Sports</div></div><div class="com">For this leg to fail, a clay specialist (3-5 on grass) has to sweep a home grass-courter in straight sets, in front of his own crowd. Samuel is at home on the surface with the local support. I'll take that price.</div><div class="eng-line"><span class="eng">For England</span> Samuel &mdash; a set will do.</div></div>
+<div class="leg"><div class="kick">Wimbledon Qualifying &middot; Grass</div><div class="match">Billy Harris <span class="vs">v</span> Zsombor Piros</div><div class="pick">Harris +1.5 sets</div><div class="q"><div class="q-txt">&ldquo;In imperious form &mdash; dropped Napolitano 6-2 6-2.&rdquo;</div><div class="q-src">&mdash; Isle of Man press</div></div><div class="com">Piros is off a first-round clay loss in Parma, playing his first grass match of the year. For me to lose this leg, the rusty man has to win in two clean sets on a surface he hasn't touched all season. Unlikely &mdash; and Harris has a set in hand regardless.</div><div class="eng-line"><span class="eng">For England</span> Harris &mdash; hold a set and we're fine.</div></div>
+<div class="leg"><div class="kick">Wimbledon Qualifying &middot; Grass</div><div class="match">Mackenzie McDonald <span class="vs">v</span> Roberto Carball&eacute;s Baena</div><div class="pick">McDonald +1.5 sets</div><div class="q"><div class="q-txt">&ldquo;Favourite surface: clay. Favourite tournament: Roland-Garros.&rdquo;</div><div class="q-src">&mdash; Carball&eacute;s Baena, ATP profile</div></div><div class="com">The shortest price here, and you can see why. Asking a clay terrier (7-17 on grass against 522-321 on clay) to beat a fast-court American by two clear sets on grass is asking a great deal. I'm not asking it. I just need McDonald upright.</div></div>
+<div class="leg"><div class="kick">Wimbledon Qualifying &middot; Grass</div><div class="match">Tristan Schoolkate <span class="vs">v</span> Daniel Evans</div><div class="pick">Schoolkate +1.5 sets</div><div class="q"><div class="q-txt">&ldquo;My body hasn't been great, and I no longer want to put myself through the training.&rdquo;</div><div class="q-src">&mdash; Dan Evans, on retiring</div></div><div class="com">The one I take no pleasure in, so let me be careful. Evans is a grass legend in the literal sense &mdash; a three-time champion on home grass and the first man in 23 years to win three Challenger titles on the surface. The talent never left. But the body has, and he's said so himself. Thirty-six, a chronic wrist problem, ranked 244th, one last Wimbledon to chase. I'm not betting against the player &mdash; I'm betting the body can no longer produce a clean straight-sets win. <strong>Total respect.</strong> The lawn just doesn't hand out fairytales on demand.</div></div>
+<div class="funfact"><div class="fh">&#127934; Fun fact &middot; two of these legs share a history</div><div class="ft">Harris and Samuel &mdash; two of these five legs &mdash; met in the M25 Nottingham final last year. Samuel won 6-4, 6-4. Today they're on the same slip.</div></div>
+    <div class="closing">So there it is: five players, none of whom I need to win, all of whom I need to stay on their feet. &euro;15 in, &euro;37.57 out if grass behaves and nobody gets swept. First balls at noon, the Diallo leg at half four.</div>
+    <div class="status-line">Status: <b>&#9203; PRE-MATCH</b> &middot; published before kickoff. This page settles, leg by leg, once the lawn has its say.</div>
   </div>
 </div>
 <div class="related">
@@ -158,11 +161,7 @@ body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--dark);}
 </div>
 <footer class="footer">
   <a href="index.html" class="footer-logo"><span class="h">#</span>sportsbetting</a>
-  <div class="footer-links">
-    <a href="index.html#track-record">#trackrecord</a>
-    <a href="index.html#parlay-story">#aparlaystory</a>
-    <a href="index.html#fun-facts">#funfacts</a>
-  </div>
+  <div class="footer-links"><a href="index.html#track-record">#trackrecord</a><a href="index.html#parlay-story">#aparlaystory</a><a href="index.html#fun-facts">#funfacts</a></div>
   <div class="footer-by">A Charles Chambers Farah strategy</div>
 </footer>
 </body>
