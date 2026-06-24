@@ -254,7 +254,7 @@ body{font-family:'Inter',sans-serif;background:var(--cream);}
 /* BETSLIP MODAL */
 .mo{display:none;position:fixed;inset:0;background:rgba(30,30,30,.78);z-index:500;align-items:flex-end;justify-content:center;}
 .mo.on{display:flex;}
-.mb{background:#fff;border-top:2px solid var(--dark);width:100%;max-width:460px;border-radius:14px 14px 0 0;overflow:hidden;}
+.mb{background:#fff;border-top:2px solid var(--dark);width:100%;max-width:460px;border-radius:14px 14px 0 0;max-height:92vh;overflow-y:auto;overflow-x:hidden;}
 @media(min-width:768px){.mo{align-items:center;}.mb{border-radius:12px;border:2px solid var(--dark);}}
 .mh{background:var(--nook);padding:13px 17px;display:flex;justify-content:space-between;align-items:center;}
 .mhl{font-family:'JetBrains Mono',monospace;font-size:9px;color:rgba(255,255,255,.8);}
@@ -264,6 +264,19 @@ body{font-family:'Inter',sans-serif;background:var(--cream);}
 .mm{font-family:'Spectral',serif;font-size:22px;font-weight:700;color:var(--dark);line-height:1.1;margin-bottom:3px;}
 .mk{font-size:12px;color:#7a7060;border-left:2px solid var(--nook);padding-left:8px;margin-bottom:13px;}
 .mr{height:1.5px;background:var(--dark);margin-bottom:13px;}
+.mlegs{margin-bottom:13px;border:1px solid var(--border);border-radius:8px;overflow:hidden;}
+.mlegs-h{font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);background:#f8f5ef;padding:8px 12px;border-bottom:1px solid var(--border);}
+.mleg{display:flex;align-items:center;gap:10px;padding:9px 12px;border-bottom:1px solid #efeae0;}
+.mleg:last-child{border-bottom:none;}
+.mleg-dot{width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0;color:#fff;}
+.mleg-dot.pend{background:var(--ocre);color:var(--dark);}
+.mleg-dot.won{background:var(--nook);}
+.mleg-dot.lost{background:var(--coral);}
+.mleg-main{flex:1;min-width:0;}
+.mleg-sel{font-family:'Spectral',serif;font-size:14px;font-weight:700;color:var(--dark);line-height:1.15;}
+.mleg-mk{font-size:10.5px;color:var(--muted);margin-top:1px;}
+.mleg-score{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:var(--dark);letter-spacing:.03em;margin-right:4px;}
+.mleg-odds{font-family:'Spectral',serif;font-size:16px;font-weight:800;color:var(--dark);flex-shrink:0;}
 .mns{display:flex;justify-content:space-between;align-items:flex-end;padding-bottom:13px;}
 .ml{font-size:8px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:3px;}
 .modds{font-family:'Spectral',serif;font-size:46px;font-weight:700;color:var(--dark);line-height:1;}
@@ -523,7 +536,7 @@ body{font-family:'Inter',sans-serif;background:var(--cream);}
   <div class="nav-logo" onclick="go('home')"><span>#</span>sportsbetting</div>
   <div class="nav-links">
     <button id="nl-tr" onclick="go('tr')">#TRACK RECORD</button>
-    <button id="nl-zi" onclick="go('zi')">#ZOOM IN</button>
+    <button id="nl-zi" onclick="go('zi')">#A PARLAY STORY</button>
     <button id="nl-ff" onclick="go('ff')">#FUN FACTS</button>
   </div>
   <div class="nav-right">
@@ -535,7 +548,7 @@ body{font-family:'Inter',sans-serif;background:var(--cream);}
 <div class="nav-drawer" id="navDrawer">
   <button class="ndl" onclick="go('home');closeMenu()">Home</button>
   <button class="ndl" onclick="go('tr');closeMenu()">#TRACK RECORD</button>
-  <button class="ndl" onclick="go('zi');closeMenu()">#ZOOM IN</button>
+  <button class="ndl" onclick="go('zi');closeMenu()">#A PARLAY STORY</button>
   <button class="ndl" onclick="go('ff');closeMenu()">#FUN FACTS</button>
   <div style="margin-top:24px;display:flex;flex-direction:column;gap:10px;">
     <button class="btn-sim" onclick="toggleSim();closeMenu()">Simulation</button>
@@ -595,7 +608,7 @@ body{font-family:'Inter',sans-serif;background:var(--cream);}
   <button class="snb" id="snb2">&#8594;</button>
 </div>
 <div class="sh">
-  <div style="display:flex;align-items:baseline;gap:8px;"><div class="st2"><span>#</span>ZOOM IN</div><div class="ssub">Latest analyses</div></div>
+  <div style="display:flex;align-items:baseline;gap:8px;"><div class="st2"><span>#</span>A PARLAY STORY</div><div class="ssub">Every slip, before and after</div></div>
   <button class="see-all" onclick="go('zi')">See all &#x2192;</button>
 </div>
 <div class="zi-grid" id="homeZi"></div>
@@ -664,7 +677,7 @@ body{font-family:'Inter',sans-serif;background:var(--cream);}
 <!-- ZOOM IN -->
 <div class="pg" id="pg-zi">
 <div class="zi-h">
-  <div class="zi-t"><span>#</span>ZOOM IN</div>
+  <div class="zi-t"><span>#</span>A PARLAY STORY</div>
   <div class="zi-s">The story behind every bet &mdash; signal, edge, entry, result. All sourced.</div>
 </div>
 <div class="zi-page-grid" id="ziPageGrid"></div>
@@ -1035,7 +1048,7 @@ body{font-family:'Inter',sans-serif;background:var(--cream);}
     <div class="foot-logo" onclick="go('home')"><span>#</span>sportsbetting</div>
     <div class="foot-links">
       <a onclick="go('tr')">#trackrecord</a>
-      <a onclick="go('zi')">#zoomin</a>
+      <a onclick="go('zi')">#aparlaystory</a>
       <a onclick="go('ff')">#funfacts</a>
       <a href="#">Privacy</a>
     </div>
@@ -1050,6 +1063,7 @@ body{font-family:'Inter',sans-serif;background:var(--cream);}
     <div class="mh"><div class="mhl" id="mId"></div><button class="mc" onclick="closeMo()">&#x2715;</button></div>
     <div class="mi">
       <div class="mto" id="mTo"></div><div class="mm" id="mMa"></div><div class="mk" id="mMk"></div>
+      <div class="mlegs" id="mLegs" style="display:none"></div>
       <div class="mr"></div>
       <div class="mns">
         <div><div class="ml">Odds</div><div class="modds" id="mOd"></div></div>
@@ -1133,6 +1147,8 @@ const SLIPS=[
   {id:"83245231485",date:"18.06",tourn:"Accumulator · 8 legs",match:"Multi-sport parlay",market:"8-leg acca · Mixed",odds:"5.784",stake:"15",ret:"0.00",profit:"-15.00€",sport:"tennis",entry:"mixed",surface:"mixed",profitN:-15.00,stakeN:15,won:false,slug:"parlay-8"},
   {id:"83248956369",date:"18.06",tourn:"ITF W75 Blois · Clay",match:"Riera vs Oz",market:"W2 · Live",odds:"1.45",stake:"50",ret:"72.50",profit:"+22.50€",sport:"tennis",entry:"live",surface:"clay",profitN:22.50,stakeN:50,won:true,slug:"riera-oz"},
   {id:"83287761763",date:"19.06",tourn:"Accumulator · 6 legs",match:"Multi-sport parlay",market:"6-leg acca · Mixed",odds:"9.417",stake:"15",ret:"0.00",profit:"-15.00€",sport:"tennis",entry:"mixed",surface:"mixed",profitN:-15.00,stakeN:15,won:false,slug:"parlay-6"},
+  {id:"83495775305",date:"24.06",tourn:"Accumulator · 3 legs",match:"Grass-court outright parlay",market:"3-leg acca · Pre-match",odds:"3.635",stake:"5",ret:"18.18",profit:"&mdash;",sport:"tennis",entry:"pre-match",surface:"grass",profitN:0,stakeN:5,pending:true,slug:"parlay-bold-grass",legs:[{sel:"Toby Samuel",mk:"To win · ATP Eastbourne, R16",odds:"1.599"},{sel:"Billy Harris",mk:"To win · Wimbledon Qualifying",odds:"1.57"},{sel:"Mackenzie McDonald",mk:"To win · Wimbledon Qualifying",odds:"1.448"}]},
+  {id:"83494615331",date:"24.06",tourn:"Accumulator · 5 legs",match:"Set-handicap parlay (+1.5)",market:"5-leg acca · Pre-match",odds:"2.504",stake:"15",ret:"37.57",profit:"&mdash;",sport:"tennis",entry:"pre-match",surface:"grass",profitN:0,stakeN:15,pending:true,slug:"parlay-safe-handicap",legs:[{sel:"Gabriel Diallo",mk:"+1.5 sets · ATP Eastbourne, R16",odds:"1.22"},{sel:"Toby Samuel",mk:"+1.5 sets · ATP Eastbourne, R16",odds:"1.22"},{sel:"Billy Harris",mk:"+1.5 sets · Wimbledon Qualifying",odds:"1.21"},{sel:"Mackenzie McDonald",mk:"+1.5 sets · Wimbledon Qualifying",odds:"1.159"},{sel:"Tristan Schoolkate",mk:"+1.5 sets · Wimbledon Qualifying",odds:"1.2"}]},
 ];
 
 /* ===== PURCHASING POWER ENGINE ===== */
@@ -1225,6 +1241,8 @@ function ppRender(amtRaw,opts){
 }
 
 const ART_URLS={
+  "parlay-bold-grass":"grass-court-players-better-on-grass-parlay-preview.html",
+  "parlay-safe-handicap":"dont-get-swept-grass-set-handicap-parlay-preview.html",
   "parlay-6":"de-minaur-nakashima-upset-parlay-analysis.html",
   "riera-oz":"live-betting-medical-timeout-signal-riera-oz.html",
   "parlay-8":"one-point-overtime-acb-final-near-miss.html",
@@ -1236,6 +1254,8 @@ const ART_URLS={
   "lopez":"a-coinflip-the-press-missed-lopez-live.html"
 };
 const ARTS=[
+  {slug:"parlay-safe-handicap",date:"Jun 24",sport:"Acca · 5 legs",tag:"Parlay · Pre-match",tc:"to",hl:"Five players. One modest request: don't get swept off the lawn.",cite:"+1.5 sets each. Not asking them to win — just to hold a set.",s:"grass",preview:true,odds:"2.504",legs:"5-leg acca · all grass",p1:"",p2:"",s1:[],s2:[],result:""},
+  {slug:"parlay-bold-grass",date:"Jun 24",sport:"Acca · 3 legs",tag:"Parlay · Pre-match",tc:"to",hl:"A wildly original theory: grass-court players are better on grass.",cite:"Three clay-courters thrown onto a lawn in Wimbledon week.",s:"grass",preview:true,odds:"3.635",legs:"3-leg acca · all grass",p1:"",p2:"",s1:[],s2:[],result:""},
   {slug:"parlay-6",date:"Jun 19",sport:"Acca · 6 legs",tag:"Parlay · Lost",tc:"tr3",hl:"Do I suck at parlays? Possibly.",cite:"Four legs landed. De Minaur and Bayern did not.",result:"-15.00€",file:"",s:"grass",p1:"B. Nakashima [32]",p2:"A. De Minaur [1]",s1:["7","6"],s2:["5","3"]},
   {slug:"riera-oz",date:"Jun 18",sport:"Tennis · Clay · ITF",tag:"Single · Live",tc:"tg2",hl:"On my watch-list since the MTO. I sat on it. It paid.",cite:"The body told the story a day early. I just waited.",result:"+22.50€",file:"",s:"clay",p1:"I. Oz",p2:"J. Riera",s1:["2","6","6"],s2:["6","1","1"]},
   {slug:"parlay-8",date:"Jun 18",sport:"Acca · 8 legs",tag:"Parlay · Lost",tc:"tr3",hl:"One point. One overtime. One dead slip.",cite:"Valencia led 99-95. Clyburn had other ideas. 112-113.",result:"-15.00€",file:"",s:"hard",p1:"FC Barcelona",p2:"Valencia Basket",s1:["113"],s2:["112"]},
@@ -1250,6 +1270,22 @@ const ARTS=[
 function makeTile(a){
   const t=document.createElement('div');t.className='zt';
   t.onclick=()=>{const u=ART_URLS[a.slug];if(u){window.location.href=u;}else{openArt(a.slug);}};
+  if(a.preview){
+    t.innerHTML='<div class="zt-top"><div class="zt-dn">'+a.date+'</div><div class="zt-sp">'+a.sport+'</div></div>'+
+      '<div class="zt-surf-block '+a.s+'" style="display:flex;flex-direction:column;justify-content:center;gap:8px;min-height:70px;">'+
+        '<div style="display:flex;align-items:baseline;justify-content:space-between;">'+
+          '<div style="font-family:\'JetBrains Mono\',monospace;font-size:9px;letter-spacing:.1em;color:rgba(255,255,255,.7);text-transform:uppercase;">Total odds</div>'+
+          '<div style="font-family:\'Spectral\',serif;font-size:30px;font-weight:800;color:#fff;line-height:1;">'+a.odds+'</div>'+
+        '</div>'+
+        '<div style="display:flex;align-items:center;justify-content:space-between;">'+
+          '<div style="font-family:\'JetBrains Mono\',monospace;font-size:9px;color:rgba(255,255,255,.8);">'+a.legs+'</div>'+
+          '<div style="font-family:\'JetBrains Mono\',monospace;font-size:8.5px;font-weight:700;letter-spacing:.08em;color:#1e1e1e;background:var(--ocre);padding:2px 8px;border-radius:10px;">PRE-MATCH</div>'+
+        '</div>'+
+      '</div>'+
+      '<div class="zt-body"><div class="zt-tag '+a.tc+'">'+a.tag+'</div><div class="zt-hl">'+a.hl+'</div><div class="zt-cite">'+a.cite+'</div></div>'+
+      '<div class="zt-ft"><span style="color:var(--ocre);font-weight:700;">&#9203; PRE-MATCH</span><span>Read &#x2192;</span></div>';
+    return t;
+  }
   const sets=(arr,win)=>arr.map(s=>'<div class="zt-set '+(s==='ret.'?'r':win?'w':'l')+'">'+s+'</div>').join('');
   var lost=(''+a.result).trim().charAt(0)==='-';
   t.innerHTML='<div class="zt-top"><div class="zt-dn">'+a.date+'</div><div class="zt-sp">'+a.sport+'</div></div>'+
@@ -1276,17 +1312,23 @@ function renderSlips(){
   const f=getFilteredDisplay();
   f.slice(pg*PER,(pg+1)*PER).forEach(s=>{
     const c=document.createElement('div');c.className='slip';c.onclick=()=>openMo(s);
+    var P=s.pending===true;
     var W=s.won!==false;
-    c.innerHTML='<div class="slip-h"><div class="slip-id">'+s.id+'</div><div class="'+(W?'bw':'bl')+'">'+(W?'Won &#x2713;':'Lost &#x2715;')+'</div></div>'+
+    var badge=P?'<div class="bw" style="background:var(--ocre);color:var(--dark)">Pending &#9203;</div>':'<div class="'+(W?'bw':'bl')+'">'+(W?'Won &#x2713;':'Lost &#x2715;')+'</div>';
+    var profitCell=P?'<div class="slip-p" style="color:var(--muted)">&mdash;</div>':'<div class="slip-p" style="'+(W?'':'color:var(--coral)')+'">'+s.profit+'</div>';
+    var retCell=P?'<div class="slip-cv">'+s.ret+'&#x20AC;<span style="font-size:9px;color:var(--muted);font-weight:400"> max</span></div>':'<div class="slip-cv">'+s.ret+'&#x20AC;</div>';
+    var statusCell=P?'<div class="slip-cv" style="color:#b8860b">Pending</div>':'<div class="slip-cv '+(W?'w':'l')+'">'+(W?'Won':'Lost')+'</div>';
+    var footCell=P?'<div class="slip-st" style="background:rgba(245,179,46,.16);color:#b8860b">&#9203; Awaiting result</div>':'<div class="slip-st'+(W?'':' lost')+'">'+(W?'&#x2713; Paid out':'&#x2715; Lost')+'</div>';
+    c.innerHTML='<div class="slip-h"><div class="slip-id">'+s.id+'</div>'+badge+'</div>'+
       '<div class="slip-b"><div class="slip-tr">'+s.tourn+'</div><div class="slip-m">'+s.match+'</div>'+
       '<div class="slip-mk">'+s.market+'</div><div class="slip-div"></div>'+
       '<div class="slip-ns"><div><div class="slip-ol">Odds</div><div class="slip-o">'+s.odds+'</div></div>'+
-      '<div><div class="slip-ol" style="text-align:right">Profit</div><div class="slip-p" style="'+(W?'':'color:var(--coral)')+'">'+s.profit+'</div></div></div></div>'+
+      '<div><div class="slip-ol" style="text-align:right">Profit</div>'+profitCell+'</div></div></div>'+
       '<div class="slip-g"><div class="slip-c"><div class="slip-cl">Stake</div><div class="slip-cv">'+s.stake+'&#x20AC;</div></div>'+
-      '<div class="slip-c"><div class="slip-cl">Return</div><div class="slip-cv">'+s.ret+'&#x20AC;</div></div>'+
-      '<div class="slip-c"><div class="slip-cl">Status</div><div class="slip-cv '+(W?'w':'l')+'">'+(W?'Won':'Lost')+'</div></div></div>'+
-      '<div class="slip-f"><div class="slip-st'+(W?'':' lost')+'">'+(W?'&#x2713; Paid out':'&#x2715; Lost')+'</div><div class="slip-dt">'+s.date+'.2026</div></div>'+
-      ppRender(s.profitN,{seed:parseInt((s.id||'0').slice(-5))||1});
+      '<div class="slip-c"><div class="slip-cl">Return</div>'+retCell+'</div>'+
+      '<div class="slip-c"><div class="slip-cl">Status</div>'+statusCell+'</div></div>'+
+      '<div class="slip-f">'+footCell+'<div class="slip-dt">'+s.date+'.2026</div></div>'+
+      (P?'':ppRender(s.profitN,{seed:parseInt((s.id||'0').slice(-5))||1}));
     g.appendChild(c);
   });
   sdts.querySelectorAll('.sdot').forEach((d,i)=>d.classList.toggle('on',i===pg));
@@ -1300,10 +1342,23 @@ function openMo(s){
   ['mId','mTo','mMa','mMk','mOd','mPr','mSt','mRe','mDt'].forEach(function(id,i){
     document.getElementById(id).innerHTML=['N&deg; '+s.id,s.tourn,s.match,s.market,s.odds,s.profit,s.stake+'&#x20AC;',s.ret+'&#x20AC;',s.date+'.2026'][i];
   });
+  var P=s.pending===true;
   var W=s.won!==false;
-  var ms=document.getElementById('mStatusVal');if(ms){ms.textContent=W?'Won':'Lost';ms.className='mcev '+(W?'w':'l');}
-  var mf=document.getElementById('mStatusFoot');if(mf){mf.innerHTML=W?'&#x2713; Paid out':'&#x2715; Lost';mf.className='mst'+(W?'':' lost');}
-  var mp=document.getElementById('mPr');if(mp){mp.style.color=W?'':'var(--coral)';}
+  var ms=document.getElementById('mStatusVal');if(ms){ms.textContent=P?'Pending':(W?'Won':'Lost');ms.className='mcev '+(P?'':(W?'w':'l'));if(P)ms.style.color='#b8860b';else ms.style.color='';}
+  var mf=document.getElementById('mStatusFoot');if(mf){mf.innerHTML=P?'&#9203; Awaiting result':(W?'&#x2713; Paid out':'&#x2715; Lost');mf.className=P?'mst':('mst'+(W?'':' lost'));}
+  var mp=document.getElementById('mPr');if(mp){mp.style.color=P?'var(--muted)':(W?'':'var(--coral)');}
+  var ml=document.getElementById('mLegs');
+  if(ml){
+    if(s.legs&&s.legs.length){
+      ml.style.display='block';
+      ml.innerHTML='<div class="mlegs-h">Selections &middot; '+s.legs.length+' legs</div>'+s.legs.map(function(l){
+        var st=l.st||'pending';
+        var dot=st==='won'?'<span class="mleg-dot won">&#x2713;</span>':(st==='lost'?'<span class="mleg-dot lost">&#x2715;</span>':'<span class="mleg-dot pend">&#9203;</span>');
+        var sc=l.score?'<div class="mleg-score">'+l.score+'</div>':'';
+        return '<div class="mleg">'+dot+'<div class="mleg-main"><div class="mleg-sel">'+l.sel+'</div><div class="mleg-mk">'+l.mk+'</div></div>'+sc+'<div class="mleg-odds">'+l.odds+'</div></div>';
+      }).join('');
+    }else{ml.style.display='none';ml.innerHTML='';}
+  }
   document.getElementById('modal').classList.add('on');
 }
 function closeMo(){document.getElementById('modal').classList.remove('on');}
@@ -1315,7 +1370,7 @@ function filt(el){
   el.classList.add('on');pg=0;renderSlips();buildCal();updateKPIs();
 }
 function updateKPIs(){
-  const f=getFiltered();
+  const f=getFiltered().filter(x=>!x.pending);
   const tp=f.reduce((s,x)=>s+(x.profitN||0),0),ts=f.reduce((s,x)=>s+(x.stakeN||0),0);
   const ao=f.length?f.reduce((s,x)=>s+parseFloat(x.odds),0)/f.length:0;
   const roi=ts?Math.round(tp/ts*1000)/10:0,roc=Math.round(tp/1000*1000)/10;
@@ -1432,7 +1487,7 @@ history.replaceState({page:'home'},'');
 
 // Hash-routing: article pages link back with #zoom-in / #track-record / #fun-facts
 (function(){
-  var map={'zoom-in':'zi','track-record':'tr','fun-facts':'ff','home':'home'};
+  var map={'parlay-story':'zi','zoom-in':'zi','track-record':'tr','fun-facts':'ff','home':'home'};
   var h=(location.hash||'').replace('#','');
   if(map[h]){go(map[h]);}
 })();
