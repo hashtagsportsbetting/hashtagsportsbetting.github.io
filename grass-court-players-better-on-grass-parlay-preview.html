@@ -18,7 +18,17 @@ body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--ink);-we
 .eng{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#fff;background:var(--blue);padding:3px 8px;border-radius:2px;}
 .backbar{max-width:1060px;margin:0 auto;padding:16px 56px 0;}
 .art-back{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:600;color:rgba(255,255,255,.85);text-decoration:none;letter-spacing:.05em;}
-.phead{background:linear-gradient(160deg,var(--grass1),var(--grass2));color:#fff;padding:42px 56px 58px;}
+.phead{color:#fff;padding:42px 56px 48px;position:relative;overflow:hidden;}
+.phead.win{background:linear-gradient(160deg,var(--grass1),var(--grass2));}
+.phead.lost{background:linear-gradient(160deg,#3a1410,#6e2418);}
+.headC{display:grid;grid-template-columns:1fr auto;align-items:end;gap:24px;}
+.headC .left{min-width:0;position:relative;z-index:3;}
+.wordC{font-family:'Spectral',serif;font-weight:800;line-height:.82;letter-spacing:-.02em;text-align:right;flex-shrink:0;padding-bottom:4px;}
+.wordC .w{font-size:112px;color:#fff;}
+.wordC .badge{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.1em;padding:5px 14px;border-radius:4px;margin-top:6px;}
+.phead.win .wordC .badge{background:var(--ocre);color:var(--ink);}
+.phead.lost .wordC .badge{background:#fff;color:#b8341a;}
+.wordC .ret{font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:600;color:rgba(255,255,255,.88);margin-top:10px;letter-spacing:.04em;}
 .phead .backrow{margin-bottom:18px;}
 .phead .backrow a{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:600;color:rgba(255,255,255,.7);text-decoration:none;letter-spacing:.05em;}
 .pk{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.82);margin-bottom:20px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
@@ -44,6 +54,14 @@ body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--ink);-we
 .cprow .od{font-family:'Spectral',serif;font-size:19px;font-weight:800;}
 .cprow .pd{width:7px;height:7px;border-radius:50%;background:var(--ocre);}
 .cpfoot{background:rgba(245,179,46,.18);color:#8a6000;text-align:center;padding:12px;font-family:'JetBrains Mono',monospace;font-size:9.5px;font-weight:700;letter-spacing:.06em;}
+.cpfoot.won{background:rgba(63,114,87,.16);color:#2f6b40;}
+.cpscore{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;color:var(--nook);}
+.cpwin{color:var(--nook);font-weight:800;font-size:16px;}
+.pk .st.done{color:#a8d8bb;}
+.fig .s.won{color:#cdebd8;}
+.legresult{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:10.5px;font-weight:700;letter-spacing:.04em;color:#2f6b40;background:rgba(63,114,87,.13);padding:3px 10px;border-radius:3px;margin:8px 0 2px;}
+.resultbar{max-width:780px;margin:-12px auto 38px;background:linear-gradient(150deg,var(--grass1),var(--grass2));color:#fff;border-radius:5px;padding:15px 24px;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;letter-spacing:.03em;display:flex;align-items:center;gap:8px;flex-wrap:wrap;border-left:4px solid var(--ocre);}
+.resultbar .big{font-family:'Spectral',serif;font-size:17px;font-weight:800;color:var(--ocre);letter-spacing:0;}
 .body{max-width:700px;margin:0 auto;}
 .lead{font-family:'Spectral',serif;font-size:20px;font-weight:500;line-height:1.5;color:var(--ink);margin-bottom:32px;}
 .leg{padding:28px 0;border-top:2px solid var(--ink);}
@@ -77,7 +95,8 @@ body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--ink);-we
 .seo-index{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);}
 @media(max-width:820px){
 .nav{padding:13px 18px;}.nav-mid{display:none;}
-.phead{padding:30px 22px 48px;}.ptitle{font-size:30px;}.psub{font-size:16px;}
+.phead{padding:30px 22px 40px;}.ptitle{font-size:30px;}.psub{font-size:16px;}
+.headC{grid-template-columns:1fr;gap:14px;}.wordC{text-align:left;order:-1;}.wordC .w{font-size:74px;}
 .wrap{padding:0 18px 44px;}.coupon-wrap{margin:-26px auto 32px;}
 .cphead{flex-direction:column;align-items:flex-start;gap:12px;}.cphead .fig{text-align:left;}.cphead .fig .o{font-size:32px;}
 .cprow{flex-wrap:wrap;gap:8px;}
@@ -121,28 +140,33 @@ body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--ink);-we
   <a href="https://abettorlife.blogabet.com" class="btn-sub">#SUBSCRIBE</a>
 </nav>
 <p class="seo-index">Grass-court accumulator preview for 24 June 2026, Wimbledon qualifying week. Selections: Toby Samuel to beat Thiago Agustin Tirante at ATP Eastbourne; Billy Harris to beat Zsombor Piros in Wimbledon qualifying; Mackenzie McDonald to beat Roberto Carballes Baena in Wimbledon qualifying. Total odds 3.635, stake 5 euros, maximum return 18.18 euros. Published pre-match.</p>
-<div class="phead">
-  <div class="backrow"><a href="index.html#parlay-story">&#8592; Back to #A PARLAY STORY</a></div>
-  <div class="pk"><span>A Parlay Story</span><span>&middot;</span><span>Grass &middot; Wimbledon Week</span><span class="st"><span class="pdot"></span>PRE-MATCH</span></div>
-  <div class="ptitle">A Wildly Original Theory: Grass-Court Players Are Better On Grass.</div>
-  <div class="psub">Three legs, one heresy, &euro;5 to win &euro;18.18 &mdash; posted before a single ball was struck. Anyone can be a genius at full-time.</div>
+<div class="phead win">
+  <div class="headC">
+    <div class="left">
+      <div class="backrow"><a href="index.html#parlay-story">&#8592; Back to #A PARLAY STORY</a></div>
+      <div class="pk"><span>A Parlay Story</span><span>&middot;</span><span>Grass &middot; Wimbledon Week</span></div>
+      <div class="ptitle">A Wildly Original Theory: Grass-Court Players Are Better On Grass.</div>
+      <div class="psub">Three legs, one heresy, &euro;5 to win &euro;18.18 &mdash; posted before a single ball was struck. Anyone can be a genius at full-time.</div>
+    </div>
+    <div class="wordC"><div class="w">WIN</div><div><span class="badge">PAID OUT</span></div><div class="ret">+&euro;13.18 &middot; returned &euro;18.18</div></div>
+  </div>
 </div>
 <div class="wrap">
   <div class="coupon-wrap"><div class="coupon">
-    <div class="cphead"><div><div class="lg"><b>#</b>betslip &middot; Accumulator</div><div class="id">Bet slip #83495775305 &middot; 23.06.2026 (23:12) &middot; 3 selections</div></div><div class="fig"><div class="o">3.635</div><div class="s">&euro;5 &rarr; &euro;18.18</div></div></div>
-<div class="cprow"><div class="lft"><span class="sport">TENNIS</span><div><div class="mt">Samuel &mdash; Tirante</div><div class="mk">ATP Eastbourne &middot; R16 &middot; To win &middot; 24.06 12:00</div></div></div><div class="rt"><span class="od">1.599</span><span class="pd"></span></div></div>
-<div class="cprow"><div class="lft"><span class="sport">TENNIS</span><div><div class="mt">Harris &mdash; Piros</div><div class="mk">Wimbledon Qualifying &middot; To win &middot; 24.06 12:00</div></div></div><div class="rt"><span class="od">1.57</span><span class="pd"></span></div></div>
-<div class="cprow"><div class="lft"><span class="sport">TENNIS</span><div><div class="mt">McDonald &mdash; Carball&eacute;s Baena</div><div class="mk">Wimbledon Qualifying &middot; To win &middot; 24.06 13:30</div></div></div><div class="rt"><span class="od">1.448</span><span class="pd"></span></div></div>
-    <div class="cpfoot">&#9203; PRE-MATCH &middot; AWAITING RESULT</div>
+    <div class="cphead"><div><div class="lg"><b>#</b>betslip &middot; Accumulator</div><div class="id">Bet slip #83495775305 &middot; 23.06.2026 (23:12) &middot; 3 selections</div></div><div class="fig"><div class="o">3.635</div><div class="s won">&euro;5 &rarr; &euro;18.18 &#x2713;</div></div></div>
+<div class="cprow"><div class="lft"><span class="sport">TENNIS</span><div><div class="mt">Samuel &mdash; Tirante &nbsp;<span class="cpscore">6-1 7-6</span></div><div class="mk">ATP Eastbourne &middot; R16 &middot; To win &middot; WON</div></div></div><div class="rt"><span class="od">1.599</span><span class="cpwin">&#x2713;</span></div></div>
+<div class="cprow"><div class="lft"><span class="sport">TENNIS</span><div><div class="mt">Harris &mdash; Piros &nbsp;<span class="cpscore">6-4 6-4</span></div><div class="mk">Wimbledon Qualifying &middot; To win &middot; WON</div></div></div><div class="rt"><span class="od">1.57</span><span class="cpwin">&#x2713;</span></div></div>
+<div class="cprow"><div class="lft"><span class="sport">TENNIS</span><div><div class="mt">McDonald &mdash; Carball&eacute;s Baena &nbsp;<span class="cpscore">6-4 6-4</span></div><div class="mk">Wimbledon Qualifying &middot; To win &middot; WON</div></div></div><div class="rt"><span class="od">1.448</span><span class="cpwin">&#x2713;</span></div></div>
+    <div class="cpfoot won">&#x2713; WON &middot; PAID OUT</div>
   </div></div>
   <div class="body">
     <div class="lead">It's Wimbledon week, the tour is on grass, and I've backed three players who belong on a lawn against three who, for various reasons, don't. I'm writing this before any of them walks on court &mdash; which means I've nowhere to hide. If it dies, it dies in public.</div>
-<div class="leg"><div class="kick">ATP Eastbourne &middot; R16 &middot; Grass</div><div class="match">Toby Samuel <span class="vs">v</span> Thiago Agust&iacute;n Tirante</div><div class="pick">Samuel to win</div><div class="q"><div class="q-txt">&ldquo;A natural clay-courter whose heavier ball gets stuck on slower surfaces.&rdquo;</div><div class="q-src">&mdash; Last Word on Sports</div></div><div class="com">Tirante is a clay animal stranded on a lawn: 3-5 there in his career, against 206 wins on clay. Samuel, by contrast, is 17-9 on grass and playing at home. The market is split, which is the only reason this leg is interesting at all &mdash; my read is simply the surface.</div><div class="eng-line"><span class="eng">For England</span> Samuel &mdash; you know what to do.</div></div>
-<div class="leg"><div class="kick">Wimbledon Qualifying &middot; Grass</div><div class="match">Billy Harris <span class="vs">v</span> Zsombor Piros</div><div class="pick">Harris to win</div><div class="q"><div class="q-txt">&ldquo;In imperious form &mdash; broke Napolitano early and never let go, 6-2 6-2.&rdquo;</div><div class="q-src">&mdash; Isle of Man press</div></div><div class="com">No clay-courter dodge here, and I won't pretend otherwise: Piros is a respectable 7-5 on grass. The angle is different. He arrives straight off a clay loss in Parma, playing his first grass match of the year, while Harris is flying &mdash; at home, idol Federer, favourite tournament the one down the road.</div><div class="eng-line"><span class="eng">For England</span> Harris &mdash; Piros can only slice it. Show him how it's done.</div></div>
-<div class="leg"><div class="kick">Wimbledon Qualifying &middot; Grass</div><div class="match">Mackenzie McDonald <span class="vs">v</span> Roberto Carball&eacute;s Baena</div><div class="pick">McDonald to win</div><div class="q"><div class="q-txt">&ldquo;Favourite surface: clay. Favourite tournament: Roland-Garros.&rdquo;</div><div class="q-src">&mdash; Carball&eacute;s Baena, ATP profile</div></div><div class="com">What is he doing here? Has anyone told him it's a grass tournament &mdash; or is he just visiting London? Three per cent of his career ranking points have ever come off a lawn, and he's drawn against a fast-court American who actually belongs in these conditions. The bookmakers have McDonald at roughly -244.</div></div>
+<div class="leg"><div class="kick">ATP Eastbourne &middot; R16 &middot; Grass</div><div class="match">Toby Samuel <span class="vs">v</span> Thiago Agust&iacute;n Tirante</div><div class="pick">Samuel to win</div><div class="legresult">&#x2713; Won &middot; 6-1 7-6</div><div class="q"><div class="q-txt">&ldquo;A natural clay-courter whose heavier ball gets stuck on slower surfaces.&rdquo;</div><div class="q-src">&mdash; Last Word on Sports</div></div><div class="com">Tirante is a clay animal stranded on a lawn: 3-5 there in his career, against 206 wins on clay. Samuel, by contrast, is 17-9 on grass and playing at home. The market is split, which is the only reason this leg is interesting at all &mdash; my read is simply the surface.</div><div class="eng-line"><span class="eng">For England</span> Samuel &mdash; you know what to do.</div></div>
+<div class="leg"><div class="kick">Wimbledon Qualifying &middot; Grass</div><div class="match">Billy Harris <span class="vs">v</span> Zsombor Piros</div><div class="pick">Harris to win</div><div class="legresult">&#x2713; Won &middot; 6-4 6-4</div><div class="q"><div class="q-txt">&ldquo;In imperious form &mdash; broke Napolitano early and never let go, 6-2 6-2.&rdquo;</div><div class="q-src">&mdash; Isle of Man press</div></div><div class="com">No clay-courter dodge here, and I won't pretend otherwise: Piros is a respectable 7-5 on grass. The angle is different. He arrives straight off a clay loss in Parma, playing his first grass match of the year, while Harris is flying &mdash; at home, idol Federer, favourite tournament the one down the road.</div><div class="eng-line"><span class="eng">For England</span> Harris &mdash; Piros can only slice it. Show him how it's done.</div></div>
+<div class="leg"><div class="kick">Wimbledon Qualifying &middot; Grass</div><div class="match">Mackenzie McDonald <span class="vs">v</span> Roberto Carball&eacute;s Baena</div><div class="pick">McDonald to win</div><div class="legresult">&#x2713; Won &middot; 6-4 6-4</div><div class="q"><div class="q-txt">&ldquo;Favourite surface: clay. Favourite tournament: Roland-Garros.&rdquo;</div><div class="q-src">&mdash; Carball&eacute;s Baena, ATP profile</div></div><div class="com">What is he doing here? Has anyone told him it's a grass tournament &mdash; or is he just visiting London? Three per cent of his career ranking points have ever come off a lawn, and he's drawn against a fast-court American who actually belongs in these conditions. The bookmakers have McDonald at roughly -244.</div></div>
 <div class="funfact"><div class="fh">&#127934; Fun fact &middot; the legs know each other</div><div class="ft">Harris and Samuel &mdash; two of these three legs &mdash; met in the M25 Nottingham final last year. Samuel won 6-4, 6-4. Today I need them both.</div></div>
     <div class="closing">So there it is &mdash; three picks, one surface, no result. First balls at noon. If grass is grass and clay doesn't travel, this is &euro;18.18. If a clay-courter rediscovers the lawn at exactly the wrong moment for me, you'll have watched it happen.</div>
-    <div class="status-line">Status: <b>&#9203; PRE-MATCH</b> &middot; published before kickoff. This page settles, leg by leg, once the lawn has its say.</div>
+    <div class="status-line">Status: <b style="color:#2f6b40">&#x2713; SETTLED &middot; WON</b> &middot; published before kickoff, settled after the final ball. Every leg landed.</div>
   </div>
 </div>
 <div class="related">

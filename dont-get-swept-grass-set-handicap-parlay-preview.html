@@ -18,7 +18,17 @@ body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--ink);-we
 .eng{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#fff;background:var(--blue);padding:3px 8px;border-radius:2px;}
 .backbar{max-width:1060px;margin:0 auto;padding:16px 56px 0;}
 .art-back{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:600;color:rgba(255,255,255,.85);text-decoration:none;letter-spacing:.05em;}
-.phead{background:linear-gradient(160deg,var(--grass1),var(--grass2));color:#fff;padding:42px 56px 58px;}
+.phead{color:#fff;padding:42px 56px 48px;position:relative;overflow:hidden;}
+.phead.win{background:linear-gradient(160deg,var(--grass1),var(--grass2));}
+.phead.lost{background:linear-gradient(160deg,#3a1410,#6e2418);}
+.headC{display:grid;grid-template-columns:1fr auto;align-items:end;gap:24px;}
+.headC .left{min-width:0;position:relative;z-index:3;}
+.wordC{font-family:'Spectral',serif;font-weight:800;line-height:.82;letter-spacing:-.02em;text-align:right;flex-shrink:0;padding-bottom:4px;}
+.wordC .w{font-size:112px;color:#fff;}
+.wordC .badge{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.1em;padding:5px 14px;border-radius:4px;margin-top:6px;}
+.phead.win .wordC .badge{background:var(--ocre);color:var(--ink);}
+.phead.lost .wordC .badge{background:#fff;color:#b8341a;}
+.wordC .ret{font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:600;color:rgba(255,255,255,.88);margin-top:10px;letter-spacing:.04em;}
 .phead .backrow{margin-bottom:18px;}
 .phead .backrow a{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:600;color:rgba(255,255,255,.7);text-decoration:none;letter-spacing:.05em;}
 .pk{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.82);margin-bottom:20px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
@@ -85,7 +95,8 @@ body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--ink);-we
 .seo-index{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);}
 @media(max-width:820px){
 .nav{padding:13px 18px;}.nav-mid{display:none;}
-.phead{padding:30px 22px 48px;}.ptitle{font-size:30px;}.psub{font-size:16px;}
+.phead{padding:30px 22px 40px;}.ptitle{font-size:30px;}.psub{font-size:16px;}
+.headC{grid-template-columns:1fr;gap:14px;}.wordC{text-align:left;order:-1;}.wordC .w{font-size:74px;}
 .wrap{padding:0 18px 44px;}.coupon-wrap{margin:-26px auto 32px;}
 .cphead{flex-direction:column;align-items:flex-start;gap:12px;}.cphead .fig{text-align:left;}.cphead .fig .o{font-size:32px;}
 .cprow{flex-wrap:wrap;gap:8px;}
@@ -131,11 +142,16 @@ body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--ink);-we
   <a href="https://abettorlife.blogabet.com" class="btn-sub">#SUBSCRIBE</a>
 </nav>
 <p class="seo-index">Set-handicap accumulator preview for 24 June 2026. Selections, all +1.5 sets: Gabriel Diallo against Tomas Martin Etcheverry at ATP Eastbourne; Toby Samuel against Thiago Agustin Tirante; Billy Harris against Zsombor Piros in Wimbledon qualifying; Mackenzie McDonald against Roberto Carballes Baena in Wimbledon qualifying; Tristan Schoolkate against Daniel Evans in Wimbledon qualifying. Total odds 2.504, stake 15 euros, maximum return 37.57 euros. Published pre-match.</p>
-<div class="phead">
-  <div class="backrow"><a href="index.html#parlay-story">&#8592; Back to #A PARLAY STORY</a></div>
-  <div class="pk"><span>A Parlay Story</span><span>&middot;</span><span>Grass &middot; Wimbledon Week</span><span class="st done">&#x2713; SETTLED &middot; WON</span></div>
-  <div class="ptitle">Five Players. One Modest Request: Don't Get Swept Off The Lawn.</div>
-  <div class="psub">A +1.5 set handicap on every leg, &euro;15 to win &euro;37.57 &mdash; posted before a single ball was struck. Not asking anyone to win, only to steal a set.</div>
+<div class="phead win">
+  <div class="headC">
+    <div class="left">
+      <div class="backrow"><a href="index.html#parlay-story">&#8592; Back to #A PARLAY STORY</a></div>
+      <div class="pk"><span>A Parlay Story</span><span>&middot;</span><span>Grass &middot; Wimbledon Week</span></div>
+      <div class="ptitle">Five Players. One Modest Request: Don't Get Swept Off The Lawn.</div>
+      <div class="psub">A +1.5 set handicap on every leg, &euro;15 to win &euro;37.57 &mdash; posted before a single ball was struck. Not asking anyone to win, only to steal a set.</div>
+    </div>
+    <div class="wordC"><div class="w">WIN</div><div><span class="badge">PAID OUT</span></div><div class="ret">+&euro;22.57 &middot; returned &euro;37.57</div></div>
+  </div>
 </div>
 <div class="wrap">
   <div class="coupon-wrap"><div class="coupon">
@@ -147,7 +163,6 @@ body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--ink);-we
 <div class="cprow"><div class="lft"><span class="sport">TENNIS</span><div><div class="mt">Schoolkate &mdash; Evans &nbsp;<span class="cpscore">7-5 6-0</span></div><div class="mk">Wimbledon Qualifying &middot; +1.5 sets &middot; WON</div></div></div><div class="rt"><span class="od">1.2</span><span class="cpwin">&#x2713;</span></div></div>
     <div class="cpfoot won">&#x2713; WON &middot; PAID OUT</div>
   </div></div>
-  <div class="resultbar">&#x2713; All 5 legs landed &mdash; staked &euro;15, returned <span class="big">&euro;37.57</span> &middot; profit <span class="big">+&euro;22.57</span></div>
   <div class="body">
     <div class="lead">Here's a quieter way to back a hunch. A +1.5 set handicap means my man can lose the match outright and I still collect, provided he takes one set on the way down. It's grass season, the lawn rewards the players built for it, and I've found five matches where the favourite &mdash; or the man on the right surface &mdash; only has to avoid a straight-sets collapse.</div>
 <div class="leg"><div class="kick">ATP Eastbourne &middot; R16 &middot; Grass</div><div class="match">Gabriel Diallo <span class="vs">v</span> Tomas Mart&iacute;n Etcheverry</div><div class="pick">Diallo +1.5 sets</div><div class="legresult">&#x2713; Won &middot; 6-7 6-3 6-2</div><div class="q"><div class="q-txt">&ldquo;Horrendous 5-13 all time on grass &mdash; can't be the favourite whatever the ranking says.&rdquo;</div><div class="q-src">&mdash; Tenngrand</div></div><div class="com">Both men are off-form, but only one can play on grass, and it isn't the Argentine (5-13 there against 317 clay wins). Diallo has a real grass pedigree &mdash; 9-3 on it in 2025 &mdash; and the room agrees: Dimers 55%, bookmakers -140. I only need him competitive. The +1.5 does the rest.</div></div>
