@@ -1151,6 +1151,7 @@ const SLIPS=[
   {id:"83287761763",date:"19.06",tourn:"Accumulator · 6 legs",match:"Multi-sport parlay",market:"6-leg acca · Mixed",odds:"9.417",stake:"15",ret:"0.00",profit:"-15.00€",sport:"tennis",entry:"mixed",surface:"mixed",profitN:-15.00,stakeN:15,won:false,slug:"parlay-6"},
   {id:"83495775305",date:"24.06",tourn:"Accumulator · 3 legs",match:"Grass-court outright parlay",market:"3-leg acca · Grass",odds:"3.635",stake:"5",ret:"18.18",profit:"+13.18&#x20AC;",sport:"tennis",entry:"pre-match",surface:"grass",profitN:13.18,stakeN:5,won:true,slug:"parlay-bold-grass",legs:[{match:"Samuel vs Tirante",sel:"Toby Samuel to win",mk:"ATP Eastbourne, R16 · Grass",odds:"1.599",st:"won",score:"6-1 7-6"},{match:"Harris vs Piros",sel:"Billy Harris to win",mk:"Wimbledon Qualifying · Grass",odds:"1.57",st:"won",score:"6-4 6-4"},{match:"McDonald vs Carballés Baena",sel:"Mackenzie McDonald to win",mk:"Wimbledon Qualifying · Grass",odds:"1.448",st:"won",score:"6-4 6-4"}]},
   {id:"83494615331",date:"24.06",tourn:"Accumulator · 5 legs",match:"Set-handicap parlay (+1.5)",market:"5-leg acca · Grass",odds:"2.504",stake:"15",ret:"37.57",profit:"+22.57&#x20AC;",sport:"tennis",entry:"pre-match",surface:"grass",profitN:22.57,stakeN:15,won:true,slug:"parlay-safe-handicap",legs:[{match:"Diallo vs Etcheverry",sel:"Gabriel Diallo +1.5 sets",mk:"ATP Eastbourne, R16 · Grass",odds:"1.22",st:"won",score:"6-7 6-3 6-2"},{match:"Samuel vs Tirante",sel:"Toby Samuel +1.5 sets",mk:"ATP Eastbourne, R16 · Grass",odds:"1.22",st:"won",score:"6-1 7-6"},{match:"Harris vs Piros",sel:"Billy Harris +1.5 sets",mk:"Wimbledon Qualifying · Grass",odds:"1.21",st:"won",score:"6-4 6-4"},{match:"McDonald vs Carballés Baena",sel:"Mackenzie McDonald +1.5 sets",mk:"Wimbledon Qualifying · Grass",odds:"1.159",st:"won",score:"6-4 6-4"},{match:"Schoolkate vs Evans",sel:"Tristan Schoolkate +1.5 sets",mk:"Wimbledon Qualifying · Grass",odds:"1.2",st:"won",score:"7-5 6-0"}]},
+  {id:"83550267937",date:"25.06",tourn:"Accumulator · 16 legs",match:"Sixteen-fold grass acca",market:"16-leg acca · Grass",odds:"398.397",stake:"1.50",ret:"597.60",profit:"&mdash;",sport:"tennis",entry:"pre-match",surface:"grass",pending:true,slug:"rob-the-bookie-grass-acca",legs:[{match:"Sweeny vs Barrios Vera",sel:"M. Barrios Vera to win",mk:"Wimbledon Qualifying · Grass",odds:"1.55",st:"pending"},{match:"Zhou vs Harris",sel:"Billy Harris to win",mk:"Wimbledon Qualifying · Grass",odds:"1.417",st:"pending"},{match:"Smith vs Zheng",sel:"Michael Zheng to win",mk:"Wimbledon Qualifying · Grass",odds:"1.723",st:"pending"},{match:"McDonald vs O'Connell",sel:"C. O'Connell to win",mk:"Wimbledon Qualifying · Grass",odds:"1.652",st:"pending"},{match:"Mejía vs Schoolkate",sel:"T. Schoolkate to win",mk:"Wimbledon Qualifying · Grass",odds:"1.306",st:"pending"},{match:"Tarvet vs Sakellaridis",sel:"Oliver Tarvet to win",mk:"Wimbledon Qualifying · Grass",odds:"1.448",st:"pending"},{match:"Budkov Kjaer vs Virtanen",sel:"O. Virtanen to win",mk:"Wimbledon Qualifying · Grass",odds:"1.306",st:"pending"},{match:"Dodin vs Sawangkaew",sel:"M. Sawangkaew to win",mk:"Wimbledon Qual. (W) · Grass",odds:"1.432",st:"pending"},{match:"Kostovic vs Lin Zhu",sel:"Lin Zhu to win",mk:"Wimbledon Qual. (W) · Grass",odds:"1.522",st:"pending"},{match:"Choinski vs Bergs",sel:"Zizou Bergs to win",mk:"ATP Eastbourne · Grass",odds:"1.347",st:"pending"},{match:"Humbert vs Halys",sel:"Ugo Humbert to win",mk:"ATP Eastbourne · Grass",odds:"1.387",st:"pending"},{match:"Navarro vs Ruse",sel:"Emma Navarro to win",mk:"WTA Bad Homburg · Grass",odds:"1.66",st:"pending"},{match:"Kessler vs Keys",sel:"Madison Keys to win",mk:"WTA Eastbourne · Grass",odds:"1.28",st:"pending"},{match:"Maria vs Valentová",sel:"Tatjana Maria to win",mk:"WTA Eastbourne · Grass",odds:"1.69",st:"pending"},{match:"Ukraine vs Italy",sel:"Italy to win",mk:"FIVB Nations League · Volleyball",odds:"1.45",st:"pending"},{match:"Iran vs USA",sel:"USA to win",mk:"FIVB Nations League · Volleyball",odds:"1.217",st:"pending"}]},
 ];
 
 /* ===== PURCHASING POWER ENGINE ===== */
@@ -1241,7 +1242,25 @@ function ppRender(amtRaw,opts){
   '</div>';
 }
 
+function ppRenderPending(s){
+  var ret=parseFloat(s.ret)||0, stake=parseFloat(s.stake)||1;
+  var gbp=ret*0.855;
+  var straw=Math.round(gbp/2.85), pimms=Math.round(gbp/13.45), bets=Math.round(ret/stake);
+  var rows=[
+    {flag:'🍓',buy:'~'+straw+' punnets',cn:'Wimbledon',ct:'strawberries & cream',e:'e1'},
+    {flag:'🍹',buy:'~'+pimms+' glasses',cn:'Henman Hill',ct:'of Pimm\u2019s',e:'e2'},
+    {flag:'🎲',buy:bets+' more bets',cn:'Reality',ct:'the only way I win it',e:'e3'}
+  ];
+  var tiles=rows.map(function(x){return '<div class="ppv3-t '+x.e+'">'+
+    '<div class="ppv3-flag">'+x.flag+'</div>'+
+    '<div class="ppv3-buy">'+x.buy+'</div>'+
+    '<div class="ppv3-country"><span class="ppv3-cname">'+x.cn+'</span><span class="ppv3-ctag">'+x.ct+'</span></div>'+
+  '</div>';}).join('');
+  return '<div class="ppwrap"><div class="ppv3-head">🎲 If it lands &middot; what &euro;'+ret.toFixed(2)+' would buy</div><div class="ppv3-tiles">'+tiles+'</div></div>';
+}
+
 const ART_URLS={
+  "rob-the-bookie-grass-acca":"rob-the-bookie-grass-acca-preview.html",
   "parlay-bold-grass":"grass-court-players-better-on-grass-parlay-preview.html",
   "parlay-safe-handicap":"dont-get-swept-grass-set-handicap-parlay-preview.html",
   "parlay-6":"de-minaur-nakashima-upset-parlay-analysis.html",
@@ -1255,6 +1274,7 @@ const ART_URLS={
   "lopez":"a-coinflip-the-press-missed-lopez-live.html"
 };
 const ARTS=[
+  {slug:"rob-the-bookie-grass-acca",date:"Jun 25",sport:"Acca · 16 legs",tag:"Parlay · Pre-match",tc:"to",hl:"Bloody quiet out there. So we're robbing the bookie. Or not.",cite:"Sixteen legs, €1.50, 398.397 — the model was not consulted.",s:"grass",odds:"398.397",legs:"16 legs",preview:true},
   {slug:"parlay-safe-handicap",date:"Jun 24",sport:"Acca · 5 legs",tag:"Parlay · Won",tc:"tg2",hl:"Five players. One modest request: don't get swept off the lawn.",cite:"+1.5 sets each. Five favourites, five sets held. Nobody swept.",s:"grass",p1:"G. Diallo",p2:"T. Etcheverry",s1:["6","6","6"],s2:["7","3","2"],result:"+22.57€"},
   {slug:"parlay-bold-grass",date:"Jun 24",sport:"Acca · 3 legs",tag:"Parlay · Won",tc:"tg2",hl:"A wildly original theory: grass-court players are better on grass.",cite:"Three clay-courters thrown onto a lawn. Three grass players at home.",s:"grass",p1:"T. Samuel",p2:"T. Tirante",s1:["6","7"],s2:["1","6"],result:"+13.18€"},
   {slug:"parlay-6",date:"Jun 19",sport:"Acca · 6 legs",tag:"Parlay · Lost",tc:"tr3",hl:"Do I suck at parlays? Possibly.",cite:"Four legs landed. De Minaur and Bayern did not.",result:"-15.00€",file:"",s:"grass",p1:"B. Nakashima [32]",p2:"A. De Minaur [1]",s1:["7","6"],s2:["5","3"]},
@@ -1329,7 +1349,7 @@ function renderSlips(){
       '<div class="slip-c"><div class="slip-cl">Return</div>'+retCell+'</div>'+
       '<div class="slip-c"><div class="slip-cl">Status</div>'+statusCell+'</div></div>'+
       '<div class="slip-f">'+footCell+'<div class="slip-dt">'+s.date+'.2026</div></div>'+
-      (P?'':ppRender(s.profitN,{seed:parseInt((s.id||'0').slice(-5))||1}));
+      (P?ppRenderPending(s):ppRender(s.profitN,{seed:parseInt((s.id||'0').slice(-5))||1}));
     g.appendChild(c);
   });
   sdts.querySelectorAll('.sdot').forEach((d,i)=>d.classList.toggle('on',i===pg));
