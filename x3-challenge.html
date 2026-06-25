@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>#X3 Challenge — Run 01 | hashtagsportsbetting</title>
+<meta name="description" content="The #X3 Challenge: starting from ×1, the goal is to triple the bankroll. Every bet documented. Run 01 in progress — by Charles Chambers Farah.">
+<meta name="author" content="Charles Chambers Farah">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://hashtagsportsbetting.com/x3-challenge.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="#X3 Challenge — Run 01 | hashtagsportsbetting">
+<meta property="og:description" content="The goal is simple: triple the bankroll. No fixed timeline. Every step documented.">
+<meta property="og:url" content="https://hashtagsportsbetting.com/x3-challenge.html">
+<meta property="og:site_name" content="#sportsbetting">
+<meta property="og:locale" content="en_GB">
+<script defer src="https://cloud.umami.is/script.js" data-website-id="66e62bad-f6fb-4aff-a702-e7a5cecd160c"></script>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{--cream:#f0ede4;--paper:#f7f4ec;--nook:#4a7c5f;--coral:#ec5a3c;--ocre:#f5b32e;--blue:#3d6db5;--dark:#1e1e1e;--ink:#211e18;--muted:#a09880;--border:#e0d9cc;}
+body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--ink);-webkit-font-smoothing:antialiased;}
+
+/* NAV */
+.nav{background:var(--dark);border-bottom:2px solid var(--nook);display:flex;align-items:center;justify-content:space-between;padding:15px 32px;position:sticky;top:0;z-index:100;}
+.nav-logo{font-family:'Spectral',serif;font-size:19px;font-weight:700;color:#fff;text-decoration:none;letter-spacing:-.02em;}
+.nav-logo span{color:var(--nook);}
+.nav-back{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;color:rgba(255,255,255,.55);text-decoration:none;text-transform:uppercase;letter-spacing:.08em;transition:color .15s;}
+.nav-back:hover{color:var(--nook);}
+.nav-sub{background:var(--coral);color:#fff;font-size:11px;font-weight:700;padding:7px 16px;border-radius:100px;text-decoration:none;text-transform:uppercase;letter-spacing:.06em;}
+
+/* CHALLENGE HEADER */
+.ch-head{background:var(--dark);padding:36px 32px 28px;border-bottom:2px solid #252525;}
+@media(max-width:767px){.ch-head{padding:24px 16px 22px;}}
+.ch-back{margin-bottom:20px;}
+.ch-back a{font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.4);text-decoration:none;}
+.ch-back a:hover{color:var(--nook);}
+.ch-meta{margin-bottom:22px;}
+.ch-status{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--nook);border:1px solid var(--nook);padding:4px 10px;border-radius:100px;margin-bottom:12px;}
+.ch-title{font-family:'Spectral',serif;font-size:38px;font-weight:700;color:#fff;letter-spacing:-.03em;line-height:1;margin-bottom:6px;}
+.ch-title span{color:var(--nook);}
+.ch-subtitle{font-family:'JetBrains Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);}
+
+/* GAUGE */
+.ch-gauge{margin-top:20px;}
+.ch-phases{display:flex;gap:10px;margin-bottom:8px;}
+.ch-pa{flex:1;height:84px;background:#2a2a2a;border-radius:6px;position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:space-between;padding:13px 16px;}
+.ch-pl{flex:1;height:84px;background:#1a1a1a;border:1px solid #252525;border-radius:6px;display:flex;flex-direction:column;justify-content:space-between;padding:13px 16px;}
+.ch-gfill{position:absolute;left:0;top:0;bottom:0;background:var(--nook);}
+.ch-glbl{font-family:'JetBrains Mono',monospace;font-size:8px;text-transform:uppercase;letter-spacing:.12em;position:relative;z-index:1;}
+.ch-pa .ch-glbl{color:rgba(255,255,255,.38);}
+.ch-pl .ch-glbl{color:#333;}
+.ch-gmult{font-family:'Spectral',serif;font-size:32px;font-weight:700;line-height:1;position:relative;z-index:1;}
+.ch-pa .ch-gmult{color:#fff;}
+.ch-pl .ch-gmult{color:#333;}
+.ch-scale{display:flex;justify-content:space-between;padding:0 2px;}
+.ch-scale span{font-family:'JetBrains Mono',monospace;font-size:8px;color:#555;}
+.ch-scale .target{color:var(--ocre);}
+
+/* BODY */
+.ch-body{max-width:700px;margin:0 auto;padding:36px 32px 64px;}
+@media(max-width:767px){.ch-body{padding:24px 16px 48px;}}
+
+.ch-section-lbl{font-family:'JetBrains Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:.16em;color:var(--muted);margin-bottom:20px;display:flex;align-items:center;gap:12px;}
+.ch-section-lbl::after{content:'';flex:1;height:1px;background:var(--border);}
+
+/* PALIER ENTRY */
+.ch-entry{background:#fff;border:1.5px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:14px;}
+.ch-entry-head{background:var(--dark);padding:14px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px;}
+.ch-entry-n{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;color:rgba(255,255,255,.45);}
+.ch-entry-date{font-family:'JetBrains Mono',monospace;font-size:9px;color:rgba(255,255,255,.35);}
+.ch-win-badge{background:var(--nook);color:#fff;font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;padding:4px 10px;border-radius:100px;text-transform:uppercase;letter-spacing:.06em;}
+.ch-entry-body{padding:16px 18px;}
+.ch-sport{font-family:'JetBrains Mono',monospace;font-size:8px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--nook);margin-bottom:8px;}
+.ch-match{font-family:'Spectral',serif;font-size:22px;font-weight:700;color:var(--dark);line-height:1.15;margin-bottom:3px;}
+.ch-market{font-size:11px;color:#7a7060;border-left:2px solid var(--nook);padding-left:8px;margin-bottom:14px;}
+.ch-score{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;color:var(--nook);background:rgba(74,124,95,.09);padding:6px 10px;border-radius:4px;margin-bottom:14px;display:inline-block;}
+.ch-bet-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:14px;}
+@media(max-width:480px){.ch-bet-grid{grid-template-columns:repeat(2,1fr);}}
+.ch-bc{background:var(--cream);border-radius:6px;padding:10px 12px;text-align:center;}
+.ch-bl{font-size:8px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:4px;}
+.ch-bv{font-family:'Spectral',serif;font-size:18px;font-weight:700;color:var(--dark);}
+.ch-bv.g{color:var(--nook);}
+
+/* Multiplier reached */
+.ch-mult-row{display:flex;align-items:center;justify-content:space-between;padding:12px 0;border-top:1px solid var(--border);margin-top:2px;}
+.ch-mult-lbl{font-family:'JetBrains Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);}
+.ch-mult-val{font-family:'Spectral',serif;font-size:28px;font-weight:700;color:var(--nook);}
+
+/* Editorial note */
+.ch-note{font-family:'Spectral',serif;font-style:italic;font-size:14.5px;line-height:1.6;color:#7a7060;padding-top:12px;border-top:1px solid var(--border);}
+
+/* FOOTER */
+.foot{background:var(--dark);border-top:2px solid var(--nook);padding:18px 32px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+@media(max-width:767px){.foot{padding:16px;flex-direction:column;text-align:center;}}
+.foot-logo{font-family:'Spectral',serif;font-size:16px;font-weight:700;color:#fff;text-decoration:none;}
+.foot-logo span{color:var(--nook);}
+.foot-by{font-size:10px;color:#555;font-style:italic;}
+.foot-disc{font-size:9px;color:#3a3a3a;line-height:1.6;border-top:1px solid #252525;padding-top:10px;margin-top:8px;max-width:700px;margin-left:auto;margin-right:auto;}
+
+@media(max-width:767px){
+  .ch-title{font-size:28px;}
+  .ch-bet-grid{grid-template-columns:1fr 1fr;}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="/" class="nav-logo"><span>#</span>sportsbetting</a>
+  <a href="/" class="nav-back">&#x2190; Back to home</a>
+  <a href="/#" onclick="document.dispatchEvent(new CustomEvent('openSub'))" class="nav-sub">#SUBSCRIBE &#x2192;</a>
+</nav>
+
+<!-- CHALLENGE HEADER -->
+<div class="ch-head">
+  <div class="ch-back"><a href="/">&#x2190; #sportsbetting</a></div>
+
+  <div class="ch-meta">
+    <div class="ch-status">&#x25CF; In progress</div>
+    <h1 class="ch-title"><span>#</span>X3 CHALLENGE</h1>
+    <div class="ch-subtitle">Run 01 &middot; Started 25 Jun 2026 &middot; Target &times;3 from opening bankroll</div>
+  </div>
+
+  <!-- GAUGE -->
+  <div class="ch-gauge">
+    <div class="ch-phases">
+      <div class="ch-pa">
+        <div class="ch-gfill" style="width:0.3%;min-width:4px;"></div>
+        <div class="ch-glbl">&times;1 &rarr; &times;2</div>
+        <div class="ch-gmult">&times;1.003</div>
+      </div>
+      <div class="ch-pl">
+        <div class="ch-glbl">&times;2 &rarr; &times;3</div>
+        <div class="ch-gmult">&times;3</div>
+      </div>
+    </div>
+    <div class="ch-scale">
+      <span>&times;1</span>
+      <span>&times;2</span>
+      <span class="target">&times;3 &mdash; target</span>
+    </div>
+  </div>
+</div>
+
+<!-- BODY -->
+<main class="ch-body">
+
+  <div class="ch-section-lbl">Run 01 &middot; 1 Palier &middot; 1 Win &middot; 0 Losses</div>
+
+  <!-- PALIER 01 -->
+  <div class="ch-entry">
+    <div class="ch-entry-head">
+      <div>
+        <div class="ch-entry-n">PALIER 01</div>
+        <div class="ch-entry-date">25 Jun 2026 &middot; 17:07</div>
+      </div>
+      <span class="ch-win-badge">WIN &#x2713;</span>
+    </div>
+
+    <div class="ch-entry-body">
+      <div class="ch-sport">&#x1F3D0; Volleyball &middot; FIVB Nations League</div>
+      <div class="ch-match">Iran vs USA</div>
+      <div class="ch-market">1X2 W2 (USA to win) &middot; Live</div>
+
+      <div class="ch-score">USA 3 &ndash; 0 Iran &nbsp;&middot;&nbsp; 25-23 &nbsp;25-20 &nbsp;31-29</div>
+
+      <div class="ch-bet-grid">
+        <div class="ch-bc"><div class="ch-bl">Odds</div><div class="ch-bv">1.10</div></div>
+        <div class="ch-bc"><div class="ch-bl">Stake</div><div class="ch-bv">&#x20AC;33</div></div>
+        <div class="ch-bc"><div class="ch-bl">Return</div><div class="ch-bv">&#x20AC;36.30</div></div>
+        <div class="ch-bc"><div class="ch-bl">Profit</div><div class="ch-bv g">+&#x20AC;3.30</div></div>
+      </div>
+
+      <div class="ch-mult-row">
+        <div class="ch-mult-lbl">Multiplier after this palier</div>
+        <div class="ch-mult-val">&times;1.003</div>
+      </div>
+
+      <div class="ch-note">
+        The challenge opens on solid ground. USA at 1.10 live against Iran in the FIVB Nations League — a price that reflects the structural gap between the two sides, not bookmaker generosity. Seven minutes in, the match already pointed one way. No heroics required for Palier 01. The goal at this stage is simply to be on the board, moving in the right direction. USA swept 3-0. The gauge barely moves. That is exactly how these things start.
+      </div>
+    </div>
+  </div>
+
+  <!-- PLACEHOLDER for future entries -->
+  <div style="margin-top:32px;padding:20px 24px;background:rgba(74,124,95,.06);border:1.5px dashed rgba(74,124,95,.2);border-radius:8px;text-align:center;">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:.14em;color:var(--muted);">Palier 02 &mdash; Pending</div>
+    <div style="font-family:'Spectral',serif;font-size:13px;color:#9a9080;margin-top:6px;font-style:italic;">Next step not yet placed. The challenge continues.</div>
+  </div>
+
+  <!-- RULES -->
+  <div style="margin-top:40px;padding-top:24px;border-top:2px solid var(--ink);">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:.14em;color:var(--muted);margin-bottom:14px;">The Rules</div>
+    <div style="font-family:'Spectral',serif;font-size:14.5px;line-height:1.65;color:#7a7060;">
+      Start at &times;1. Reach &times;3. Stop.<br>
+      If the bankroll resets below the starting point, the run ends and a new one begins from scratch. Every bet is documented in full. No selective memory. No gaps. The gauge shows exactly where things stand — scale your own bankroll against the multiplier.
+    </div>
+  </div>
+
+</main>
+
+<footer class="foot">
+  <a href="/" class="foot-logo"><span>#</span>sportsbetting</a>
+  <div class="foot-by">All bets real &mdash; by Charles Chambers Farah</div>
+</footer>
+<div class="foot-disc" style="background:var(--dark);padding:10px 32px 18px;font-size:9px;color:#3a3a3a;line-height:1.6;text-align:center;">
+  Betting involves risk. Content is a personal track record, not financial advice. Never bet more than you can afford to lose. 18+.
+</div>
+
+</body>
+</html>
