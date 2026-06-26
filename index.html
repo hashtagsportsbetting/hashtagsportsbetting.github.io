@@ -539,16 +539,13 @@ body{font-family:'Inter',sans-serif;background:var(--cream);}
 .x3t span{color:var(--nook);}
 .x3s{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--muted);margin-top:4px;text-transform:uppercase;letter-spacing:.12em;}
 .x3btn{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;color:var(--nook);text-decoration:none;border:1.5px solid var(--nook);padding:7px 14px;border-radius:100px;white-space:nowrap;flex-shrink:0;}
-.x3phases{display:flex;gap:8px;}
-.x3pa{flex:1;border-radius:6px;height:76px;position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:space-between;padding:12px 14px;background:#2a2a2a;}
-.x3pl{flex:1;border-radius:6px;height:76px;border:1px solid #2a2a2a;display:flex;flex-direction:column;justify-content:space-between;padding:12px 14px;background:#1a1a1a;}
+.x3bar{background:#2a2a2a;border-radius:6px;height:76px;position:relative;overflow:hidden;}
 .x3fill{position:absolute;left:0;top:0;bottom:0;background:var(--nook);}
-.x3lbl{font-family:'JetBrains Mono',monospace;font-size:8px;text-transform:uppercase;letter-spacing:.12em;position:relative;z-index:1;}
-.x3pa .x3lbl{color:rgba(255,255,255,.4);}
-.x3pl .x3lbl{color:#333;}
-.x3mult{font-family:'Spectral',serif;font-size:28px;font-weight:700;line-height:1;position:relative;z-index:1;}
-.x3pa .x3mult{color:#fff;}
-.x3pl .x3mult{color:#333;}
+.x3tick{position:absolute;left:50%;top:0;bottom:0;width:1px;background:#383838;}
+.x3mult{position:absolute;top:50%;transform:translateY(-50%);font-family:'Spectral',serif;font-size:30px;font-weight:700;color:#fff;line-height:1;white-space:nowrap;}
+.x3scale{display:flex;justify-content:space-between;margin-top:6px;}
+.x3scale span{font-family:'JetBrains Mono',monospace;font-size:8px;color:#555;}
+.x3scale .x3target{color:var(--ocre);}
 </style>
 </head>
 <body>
@@ -631,16 +628,15 @@ body{font-family:'Inter',sans-serif;background:var(--cream);}
     </div>
     <a href="x3-challenge.html" class="x3btn">The challenge &#x2192;</a>
   </div>
-  <div class="x3phases">
-    <div class="x3pa">
-      <div class="x3fill" style="width:5%;"></div>
-      <div class="x3lbl">&times;1 &rarr; &times;2</div>
-      <div class="x3mult">&times;1.10</div>
-    </div>
-    <div class="x3pl">
-      <div class="x3lbl">&times;2 &rarr; &times;3</div>
-      <div class="x3mult">&times;3</div>
-    </div>
+  <div class="x3bar">
+    <div class="x3fill" style="width:5%;"></div>
+    <div class="x3tick"></div>
+    <div class="x3mult" style="left:calc(5% + 14px);">&times;1.10</div>
+  </div>
+  <div class="x3scale">
+    <span>&times;1</span>
+    <span>&times;2</span>
+    <span class="x3target">&times;3</span>
   </div>
 </div>
 

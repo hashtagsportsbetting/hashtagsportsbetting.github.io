@@ -43,17 +43,11 @@ body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--ink);-we
 
 /* GAUGE */
 .ch-gauge{margin-top:20px;}
-.ch-phases{display:flex;gap:10px;margin-bottom:8px;}
-.ch-pa{flex:1;height:84px;background:#2a2a2a;border-radius:6px;position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:space-between;padding:13px 16px;}
-.ch-pl{flex:1;height:84px;background:#1a1a1a;border:1px solid #252525;border-radius:6px;display:flex;flex-direction:column;justify-content:space-between;padding:13px 16px;}
+.ch-gbar{background:#2a2a2a;border-radius:6px;height:84px;position:relative;overflow:hidden;}
 .ch-gfill{position:absolute;left:0;top:0;bottom:0;background:var(--nook);}
-.ch-glbl{font-family:'JetBrains Mono',monospace;font-size:8px;text-transform:uppercase;letter-spacing:.12em;position:relative;z-index:1;}
-.ch-pa .ch-glbl{color:rgba(255,255,255,.38);}
-.ch-pl .ch-glbl{color:#333;}
-.ch-gmult{font-family:'Spectral',serif;font-size:32px;font-weight:700;line-height:1;position:relative;z-index:1;}
-.ch-pa .ch-gmult{color:#fff;}
-.ch-pl .ch-gmult{color:#333;}
-.ch-scale{display:flex;justify-content:space-between;padding:0 2px;}
+.ch-gtick{position:absolute;left:50%;top:0;bottom:0;width:1px;background:#383838;}
+.ch-gmult{position:absolute;top:50%;transform:translateY(-50%);font-family:'Spectral',serif;font-size:34px;font-weight:700;color:#fff;line-height:1;white-space:nowrap;}
+.ch-scale{display:flex;justify-content:space-between;padding:0 2px;margin-top:7px;}
 .ch-scale span{font-family:'JetBrains Mono',monospace;font-size:8px;color:#555;}
 .ch-scale .target{color:var(--ocre);}
 
@@ -124,16 +118,10 @@ body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--ink);-we
 
   <!-- GAUGE -->
   <div class="ch-gauge">
-    <div class="ch-phases">
-      <div class="ch-pa">
-        <div class="ch-gfill" style="width:5%;"></div>
-        <div class="ch-glbl">&times;1 &rarr; &times;2</div>
-        <div class="ch-gmult">&times;1.10</div>
-      </div>
-      <div class="ch-pl">
-        <div class="ch-glbl">&times;2 &rarr; &times;3</div>
-        <div class="ch-gmult">&times;3</div>
-      </div>
+    <div class="ch-gbar">
+      <div class="ch-gfill" style="width:5%;"></div>
+      <div class="ch-gtick"></div>
+      <div class="ch-gmult" style="left:calc(5% + 16px);">&times;1.10</div>
     </div>
     <div class="ch-scale">
       <span>&times;1</span>
