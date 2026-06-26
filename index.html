@@ -1193,6 +1193,7 @@ const SLIPS=[
   {id:"83494615331",date:"24.06",tourn:"Accumulator · 5 legs",match:"Set-handicap parlay (+1.5)",market:"5-leg acca · Grass",odds:"2.504",stake:"15",ret:"37.57",profit:"+22.57&#x20AC;",sport:"tennis",entry:"pre-match",surface:"grass",profitN:22.57,stakeN:15,won:true,slug:"parlay-safe-handicap",legs:[{match:"Diallo vs Etcheverry",sel:"Gabriel Diallo +1.5 sets",mk:"ATP Eastbourne, R16 · Grass",odds:"1.22",st:"won",score:"6-7 6-3 6-2"},{match:"Samuel vs Tirante",sel:"Toby Samuel +1.5 sets",mk:"ATP Eastbourne, R16 · Grass",odds:"1.22",st:"won",score:"6-1 7-6"},{match:"Harris vs Piros",sel:"Billy Harris +1.5 sets",mk:"Wimbledon Qualifying · Grass",odds:"1.21",st:"won",score:"6-4 6-4"},{match:"McDonald vs Carballés Baena",sel:"Mackenzie McDonald +1.5 sets",mk:"Wimbledon Qualifying · Grass",odds:"1.159",st:"won",score:"6-4 6-4"},{match:"Schoolkate vs Evans",sel:"Tristan Schoolkate +1.5 sets",mk:"Wimbledon Qualifying · Grass",odds:"1.2",st:"won",score:"7-5 6-0"}]},
   {id:"83550267937",date:"25.06",tourn:"Accumulator · 16 legs",match:"Sixteen-fold grass acca",market:"16-leg acca · Grass",odds:"398.397",stake:"1.50",ret:"0.00",profit:"-1.50&#x20AC;",sport:"tennis",entry:"pre-match",surface:"grass",profitN:-1.50,stakeN:1.50,won:false,slug:"rob-the-bookie-grass-acca"},
   {id:"83565180249",date:"25.06",tourn:"Volleyball · FIVB Nations League",match:"Iran vs USA",market:"1X2 W2 · Live",odds:"1.1",stake:"20",ret:"22.00",profit:"+2.00&#x20AC;",sport:"volleyball",entry:"live",surface:"indoor",profitN:2.00,stakeN:20,won:true},
+  {id:"83581915619",date:"25.06",tourn:"Accumulator · 2 legs",match:"Draper + Brazil double",market:"2-leg acca · Mixed",odds:"1.973",stake:"15",ret:"29.60",profit:"&mdash;",sport:"tennis",entry:"pre-match",surface:"mixed",pending:true,slug:"draper-brazil-double",legs:[{match:"Brazil vs Italy",sel:"Brazil to win",mk:"FIVB Nations League · Volleyball",odds:"1.65",st:"pending"},{match:"Draper vs Humbert",sel:"Jack Draper +1.5 sets",mk:"ATP Eastbourne, SF · Grass",odds:"1.196",st:"pending"}]},
 ];
 
 /* ===== PURCHASING POWER ENGINE ===== */
@@ -1301,6 +1302,7 @@ function ppRenderPending(s){
 }
 
 const ART_URLS={
+  "draper-brazil-double":"draper-brazil-double-preview.html",
   "rob-the-bookie-grass-acca":"rob-the-bookie-grass-acca-preview.html",
   "parlay-bold-grass":"grass-court-players-better-on-grass-parlay-preview.html",
   "parlay-safe-handicap":"dont-get-swept-grass-set-handicap-parlay-preview.html",
@@ -1315,6 +1317,7 @@ const ART_URLS={
   "lopez":"a-coinflip-the-press-missed-lopez-live.html"
 };
 const ARTS=[
+  {slug:"draper-brazil-double",date:"Jun 25",sport:"Acca · 2 legs",tag:"Parlay · Pre-match",tc:"to",hl:"Draper’s home. Humbert’s in the way. Italy brought the reserves.",cite:"Fifteen quid, two near-bankers, and for once a flicker of conviction.",s:"grass",odds:"1.973",legs:"2 legs",preview:true},
   {slug:"rob-the-bookie-grass-acca",date:"Jun 25",sport:"Acca · 16 legs",tag:"Parlay · Lost",tc:"tr3",hl:"Bloody quiet out there. So we're robbing the bookie. Or not.",cite:"Sixteen legs at 398.397. It only takes one to fall — at least one did.",s:"grass",odds:"398.397",legs:"16 legs",result:"-1.50€",summary:true},
   {slug:"parlay-safe-handicap",date:"Jun 24",sport:"Acca · 5 legs",tag:"Parlay · Won",tc:"tg2",hl:"Five players. One modest request: don't get swept off the lawn.",cite:"+1.5 sets each. Five favourites, five sets held. Nobody swept.",s:"grass",p1:"G. Diallo",p2:"T. Etcheverry",s1:["6","6","6"],s2:["7","3","2"],result:"+22.57€"},
   {slug:"parlay-bold-grass",date:"Jun 24",sport:"Acca · 3 legs",tag:"Parlay · Won",tc:"tg2",hl:"A wildly original theory: grass-court players are better on grass.",cite:"Three clay-courters thrown onto a lawn. Three grass players at home.",s:"grass",p1:"T. Samuel",p2:"T. Tirante",s1:["6","7"],s2:["1","6"],result:"+13.18€"},
@@ -1407,7 +1410,7 @@ function renderSlips(){
       '<div class="slip-c"><div class="slip-cl">Return</div>'+retCell+'</div>'+
       '<div class="slip-c"><div class="slip-cl">Status</div>'+statusCell+'</div></div>'+
       '<div class="slip-f">'+footCell+'<div class="slip-dt">'+s.date+'.2026</div></div>'+
-      (P?ppRenderPending(s):ppRender(s.profitN,{seed:parseInt((s.id||'0').slice(-5))||1}));
+      (P?(parseFloat(s.ret)>=100?ppRenderPending(s):''):ppRender(s.profitN,{seed:parseInt((s.id||'0').slice(-5))||1}));
     g.appendChild(c);
   });
   sdts.querySelectorAll('.sdot').forEach((d,i)=>d.classList.toggle('on',i===pg));
