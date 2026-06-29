@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700&family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>*{margin:0;padding:0;box-sizing:border-box;}
+:root{--cream:#f0ede4;--paper:#f7f4ec;--nook:#3f7257;--grass1:#1c4a29;--grass2:#2f6b40;--coral:#e8502f;--ocre:#f5b32e;--blue:#3361a8;--dark:#161513;--ink:#211e18;--muted:#8f897a;--border:#ddd6c7;}
+body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--ink);-webkit-font-smoothing:antialiased;font-weight:450;}
+.h{color:var(--ocre);}
+.nav{background:var(--dark);display:flex;align-items:center;justify-content:space-between;padding:15px 40px;}
+.nav-logo{font-family:'Spectral',serif;font-size:20px;font-weight:700;color:#fff;text-decoration:none;}.nav-logo .h{color:var(--ocre);}
+.nav-mid{display:flex;gap:30px;font-size:14px;font-weight:700;}
+.nav-mid a{color:rgba(255,255,255,.55);text-decoration:none;}.nav-mid a.on{color:#fff;border-bottom:2px solid var(--ocre);padding-bottom:3px;}
+.btn-sub{background:var(--coral);color:#fff;font-size:12px;font-weight:800;padding:9px 18px;border-radius:3px;letter-spacing:.02em;text-decoration:none;}
+.pdot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--ocre);margin-right:6px;animation:pulse 1.6s infinite;}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.eng{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#fff;background:var(--blue);padding:3px 8px;border-radius:2px;}
+.phead{color:#fff;padding:42px 56px 48px;position:relative;overflow:hidden;}
+.phead.win{background:linear-gradient(160deg,var(--grass1),var(--grass2));}
+.phead.lost{background:linear-gradient(160deg,#3a1410,#6e2418);}
+.phead.pre{background:linear-gradient(160deg,var(--grass1),var(--grass2));}
+.headC{display:grid;grid-template-columns:1fr auto;align-items:end;gap:24px;}
+.headC .left{min-width:0;position:relative;z-index:3;}
+.wordC{font-family:'Spectral',serif;font-weight:800;line-height:.82;letter-spacing:-.02em;text-align:right;flex-shrink:0;padding-bottom:4px;}
+.wordC .w{font-size:112px;color:#fff;}
+.wordC .eyebrow{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ocre);margin-bottom:7px;}
+.wordC .big{font-family:'Spectral',serif;font-size:60px;font-weight:800;color:#fff;line-height:.9;letter-spacing:-.01em;}
+.wordC .badge{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.1em;padding:5px 14px;border-radius:4px;margin-top:8px;}
+.phead.win .wordC .badge{background:var(--ocre);color:var(--ink);}
+.phead.lost .wordC .badge{background:#fff;color:#b8341a;}
+.phead.pre .wordC .badge{background:var(--ocre);color:var(--ink);}
+.wordC .ret{font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:600;color:rgba(255,255,255,.88);margin-top:10px;letter-spacing:.04em;}
+.phead .backrow{margin-bottom:18px;}
+.phead .backrow a{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:600;color:rgba(255,255,255,.7);text-decoration:none;letter-spacing:.05em;}
+.pk{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.82);margin-bottom:20px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+.pk .st{color:var(--ocre);font-weight:700;display:inline-flex;align-items:center;}
+.ptitle{font-family:'Spectral',serif;font-size:44px;font-weight:800;line-height:1.06;letter-spacing:-.02em;max-width:820px;margin-bottom:16px;}
+.psub{font-family:'Spectral',serif;font-style:italic;font-size:18px;line-height:1.45;color:#fff;max-width:620px;font-weight:500;}
+.wrap{max-width:1060px;margin:0 auto;padding:0 56px 64px;}
+.coupon-wrap{margin:-30px auto 40px;max-width:780px;position:relative;z-index:2;}
+.coupon{border:1.5px solid var(--ink);border-radius:5px;overflow:hidden;background:#fff;box-shadow:0 10px 30px rgba(28,74,41,.18);}
+.cphead{background:linear-gradient(150deg,var(--grass1),var(--grass2));color:#fff;padding:20px 26px;display:flex;justify-content:space-between;align-items:center;border-bottom:3px solid var(--ocre);gap:16px;}
+.cphead .lg{font-family:'Spectral',serif;font-size:19px;font-weight:800;}.cphead .lg b{color:var(--ocre);}
+.cphead .id{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:500;color:rgba(255,255,255,.72);margin-top:5px;}
+.cphead .fig{text-align:right;flex-shrink:0;}
+.cphead .fig .o{font-family:'Spectral',serif;font-size:38px;font-weight:800;line-height:1;}
+.cphead .fig .s{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;color:rgba(255,255,255,.85);margin-top:5px;}
+.cprow{display:flex;justify-content:space-between;align-items:center;padding:13px 26px;border-bottom:1px solid #ece6d8;gap:14px;}
+.cprow:last-of-type{border-bottom:none;}
+.cprow .lft{display:flex;align-items:center;gap:13px;min-width:0;}
+.cprow .sport{font-family:'JetBrains Mono',monospace;font-size:8px;font-weight:700;letter-spacing:.05em;color:#fff;background:var(--blue);padding:3px 7px;border-radius:2px;flex-shrink:0;}
+.cprow .mt{font-family:'Spectral',serif;font-size:15.5px;font-weight:800;color:var(--ink);line-height:1.12;}
+.cprow .mk{font-size:10px;font-weight:500;color:var(--muted);margin-top:2px;}
+.cprow .rt{display:flex;align-items:center;gap:9px;flex-shrink:0;}
+.cprow .od{font-family:'Spectral',serif;font-size:18px;font-weight:800;}
+.cprow .pd{width:7px;height:7px;border-radius:50%;background:var(--ocre);animation:pulse 1.6s infinite;}
+.cpfoot{background:rgba(245,179,46,.18);color:#8a6000;text-align:center;padding:12px;font-family:'JetBrains Mono',monospace;font-size:9.5px;font-weight:700;letter-spacing:.06em;}
+.cpfoot.won{background:rgba(63,114,87,.16);color:#2f6b40;}
+.cpfoot.lost{background:rgba(232,80,47,.16);color:#b8341a;}
+.legnote{max-width:780px;margin:-18px auto 34px;font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--muted);text-align:center;letter-spacing:.02em;line-height:1.5;}
+.body{max-width:700px;margin:0 auto;}
+.lead{font-family:'Spectral',serif;font-size:20px;font-weight:500;line-height:1.5;color:var(--ink);margin-bottom:26px;}
+.para{font-size:16px;font-weight:450;line-height:1.62;color:var(--ink);margin-bottom:20px;}
+.para em{font-style:italic;font-weight:600;}
+.q{margin:22px 0 18px;padding-left:18px;border-left:3px solid var(--ocre);}
+.q-txt{font-family:'Spectral',serif;font-style:italic;font-weight:500;font-size:21px;line-height:1.38;color:var(--ink);}
+.q-src{font-family:'JetBrains Mono',monospace;font-size:9.5px;font-weight:600;letter-spacing:.05em;color:var(--muted);text-transform:uppercase;margin-top:9px;}
+.funfact{margin-top:36px;background:linear-gradient(155deg,var(--grass1),var(--grass2));color:#fff;border-radius:4px;padding:22px 26px;border-left:5px solid var(--ocre);}
+.funfact .fh{font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ocre);margin-bottom:8px;}
+.funfact .ft{font-family:'Spectral',serif;font-size:16px;font-weight:500;line-height:1.5;font-style:italic;}
+.closing{font-family:'Spectral',serif;font-style:italic;font-weight:500;font-size:15.5px;line-height:1.5;color:#4a4538;margin-top:26px;padding-top:20px;border-top:2px solid var(--ink);}
+.status-line{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;color:var(--muted);margin-top:16px;padding-top:16px;border-top:1px solid var(--border);letter-spacing:.03em;}
+.status-line b{color:#8a6000;}
+.related{max-width:700px;margin:34px auto 0;}
+.related-h{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:13px;}
+.related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:11px;}
+.related-card{background:#fff;border:1px solid var(--border);border-radius:5px;padding:14px 16px;text-decoration:none;color:var(--ink);display:block;}
+.related-card .rt{font-family:'JetBrains Mono',monospace;font-size:8.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--coral);margin-bottom:7px;}
+.related-card .rh{font-family:'Spectral',serif;font-size:14px;font-weight:700;line-height:1.22;}
+.footer{background:var(--dark);display:flex;align-items:center;justify-content:space-between;padding:20px 40px;margin-top:36px;}
+.footer-logo{font-family:'Spectral',serif;font-size:17px;font-weight:700;color:#fff;text-decoration:none;}.footer-logo .h{color:var(--ocre);}
+.footer-links{display:flex;gap:18px;font-size:11px;font-weight:600;}
+.footer-links a{color:rgba(255,255,255,.55);text-decoration:none;}
+.footer-by{font-size:11px;color:#6a6658;font-style:italic;}
+.seo-index{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);}
+.potpp{max-width:780px;margin:0 auto 40px;background:var(--paper);border:1.5px solid var(--border);border-radius:5px;padding:22px 26px;}
+.potpp .pph{font-family:'JetBrains Mono',monospace;font-size:9.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--coral);margin-bottom:4px;}
+.potpp .ppt{font-family:'Spectral',serif;font-size:21px;font-weight:800;color:var(--ink);line-height:1.12;margin-bottom:7px;}
+.potpp .ppi{font-size:13.5px;font-weight:450;line-height:1.5;color:#4a4538;margin-bottom:16px;}
+.potpp .ppgrid{display:grid;grid-template-columns:1fr 1fr;gap:11px;}
+.potpp .ppc{background:#fff;border:1px solid var(--border);border-radius:4px;padding:14px 15px;}
+.potpp .ppc .flag{font-size:22px;line-height:1;}
+.potpp .ppc .qty{font-family:'Spectral',serif;font-size:18px;font-weight:800;color:var(--nook);margin:8px 0 3px;line-height:1.08;}
+.potpp .ppc .cap{font-size:12.5px;font-weight:450;line-height:1.46;color:#4a4538;}
+.potpp .ppc .cn{font-family:'JetBrains Mono',monospace;font-size:8.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);margin-top:9px;}
+.potpp .ppf{font-family:'Spectral',serif;font-style:italic;font-size:13.5px;font-weight:500;color:#6a6658;margin-top:15px;text-align:center;}
+@media(max-width:820px){
+.nav{padding:13px 18px;}.nav-mid{display:none;}
+.phead{padding:30px 22px 40px;}.ptitle{font-size:29px;}.psub{font-size:16px;}
+.headC{grid-template-columns:1fr;gap:14px;}.wordC{text-align:left;order:-1;}.wordC .w{font-size:74px;}.wordC .big{font-size:44px;}
+.wrap{padding:0 18px 44px;}.coupon-wrap{margin:-26px auto 32px;}
+.cphead{flex-direction:column;align-items:flex-start;gap:12px;}.cphead .fig{text-align:left;}.cphead .fig .o{font-size:32px;}
+.cprow{flex-wrap:wrap;gap:8px;}
+.potpp{padding:18px 18px;}.potpp .ppgrid{grid-template-columns:1fr;}
+.q-txt{font-size:19px;}
+.related-grid{grid-template-columns:1fr;}
+.footer{flex-direction:column;gap:12px;text-align:center;padding:20px;}.footer-links{flex-wrap:wrap;justify-content:center;}
+}</style>
+  <title>Medvedev, van de Zandschulp &amp; Cecchinato: a &euro;10 Grass-and-Clay Treble | hashtagsportsbetting</title>
+  <meta name="description" content="A pre-match three-leg accumulator at 2.54: Daniil Medvedev to beat Marin Cilic and Botic van de Zandschulp to beat Aleksandar Kovacevic on the Wimbledon grass, plus Marco Cecchinato to take a set on Milan clay. Ten euro on three favourites, posted before a ball is struck.">
+  <meta name="keywords" content="medvedev cilic wimbledon, van de zandschulp kovacevic, cecchinato milan challenger, three-leg accumulator, grass court betting, clay court betting, wimbledon 2026 first round">
+  <meta name="author" content="Charles Chambers Farah">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://hashtagsportsbetting.com/grass-and-clay-parlay-preview.html">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="One lives for the grass, one grazes it, one teaches clay">
+  <meta property="og:description" content="A pre-match treble at 2.54: Medvedev and van de Zandschulp on the Wimbledon grass, Cecchinato on Milan clay. Ten euro on three men in their element.">
+  <meta property="og:url" content="https://hashtagsportsbetting.com/grass-and-clay-parlay-preview.html">
+  <meta property="og:site_name" content="#sportsbetting">
+  <meta property="og:locale" content="en_GB">
+  <meta property="article:published_time" content="2026-06-28">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="A grass-and-clay treble at 2.54">
+  <meta name="twitter:description" content="Medvedev and van de Zandschulp on grass, Cecchinato on clay. Three favourites, ten quid, pre-match.">
+  <script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@graph":[
+    {"@type":"Article","headline":"One Man Lives For The Grass, One Grazes It, One Teaches Clay","description":"A pre-match three-leg accumulator at 2.54: Medvedev to beat Cilic and van de Zandschulp to beat Kovacevic on the Wimbledon grass, plus Cecchinato to win a set on Milan clay. Stake 10 euro, maximum return 25.49 euro.","datePublished":"2026-06-28","author":{"@type":"Person","name":"Charles Chambers Farah","url":"https://hashtagsportsbetting.com"},"publisher":{"@type":"Organization","name":"hashtagsportsbetting"},"inLanguage":"en-GB","keywords":"medvedev cilic wimbledon, van de zandschulp kovacevic, cecchinato milan challenger"},
+    {"@type":"SportsEvent","name":"Marin Cilic vs Daniil Medvedev","sport":"Tennis","startDate":"2026-06-29","location":{"@type":"Place","name":"Wimbledon, First Round"}},
+    {"@type":"SportsEvent","name":"Aleksandar Kovacevic vs Botic van de Zandschulp","sport":"Tennis","startDate":"2026-06-29","location":{"@type":"Place","name":"Wimbledon, First Round"}},
+    {"@type":"SportsEvent","name":"Marco Cecchinato vs Filippo Romano","sport":"Tennis","startDate":"2026-06-29","location":{"@type":"Place","name":"Aspria Tennis Cup, Milan Challenger"}},
+    {"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"A Parlay Story","item":"https://hashtagsportsbetting.com/#parlay-story"},{"@type":"ListItem","position":2,"name":"Grass-and-Clay Treble","item":"https://hashtagsportsbetting.com/grass-and-clay-parlay-preview.html"}]}
+  ]
+}
+  </script>
+</head>
+<body>
+<nav class="nav">
+  <a href="index.html" class="nav-logo"><span class="h">#</span>sportsbetting</a>
+  <div class="nav-mid"><a href="index.html#track-record">#TRACK RECORD</a><a href="index.html#parlay-story" class="on">#A PARLAY STORY</a><a href="index.html#fun-facts">#FUN FACTS</a></div>
+  <a href="https://abettorlife.blogabet.com" class="btn-sub">#SUBSCRIBE</a>
+</nav>
+<p class="seo-index">Pre-match three-leg accumulator for 29 June 2026. Daniil Medvedev to beat Marin Cilic and Botic van de Zandschulp to beat Aleksandar Kovacevic in the Wimbledon first round on grass, and Marco Cecchinato to win a set against Filippo Romano at the Milan Challenger (Aspria Tennis Cup) on clay. Total odds 2.54, stake 10 euro, maximum return 25.49 euro. Posted before the first ball.</p>
+<div class="phead pre">
+  <div class="headC">
+    <div class="left">
+      <div class="backrow"><a href="index.html#parlay-story">&#8592; Back to #A PARLAY STORY</a></div>
+      <div class="pk"><span>A Parlay Story</span><span>&middot;</span><span>Wimbledon &amp; Milan &middot; 29 June</span><span>&middot;</span><span class="st">&#9203; Pre-match</span></div>
+      <div class="ptitle">One man lives for the grass. One just grazes it. One&rsquo;s teaching clay before he retires.</div>
+      <div class="psub">Ten quid across two lawns and a clay court. Medvedev to feast on the grass he waited all spring for; van de Zandschulp to punish a man who can&rsquo;t stand the stuff; Cecchinato to take a set off the kid in Milan.</div>
+    </div>
+    <div class="wordC"><div class="eyebrow">Max return</div><div class="big">&euro;25.49</div><div><span class="badge">PRE-MATCH</span></div><div class="ret">&euro;10 stake &middot; 3 legs &middot; 2.54</div></div>
+  </div>
+</div>
+<div class="wrap">
+  <div class="coupon-wrap"><div class="coupon">
+    <div class="cphead"><div><div class="lg"><b>#</b>betslip &middot; Accumulator</div><div class="id">Bet slip #TBC &middot; 29.06.2026 &middot; 3 selections</div></div><div class="fig"><div class="o">2.54</div><div class="s">&euro;10 stake &middot; &euro;25.49 max</div></div></div>
+<div class="cprow"><div class="lft"><span class="sport">TENNIS</span><div><div class="mt">Cilic &mdash; Medvedev</div><div class="mk">Wimbledon, R1 &middot; Medvedev to win &middot; grass</div></div></div><div class="rt"><span class="od">1.34</span><span class="pd"></span></div></div>
+<div class="cprow"><div class="lft"><span class="sport">TENNIS</span><div><div class="mt">Kovacevic &mdash; van de Zandschulp</div><div class="mk">Wimbledon, R1 &middot; Van de Zandschulp to win &middot; grass</div></div></div><div class="rt"><span class="od">1.51</span><span class="pd"></span></div></div>
+<div class="cprow"><div class="lft"><span class="sport">TENNIS</span><div><div class="mt">Romano &mdash; Cecchinato</div><div class="mk">Milan Challenger, R1 &middot; Cecchinato to win a set &middot; clay</div></div></div><div class="rt"><span class="od">1.26</span><span class="pd"></span></div></div>
+    <div class="cpfoot">&#9203; ACCEPTED &middot; PRE-MATCH &middot; AWAITING THE FIRST BALL</div>
+  </div></div>
+  <div class="body">
+    <div class="lead">Three favourites, two surfaces, one simple idea: back the men who belong where they&rsquo;re standing. Two of them open Wimbledon on grass; the third defends a title on Milan clay. Ten quid says all three do their job.</div>
+    <p class="para">Daniil Medvedev sat out the clay swing the way a cat sits out a bath &mdash; redoubling his patience, letting the red dust settle, waiting for the lawns. The man does not live for much, but he lives for grass. Wimbledon has handed him a gift to open with: Marin Cilic, a veteran we respect without reservation &mdash; a 2014 US Open champion, a 2017 finalist here, a man who has not lost in the first round at SW19 since 2011. Respect, yes; fear, no. Medvedev leads the head-to-head 4-1, is 2-0 against Cilic on grass, and beat him in Den Bosch this very month. At 1.34 the market agrees the legs of a 37-year-old don&rsquo;t survive five sets against this particular opponent.</p>
+    <p class="para">Aleksandar Kovacevic, by contrast, grazes the grass &mdash; he does not feast on it. The American stumbled through the warm-up swing, lost again in Eastbourne, and arrives at the Championships, in the kind words of one preview, searching for rhythm at the worst possible moment. Across the net stands Botic van de Zandschulp, who is everything Kovacevic is not on this surface: a 2022 Wimbledon last-16 man, comfortable on a lawn, and &mdash; the detail I like most &mdash; carrying a fresh psychological edge, having come from a set down to beat Kovacevic at the Italian Open only last month. The model gives the Dutchman 61%. At 1.51 I&rsquo;ll take the man who already knows how to win this exact match.</p>
+    <p class="para">Then a change of surface, and of register. While the grass-courters carry on in London, Marco Cecchinato has gone home to Milan to defend the Aspria Tennis Cup &mdash; a Challenger he has already won twice, on the red clay where he has spent an entire career. The former world No. 16 and 2018 Roland Garros semi-finalist &mdash; the man who once put Novak Djokovic out of Paris &mdash; draws a young Italian wild card, Filippo Romano, in an all-Italian opener. I believe in the full demonstration. But in a parlay you bank the floor, and the floor here is gentle: the professor need only take a single set off the boy, which on his own clay is barely a question. A lesson, abridged.</p>
+    <div class="funfact"><div class="fh">&#9889; Fun fact &middot; the Djokovic slayer</div><div class="ft">The youngster across the net in Milan may not dwell on it, but he is facing a man who once beat Novak Djokovic at a Grand Slam &mdash; on clay, in the 2018 Roland Garros quarter-final, 13-11 in the deciding set. Cecchinato has never won a main-draw match at Wimbledon in his life. Put him on red clay, though, and the curriculum vitae does the talking.</div></div>
+    <div class="closing">Three men, three jobs, two surfaces. Medvedev to enjoy the grass he has been saving himself for, van de Zandschulp to expose a man out of his element, and Cecchinato to remind the kids what clay is for. Nothing here is heroic &mdash; which, as ever, is precisely the moment it tends to go wrong.</div>
+    <div class="status-line">Status: <b>&#9203; PRE-MATCH</b> &middot; published before a ball was struck. The two Wimbledon openers are on Monday; Cecchinato&rsquo;s Milan defence begins the same day on clay. This page settles to WIN or LOST once all three are in. Pending bets don&rsquo;t touch the track record.</div>
+  </div>
+</div>
+<div class="related">
+  <div class="related-h">More #A PARLAY STORY</div>
+  <div class="related-grid">
+<a class="related-card" href="grass-court-players-better-on-grass-parlay-preview.html"><div class="rt">Tennis &middot; Grass</div><div class="rh">A wildly original theory: grass-court players are better on grass.</div></a>
+<a class="related-card" href="dont-get-swept-grass-set-handicap-parlay-preview.html"><div class="rt">Acca &middot; Grass</div><div class="rh">Five players. One modest request: don&rsquo;t get swept.</div></a>
+<a class="related-card" href="de-minaur-nakashima-upset-parlay-analysis.html"><div class="rt">Acca &middot; Lost</div><div class="rh">Do I suck at parlays? Possibly.</div></a>
+  </div>
+</div>
+<footer class="footer">
+  <a href="index.html" class="footer-logo"><span class="h">#</span>sportsbetting</a>
+  <div class="footer-links"><a href="index.html#track-record">#trackrecord</a><a href="index.html#parlay-story">#aparlaystory</a><a href="index.html#fun-facts">#funfacts</a></div>
+  <div class="footer-by">A Charles Chambers Farah strategy</div>
+</footer>
+</body>
+</html>
