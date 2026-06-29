@@ -547,6 +547,34 @@ body{font-family:'Inter',sans-serif;background:var(--cream);}
 .x3scale{display:flex;justify-content:space-between;margin-top:6px;}
 .x3scale span{font-family:'JetBrains Mono',monospace;font-size:8px;color:#555;}
 .x3scale .x3target{color:var(--ocre);}
+/* QUOTES */
+.qt-wrap{background:var(--dark);}
+.qt-hero{padding:24px 32px 20px;border-bottom:1px solid rgba(255,255,255,.07);}
+.qt-eyebrow{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;}
+.qt-ttl{font-family:'Spectral',serif;font-size:32px;font-weight:700;color:#fff;letter-spacing:-.04em;line-height:1;margin-bottom:6px;}
+.qt-ttl span{color:var(--nook);}
+.qt-sub{font-family:'Spectral',serif;font-size:13px;font-style:italic;color:rgba(160,152,128,.65);line-height:1.5;}
+.qt-sec{padding:16px 32px 6px;display:flex;align-items:center;gap:14px;}
+.qt-sec-lbl{font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;white-space:nowrap;}
+.qt-sec-lbl.fire{color:var(--nook);} .qt-sec-lbl.drop{color:var(--ocre);} .qt-sec-lbl.cr{color:var(--coral);}
+.qt-sec-line{flex:1;height:1px;background:rgba(255,255,255,.07);}
+.qt-row{display:flex;align-items:flex-start;gap:16px;padding:14px 32px;border-bottom:1px solid rgba(255,255,255,.05);}
+.qt-row:last-child{border-bottom:none;}
+.qt-qm{font-family:'Spectral',serif;font-size:60px;font-weight:700;color:var(--ocre);line-height:.75;flex-shrink:0;width:30px;padding-top:2px;opacity:.75;}
+.qt-body{flex:1;min-width:0;}
+.qt-q{font-family:'Spectral',serif;font-size:14px;font-style:italic;color:rgba(255,255,255,.87);line-height:1.58;}
+.qt-meta{display:flex;justify-content:space-between;align-items:center;margin-top:9px;gap:8px;flex-wrap:wrap;}
+.qt-about{font-family:'JetBrains Mono',monospace;font-size:7.5px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;padding:3px 9px;border-radius:100px;border:1px solid;white-space:nowrap;}
+.qt-about.fire{color:var(--nook);border-color:rgba(74,124,95,.35);}
+.qt-about.drop{color:var(--ocre);border-color:rgba(245,179,46,.28);}
+.qt-about.cr{color:var(--coral);border-color:rgba(236,90,60,.32);}
+.qt-auth{font-family:'JetBrains Mono',monospace;font-size:8px;color:rgba(160,152,128,.5);text-align:right;line-height:1.4;}
+.qt-match{font-family:'JetBrains Mono',monospace;font-size:7.5px;color:rgba(160,152,128,.35);margin-top:5px;text-transform:uppercase;letter-spacing:.08em;}
+.qt-foot-note{padding:14px 32px 20px;font-family:'JetBrains Mono',monospace;font-size:8px;color:rgba(160,152,128,.28);text-transform:uppercase;letter-spacing:.1em;border-top:1px solid rgba(255,255,255,.05);}
+.qt-home{background:var(--dark);}
+.qt-home-hd{padding:16px 32px 6px;display:flex;align-items:center;justify-content:space-between;}
+@media(max-width:767px){.qt-hero{padding:18px 16px 16px;}.qt-sec{padding:14px 16px 4px;}.qt-row{padding:12px 16px;gap:10px;}.qt-home-hd{padding:14px 16px 4px;}.qt-foot-note{padding:12px 16px 16px;}}
+
 </style>
 </head>
 <body>
@@ -557,7 +585,7 @@ body{font-family:'Inter',sans-serif;background:var(--cream);}
     <button id="nl-tr" onclick="go('tr')">#TRACK RECORD</button>
     <button id="nl-zi" onclick="go('zi')">#A PARLAY STORY</button>
     <a href="x3-challenge.html" style="font-size:13px;font-weight:700;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.06em;text-decoration:none;">#X3 CHALLENGE</a>
-    <button id="nl-ff" onclick="go('ff')">#FUN FACTS</button>
+    <a href="quotes.html" style="font-size:13px;font-weight:700;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.06em;text-decoration:none;">#QUOTES</a>
   </div>
   <div class="nav-right">
     <button class="btn-sim" id="simBtn" onclick="toggleSim()">Simulation</button>
@@ -570,7 +598,7 @@ body{font-family:'Inter',sans-serif;background:var(--cream);}
   <button class="ndl" onclick="go('tr');closeMenu()">#TRACK RECORD</button>
   <button class="ndl" onclick="go('zi');closeMenu()">#A PARLAY STORY</button>
   <a class="ndl" href="x3-challenge.html" style="text-decoration:none;display:block;">#X3 CHALLENGE</a>
-  <button class="ndl" onclick="go('ff');closeMenu()">#FUN FACTS</button>
+  <a class="ndl" href="quotes.html" style="text-decoration:none;display:block;">#QUOTES</a>
   <div style="margin-top:24px;display:flex;flex-direction:column;gap:10px;">
     <button class="btn-sim" onclick="toggleSim();closeMenu()">Simulation</button>
     <button class="btn-sub" onclick="openSubModal();closeMenu()" style="text-align:center;">#SUBSCRIBE &#x2192;</button>
@@ -655,17 +683,12 @@ body{font-family:'Inter',sans-serif;background:var(--cream);}
   <button class="see-all" onclick="go('zi')">See all &#x2192;</button>
 </div>
 <div class="zi-grid" id="homeZi"></div>
-<div class="sh"><div class="st2"><span>#</span>FUN FACTS</div></div>
-<div class="ff-grid">
-  <div class="ti ti-big t1" onclick="go('ff')">
-    <div><div class="ti-tag">&#x1F33F; #grasslist &middot; Permanent Registry</div>
-    <div class="ti-t">The market prices reputation. We price win rates.<br><br>Zheng &mdash; 35% grass win rate. Faded twice Jun 17.<br><br>Norrie &mdash; &ldquo;Nothing major.&rdquo; First grass 2026. Bet #1.<br><br>Medvedev &mdash; structural flaw. Always overpriced.</div></div>
-    <div class="ti-arr">Full research &#x2192;</div>
-  </div>
-  <div class="ti t3" onclick="go('ff')"><div><div class="ti-tag">&#x1F3C6; All-Time Disaster</div><div class="ti-t">Leicester. 5,000-1. &#xA3;20M bookmaker liability.</div></div><div class="ti-arr">&#x2192;</div></div>
-  <div class="ti t2" onclick="go('ff')"><div><div class="ti-tag">&#x1F4C5; Record &middot; Jun 16-27</div><div class="ti-t">15 bets. 9 won, 6 parlays down. +110.52&#x20AC;. ROI +31.9%.</div></div><div class="ti-arr">&#x2192;</div></div>
-  <div class="ti t5" onclick="go('ff')"><div><div class="ti-tag">&#x26B0; The 1.01 Graveyard</div><div class="ti-t">&#xA3;202,324 at 1.01. Led inside the final furlong.</div></div><div class="ti-arr">&#x2192;</div></div>
-  <div class="ti t4" onclick="go('ff')"><div><div class="ti-tag">&#x1F9E0; The Legends</div><div class="ti-t">Walters. Voulgaris. Bloom. Small edges. Massive volume.</div></div><div class="ti-arr">&#x2192;</div></div>
+<div class="qt-home">
+<div class="qt-home-hd">
+  <div style="display:flex;align-items:baseline;gap:8px;"><div class="qt-ttl" style="font-size:21px;"><span>#</span>QUOTES</div><div class="ssub" style="color:rgba(160,152,128,.6);">Things said out loud that happened to matter</div></div>
+  <button class="see-all" onclick="location.href='quotes.html'" style="color:var(--nook);">See all &#x2192;</button>
+</div>
+<div id="qtHomeList"></div>
 </div>
 </div>
 
@@ -731,359 +754,32 @@ body{font-family:'Inter',sans-serif;background:var(--cream);}
   <iframe id="articleFrame" src="" style="width:100%;height:100vh;border:none;display:block;"></iframe>
 </div>
 
-<!-- FUN FACTS -->
-<div class="pg" id="pg-ff">
-<!-- HERO -->
-<div class="hero">
-  <div class="hero-eyebrow">Vol. 1 · Sports Betting Folklore · Deep Research Edition</div>
-  <div class="hero-title">#FUN<br><span>FACTS</span></div>
-  <div class="hero-rule"></div>
-  <div class="hero-sub">The miracle wins, the catastrophic collapses, the fixers who got caught, and the bookmakers who got well and truly mugged. A frank, occasionally sardonic tour through the universe of sports betting.</div>
-  <div class="hero-meta">Based on deep research · All figures sourced · C.C. Farah editorial notes throughout</div>
+<!-- QUOTES -->
+<div class="pg" id="pg-qt">
+<div class="qt-wrap">
+<div class="qt-hero">
+  <div class="qt-eyebrow">Wimbledon &middot; Pre-Match Intelligence &middot; 29 Jun 2026</div>
+  <div class="qt-ttl"><span>#</span>QUOTES</div>
+  <div class="qt-sub">Not technically insider trading. Just things people said out loud that happened to be true.</div>
 </div>
-
-<!-- ════ SECTION 1 — INSANE PARLAYS ════ -->
-<div class="sec-label"><div class="sec-label-n">01 — Insane Parlay Wins</div><div class="sec-label-line"></div></div>
-
-<!-- FEATURED: Leicester -->
-<div class="featured" style="background:#1e1e1e;">
-  <div class="feat-left">
-    <div>
-      <span class="feat-tag" style="background:rgba(236,90,60,.2);color:var(--coral);">🏆 All-Time Bookmaker Disaster</span>
-      <div class="feat-issue">2015–16 · Premier League · Sky Bet / Ladbrokes / William Hill</div>
-      <div class="feat-hl">Leicester City win the title at 5,000-1. Bookmakers weep. Mandy Clarke does not.</div>
-      <div class="feat-body">At the start of the 2015-16 season, Leicester City — who had survived relegation by the skin of their teeth the previous May — were priced at 5,000-1 to win the Premier League. ESPN noted those odds were 119 times more unlikely than Buster Douglas beating Mike Tyson. Then they went and won it.<br><br>Mandy Clarke, a medical secretary just outside Leicester, was handed a £10 ticket as a <em>joke</em> by a colleague. Payout: £50,000. "The money is an unbelievable amount for me. It is a life-changing amount," she told Sky Sports. The colleague who gave her the ticket presumably has a complicated relationship with Christmas.</div>
-      <div class="feat-cut"><p>"The unthinkable has become reality and we're facing paying out the sort of liability that you joke about at the start of the season."</p><div class="feat-cut-sig">— Sky Bet spokesman · May 2016 · Sky Sports ✅</div></div>
-      <div class="feat-cut"><p>"Leicester winning the title was in the realms of the ridiculous, and it has cost us the biggest ante-post payout in our 130-year history."</p><div class="feat-cut-sig">— Ladbrokes spokesman · May 2016 · Guardian ✅</div></div>
-      <div class="feat-source">Industry-wide liability: estimated £20m (Sky Sports) — Ladbrokes vowed never again to offer 5,000-1 on a football team to win a title.</div>
-    </div>
-    <div class="feat-cta">How did I miss this one? Probably because I was busy watching Vardy score. — C.C.F.</div>
-  </div>
-  <div class="feat-right">
-    <svg viewBox="0 0 340 320" xmlns="http://www.w3.org/2000/svg">
-      <rect width="340" height="320" fill="#111"/>
-      <!-- Trophy graphic -->
-      <text x="170" y="60" font-family="Spectral,serif" font-size="52" fill="rgba(245,179,46,.15)" text-anchor="middle" font-weight="700">5,000</text>
-      <text x="170" y="85" font-family="JetBrains Mono,monospace" font-size="11" fill="rgba(245,179,46,.4)" text-anchor="middle" letter-spacing="2">PRE-SEASON ODDS</text>
-
-      <!-- Stat cards -->
-      <rect x="20" y="100" width="140" height="72" rx="8" fill="rgba(74,124,95,.15)" stroke="rgba(74,124,95,.3)" stroke-width="1"/>
-      <text x="30" y="122" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.5)" letter-spacing="1">MANDY CLARKE</text>
-      <text x="30" y="148" font-family="Spectral,serif" font-size="28" font-weight="700" fill="#4a7c5f">£50,000</text>
-      <text x="30" y="166" font-family="Inter,sans-serif" font-size="9" fill="rgba(255,255,255,.35)">from a £10 joke ticket</text>
-
-      <rect x="180" y="100" width="140" height="72" rx="8" fill="rgba(236,90,60,.12)" stroke="rgba(236,90,60,.25)" stroke-width="1"/>
-      <text x="190" y="122" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.5)" letter-spacing="1">INDUSTRY LOSS</text>
-      <text x="190" y="148" font-family="Spectral,serif" font-size="28" font-weight="700" fill="#ec5a3c">£20M</text>
-      <text x="190" y="166" font-family="Inter,sans-serif" font-size="9" fill="rgba(255,255,255,.35)">estimated (Sky Sports)</text>
-
-      <!-- Comparison odds -->
-      <text x="20" y="205" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.4)" letter-spacing="1">CONTEXT: HOW UNLIKELY?</text>
-      <rect x="20" y="213" width="300" height="1" fill="rgba(255,255,255,.1)"/>
-
-      <text x="20" y="234" font-family="Inter,sans-serif" font-size="11" fill="rgba(255,255,255,.65)">Buster Douglas beats Tyson</text>
-      <text x="300" y="234" font-family="Spectral,serif" font-size="14" font-weight="700" fill="rgba(255,255,255,.5)" text-anchor="end">42-1</text>
-      <text x="20" y="254" font-family="Inter,sans-serif" font-size="11" fill="rgba(255,255,255,.65)">Miracle on Ice (1980)</text>
-      <text x="300" y="254" font-family="Spectral,serif" font-size="14" font-weight="700" fill="rgba(255,255,255,.5)" text-anchor="end">~1,000-1</text>
-      <text x="20" y="274" font-family="Inter,sans-serif" font-size="11" font-weight="700" fill="white">Leicester City win the title</text>
-      <text x="300" y="274" font-family="Spectral,serif" font-size="16" font-weight="700" fill="#f5b32e" text-anchor="end">5,000-1</text>
-
-      <rect x="20" y="288" width="300" height="1" fill="rgba(255,255,255,.1)"/>
-      <text x="20" y="308" font-family="Inter,sans-serif" font-size="9" fill="rgba(255,255,255,.3)" font-style="italic">119× more unlikely than Tyson vs Douglas — ESPN ✅</text>
-    </svg>
-  </div>
+<div id="qtFullList">
+<div class="qt-sec"><div class="qt-sec-lbl fire">Game-Changing &nbsp;&middot;&nbsp; 5 signals</div><div class="qt-sec-line"></div></div>
+<div class="qt-row"><div class="qt-qm">“</div><div class="qt-body"><div class="qt-q">I’ve done everything possible to try to get to the start line tomorrow but after a final scan tonight, the niggle I’ve been managing has developed into a stress fracture and I’ve been medically advised to stop pushing through.</div><div class="qt-meta"><div class="qt-about cr">Emma Raducanu</div><div class="qt-auth">&mdash; Emma Raducanu &nbsp;&middot;&nbsp; The Guardian &nbsp;&middot;&nbsp; 28 Jun 2026</div></div><div class="qt-match">Raducanu vs Ružić &middot; Wimbledon R1</div></div></div>
+<div class="qt-row"><div class="qt-qm">“</div><div class="qt-body"><div class="qt-q">We’ll see if she can match my power. Of course I can beat her. When I am at my best level, I can beat anyone.</div><div class="qt-meta"><div class="qt-about fire">Sabalenka vs Kostovic</div><div class="qt-auth">&mdash; Teodora Kostovic &nbsp;&middot;&nbsp; Tennis Temple &nbsp;&middot;&nbsp; 28 Jun 2026</div></div><div class="qt-match">Sabalenka vs Kostovic &middot; Wimbledon R1</div></div></div>
+<div class="qt-row"><div class="qt-qm">“</div><div class="qt-body"><div class="qt-q">I felt that I needed someone to unload all my thoughts with and clear my mind a bit before such an important tournament; I believe this is essential.</div><div class="qt-meta"><div class="qt-about drop">Aryna Sabalenka</div><div class="qt-auth">&mdash; Aryna Sabalenka &nbsp;&middot;&nbsp; Punto de Break &nbsp;&middot;&nbsp; 27 Jun 2026</div></div><div class="qt-match">Sabalenka vs Kostovic &middot; Wimbledon R1</div></div></div>
+<div class="qt-row"><div class="qt-qm">“</div><div class="qt-body"><div class="qt-q">I feel like I’m starting from a totally different position and I’m really in a place that I’m keeping my expectations low. I feel like I need to play matches and I need to adjust. It’s not going to be smooth because of last year.</div><div class="qt-meta"><div class="qt-about drop">Iga Swiatek</div><div class="qt-auth">&mdash; Iga Swiatek &nbsp;&middot;&nbsp; Tennis World USA &nbsp;&middot;&nbsp; 27 Jun 2026</div></div><div class="qt-match">Swiatek vs Townsend &middot; Wimbledon R1</div></div></div>
+<div class="qt-row"><div class="qt-qm">“</div><div class="qt-body"><div class="qt-q">I’m better prepared here than I was for Roland Garros. Obviously playing on grass, comparing to clay, you don’t need to exert as much physical effort. So that’s better for me.</div><div class="qt-meta"><div class="qt-about fire">Novak Djokovic</div><div class="qt-auth">&mdash; Novak Djokovic &nbsp;&middot;&nbsp; The Guardian &nbsp;&middot;&nbsp; 27 Jun 2026</div></div><div class="qt-match">Djokovic vs Wu Yibing &middot; Wimbledon R1</div></div></div>
+<div class="qt-sec"><div class="qt-sec-lbl drop">Notable &nbsp;&middot;&nbsp; 5 signals</div><div class="qt-sec-line"></div></div>
+<div class="qt-row"><div class="qt-qm">“</div><div class="qt-body"><div class="qt-q">I would say that my power, when competing, is in a very good place. I’m moving great. Still far from perfect, but I’m getting closer. Now I’m in a position where I’ve got that load for my body and I’m able to go out there and compete.</div><div class="qt-meta"><div class="qt-about drop">Jack Draper</div><div class="qt-auth">&mdash; Jack Draper &nbsp;&middot;&nbsp; The Guardian &nbsp;&middot;&nbsp; 28 Jun 2026</div></div><div class="qt-match">Draper vs Fritz &middot; Wimbledon R1</div></div></div>
+<div class="qt-row"><div class="qt-qm">“</div><div class="qt-body"><div class="qt-q">We have tweaked our physical training a bit. We did a much longer session—both in the gym and on the court—all at once and without breaks, to get as many different sensations as possible. Now we’ll see how I react in a match, and then we’ll see.</div><div class="qt-meta"><div class="qt-about drop">Jannik Sinner</div><div class="qt-auth">&mdash; Jannik Sinner &nbsp;&middot;&nbsp; Ubitennis &nbsp;&middot;&nbsp; 27 Jun 2026</div></div><div class="qt-match">Sinner vs Kecmanovic &middot; Wimbledon R1</div></div></div>
+<div class="qt-row"><div class="qt-qm">“</div><div class="qt-body"><div class="qt-q">You just have to play the ball. You can’t really think about who you are playing because I’ll just get too nervous. I’ll just take it one ball at a time.</div><div class="qt-meta"><div class="qt-about drop">Serena vs Joint</div><div class="qt-auth">&mdash; Maya Joint &nbsp;&middot;&nbsp; AP News &nbsp;&middot;&nbsp; 28 Jun 2026</div></div><div class="qt-match">Williams vs Joint &middot; Wimbledon R1</div></div></div>
+<div class="qt-row"><div class="qt-qm">“</div><div class="qt-body"><div class="qt-q">I expect to be nervous. I was also nervous every single match I ever played in my life. I definitely expect to have those same feelings.</div><div class="qt-meta"><div class="qt-about drop">Serena Williams</div><div class="qt-auth">&mdash; Serena Williams &nbsp;&middot;&nbsp; Olympics.com &nbsp;&middot;&nbsp; 28 Jun 2026</div></div><div class="qt-match">Williams vs Joint &middot; Wimbledon R1</div></div></div>
+<div class="qt-row"><div class="qt-qm">“</div><div class="qt-body"><div class="qt-q">Honestly, no expectations. I’m trying to adjust things, to feel better physically, which is the most important thing. Right now, the first priority is to feel healthy, 100% health with my body.</div><div class="qt-meta"><div class="qt-about drop">Jasmine Paolini</div><div class="qt-auth">&mdash; Jasmine Paolini &nbsp;&middot;&nbsp; WTA Tennis &nbsp;&middot;&nbsp; 28 Jun 2026</div></div><div class="qt-match">Paolini &middot; Wimbledon R1</div></div></div>
 </div>
-
-<!-- HARD ROCK PARLAY -->
-<div class="cards-grid" style="margin-top:14px;">
-
-  <div class="card">
-    <div class="card-top">
-      <div class="card-tag tg-nook">💰 Modern Parlay God</div>
-      <div class="card-n">$30.11 → $1,980,073.12. Six legs. One night. Florida.</div>
-      <div class="card-body">On 24 April 2026, a Broward County bettor turned $30.11 into just under $2 million on a six-leg MLB home-run parlay. Odds: +6,576,031. Riley Greene, Coby Mayo, Jesús Sánchez, Bryce Harper, Nick Kurtz and Jazz Chisholm Jr. all had to homer. They all homered.</div>
-      <div class="card-cut"><div class="card-cut-text">"One of the highest odds parlays that we've ever paid out — with only six legs! Send this ticket to Cooperstown."</div><div class="card-cut-sig">— Neil Walsh, SVP Sportsbook, Hard Rock Bet · April 2026 ✅</div></div>
-      <div class="card-cut" style="border-color:var(--coral);background:#fff5f3;">
-        <div class="card-cut-text" style="color:var(--coral);">How did I miss that? Maybe because I don't bet home runs. Maybe because $30 with those odds is the definition of "what do I have to lose." The answer, for once, was nothing. — C.C.F.</div>
-      </div>
-    </div>
-    <div class="card-vis">
-      <svg viewBox="0 0 400 120" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
-        <rect width="400" height="120" fill="#1e1e1e"/>
-        <text x="20" y="45" font-family="Spectral,serif" font-size="36" font-weight="700" fill="#4a7c5f">$1,980,073</text>
-        <text x="20" y="65" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.35)" letter-spacing="1">FROM A $30.11 STAKE · +6,576,031 ODDS</text>
-        <text x="20" y="95" font-family="Inter,sans-serif" font-size="11" fill="rgba(255,255,255,.5)">6 legs · 6 home runs · 6/6 ✓ · April 2026</text>
-      </svg>
-    </div>
-    <div class="card-foot"><span>Hard Rock Bet · April 2026</span><span class="card-foot-src">VERIFIED ✅</span></div>
-  </div>
-
-  <div class="card">
-    <div class="card-top">
-      <div class="card-tag tg-coral">🎰 The £2 Miracle</div>
-      <div class="card-n">Steve Whiteley. £2 Tote. £1.45 million. Exeter Racecourse. Free tickets.</div>
-      <div class="card-body">In 2011, a 61-year-old heating engineer attended Exeter Racecourse on free promotional tickets. He couldn't afford the £32 Tote Jackpot, so placed the £2 version — one horse per race. All six landed. The last was called Lupita. Payout: £1.45 million — the largest Tote payout in British history.</div>
-      <div class="card-cut"><div class="card-cut-text">He was a social gambler who only attended because friends had free tickets. He couldn't afford the proper version of the bet.</div><div class="card-cut-sig">— Guardian · 2011 ✅</div></div>
-      <div class="card-cut" style="border-color:var(--coral);background:#fff5f3;">
-        <div class="card-cut-text" style="color:var(--coral);">The horse was called Lupita. He couldn't afford the full bet. He won £1.45 million. The moral of this story is unclear and I refuse to draw one. — C.C.F.</div>
-      </div>
-    </div>
-    <div class="card-vis">
-      <svg viewBox="0 0 400 120" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
-        <rect width="400" height="120" fill="#1d3a28"/>
-        <text x="20" y="45" font-family="Spectral,serif" font-size="32" font-weight="700" fill="#4a7c5f">£1,450,000</text>
-        <text x="20" y="65" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.35)" letter-spacing="1">FROM A £2 TOTE JACKPOT · EXETER 2011</text>
-        <text x="20" y="95" font-family="Inter,sans-serif" font-size="11" fill="rgba(255,255,255,.5)">6 horses · Last horse: Lupita · Largest Tote payout in British history</text>
-      </svg>
-    </div>
-    <div class="card-foot"><span>Tote · Exeter Racecourse · 2011</span><span class="card-foot-src">VERIFIED ✅</span></div>
-  </div>
-
-  <div class="card">
-    <div class="card-top">
-      <div class="card-tag tg-blue">🏌️ Tiger Woods. First bet. $1.19M.</div>
-      <div class="card-n">James Adducci. $85,000. Tiger at 14-1. First sports bet of his life.</div>
-      <div class="card-body">In April 2019, James Adducci — a 39-year-old self-employed daytrader from Wisconsin — flew to Las Vegas and staked $85,000 on Tiger Woods to win the Masters at 14-1. It was his first-ever sports bet. Tiger won. Adducci collected $1.19 million — the largest golf futures payout in William Hill US history at the time.</div>
-      <div class="card-cut"><div class="card-cut-text">"This is a story for the ages. Tiger climbs back to the top, and a guy from Wisconsin, on his first sports bet ever, wins over $1 million betting on him."</div><div class="card-cut-sig">— Joe Asher, CEO William Hill US · April 2019 ✅</div></div>
-      <div class="card-cut" style="border-color:var(--coral);background:#fff5f3;">
-        <div class="card-cut-text" style="color:var(--coral);">He then staked $100,000 of his winnings on Tiger to win the 2019 Grand Slam at 100-1. That one did not come in. The universe balanced itself. — C.C.F.</div>
-      </div>
-    </div>
-    <div class="card-vis">
-      <svg viewBox="0 0 400 120" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
-        <rect width="400" height="120" fill="#1a2f4a"/>
-        <text x="20" y="45" font-family="Spectral,serif" font-size="32" font-weight="700" fill="#3d6db5">$1,190,000</text>
-        <text x="20" y="65" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.35)" letter-spacing="1">$85K STAKE · 14-1 · MASTERS 2019 · FIRST EVER BET</text>
-        <text x="20" y="95" font-family="Inter,sans-serif" font-size="11" fill="rgba(255,255,255,.5)">Then bet $100K on Tiger Grand Slam at 100-1 → Lost. Universe: 1, Adducci: 1.</text>
-      </svg>
-    </div>
-    <div class="card-foot"><span>William Hill US · April 2019</span><span class="card-foot-src">VERIFIED ✅</span></div>
-  </div>
-
-</div>
-
-<!-- HARD ROCK PARLAY INFOGRAPHIC -->
-<div class="infographic" style="margin-top:18px;">
-  <div class="infographic-head">
-    <div class="infographic-title">The $30.11 Parlay · Leg by Leg</div>
-    <div class="infographic-sub">Hard Rock Bet · April 24, 2026 · Verified ✅</div>
-  </div>
-  <div class="infographic-body">
-    <div class="parlay-chain">
-      <div class="pc-leg"><div class="pc-leg-player">R. Greene</div><div class="pc-leg-type">HR Anytime</div><div class="pc-leg-odds">✓</div></div>
-      <div class="pc-leg"><div class="pc-leg-player">C. Mayo</div><div class="pc-leg-type">HR Anytime</div><div class="pc-leg-odds">✓</div></div>
-      <div class="pc-leg"><div class="pc-leg-player">J. Sánchez</div><div class="pc-leg-type">HR Anytime</div><div class="pc-leg-odds">✓</div></div>
-      <div class="pc-leg"><div class="pc-leg-player">B. Harper</div><div class="pc-leg-type">HR Anytime</div><div class="pc-leg-odds">✓</div></div>
-      <div class="pc-leg"><div class="pc-leg-player">N. Kurtz</div><div class="pc-leg-type">HR Anytime</div><div class="pc-leg-odds">✓</div></div>
-      <div class="pc-leg"><div class="pc-leg-player">J. Chisholm</div><div class="pc-leg-type">HR Anytime</div><div class="pc-leg-odds">✓</div></div>
-    </div>
-    <div class="parlay-result">
-      <div class="pr-stake">Stake<br><span>$30.11</span></div>
-      <div class="pr-arrow">→</div>
-      <div><div style="font-family:'JetBrains Mono',monospace;font-size:12px;color:rgba(255,255,255,.45);text-align:center;margin-bottom:4px;">+6,576,031</div></div>
-      <div class="pr-arrow">→</div>
-      <div class="pr-return"><div class="pr-return-n">$1,980,073</div><div class="pr-return-l">Paid out · Hard Rock Bet</div></div>
-    </div>
-    <div style="margin-top:12px;font-size:10px;color:var(--muted);font-style:italic;">Note: "send this ticket to Cooperstown" — the VP of Sportsbook, Hard Rock Bet. Casinos earn ~30 cents per dollar on parlays. For every ticket like this there is an ocean of dead slips. Enjoy the story. Don't replicate the strategy.</div>
-  </div>
-</div>
-
-<!-- ════ SECTION 2 — COLLAPSES ════ -->
-<div class="sec-label" style="margin-top:28px;"><div class="sec-label-n">02 — Shocking Collapses</div><div class="sec-label-line"></div></div>
-
-<div class="infographic" style="margin-top:16px;">
-  <div class="infographic-head">
-    <div class="infographic-title">The 1.01 Graveyard — Money Lost on "Certainties"</div>
-    <div class="infographic-sub">Betfair history · All figures from Racing Post ✅</div>
-  </div>
-  <div class="infographic-body">
-    <div class="odds-row">
-      <div class="odds-label" style="font-family:'Spectral',serif;font-size:13px;font-weight:700;color:var(--dark);">Kay Gee Be<br><span style="font-size:10px;font-weight:400;color:var(--muted);">Nottingham · Oct 2011 · Lost on the line</span></div>
-      <div class="odds-bar-wrap">
-        <div class="odds-bar" style="width:100%;background:var(--coral);">
-          <div class="odds-bar-n">£202,324 — staked at 1.01 odds</div>
-        </div>
-      </div>
-      <div class="odds-val" style="color:var(--coral);">£202K</div>
-    </div>
-    <div class="odds-row">
-      <div class="odds-label" style="font-family:'Spectral',serif;font-size:13px;font-weight:700;color:var(--dark);">Jollyhockeysticks<br><span style="font-size:10px;font-weight:400;color:var(--muted);">Hamilton · 2008 · Demoted by stewards</span></div>
-      <div class="odds-bar-wrap">
-        <div class="odds-bar" style="width:44%;background:#c4622e;">
-          <div class="odds-bar-n">£88,893</div>
-        </div>
-      </div>
-      <div class="odds-val" style="color:#c4622e;">£89K</div>
-    </div>
-    <div class="odds-row">
-      <div class="odds-label" style="font-family:'Spectral',serif;font-size:13px;font-weight:700;color:var(--dark);">Duntle<br><span style="font-size:10px;font-weight:400;color:var(--muted);">Leopardstown · 2012 · Demoted</span></div>
-      <div class="odds-bar-wrap">
-        <div class="odds-bar" style="width:29%;background:#a04518;">
-          <div class="odds-bar-n">£58,578</div>
-        </div>
-      </div>
-      <div class="odds-val" style="color:#a04518;">£59K</div>
-    </div>
-    <div class="odds-row">
-      <div class="odds-label" style="font-family:'Spectral',serif;font-size:13px;font-weight:700;color:var(--dark);">Jeanry<br><span style="font-size:10px;font-weight:400;color:var(--muted);">Jockey eased down 6 lengths clear. Got caught.</span></div>
-      <div class="odds-bar-wrap">
-        <div class="odds-bar" style="width:14%;background:#7a3a14;"><div class="odds-bar-n">£27,679</div></div>
-      </div>
-      <div class="odds-val" style="color:#7a3a14;">£28K</div>
-    </div>
-    <div style="margin-top:14px;padding:12px 14px;background:var(--cream);border-radius:8px;font-family:'Spectral',serif;font-size:13px;font-style:italic;color:var(--dark);border-left:3px solid var(--coral);">
-      All four horses lost at 1.01 — the odds where you risk £100 to win £1. Kay Gee Be was leading inside the final furlong. The Nottingham winning line has a famously deceptive angle. He was caught by a nose. The £202,324 is not a typo. — C.C.F.
-    </div>
-  </div>
-</div>
-
-<!-- REMONTADA QUOTE WALL -->
-<div class="quote-wall" style="margin-top:0;">
-  <div class="qc" style="background:var(--dark);">
-    <div class="qc-quote" style="color:#fff;">"When the seagulls follow the trawler, it is because they think sardines will be thrown into the sea."</div>
-    <div class="qc-attr" style="color:var(--nook);">Eric Cantona · Press conference · March 1995</div>
-    <div class="qc-context" style="color:rgba(255,255,255,.5);">Said after his kung-fu kick on a Crystal Palace fan. He then sipped his water and left. A reporter audibly blurted "Seagulls?" Cantona later clarified: "It means nothing. I put a mirror in front of the journalists." He was banned eight months, fined £20,000, stripped of the French captaincy — then returned to lead United to the Double. Bookmakers presumably adjusted their Cantona markets accordingly.</div>
-  </div>
-  <div class="qc" style="background:var(--card);">
-    <div class="qc-quote" style="color:#fff;">"I'm not suited to Bolton or Blackburn, I would be more suited to Inter Milan or Real Madrid… I would win the double or the league every time."</div>
-    <div class="qc-attr" style="color:var(--ocre);">Sam Allardyce · Various · Documented</div>
-    <div class="qc-context" style="color:rgba(255,255,255,.5);">Big Sam also declared he "wouldn't ever be going to a top-four club because I'm not called Allardici, just Allardyce." He never won a major trophy. He did, however, once out-tactic Mourinho at Bolton, which he will remind you of until the heat death of the universe. Betting markets on Allardyce managing Real Madrid have never existed. Oversight, probably.</div>
-  </div>
-</div>
-
-<!-- ════ SECTION 3 — FIXING ════ -->
-<div class="sec-label" style="margin-top:28px;"><div class="sec-label-n">03 — Match-Fixing: The Documented Record</div><div class="sec-label-line"></div></div>
-
-<div class="infographic" style="margin-top:16px;">
-  <div class="infographic-head">
-    <div class="infographic-title">The Fixing Timeline · 1919 → 2011</div>
-    <div class="infographic-sub">All entries legally documented · Convictions, bans, and eternal shame</div>
-  </div>
-  <div class="infographic-body">
-    <div class="timeline">
-      <div class="tl-item">
-        <div class="tl-year">1919</div>
-        <div class="tl-content">
-          <div class="tl-title">Black Sox · World Series · Chicago White Sox</div>
-          <div class="tl-body">Eight players conspired to throw the World Series to the Cincinnati Reds for bribes of $70,000-$100,000. Key confessions vanished from trial files. Commissioner Landis banned all eight for life the next day, despite acquittals.</div>
-          <div class="tl-cut">"Regardless of the verdict of juries… no player that sits in conference with a bunch of crooked players and gamblers… will ever play professional baseball." — Commissioner Landis ✅</div>
-          <div class="tl-body" style="margin-top:6px;font-style:italic;color:#9a9060;">2025 update: Commissioner Manfred ruled permanent bans expire at death. Joe Jackson eligible for Hall of Fame consideration from 2028.</div>
-        </div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-year">1989</div>
-        <div class="tl-content">
-          <div class="tl-title">Pete Rose · Baseball's all-time hits leader · Lifetime ban</div>
-          <div class="tl-body">Rose (4,256 career hits) accepted a lifetime ban after the Dowd Report documented betting on baseball — including his own Cincinnati Reds — while serving as manager. He denied it for 15 years.</div>
-          <div class="tl-cut">"I bet on my team every night… I bet on my team to win every night because I loved my team." — Pete Rose, My Prison Without Bars, 2004 ✅</div>
-        </div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-year">2006</div>
-        <div class="tl-content">
-          <div class="tl-title">Calciopoli · Italy · Juventus relegated, Serie A titles stripped</div>
-          <div class="tl-body">Wiretaps revealed Juventus GM Luciano Moggi running a network to influence referee appointments. Juve stripped of the 2005 title and relegated to Serie B. Fiorentina and Lazio also relegated. Moggi banned for life.</div>
-          <div class="tl-body" style="margin-top:6px;font-style:italic;color:#9a9060;">Delicious irony: Italy won the 2006 World Cup that same summer, with Buffon, Cannavaro, and Del Piero — all from implicated clubs — in the squad. Cannavaro lifted the trophy as captain. The universe has a sense of humour.</div>
-        </div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-year">2010</div>
-        <div class="tl-content">
-          <div class="tl-title">Pakistan spot-fixing · Lord's Test · England</div>
-          <div class="tl-body">The now-defunct News of the World caught agent Mazhar Majeed predicting exactly when bowlers would deliver no-balls. Captain Salman Butt and bowlers Mohammad Asif and Mohammad Amir were jailed by a London court in 2011. Amir later rebuilt his career.</div>
-          <div class="tl-cut">Butt: 2.5 years · Asif: 1 year · Amir: 6 months · Majeed: 2 years 8 months — London Crown Court, November 2011 ✅</div>
-        </div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-year">2011</div>
-        <div class="tl-content">
-          <div class="tl-title">Daniel Köllerer · Tennis · First lifetime ban for match-fixing</div>
-          <div class="tl-body">The Austrian nicknamed "Crazy Dani" became the first tennis player banned for life for match-fixing — found to have made invitations to fix matches on five occasions.</div>
-          <div class="tl-cut">"This is a giant shock." — Köllerer, Austrian radio. Court of Arbitration for Sport upheld the ban in 2012. ✅</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ════ SECTION 4 — LEGENDARY PUNTERS ════ -->
-<div class="sec-label" style="margin-top:28px;"><div class="sec-label-n">04 — Legendary Punters</div><div class="sec-label-line"></div></div>
-
-<div style="margin:16px 32px 0;">
-  <div class="punters-grid">
-    <div class="punter">
-      <div class="punter-name">Billy Walters</div>
-      <div class="punter-aka">The Computer Group · Kentucky</div>
-      <div class="punter-stat"><div class="punter-stat-l">Win rate</div><div class="punter-stat-n g">~57%</div></div>
-      <div class="punter-stat"><div class="punter-stat-l">Losing years in 39</div><div class="punter-stat-n g">1</div></div>
-      <div class="punter-stat"><div class="punter-stat-l">Super Bowl XLIV win</div><div class="punter-stat-n g">$3.5M</div></div>
-      <div class="punter-stat"><div class="punter-stat-l">Weekend volume</div><div class="punter-stat-n">Up to $20M</div></div>
-      <div class="punter-cut">"There'll never be another Billy Walters. He changed the world of bookmaking and betting." — Jimmy Vaccaro, Oddsmaker ✅<br><br>He "only" wins 57% of bets. The fortune came from volume and small edges — not magic. How did I miss that? I'd need 39 years and a Computer Group to replicate it.</div>
-    </div>
-    <div class="punter">
-      <div class="punter-name">Haralabos Voulgaris</div>
-      <div class="punter-aka">"Bob" · "Ewing" model · NBA</div>
-      <div class="punter-stat"><div class="punter-stat-l">Peak win rate</div><div class="punter-stat-n g">~70%</div></div>
-      <div class="punter-stat"><div class="punter-stat-l">First big bet (1999)</div><div class="punter-stat-n g">$80K → $500K</div></div>
-      <div class="punter-stat"><div class="punter-stat-l">Daily staking peak</div><div class="punter-stat-n">$1M+</div></div>
-      <div class="punter-stat"><div class="punter-stat-l">Later career</div><div class="punter-stat-n" style="font-size:11px;">Dallas Mavericks Director of Quant Research</div></div>
-      <div class="punter-cut">Exploited a flaw in NBA second-half totals pricing, winning ~70% in the late 1990s. When bookmakers killed his edge in 2004 he lost a third of his bankroll in a single month. He rebuilt with "Ewing" — a model built with an anonymous math prodigy he calls "The Whiz." He now owns a Spanish football club.</div>
-    </div>
-    <div class="punter">
-      <div class="punter-name">Tony Bloom</div>
-      <div class="punter-aka">"The Lizard" · Starlizard · Brighton</div>
-      <div class="punter-stat"><div class="punter-stat-l">Alleged syndicate winnings</div><div class="punter-stat-n g">~£600M/yr</div></div>
-      <div class="punter-stat"><div class="punter-stat-l">Net worth (est.)</div><div class="punter-stat-n">£1.3B</div></div>
-      <div class="punter-stat"><div class="punter-stat-l">Brighton journey</div><div class="punter-stat-n" style="font-size:11px;">3rd tier → Premier League → Europe</div></div>
-      <div class="punter-stat"><div class="punter-stat-l">Syndicate members</div><div class="punter-stat-n">~100</div></div>
-      <div class="punter-cut">"Poker gives you good grounding in lots of areas, including reading situations and people or making difficult decisions." — Tony Bloom ✅<br><br>Note: the £600M/yr figure is an unproven court allegation actively contested by Bloom's legal team, who called it "an irrelevant exaggeration." Presented as a claim, not fact.</div>
-    </div>
-  </div>
-</div>
-
-<!-- ════ SECTION 5 — OUR GRASS LIST ════ -->
-<div class="sec-label" style="margin-top:28px;"><div class="sec-label-n">05 — The Grass List · C.C. Farah's Personal Registry</div><div class="sec-label-line"></div></div>
-
-<div class="infographic" style="margin-top:16px;margin-bottom:0;">
-  <div class="infographic-head">
-    <div class="infographic-title">Players We Fade Systematically on Grass · June 2026</div>
-    <div class="infographic-sub">Permanent entries · No appeals process</div>
-  </div>
-  <div class="infographic-body">
-    <div class="grass-list">
-      <div class="gl-item">
-        <div class="gl-rank">01</div>
-        <div><div class="gl-name">Qinwen Zheng 🇨🇳</div><div class="gl-note">Added Jun 17, 2026 · Faded twice in one day · +15.75€ net · "not easy for me on grass" — her words</div></div>
-        <div class="gl-wr bad">35%</div>
-        <div class="gl-badge new">New ✓</div>
-      </div>
-      <div class="gl-item">
-        <div class="gl-rank">02</div>
-        <div><div class="gl-name">Daniil Medvedev 🇷🇺</div><div class="gl-note">51% grass win rate vs 73% on hard · "Fuck clay" (also applies to grass) · Heavy topspin, long swings</div></div>
-        <div class="gl-wr bad">51%</div>
-        <div class="gl-badge vet">Veteran</div>
-      </div>
-      <div class="gl-item">
-        <div class="gl-rank">03</div>
-        <div><div class="gl-name">Cameron Norrie 🇬🇧</div><div class="gl-note">Bet #1 · Cracked ribs · "Nothing major" · First grass match 2026 · Live entry won +5.32€</div></div>
-        <div class="gl-wr" style="font-size:14px;text-align:right;color:var(--muted);">Case<br>by case</div>
-        <div class="gl-badge vet">Flagged</div>
-      </div>
-    </div>
-    <div style="margin-top:14px;padding:12px 16px;background:var(--cream);border-radius:8px;font-size:12px;color:#7a7060;line-height:1.6;">
-      The list doesn't mean they're bad players. Zheng is an Olympic gold medalist and former world No.4. Medvedev is a Grand Slam champion. The list means the market prices them wrong on this surface, consistently, and we'll be there every time. Entries are permanent. The list grows every grass season.
-    </div>
-  </div>
-</div>
-
-<div class="spacer"></div>
-
-<!-- FOOTER -->
-<div class="ff-footer" style="margin:0 32px 28px;">
-  <div class="ff-footer-logo"><span>#</span>sportsbetting · #FUN FACTS</div>
-  <div class="ff-footer-disc">All historical figures sourced from named publications (Guardian, Sky Sports, Racing Post, ESPN). Claims marked as "reported" or "alleged" are flagged where primary sourcing is secondary or contested. This page is editorial content only. Not betting advice. 18+</div>
+<div class="qt-foot-note">All citations confirmed within 48h pre-match &middot; Sources verified &middot; No fabrications &middot; C.C. Farah editorial &middot; hashtagsportsbetting.com</div>
 </div>
 </div>
+
 
 <!-- FOOTER -->
 <footer class="foot">
@@ -1092,7 +788,7 @@ body{font-family:'Inter',sans-serif;background:var(--cream);}
     <div class="foot-links">
       <a onclick="go('tr')">#trackrecord</a>
       <a onclick="go('zi')">#aparlaystory</a>
-      <a onclick="go('ff')">#funfacts</a>
+      <a onclick="go('qt')">#quotes</a>
       <a href="#">Privacy</a>
     </div>
     <div class="foot-by">A Charles Chambers Farah strategy</div>
@@ -1517,7 +1213,7 @@ buildCal();
 function showPage(id){
   document.querySelectorAll('.pg').forEach(p=>p.classList.remove('on'));
   document.getElementById('pg-'+id).classList.add('on');
-  ['tr','zi','ff'].forEach(k=>{const b=document.getElementById('nl-'+k);if(b)b.classList.toggle('on',k===id);});
+  ['tr','zi'].forEach(k=>{const b=document.getElementById('nl-'+k);if(b)b.classList.toggle('on',k===id);});
   window.scrollTo(0,0);
 }
 function go(id){
@@ -1525,6 +1221,51 @@ function go(id){
   closeMenu();
   history.pushState({page:id},'');
 }
+
+const QUOTES_DATA=[
+  {q:"I’ve done everything possible to try to get to the start line tomorrow but after a final scan tonight, the niggle I’ve been managing has developed into a stress fracture and I’ve been medically advised to stop pushing through.",author:"Emma Raducanu",source:"The Guardian",date:"28 Jun 2026",about:"Emma Raducanu",match:"Raducanu vs Ružić · Wimbledon R1",type:"major",signal:"cr"},
+  {q:"We’ll see if she can match my power. Of course I can beat her. When I am at my best level, I can beat anyone.",author:"Teodora Kostovic",source:"Tennis Temple",date:"28 Jun 2026",about:"Sabalenka vs Kostovic",match:"Sabalenka vs Kostovic · Wimbledon R1",type:"major",signal:"fire"},
+  {q:"I felt that I needed someone to unload all my thoughts with and clear my mind a bit before such an important tournament; I believe this is essential.",author:"Aryna Sabalenka",source:"Punto de Break",date:"27 Jun 2026",about:"Aryna Sabalenka",match:"Sabalenka vs Kostovic · Wimbledon R1",type:"major",signal:"drop"},
+  {q:"I feel like I’m starting from a totally different position and I’m really in a place that I’m keeping my expectations low. I feel like I need to play matches and I need to adjust. It’s not going to be smooth because of last year.",author:"Iga Swiatek",source:"Tennis World USA",date:"27 Jun 2026",about:"Iga Swiatek",match:"Swiatek vs Townsend · Wimbledon R1",type:"major",signal:"drop"},
+  {q:"I’m better prepared here than I was for Roland Garros. Obviously playing on grass, comparing to clay, you don’t need to exert as much physical effort. So that’s better for me.",author:"Novak Djokovic",source:"The Guardian",date:"27 Jun 2026",about:"Novak Djokovic",match:"Djokovic vs Wu Yibing · Wimbledon R1",type:"major",signal:"fire"},
+  {q:"I would say that my power, when competing, is in a very good place. I’m moving great. Still far from perfect, but I’m getting closer. Now I’m in a position where I’ve got that load for my body and I’m able to go out there and compete.",author:"Jack Draper",source:"The Guardian",date:"28 Jun 2026",about:"Jack Draper",match:"Draper vs Fritz · Wimbledon R1",type:"notable",signal:"drop"},
+  {q:"We have tweaked our physical training a bit. We did a much longer session—both in the gym and on the court—all at once and without breaks, to get as many different sensations as possible. Now we’ll see how I react in a match, and then we’ll see.",author:"Jannik Sinner",source:"Ubitennis",date:"27 Jun 2026",about:"Jannik Sinner",match:"Sinner vs Kecmanovic · Wimbledon R1",type:"notable",signal:"drop"},
+  {q:"You just have to play the ball. You can’t really think about who you are playing because I’ll just get too nervous. I’ll just take it one ball at a time.",author:"Maya Joint",source:"AP News",date:"28 Jun 2026",about:"Serena vs Joint",match:"Williams vs Joint · Wimbledon R1",type:"notable",signal:"drop"},
+  {q:"I expect to be nervous. I was also nervous every single match I ever played in my life. I definitely expect to have those same feelings.",author:"Serena Williams",source:"Olympics.com",date:"28 Jun 2026",about:"Serena Williams",match:"Williams vs Joint · Wimbledon R1",type:"notable",signal:"drop"},
+  {q:"Honestly, no expectations. I’m trying to adjust things, to feel better physically, which is the most important thing. Right now, the first priority is to feel healthy, 100% health with my body.",author:"Jasmine Paolini",source:"WTA Tennis",date:"28 Jun 2026",about:"Jasmine Paolini",match:"Paolini · Wimbledon R1",type:"notable",signal:"drop"}
+];
+function renderQuotes(){
+  function makeRow(q){
+    return '<div class="qt-row">'
+      +'<div class="qt-qm">“</div>'
+      +'<div class="qt-body">'
+        +'<div class="qt-q">'+q.q+'</div>'
+        +'<div class="qt-meta">'
+          +'<div class="qt-about '+q.signal+'">'+q.about+'</div>'
+          +'<div class="qt-auth">&mdash; '+q.author+' &nbsp;&middot;&nbsp; '+q.source+' &nbsp;&middot;&nbsp; '+q.date+'</div>'
+        +'</div>'
+        +(q.match?'<div class="qt-match">'+q.match+'</div>':'')
+      +'</div>'
+    +'</div>';
+  }
+  var majors=QUOTES_DATA.filter(function(q){return q.type==='major';});
+  var notables=QUOTES_DATA.filter(function(q){return q.type==='notable';});
+  var html='';
+  if(majors.length){
+    html+='<div class="qt-sec"><div class="qt-sec-lbl fire">Game-Changing &nbsp;&middot;&nbsp; '+majors.length+' signals</div><div class="qt-sec-line"></div></div>';
+    majors.forEach(function(q){html+=makeRow(q);});
+  }
+  if(notables.length){
+    html+='<div class="qt-sec"><div class="qt-sec-lbl drop">Notable &nbsp;&middot;&nbsp; '+notables.length+' signals</div><div class="qt-sec-line"></div></div>';
+    notables.forEach(function(q){html+=makeRow(q);});
+  }
+  var fullEl=document.getElementById('qtFullList');
+  if(fullEl)fullEl.innerHTML=html;
+  var homeEl=document.getElementById('qtHomeList');
+  if(homeEl){var h='';majors.slice(0,3).forEach(function(q){h+=makeRow(q);});homeEl.innerHTML=h;}
+}
+renderQuotes();
+
 function toggleMenu(){document.getElementById('navDrawer').classList.toggle('open');document.getElementById('hamburger').classList.toggle('open');}
 function closeMenu(){document.getElementById('navDrawer').classList.remove('open');document.getElementById('hamburger').classList.remove('open');}
 
@@ -1562,7 +1303,7 @@ function showArticle(slug){
   }
   document.querySelectorAll('.pg').forEach(p=>p.classList.remove('on'));
   document.getElementById('pg-article').classList.add('on');
-  ['tr','zi','ff'].forEach(k=>{const b=document.getElementById('nl-'+k);if(b)b.classList.remove('on');});
+  ['tr','zi','qt'].forEach(k=>{const b=document.getElementById('nl-'+k);if(b)b.classList.remove('on');});
   window.scrollTo(0,0);
 }
 function openArt(slug){
@@ -1584,7 +1325,7 @@ history.replaceState({page:'home'},'');
 
 // Hash-routing: article pages link back with #zoom-in / #track-record / #fun-facts
 (function(){
-  var map={'parlay-story':'zi','zoom-in':'zi','track-record':'tr','fun-facts':'ff','home':'home'};
+  var map={'parlay-story':'zi','zoom-in':'zi','track-record':'tr','fun-facts':'qt','quotes':'qt','home':'home'};
   var h=(location.hash||'').replace('#','');
   if(map[h]){go(map[h]);}
 })();
