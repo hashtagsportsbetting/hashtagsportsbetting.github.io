@@ -21,32 +21,33 @@
 :root{--cream:#f0ede4;--paper:#f7f4ec;--nook:#4a7c5f;--coral:#ec5a3c;--ocre:#f5b32e;--blue:#3d6db5;--dark:#1e1e1e;--ink:#211e18;--muted:#a09880;--border:#e0d9cc;}
 body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--ink);-webkit-font-smoothing:antialiased;}
 
-/* NAV */
-.nav{background:var(--dark);border-bottom:2px solid var(--nook);display:flex;align-items:center;justify-content:space-between;padding:0 32px;position:sticky;top:0;z-index:200;height:56px;gap:16px;}
-@media(max-width:767px){.nav{padding:0 16px;}}
-.nav-logo{font-family:'Spectral',serif;font-size:19px;font-weight:700;color:#fff;text-decoration:none;letter-spacing:-.02em;flex-shrink:0;cursor:pointer;}
+.nav{background:var(--dark);border-bottom:2px solid var(--nook);display:flex;align-items:center;justify-content:space-between;padding:16px 32px;position:sticky;top:0;z-index:200;}
+.nav-logo{font-family:'Spectral',serif;font-size:20px;color:#fff;letter-spacing:-.02em;cursor:pointer;text-decoration:none;}
 .nav-logo span{color:var(--nook);}
-.nav-links{display:flex;align-items:center;gap:4px;flex:1;}
-@media(max-width:900px){.nav-links{display:none;}}
-.nl{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:rgba(255,255,255,.45);text-decoration:none;text-transform:uppercase;letter-spacing:.04em;padding:6px 9px;border-radius:4px;background:none;border:none;cursor:pointer;}
-.nl:hover{color:#fff;}.nl.on{color:#fff;}
-.nav-right{display:flex;align-items:center;gap:10px;flex-shrink:0;}
-@media(max-width:900px){.nav-right .btn-sim{display:none;}}
-.btn-sim{background:transparent;color:rgba(255,255,255,.7);font-size:11px;font-weight:700;padding:8px 18px;border-radius:100px;border:1.5px solid rgba(255,255,255,.25);cursor:pointer;text-transform:uppercase;letter-spacing:.06em;text-decoration:none;}
-.btn-sub{background:var(--coral);color:#fff;font-size:11px;font-weight:700;padding:8px 18px;border-radius:100px;border:none;cursor:pointer;text-transform:uppercase;letter-spacing:.06em;text-decoration:none;}
-@media(max-width:767px){.btn-sub{font-size:10px;padding:8px 12px;white-space:nowrap;}}
+.nav-links{display:flex;gap:24px;}
+.nav-links button,.nav-links a{font-size:13px;font-weight:700;color:rgba(255,255,255,.5);background:none;border:none;text-transform:uppercase;letter-spacing:.06em;cursor:pointer;font-family:'Inter',sans-serif;transition:color .15s;text-decoration:none;}
+.nav-links button:hover,.nav-links button.on,.nav-links a:hover,.nav-links a.on{color:var(--nook);}
+.nav-right{display:flex;gap:10px;align-items:center;}
+.btn-sim{background:transparent;color:rgba(255,255,255,.7);font-size:11px;font-weight:700;padding:8px 18px;border-radius:100px;border:1.5px solid rgba(255,255,255,.25);cursor:pointer;text-transform:uppercase;letter-spacing:.06em;text-decoration:none;display:inline-block;}
+.btn-sub{background:var(--coral);color:#fff;font-size:11px;font-weight:700;padding:8px 18px;border-radius:100px;border:none;cursor:pointer;text-transform:uppercase;letter-spacing:.06em;text-decoration:none;display:inline-block;}
 .nav-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px;background:none;border:none;}
 .nav-hamburger span{width:22px;height:2px;background:#fff;border-radius:2px;transition:all .2s;}
 .nav-hamburger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px);}
 .nav-hamburger.open span:nth-child(2){opacity:0;}
 .nav-hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px);}
-@media(max-width:900px){.nav-hamburger{display:flex;}}
 .nav-drawer{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:var(--dark);z-index:190;flex-direction:column;padding:80px 24px 32px;}
 .nav-drawer.open{display:flex;}
 .ndl{font-size:22px;font-weight:700;color:rgba(255,255,255,.5);padding:16px 0;border-bottom:1px solid #2a2a2a;cursor:pointer;background:none;border-top:none;border-left:none;border-right:none;text-align:left;font-family:'Inter',sans-serif;text-transform:uppercase;letter-spacing:.06em;width:100%;text-decoration:none;display:block;}
 .ndl:hover{color:var(--nook);}
-.ndl.on{color:#fff;}
-@media(min-width:901px){.nav-drawer{display:none!important;}}
+@media(max-width:767px){
+  .nav{padding:14px 16px;gap:10px;}
+  .nav-links{display:none;}
+  .nav-right{display:flex;gap:8px;}
+  .nav-right .btn-sim{display:none;}
+  .btn-sub{font-size:10px;padding:8px 12px;white-space:nowrap;}
+  .nav-hamburger{display:flex;}
+}
+@media(min-width:768px){.nav-drawer{display:none!important;}}
 
 /* CHALLENGE HEADER */
 .ch-head{background:var(--dark);padding:36px 32px 28px;border-bottom:2px solid #252525;}
@@ -121,10 +122,10 @@ body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--ink);-we
 <nav class="nav">
   <a href="index.html" class="nav-logo"><span>#</span>sportsbetting</a>
   <div class="nav-links">
-    <a href="index.html#track-record" class="nl">#TRACK RECORD</a>
-    <a href="index.html#parlay-story" class="nl">#A PARLAY STORY</a>
-    <a href="x3-challenge.html" class="nl on">#X3 CHALLENGE</a>
-    <a href="quotes.html" class="nl">#QUOTES</a>
+    <a href="index.html#track-record">#TRACK RECORD</a>
+    <a href="index.html#parlay-story">#A PARLAY STORY</a>
+    <a href="x3-challenge.html" class="on">#X3 CHALLENGE</a>
+    <a href="quotes.html">#QUOTES</a>
   </div>
   <div class="nav-right">
     <a href="index.html" class="btn-sim">Simulation</a>
@@ -143,7 +144,6 @@ body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--ink);-we
     <a href="https://abettorlife.blogabet.com" class="btn-sub" style="text-align:center;">#SUBSCRIBE &#x2192;</a>
   </div>
 </div>
-
 <!-- CHALLENGE HEADER -->
 <div class="ch-head">
   <div class="ch-meta">
