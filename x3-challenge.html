@@ -25,8 +25,6 @@ body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--ink);-we
 .nav{background:var(--dark);border-bottom:2px solid var(--nook);display:flex;align-items:center;justify-content:space-between;padding:15px 32px;position:sticky;top:0;z-index:100;}
 .nav-logo{font-family:'Spectral',serif;font-size:19px;font-weight:700;color:#fff;text-decoration:none;letter-spacing:-.02em;}
 .nav-logo span{color:var(--nook);}
-.nav-back{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;color:rgba(255,255,255,.55);text-decoration:none;text-transform:uppercase;letter-spacing:.08em;transition:color .15s;}
-.nav-back:hover{color:var(--nook);}
 .nav-sub{background:var(--coral);color:#fff;font-size:11px;font-weight:700;padding:7px 16px;border-radius:100px;text-decoration:none;text-transform:uppercase;letter-spacing:.06em;}
 
 /* CHALLENGE HEADER */
@@ -52,7 +50,7 @@ body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--ink);-we
 .ch-scale .target{color:var(--ocre);}
 
 /* BODY */
-.ch-body{max-width:700px;margin:0 auto;padding:36px 32px 64px;}
+.ch-body{max-width:1060px;margin:0 auto;padding:36px 56px 64px;}
 @media(max-width:767px){.ch-body{padding:24px 16px 48px;}}
 
 .ch-section-lbl{font-family:'JetBrains Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:.16em;color:var(--muted);margin-bottom:20px;display:flex;align-items:center;gap:12px;}
@@ -91,7 +89,7 @@ body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--ink);-we
 .foot-logo{font-family:'Spectral',serif;font-size:16px;font-weight:700;color:#fff;text-decoration:none;}
 .foot-logo span{color:var(--nook);}
 .foot-by{font-size:10px;color:#555;font-style:italic;}
-.foot-disc{font-size:9px;color:#3a3a3a;line-height:1.6;border-top:1px solid #252525;padding-top:10px;margin-top:8px;max-width:700px;margin-left:auto;margin-right:auto;}
+.foot-disc{font-size:9px;color:#3a3a3a;line-height:1.6;border-top:1px solid #252525;padding-top:10px;margin-top:8px;max-width:1060px;margin-left:auto;margin-right:auto;}
 
 @media(max-width:767px){
   .ch-title{font-size:28px;}
@@ -103,14 +101,11 @@ body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--ink);-we
 
 <nav class="nav">
   <a href="/" class="nav-logo"><span>#</span>sportsbetting</a>
-  <a href="/" class="nav-back">&#x2190; Back to home</a>
   <a href="/#" onclick="document.dispatchEvent(new CustomEvent('openSub'))" class="nav-sub">#SUBSCRIBE &#x2192;</a>
 </nav>
 
 <!-- CHALLENGE HEADER -->
 <div class="ch-head">
-  <div class="ch-back"><a href="/">&#x2190; #sportsbetting</a></div>
-
   <div class="ch-meta">
     <div class="ch-status">&#x25CF; In progress</div>
     <h1 class="ch-title"><span>#</span>X3 CHALLENGE</h1>
