@@ -22,17 +22,29 @@
 body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--ink);-webkit-font-smoothing:antialiased;}
 
 /* NAV */
-.nav{background:var(--dark);border-bottom:2px solid var(--nook);display:flex;align-items:center;justify-content:space-between;padding:15px 32px;position:sticky;top:0;z-index:100;}
-.nav-logo{font-family:'Spectral',serif;font-size:19px;font-weight:700;color:#fff;text-decoration:none;letter-spacing:-.02em;}
+.nav{background:var(--dark);border-bottom:2px solid var(--nook);display:flex;align-items:center;justify-content:space-between;padding:0 32px;position:sticky;top:0;z-index:100;height:56px;gap:16px;}
+@media(max-width:767px){.nav{padding:0 16px;}}
+.nav-logo{font-family:'Spectral',serif;font-size:19px;font-weight:700;color:#fff;text-decoration:none;letter-spacing:-.02em;flex-shrink:0;}
 .nav-logo span{color:var(--nook);}
-.nav-sub{background:var(--coral);color:#fff;font-size:11px;font-weight:700;padding:7px 16px;border-radius:100px;text-decoration:none;text-transform:uppercase;letter-spacing:.06em;}
+.nav-links{display:flex;align-items:center;gap:2px;flex:1;justify-content:center;}
+@media(max-width:900px){.nav-links{display:none;}}
+.nl{font-family:'JetBrains Mono',monospace;font-size:10.5px;font-weight:700;color:rgba(255,255,255,.45);text-decoration:none;text-transform:uppercase;letter-spacing:.04em;padding:6px 9px;border-radius:4px;transition:color .15s;}
+.nl:hover{color:#fff;}.nl.on{color:#fff;}
+.nav-r{display:flex;align-items:center;gap:10px;flex-shrink:0;}
+.nav-sub{background:var(--coral);color:#fff;font-size:11px;font-weight:700;padding:7px 14px;border-radius:100px;text-decoration:none;text-transform:uppercase;letter-spacing:.06em;}
+@media(max-width:480px){.nav-sub{display:none;}}
+.nav-ham{background:none;border:none;color:rgba(255,255,255,.6);font-size:22px;cursor:pointer;line-height:1;padding:4px 6px;display:none;}
+@media(max-width:900px){.nav-ham{display:block;}}
+.nd{display:none;background:var(--dark);border-bottom:1px solid #252525;position:fixed;top:56px;left:0;right:0;z-index:99;}
+.nd.open{display:block;}
+.ndl{display:block;font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:rgba(255,255,255,.55);text-decoration:none;padding:14px 20px;border-bottom:1px solid rgba(255,255,255,.05);}
+.ndl:last-child{border-bottom:none;}
+.ndl:hover,.ndl.on{color:#fff;background:rgba(255,255,255,.03);}
 
 /* CHALLENGE HEADER */
 .ch-head{background:var(--dark);padding:36px 32px 28px;border-bottom:2px solid #252525;}
 @media(max-width:767px){.ch-head{padding:24px 16px 22px;}}
-.ch-back{margin-bottom:20px;}
-.ch-back a{font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.4);text-decoration:none;}
-.ch-back a:hover{color:var(--nook);}
+
 .ch-meta{margin-bottom:22px;}
 .ch-status{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--nook);border:1px solid var(--nook);padding:4px 10px;border-radius:100px;margin-bottom:12px;}
 .ch-title{font-family:'Spectral',serif;font-size:38px;font-weight:700;color:#fff;letter-spacing:-.03em;line-height:1;margin-bottom:6px;}
@@ -100,9 +112,25 @@ body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--ink);-we
 <body>
 
 <nav class="nav">
-  <a href="/" class="nav-logo"><span>#</span>sportsbetting</a>
-  <a href="/#" onclick="document.dispatchEvent(new CustomEvent('openSub'))" class="nav-sub">#SUBSCRIBE &#x2192;</a>
+  <a href="index.html" class="nav-logo"><span>#</span>sportsbetting</a>
+  <div class="nav-links">
+    <a href="index.html#track-record" class="nl">#TRACK RECORD</a>
+    <a href="index.html#parlay-story" class="nl">#A PARLAY STORY</a>
+    <a href="quotes.html" class="nl">#QUOTES</a>
+    <a href="x3-challenge.html" class="nl on">#X3 CHALLENGE</a>
+  </div>
+  <div class="nav-r">
+    <a href="https://abettorlife.blogabet.com" class="nav-sub">#SUBSCRIBE &#x2192;</a>
+    <button class="nav-ham" onclick="document.getElementById('nd').classList.toggle('open')">&#9776;</button>
+  </div>
 </nav>
+<div class="nd" id="nd">
+  <a href="index.html#track-record" class="ndl">#TRACK RECORD</a>
+  <a href="index.html#parlay-story" class="ndl">#A PARLAY STORY</a>
+  <a href="quotes.html" class="ndl">#QUOTES</a>
+  <a href="x3-challenge.html" class="ndl on">#X3 CHALLENGE</a>
+  <a href="https://abettorlife.blogabet.com" class="ndl" style="color:var(--coral);">#SUBSCRIBE &#x2192;</a>
+</div>
 
 <!-- CHALLENGE HEADER -->
 <div class="ch-head">

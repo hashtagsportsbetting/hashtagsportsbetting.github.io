@@ -22,18 +22,28 @@
 body{font-family:'Inter',sans-serif;background:var(--dark);color:#fff;-webkit-font-smoothing:antialiased;}
 
 /* NAV */
-.nav{background:var(--dark);border-bottom:2px solid var(--nook);display:flex;align-items:center;justify-content:space-between;padding:15px 32px;position:sticky;top:0;z-index:100;}
-@media(max-width:767px){.nav{padding:14px 16px;}}
-.nav-logo{font-family:'Spectral',serif;font-size:19px;font-weight:700;color:#fff;text-decoration:none;letter-spacing:-.02em;}
+.nav{background:var(--dark);border-bottom:2px solid var(--nook);display:flex;align-items:center;justify-content:space-between;padding:0 32px;position:sticky;top:0;z-index:100;height:56px;gap:16px;}
+@media(max-width:767px){.nav{padding:0 16px;}}
+.nav-logo{font-family:'Spectral',serif;font-size:19px;font-weight:700;color:#fff;text-decoration:none;letter-spacing:-.02em;flex-shrink:0;}
 .nav-logo span{color:var(--nook);}
-.nav-sub{background:var(--coral);color:#fff;font-size:11px;font-weight:700;padding:7px 16px;border-radius:100px;text-decoration:none;text-transform:uppercase;letter-spacing:.06em;}
+.nav-links{display:flex;align-items:center;gap:2px;flex:1;justify-content:center;}
+@media(max-width:900px){.nav-links{display:none;}}
+.nl{font-family:'JetBrains Mono',monospace;font-size:10.5px;font-weight:700;color:rgba(255,255,255,.45);text-decoration:none;text-transform:uppercase;letter-spacing:.04em;padding:6px 9px;border-radius:4px;transition:color .15s;}
+.nl:hover{color:#fff;}.nl.on{color:#fff;}
+.nav-r{display:flex;align-items:center;gap:10px;flex-shrink:0;}
+.nav-sub{background:var(--coral);color:#fff;font-size:11px;font-weight:700;padding:7px 14px;border-radius:100px;text-decoration:none;text-transform:uppercase;letter-spacing:.06em;}
+@media(max-width:480px){.nav-sub{display:none;}}
+.nav-ham{background:none;border:none;color:rgba(255,255,255,.6);font-size:22px;cursor:pointer;line-height:1;padding:4px 6px;display:none;}
+@media(max-width:900px){.nav-ham{display:block;}}
+.nd{display:none;background:var(--dark);border-bottom:1px solid #252525;position:fixed;top:56px;left:0;right:0;z-index:99;}
+.nd.open{display:block;}
+.ndl{display:block;font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:rgba(255,255,255,.55);text-decoration:none;padding:14px 20px;border-bottom:1px solid rgba(255,255,255,.05);}
+.ndl:last-child{border-bottom:none;}
+.ndl:hover,.ndl.on{color:#fff;background:rgba(255,255,255,.03);}
 
 /* HEADER */
 .qt-head{background:var(--dark);padding:32px 44px 28px;border-bottom:1px solid rgba(255,255,255,.07);}
 @media(max-width:767px){.qt-head{padding:22px 16px 20px;}}
-.qt-back{margin-bottom:20px;}
-.qt-back a{font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.35);text-decoration:none;}
-.qt-back a:hover{color:var(--nook);}
 .qt-eyebrow{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:12px;}
 .qt-title{font-family:'Spectral',serif;font-size:46px;font-weight:700;color:#fff;letter-spacing:-.04em;line-height:.95;margin-bottom:10px;}
 .qt-title span{color:var(--nook);}
@@ -78,12 +88,27 @@ footer{background:#161513;padding:18px 44px;display:flex;justify-content:space-b
 <body>
 
 <nav class="nav">
-  <a href="/" class="nav-logo"><span>#</span>sportsbetting</a>
-  <a href="https://abettorlife.blogabet.com" class="nav-sub">#SUBSCRIBE &#x2192;</a>
+  <a href="index.html" class="nav-logo"><span>#</span>sportsbetting</a>
+  <div class="nav-links">
+    <a href="index.html#track-record" class="nl">#TRACK RECORD</a>
+    <a href="index.html#parlay-story" class="nl">#A PARLAY STORY</a>
+    <a href="quotes.html" class="nl on">#QUOTES</a>
+    <a href="x3-challenge.html" class="nl">#X3 CHALLENGE</a>
+  </div>
+  <div class="nav-r">
+    <a href="https://abettorlife.blogabet.com" class="nav-sub">#SUBSCRIBE &#x2192;</a>
+    <button class="nav-ham" onclick="document.getElementById('nd').classList.toggle('open')">&#9776;</button>
+  </div>
 </nav>
+<div class="nd" id="nd">
+  <a href="index.html#track-record" class="ndl">#TRACK RECORD</a>
+  <a href="index.html#parlay-story" class="ndl">#A PARLAY STORY</a>
+  <a href="quotes.html" class="ndl on">#QUOTES</a>
+  <a href="x3-challenge.html" class="ndl">#X3 CHALLENGE</a>
+  <a href="https://abettorlife.blogabet.com" class="ndl" style="color:var(--coral);">#SUBSCRIBE &#x2192;</a>
+</div>
 
 <div class="qt-head">
-  <div class="qt-back"><a href="/">&#x2190; hashtagsportsbetting.com</a></div>
   <div class="qt-eyebrow">Wimbledon &middot; Pre-Match Intelligence &middot; 29 Jun 2026</div>
   <h1 class="qt-title"><span>#</span>QUOTES</h1>
   <div class="qt-sub">Not technically insider trading. Just things people said out loud that happened to be true.</div>
