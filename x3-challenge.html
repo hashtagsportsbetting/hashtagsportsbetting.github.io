@@ -116,14 +116,26 @@ body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--ink);-we
   <div class="nav-links">
     <a href="index.html#track-record" class="nl">#TRACK RECORD</a>
     <a href="index.html#parlay-story" class="nl">#A PARLAY STORY</a>
-    <a href="quotes.html" class="nl">#QUOTES</a>
     <a href="x3-challenge.html" class="nl on">#X3 CHALLENGE</a>
+    <a href="quotes.html" class="nl">#QUOTES</a>
   </div>
-  <div class="nav-r">
-    <a href="https://abettorlife.blogabet.com" class="nav-sub">#SUBSCRIBE &#x2192;</a>
-    <button class="nav-ham" onclick="document.getElementById('nd').classList.toggle('open')">&#9776;</button>
+  <div class="nav-right">
+    <a href="index.html" class="btn-sim">Simulation</a>
+    <a href="https://abettorlife.blogabet.com" class="btn-sub">#SUBSCRIBE &#x2192;</a>
   </div>
+  <button class="nav-hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
 </nav>
+<div class="nav-drawer" id="navDrawer">
+  <a class="ndl" href="index.html">Home</a>
+  <a class="ndl" href="index.html#track-record">#TRACK RECORD</a>
+  <a class="ndl" href="index.html#parlay-story">#A PARLAY STORY</a>
+  <a class="ndl on" href="x3-challenge.html">#X3 CHALLENGE</a>
+  <a class="ndl" href="quotes.html">#QUOTES</a>
+  <div style="margin-top:24px;display:flex;flex-direction:column;gap:10px;">
+    <a href="index.html" class="btn-sim" style="text-align:center;">Simulation</a>
+    <a href="https://abettorlife.blogabet.com" class="btn-sub" style="text-align:center;">#SUBSCRIBE &#x2192;</a>
+  </div>
+</div>
 <div class="nd" id="nd">
   <a href="index.html#track-record" class="ndl">#TRACK RECORD</a>
   <a href="index.html#parlay-story" class="ndl">#A PARLAY STORY</a>
