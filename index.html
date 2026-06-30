@@ -653,14 +653,14 @@ body{font-family:'Inter',sans-serif;background:var(--cream);}
   <div class="x3hd">
     <div>
       <div class="x3t"><span>#</span>X3 CHALLENGE</div>
-      <div class="x3s">Run 01 &middot; In progress &middot; Palier 01/??</div>
+      <div class="x3s">Run 01 &middot; In progress &middot; Palier 02/??</div>
     </div>
     <a href="x3-challenge.html" class="x3btn">The challenge &#x2192;</a>
   </div>
   <div class="x3bar">
-    <div class="x3fill" style="width:5%;"></div>
+    <div class="x3fill" style="width:20%;"></div>
     <div class="x3tick"></div>
-    <div class="x3mult" style="left:calc(5% + 14px);">&times;1.10</div>
+    <div class="x3mult" style="left:calc(20% + 14px);">&times;1.40</div>
   </div>
   <div class="x3scale">
     <span>&times;1</span>
@@ -688,7 +688,41 @@ body{font-family:'Inter',sans-serif;background:var(--cream);}
   <div style="display:flex;align-items:baseline;gap:8px;"><div class="qt-ttl" style="font-size:21px;"><span>#</span>QUOTES</div><div class="ssub" style="color:rgba(160,152,128,.6);">Things said out loud that happened to matter</div></div>
   <button class="see-all" onclick="location.href='quotes.html'" style="color:var(--nook);">See all &#x2192;</button>
 </div>
-<div id="qtHomeList"></div>
+<div id="qtHomeList">
+  <div class="qt-row">
+    <div class="qt-qm">&#x201C;</div>
+    <div class="qt-body">
+      <div class="qt-q">Devastated to share that I have had to withdraw from my first round match due to a recurrence of my arm injury. There is no greater honour for a British player than playing at Wimbledon. I will continue to persevere through this.</div>
+      <div class="qt-meta">
+        <div class="qt-about cr">Jack Draper</div>
+        <div class="qt-auth">&mdash; Jack Draper &nbsp;&middot;&nbsp; Official statement &nbsp;&middot;&nbsp; 29 Jun 2026</div>
+      </div>
+      <div class="qt-match">Fritz vs Lajovic (Draper out) &middot; Wimbledon R1</div>
+    </div>
+  </div>
+  <div class="qt-row">
+    <div class="qt-qm">&#x201C;</div>
+    <div class="qt-body">
+      <div class="qt-q">It&rsquo;s grueling. They changed the rules now. It&rsquo;s unprofessional. I hate it. I run a company, I run a VC company, I travel the world. I have children. It&rsquo;s unreasonable.</div>
+      <div class="qt-meta">
+        <div class="qt-about drop">Serena Williams</div>
+        <div class="qt-auth">&mdash; Serena Williams &nbsp;&middot;&nbsp; Times of India &nbsp;&middot;&nbsp; 28 Jun 2026</div>
+      </div>
+      <div class="qt-match">Williams vs Joint &middot; Wimbledon R1 &middot; Anti-doping friction</div>
+    </div>
+  </div>
+  <div class="qt-row">
+    <div class="qt-qm">&#x201C;</div>
+    <div class="qt-body">
+      <div class="qt-q">The grass allergy is nothing new for me. I have it every year. I just never spoke about it before. It feels different with the title in my pocket. There is more joy and, in a way, more freedom.</div>
+      <div class="qt-meta">
+        <div class="qt-about drop">Alexander Zverev</div>
+        <div class="qt-auth">&mdash; Alexander Zverev &nbsp;&middot;&nbsp; BILD &nbsp;&middot;&nbsp; 29 Jun 2026</div>
+      </div>
+      <div class="qt-match">Zverev vs Blockx &middot; Wimbledon R1 &middot; Grass allergy + post-title decompression</div>
+    </div>
+  </div>
+</div>
 </div>
 </div>
 
@@ -1222,49 +1256,6 @@ function go(id){
   history.pushState({page:id},'');
 }
 
-const QUOTES_DATA=[
-  {q:"I’ve done everything possible to try to get to the start line tomorrow but after a final scan tonight, the niggle I’ve been managing has developed into a stress fracture and I’ve been medically advised to stop pushing through.",author:"Emma Raducanu",source:"The Guardian",date:"28 Jun 2026",about:"Emma Raducanu",match:"Raducanu vs Ružić · Wimbledon R1",type:"major",signal:"cr"},
-  {q:"We’ll see if she can match my power. Of course I can beat her. When I am at my best level, I can beat anyone.",author:"Teodora Kostovic",source:"Tennis Temple",date:"28 Jun 2026",about:"Sabalenka vs Kostovic",match:"Sabalenka vs Kostovic · Wimbledon R1",type:"major",signal:"fire"},
-  {q:"I felt that I needed someone to unload all my thoughts with and clear my mind a bit before such an important tournament; I believe this is essential.",author:"Aryna Sabalenka",source:"Punto de Break",date:"27 Jun 2026",about:"Aryna Sabalenka",match:"Sabalenka vs Kostovic · Wimbledon R1",type:"major",signal:"drop"},
-  {q:"I feel like I’m starting from a totally different position and I’m really in a place that I’m keeping my expectations low. I feel like I need to play matches and I need to adjust. It’s not going to be smooth because of last year.",author:"Iga Swiatek",source:"Tennis World USA",date:"27 Jun 2026",about:"Iga Swiatek",match:"Swiatek vs Townsend · Wimbledon R1",type:"major",signal:"drop"},
-  {q:"I’m better prepared here than I was for Roland Garros. Obviously playing on grass, comparing to clay, you don’t need to exert as much physical effort. So that’s better for me.",author:"Novak Djokovic",source:"The Guardian",date:"27 Jun 2026",about:"Novak Djokovic",match:"Djokovic vs Wu Yibing · Wimbledon R1",type:"major",signal:"fire"},
-  {q:"I would say that my power, when competing, is in a very good place. I’m moving great. Still far from perfect, but I’m getting closer. Now I’m in a position where I’ve got that load for my body and I’m able to go out there and compete.",author:"Jack Draper",source:"The Guardian",date:"28 Jun 2026",about:"Jack Draper",match:"Draper vs Fritz · Wimbledon R1",type:"notable",signal:"drop"},
-  {q:"We have tweaked our physical training a bit. We did a much longer session—both in the gym and on the court—all at once and without breaks, to get as many different sensations as possible. Now we’ll see how I react in a match, and then we’ll see.",author:"Jannik Sinner",source:"Ubitennis",date:"27 Jun 2026",about:"Jannik Sinner",match:"Sinner vs Kecmanovic · Wimbledon R1",type:"notable",signal:"drop"},
-  {q:"You just have to play the ball. You can’t really think about who you are playing because I’ll just get too nervous. I’ll just take it one ball at a time.",author:"Maya Joint",source:"AP News",date:"28 Jun 2026",about:"Serena vs Joint",match:"Williams vs Joint · Wimbledon R1",type:"notable",signal:"drop"},
-  {q:"I expect to be nervous. I was also nervous every single match I ever played in my life. I definitely expect to have those same feelings.",author:"Serena Williams",source:"Olympics.com",date:"28 Jun 2026",about:"Serena Williams",match:"Williams vs Joint · Wimbledon R1",type:"notable",signal:"drop"},
-  {q:"Honestly, no expectations. I’m trying to adjust things, to feel better physically, which is the most important thing. Right now, the first priority is to feel healthy, 100% health with my body.",author:"Jasmine Paolini",source:"WTA Tennis",date:"28 Jun 2026",about:"Jasmine Paolini",match:"Paolini · Wimbledon R1",type:"notable",signal:"drop"}
-];
-function renderQuotes(){
-  function makeRow(q){
-    return '<div class="qt-row">'
-      +'<div class="qt-qm">“</div>'
-      +'<div class="qt-body">'
-        +'<div class="qt-q">'+q.q+'</div>'
-        +'<div class="qt-meta">'
-          +'<div class="qt-about '+q.signal+'">'+q.about+'</div>'
-          +'<div class="qt-auth">&mdash; '+q.author+' &nbsp;&middot;&nbsp; '+q.source+' &nbsp;&middot;&nbsp; '+q.date+'</div>'
-        +'</div>'
-        +(q.match?'<div class="qt-match">'+q.match+'</div>':'')
-      +'</div>'
-    +'</div>';
-  }
-  var majors=QUOTES_DATA.filter(function(q){return q.type==='major';});
-  var notables=QUOTES_DATA.filter(function(q){return q.type==='notable';});
-  var html='';
-  if(majors.length){
-    html+='<div class="qt-sec"><div class="qt-sec-lbl fire">Game-Changing &nbsp;&middot;&nbsp; '+majors.length+' signals</div><div class="qt-sec-line"></div></div>';
-    majors.forEach(function(q){html+=makeRow(q);});
-  }
-  if(notables.length){
-    html+='<div class="qt-sec"><div class="qt-sec-lbl drop">Notable &nbsp;&middot;&nbsp; '+notables.length+' signals</div><div class="qt-sec-line"></div></div>';
-    notables.forEach(function(q){html+=makeRow(q);});
-  }
-  var fullEl=document.getElementById('qtFullList');
-  if(fullEl)fullEl.innerHTML=html;
-  var homeEl=document.getElementById('qtHomeList');
-  if(homeEl){var h='';majors.slice(0,3).forEach(function(q){h+=makeRow(q);});homeEl.innerHTML=h;}
-}
-renderQuotes();
 
 function toggleMenu(){document.getElementById('navDrawer').classList.toggle('open');document.getElementById('hamburger').classList.toggle('open');}
 function closeMenu(){document.getElementById('navDrawer').classList.remove('open');document.getElementById('hamburger').classList.remove('open');}
