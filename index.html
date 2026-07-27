@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-GB">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -37,21 +37,6 @@
       "url": "https://hashtagsportsbetting.com",
       "jobTitle": "Sports betting analyst",
       "description": "Documents a real tennis and multi-sport betting track record with a focus on process and edge."
-    },
-    {
-      "@type": "ItemList",
-      "name": "Betting analyses",
-      "itemListElement": [
-      { "@type": "ListItem", "position": 1, "url": "https://hashtagsportsbetting.com/de-minaur-nakashima-upset-parlay-analysis.html", "name": "When a Grass Favourite Runs Out of Road: the De Minaur Upset That Sank a Parlay" },
-      { "@type": "ListItem", "position": 2, "url": "https://hashtagsportsbetting.com/live-betting-medical-timeout-signal-riera-oz.html", "name": "Reading a Medical Timeout: How a Live In-Play Signal Beat the Price in Blois" },
-      { "@type": "ListItem", "position": 3, "url": "https://hashtagsportsbetting.com/one-point-overtime-acb-final-near-miss.html", "name": "Beaten by One Point in Overtime: an Eight-Leg Near-Miss on the Liga ACB Final" },
-      { "@type": "ListItem", "position": 4, "url": "https://hashtagsportsbetting.com/favourites-betray-the-price-hurkacz-gauff-parlay.html", "name": "When Two Favourites Betray the Price: the Hurkacz and Gauff Upsets That Killed a Parlay" },
-      { "@type": "ListItem", "position": 5, "url": "https://hashtagsportsbetting.com/spotting-a-retirement-live-raquillet-kotov.html", "name": "5-2 Up and Limping: Spotting a Retirement Before the Market Did" },
-      { "@type": "ListItem", "position": 6, "url": "https://hashtagsportsbetting.com/backing-the-same-read-twice-zheng-grass.html", "name": "Backing the Same Read Twice: a Grass-Court Edge on Zheng, Confirmed" },
-      { "@type": "ListItem", "position": 7, "url": "https://hashtagsportsbetting.com/the-market-priced-reputation-norrie-grass.html", "name": "The Market Prices Reputation, Not Form: a Grass-Court Bet on Norrie" },
-      { "@type": "ListItem", "position": 8, "url": "https://hashtagsportsbetting.com/a-pre-match-handicap-on-grass-zheng.html", "name": "A Pre-Match Handicap That Read the Surface: the Zheng Grass Signal" },
-      { "@type": "ListItem", "position": 9, "url": "https://hashtagsportsbetting.com/a-coinflip-the-press-missed-lopez-live.html", "name": "A Coinflip at 3.48 the Press Missed — but We Didn't" }
-      ]
     }
   ]
 }
@@ -181,8 +166,6 @@ body{font-family:'Inter',sans-serif;background:var(--cream);}
 .slip-cv{font-family:'Spectral',serif;font-size:13px;font-weight:700;color:var(--dark);}
 .slip-cv.w{color:var(--nook);}
 .slip-cv.l{color:var(--coral);}
-.slip-st.lost{color:var(--coral);}
-.mcev.l{color:var(--coral);}
 .slip-f{display:flex;justify-content:space-between;align-items:center;padding:6px 11px;border-top:2px solid var(--dark);}
 .slip-st{font-size:9px;font-weight:700;text-transform:uppercase;color:var(--nook);}
 .slip-dt{font-family:'JetBrains Mono',monospace;font-size:8px;color:var(--muted);}
@@ -193,140 +176,24 @@ body{font-family:'Inter',sans-serif;background:var(--cream);}
 .sdot{width:5px;height:5px;border-radius:50%;background:#c8c0b0;cursor:pointer;}
 .sdot.on{background:var(--dark);transform:scale(1.3);}
 
-/* FUN FACTS TILES */
-.ff-grid{padding:0 32px 32px;display:grid;grid-template-columns:2fr 1fr 1fr;gap:12px;}
-@media(max-width:767px){.ff-grid{grid-template-columns:1fr;padding:0 16px 24px;}}
-.ti{border-radius:13px;padding:20px;display:flex;flex-direction:column;justify-content:space-between;cursor:pointer;min-height:110px;transition:transform .18s;}
-.ti:hover{transform:translateY(-2px);}
-.ti-big{grid-row:1/3;min-height:220px;}
-@media(max-width:767px){.ti-big{min-height:auto;grid-row:auto;}}
-.t1{background:var(--dark);color:#fff;}.t2{background:var(--nook);color:#fff;}
-.t3{background:var(--ocre);color:var(--dark);}.t4{background:var(--blue);color:#fff;}.t5{background:var(--coral);color:#fff;}
-.ti-tag{font-size:9px;text-transform:uppercase;letter-spacing:.14em;opacity:.6;margin-bottom:7px;}
-.ti-t{font-family:'Spectral',serif;font-size:14px;line-height:1.35;font-weight:600;}
-.ti-big .ti-t{font-size:16px;}
-.ti-arr{font-size:14px;opacity:.5;margin-top:10px;}
-
-/* TRACK RECORD */
-.tr-h{background:var(--dark);padding:24px 32px 20px;}
-@media(max-width:767px){.tr-h{padding:18px 16px;}}
-.tr-t{font-family:'Spectral',serif;font-size:26px;color:#fff;margin-bottom:3px;}
-.tr-t span{color:var(--nook);}
-.tr-s{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;}
-.tr-kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:14px;}
-@media(min-width:768px){.tr-kpis{grid-template-columns:repeat(6,1fr);}}
-.filters-wrap{background:var(--cream);border-bottom:1.5px solid var(--border);padding:12px 32px;display:flex;flex-direction:column;gap:8px;}
-@media(max-width:767px){.filters-wrap{padding:12px 16px;}}
-.filter-row{display:flex;gap:8px;flex-wrap:wrap;align-items:center;}
-.fl{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:#7a7060;}
-.fbtn{font-size:11px;font-weight:600;padding:5px 12px;border-radius:100px;border:1.5px solid var(--border);background:transparent;color:#7a7060;cursor:pointer;transition:all .15s;}
-.fbtn.on{background:var(--dark);color:#fff;border-color:var(--dark);}
-.cal-sec{padding:20px 32px 32px;}
-@media(max-width:767px){.cal-sec{padding:16px 16px 24px;}}
-.cal-mo{font-family:'Spectral',serif;font-size:18px;color:var(--dark);margin-bottom:12px;}
-.cal-g{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;}
-@media(max-width:767px){.cal-g{gap:3px;}}
-.cal-dh{font-size:9px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);text-align:center;padding-bottom:5px;font-weight:600;}
-.cc{min-height:80px;border-radius:8px;display:flex;flex-direction:column;}
-@media(max-width:767px){.cc{min-height:60px;}}
-.cc.emp{background:#ede8db;border:1px dashed #d0c9bc;}
-.cc.won,.cc.mul{background:var(--dark);cursor:pointer;}
-.ca2{height:3px;border-radius:8px 8px 0 0;}
-.won .ca2{background:var(--nook);}.mul .ca2{background:linear-gradient(90deg,var(--nook) 50%,var(--ocre) 50%);}
-.cd2{font-size:8px;font-weight:700;padding:3px 5px 2px;}
-.emp .cd2{color:#b8b0a0;}.won .cd2,.mul .cd2{color:rgba(255,255,255,.45);}
-.cl2{flex:1;padding:0 5px 2px;}
-.cleg{font-size:7px;color:rgba(255,255,255,.55);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding:1px 0;line-height:1.3;}
-.cf2{padding:2px 5px 5px;display:flex;justify-content:space-between;align-items:center;}
-.ct2{font-family:'Spectral',serif;font-size:10px;font-weight:600;}
-.won .ct2{color:var(--nook);}.mul .ct2{color:var(--ocre);}
-.cbg{font-size:6px;font-weight:700;padding:2px 4px;border-radius:100px;text-transform:uppercase;}
-.won .cbg{background:var(--nook);color:#fff;}.mul .cbg{background:var(--ocre);color:var(--dark);}
-
-/* ZOOM IN PAGE */
-.zi-h{padding:24px 32px 0;border-bottom:3px solid var(--dark);}
-@media(max-width:767px){.zi-h{padding:18px 16px 0;}}
-.zi-t{font-family:'Spectral',serif;font-size:32px;font-weight:700;color:var(--dark);letter-spacing:-.04em;margin-bottom:4px;}
-.zi-t span{color:var(--nook);}
-.zi-s{font-family:'Spectral',serif;font-size:13px;font-style:italic;color:var(--muted);padding-bottom:16px;}
-.zi-page-grid{padding:16px 32px 32px;display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
-@media(max-width:767px){.zi-page-grid{grid-template-columns:1fr;padding:12px 16px 24px;}}
-
-/* BETSLIP MODAL */
-.mo{display:none;position:fixed;inset:0;background:rgba(30,30,30,.78);z-index:500;align-items:flex-end;justify-content:center;}
-.mo.on{display:flex;}
-.mb{background:#fff;border-top:2px solid var(--dark);width:100%;max-width:460px;border-radius:14px 14px 0 0;max-height:92vh;overflow-y:auto;overflow-x:hidden;}
-@media(min-width:768px){.mo{align-items:center;}.mb{border-radius:12px;border:2px solid var(--dark);}}
-.mh{background:var(--nook);padding:13px 17px;display:flex;justify-content:space-between;align-items:center;}
-.mhl{font-family:'JetBrains Mono',monospace;font-size:9px;color:rgba(255,255,255,.8);}
-.mc{background:none;border:none;color:rgba(255,255,255,.7);font-size:17px;cursor:pointer;}
-.mi{padding:16px 18px 0;}
-.mto{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--nook);margin-bottom:4px;}
-.mm{font-family:'Spectral',serif;font-size:22px;font-weight:700;color:var(--dark);line-height:1.1;margin-bottom:3px;}
-.mk{font-size:12px;color:#7a7060;border-left:2px solid var(--nook);padding-left:8px;margin-bottom:13px;}
-.mr{height:1.5px;background:var(--dark);margin-bottom:13px;}
-.mlegs{margin-bottom:13px;border:1px solid var(--border);border-radius:8px;overflow:hidden;}
-.mlegs-h{font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);background:#f8f5ef;padding:8px 12px;border-bottom:1px solid var(--border);}
-.mleg{display:flex;align-items:center;gap:10px;padding:9px 12px;border-bottom:1px solid #efeae0;}
-.mleg:last-child{border-bottom:none;}
-.mleg-dot{width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0;color:#fff;}
-.mleg-dot.pend{background:var(--ocre);color:var(--dark);}
-.mleg-dot.won{background:var(--nook);}
-.mleg-dot.lost{background:var(--coral);}
-.mleg-dot.void{background:#c9c2b3;color:var(--dark);}
-.mleg-main{flex:1;min-width:0;}
-.mleg-match{font-family:'Spectral',serif;font-size:14px;font-weight:700;color:var(--dark);line-height:1.15;}
-.mleg-pick{font-size:11px;font-weight:600;color:var(--nook);margin-top:2px;}
-.mleg-mk{font-size:10px;color:var(--muted);margin-top:1px;}
-.mleg-score{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:var(--dark);letter-spacing:.03em;margin-right:4px;}
-.mleg-odds{font-family:'Spectral',serif;font-size:16px;font-weight:800;color:var(--dark);flex-shrink:0;}
-.mns{display:flex;justify-content:space-between;align-items:flex-end;padding-bottom:13px;}
-.ml{font-size:8px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:3px;}
-.modds{font-family:'Spectral',serif;font-size:46px;font-weight:700;color:var(--dark);line-height:1;}
-.mpr{font-family:'Spectral',serif;font-size:30px;font-weight:700;line-height:1;text-align:right;color:var(--nook);}
-.mgrid{display:grid;grid-template-columns:1fr 1fr 1fr;background:#f8f5ef;border-top:1px solid var(--border);}
-.mce{padding:11px;text-align:center;border-right:1px solid var(--border);}
-.mce:last-child{border:none;}
-.mcel{font-size:8px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:3px;}
-.mcev{font-family:'Spectral',serif;font-size:16px;font-weight:700;color:var(--dark);}
-.mcev.w{color:var(--nook);}
-.mft{display:flex;justify-content:space-between;align-items:center;padding:11px 18px;border-top:2px solid var(--dark);}
-.mst{font-size:10px;font-weight:700;text-transform:uppercase;color:var(--nook);}
-.mdate{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--muted);}
-
-/* SUBSCRIBE MODAL */
-.sub-mo{display:none;position:fixed;inset:0;background:rgba(10,10,10,.7);z-index:600;align-items:center;justify-content:center;padding:20px;}
-.sub-mo.on{display:flex;}
-.sub-mb{background:var(--cream);border-radius:14px;width:100%;max-width:480px;overflow:hidden;max-height:92vh;overflow-y:auto;border:2px solid var(--nook);}
-.sub-mh{background:var(--nook);padding:20px 22px 16px;display:flex;justify-content:space-between;align-items:flex-start;}
-.sub-mh-t{font-family:'Spectral',serif;font-size:22px;font-weight:700;color:#fff;line-height:1.15;}
-.sub-mh-t span{color:#b8dfc8;}
-.sub-close{background:none;border:none;color:rgba(255,255,255,.6);font-size:22px;cursor:pointer;}
-.sub-intro{padding:14px 22px;font-family:'Spectral',serif;font-size:13px;font-style:italic;color:#7a7060;line-height:1.6;border-bottom:1.5px solid var(--border);}
-.sub-intro strong{color:var(--dark);font-style:normal;}
-.sub-body{padding:18px 22px;}
-.sub-q{margin-bottom:18px;}
-.sub-ql{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--dark);margin-bottom:8px;}
-.sub-opts{display:flex;flex-wrap:wrap;gap:6px;}
-.sub-opt{font-size:13px;padding:7px 14px;border-radius:100px;border:1.5px solid #c8c0b0;background:#fff;color:#7a7060;cursor:pointer;transition:all .15s;font-family:'Inter',sans-serif;}
-.sub-opt.on{background:var(--dark);color:#fff;border-color:var(--dark);}
-.sub-opt-other{font-size:13px;padding:8px 14px;border-radius:8px;border:1.5px solid #c8c0b0;background:#fff;width:100%;margin-top:6px;font-family:'Inter',sans-serif;outline:none;color:var(--dark);}
-.sub-email-wrap{margin-bottom:18px;}
-.sub-email-l{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--dark);margin-bottom:6px;}
-.sub-email-sub{font-size:11px;color:var(--muted);margin-bottom:8px;font-style:italic;}
-.sub-email-in{width:100%;padding:12px 14px;border:1.5px solid #c8c0b0;border-radius:8px;font-size:14px;font-family:'Inter',sans-serif;outline:none;background:#fff;color:var(--dark);}
-.sub-email-in:focus{border-color:var(--nook);}
-.sub-submit{width:100%;background:var(--coral);color:#fff;font-size:13px;font-weight:700;padding:14px;border-radius:8px;border:none;cursor:pointer;text-transform:uppercase;letter-spacing:.06em;}
-.sub-success{display:none;padding:36px 24px;text-align:center;}
-.sub-success-icon{font-size:44px;margin-bottom:14px;}
-.sub-success-t{font-family:'Spectral',serif;font-size:22px;font-weight:700;color:var(--dark);margin-bottom:8px;}
-.sub-success-s{font-size:13px;color:var(--muted);line-height:1.6;}
-@media(max-width:767px){.sub-mo{padding:0;align-items:flex-end;}.sub-mb{border-radius:14px 14px 0 0;max-height:92vh;}}
-
-/* ARTICLE PAGE */
-.art-back{background:var(--dark);border-bottom:1px solid #2a2a2a;padding:12px 32px;}
-.art-back button{background:none;border:none;color:rgba(255,255,255,.6);cursor:pointer;font-size:13px;font-weight:700;font-family:'Inter',sans-serif;}
-.art-back button:hover{color:#fff;}
+/* QUOTES HOME BLOCK */
+.qt-home{background:var(--dark);padding:20px 0 16px;border-bottom:2px solid #252525;}
+.qt-home-hd{padding:0 32px 14px;display:flex;align-items:center;justify-content:space-between;}
+.qt-ttl{font-family:'Spectral',serif;font-size:21px;font-weight:700;color:#fff;letter-spacing:-.02em;}
+.qt-ttl span{color:var(--nook);}
+.qc-card{background:rgba(255,255,255,.035);border-radius:10px;border-left:4px solid var(--ocre);padding:16px 18px;margin:0 32px 12px;}
+.qc-card.fire{border-left-color:#7bb592;}
+.qc-card.drop{border-left-color:var(--ocre);}
+.qc-q{font-family:'Spectral',serif;font-size:15.5px;font-style:italic;color:rgba(255,255,255,.94);line-height:1.58;margin-bottom:13px;}
+.qc-foot{display:flex;justify-content:space-between;align-items:flex-end;gap:14px;flex-wrap:wrap;}
+.qc-left{min-width:0;}
+.qc-author{font-family:'Spectral',serif;font-size:14.5px;font-weight:700;color:#fff;margin-bottom:3px;}
+.qc-src{font-family:'JetBrains Mono',monospace;font-size:10.5px;color:rgba(180,172,152,.7);}
+.qc-src .sep{color:rgba(160,152,128,.4);}
+.qc-tag{font-family:'JetBrains Mono',monospace;font-size:8.5px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;padding:5px 11px;border-radius:100px;white-space:nowrap;flex-shrink:0;}
+.qc-tag.fire{color:#7bb592;background:rgba(123,181,146,.12);}
+.qc-ctx{font-family:'Inter',sans-serif;font-size:11.5px;color:rgba(170,162,145,.68);margin-top:11px;padding-top:11px;border-top:1px solid rgba(255,255,255,.06);line-height:1.4;}
+@media(max-width:767px){.qt-home-hd{padding:0 16px 10px;}.qc-card{margin:0 16px 10px;padding:14px 15px;}}
 
 /* FOOTER */
 .foot{background:var(--dark);border-top:2px solid var(--nook);padding:18px 32px;}
@@ -338,309 +205,26 @@ body{font-family:'Inter',sans-serif;background:var(--cream);}
 .foot-links a{color:#555;text-decoration:none;cursor:pointer;}
 .foot-by{font-size:10px;color:#555;font-style:italic;}
 .foot-d{font-size:9px;color:#3a3a3a;line-height:1.6;border-top:1px solid #2a2a2a;padding-top:10px;margin-top:10px;}
-
-/* FUNFACTS CSS */
-
-*{box-sizing:border-box;margin:0;padding:0;}
-:root{
-  --cream:#f0ede4;--nook:#4a7c5f;--nookl:#e6efe9;
-  --dark:#1e1e1e;--coral:#ec5a3c;--ocre:#f5b32e;
-  --blue:#3d6db5;--muted:#a09880;--border:#e0d9cc;--card:#3d3830;
-}
-body{font-family:'Inter',sans-serif;background:var(--cream);}
-
-/* NAV */
-
-
-.nav-logo span{color:var(--nook);}
-
-.nav-links a{font-size:13px;font-weight:700;color:rgba(255,255,255,.5);text-decoration:none;text-transform:uppercase;letter-spacing:.06em;}
-.nav-links a.on{color:var(--nook);}
-
-
-/* HERO */
-.hero{background:var(--dark);padding:48px 44px 40px;border-bottom:3px solid var(--nook);position:relative;overflow:hidden;}
-.hero::before{content:'';position:absolute;top:-60px;right:-60px;width:320px;height:320px;border-radius:50%;background:rgba(74,124,95,.06);pointer-events:none;}
-.hero-eyebrow{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--nook);letter-spacing:.18em;text-transform:uppercase;margin-bottom:16px;}
-.hero-title{font-family:'Spectral',serif;font-size:52px;font-weight:700;color:#fff;line-height:.95;letter-spacing:-.04em;margin-bottom:14px;}
-.hero-title span{color:var(--nook);}
-.hero-rule{height:2px;background:var(--nook);width:60px;margin-bottom:16px;}
-.hero-sub{font-family:'Spectral',serif;font-size:16px;font-style:italic;color:rgba(160,152,128,.85);line-height:1.55;max-width:560px;}
-.hero-meta{margin-top:18px;font-size:10px;color:#555;text-transform:uppercase;letter-spacing:.1em;}
-
-/* SECTION LABEL */
-.sec-label{padding:28px 32px 0;display:flex;align-items:center;gap:14px;}
-.sec-label-n{font-family:'Spectral',serif;font-size:11px;font-weight:700;color:var(--nook);text-transform:uppercase;letter-spacing:.16em;}
-.sec-label-line{flex:1;height:1px;background:var(--border);}
-
-/* FEATURED STORY */
-.featured{margin:18px 32px 0;border-radius:14px;overflow:hidden;display:grid;grid-template-columns:1fr 340px;min-height:320px;}
-.feat-left{padding:32px 36px;display:flex;flex-direction:column;justify-content:space-between;}
-.feat-tag{display:inline-block;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.14em;padding:4px 10px;border-radius:100px;margin-bottom:14px;}
-.feat-issue{font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(255,255,255,.4);margin-bottom:10px;letter-spacing:.08em;}
-.feat-hl{font-family:'Spectral',serif;font-size:30px;font-weight:700;color:#fff;line-height:1.05;letter-spacing:-.03em;margin-bottom:12px;}
-.feat-body{font-size:13px;line-height:1.75;color:rgba(255,255,255,.62);margin-bottom:14px;}
-.feat-cut{background:rgba(255,255,255,.06);border-left:3px solid var(--nook);padding:11px 16px;margin-bottom:14px;border-radius:0 6px 6px 0;}
-.feat-cut p{font-family:'Spectral',serif;font-size:13px;font-style:italic;color:rgba(255,255,255,.75);line-height:1.5;}
-.feat-cut-sig{font-size:8px;text-transform:uppercase;letter-spacing:.1em;color:var(--nook);margin-top:6px;}
-.feat-source{font-size:10px;color:rgba(255,255,255,.3);margin-top:6px;}
-.feat-cta{font-size:10px;font-weight:700;color:var(--nook);text-decoration:underline;cursor:pointer;margin-top:4px;}
-
-/* INFOGRAPHIC PANELS */
-.feat-right{position:relative;overflow:hidden;}
-.feat-right svg{position:absolute;top:0;left:0;width:100%;height:100%;}
-
-/* CARDS GRID */
-.cards-grid{padding:16px 32px 0;display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
-.card{border-radius:12px;overflow:hidden;background:#fff;border:1.5px solid var(--border);display:flex;flex-direction:column;transition:transform .18s,box-shadow .18s;cursor:pointer;}
-.card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,.09);}
-.card-top{padding:18px 18px 0;}
-.card-tag{font-size:8px;font-weight:700;text-transform:uppercase;letter-spacing:.14em;padding:3px 9px;border-radius:100px;display:inline-block;margin-bottom:10px;}
-.tg-coral{background:var(--coral);color:#fff;}
-.tg-nook{background:var(--nook);color:#fff;}
-.tg-ocre{background:var(--ocre);color:var(--dark);}
-.tg-blue{background:var(--blue);color:#fff;}
-.tg-dark{background:var(--dark);color:#fff;}
-.card-n{font-family:'Spectral',serif;font-size:13px;font-weight:700;color:var(--dark);line-height:1.25;margin-bottom:8px;}
-.card-body{font-size:12px;color:#7a7060;line-height:1.65;margin-bottom:10px;}
-.card-cut{background:var(--cream);border-left:2px solid var(--nook);padding:9px 12px;border-radius:0 5px 5px 0;margin-bottom:10px;}
-.card-cut-text{font-family:'Spectral',serif;font-size:12px;font-style:italic;color:var(--dark);line-height:1.45;}
-.card-cut-sig{font-size:8px;text-transform:uppercase;letter-spacing:.08em;color:var(--nook);margin-top:4px;}
-.card-vis{height:120px;position:relative;overflow:hidden;margin-top:auto;}
-.card-vis svg{position:absolute;top:0;left:0;width:100%;height:100%;}
-.card-foot{padding:10px 18px;border-top:1.5px solid var(--border);font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:.09em;display:flex;justify-content:space-between;align-items:center;}
-.card-foot-src{color:var(--nook);font-weight:700;}
-
-/* INFOGRAPHIC — standalone */
-.infographic{margin:20px 32px 0;background:#fff;border:1.5px solid var(--border);border-radius:12px;overflow:hidden;}
-.infographic-head{background:var(--dark);padding:16px 22px;display:flex;justify-content:space-between;align-items:center;}
-.infographic-title{font-family:'Spectral',serif;font-size:16px;color:#fff;letter-spacing:-.02em;}
-.infographic-sub{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;}
-.infographic-body{padding:22px;}
-
-/* ODDS VISUAL */
-.odds-row{display:flex;gap:10px;margin-bottom:12px;align-items:center;}
-.odds-label{font-size:12px;color:#7a7060;width:160px;flex-shrink:0;}
-.odds-bar-wrap{flex:1;background:#f0ede4;border-radius:4px;height:28px;position:relative;overflow:hidden;}
-.odds-bar{height:100%;border-radius:4px;display:flex;align-items:center;padding:0 10px;transition:width .8s cubic-bezier(.22,1,.36,1);}
-.odds-bar-n{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:#fff;white-space:nowrap;}
-.odds-val{font-family:'Spectral',serif;font-size:18px;font-weight:700;color:var(--dark);width:70px;text-align:right;flex-shrink:0;}
-
-/* PARLAY CHAIN */
-.parlay-chain{display:flex;gap:0;align-items:stretch;overflow-x:auto;padding-bottom:4px;}
-.pc-leg{background:var(--cream);border:1.5px solid var(--border);border-radius:8px;padding:12px 14px;text-align:center;flex-shrink:0;width:120px;position:relative;}
-.pc-leg:not(:last-child)::after{content:'×';position:absolute;right:-14px;top:50%;transform:translateY(-50%);font-family:'Spectral',serif;font-size:16px;font-weight:700;color:var(--muted);z-index:1;}
-.pc-leg-player{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--dark);margin-bottom:4px;}
-.pc-leg-type{font-size:10px;color:var(--muted);margin-bottom:8px;}
-.pc-leg-odds{font-family:'Spectral',serif;font-size:18px;font-weight:700;color:var(--nook);}
-.parlay-result{display:flex;justify-content:space-between;align-items:center;margin-top:16px;padding:14px 16px;background:var(--dark);border-radius:8px;}
-.pr-stake{font-size:11px;color:var(--muted);}
-.pr-stake span{font-family:'Spectral',serif;font-size:20px;font-weight:700;color:#fff;}
-.pr-arrow{font-size:24px;color:var(--nook);}
-.pr-return{text-align:right;}
-.pr-return-n{font-family:'Spectral',serif;font-size:28px;font-weight:700;color:var(--nook);}
-.pr-return-l{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;}
-
-/* GRASS LIST */
-.grass-list{display:flex;flex-direction:column;gap:0;}
-.gl-item{display:grid;grid-template-columns:36px 1fr 60px 80px;gap:0;padding:12px 0;border-bottom:1px solid var(--border);align-items:center;}
-.gl-item:last-child{border:none;}
-.gl-rank{font-family:'JetBrains Mono',monospace;font-size:14px;font-weight:700;color:var(--muted);}
-.gl-name{font-family:'Spectral',serif;font-size:16px;font-weight:700;color:var(--dark);}
-.gl-note{font-size:10px;color:#7a7060;margin-top:2px;}
-.gl-wr{font-family:'Spectral',serif;font-size:18px;font-weight:700;text-align:right;}
-.gl-wr.bad{color:var(--coral);}
-.gl-badge{font-size:8px;font-weight:700;padding:3px 8px;border-radius:100px;text-align:center;}
-.gl-badge.new{background:var(--coral);color:#fff;}
-.gl-badge.vet{background:var(--dark);color:rgba(255,255,255,.6);}
-
-/* QUOTE CARD */
-.quote-wall{margin:20px 32px 0;display:grid;grid-template-columns:1fr 1fr;gap:14px;}
-.qc{border-radius:12px;padding:22px;display:flex;flex-direction:column;gap:10px;}
-.qc-quote{font-family:'Spectral',serif;font-size:17px;font-style:italic;line-height:1.45;}
-.qc-attr{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;opacity:.6;}
-.qc-context{font-size:11px;line-height:1.6;opacity:.7;}
-
-/* FIXING TIMELINE */
-.timeline{display:flex;flex-direction:column;gap:0;}
-.tl-item{display:grid;grid-template-columns:80px 1fr;gap:0;padding:14px 0;border-bottom:1px solid var(--border);}
-.tl-item:last-child{border:none;}
-.tl-year{font-family:'Spectral',serif;font-size:24px;font-weight:700;color:var(--coral);line-height:1;padding-top:2px;}
-.tl-content{padding-left:16px;border-left:2px solid var(--border);}
-.tl-title{font-family:'Spectral',serif;font-size:14px;font-weight:700;color:var(--dark);margin-bottom:4px;}
-.tl-body{font-size:12px;color:#7a7060;line-height:1.6;}
-.tl-cut{font-size:11px;font-style:italic;color:var(--dark);margin-top:6px;padding-left:10px;border-left:2px solid var(--coral);}
-
-/* PUNTERS GRID */
-.punters-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
-.punter{background:var(--dark);border-radius:12px;padding:20px;}
-.punter-name{font-family:'Spectral',serif;font-size:18px;font-weight:700;color:#fff;margin-bottom:4px;}
-.punter-aka{font-size:10px;color:var(--nook);text-transform:uppercase;letter-spacing:.1em;margin-bottom:12px;}
-.punter-stat{display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:1px solid #3d3830;}
-.punter-stat:last-of-type{border:none;}
-.punter-stat-l{font-size:10px;color:rgba(255,255,255,.45);}
-.punter-stat-n{font-family:'Spectral',serif;font-size:14px;font-weight:700;color:#fff;}
-.punter-stat-n.g{color:var(--nook);}
-.punter-cut{font-family:'Spectral',serif;font-size:11px;font-style:italic;color:rgba(255,255,255,.55);margin-top:10px;padding-top:10px;border-top:1px solid #3d3830;line-height:1.5;}
-
-/* FOOTER */
-.ff-footer{margin:28px 32px 0;padding:18px 0;border-top:2px solid var(--dark);display:flex;justify-content:space-between;align-items:center;}
-.ff-footer-logo{font-family:'Spectral',serif;font-size:15px;color:var(--dark);}
-.ff-footer-logo span{color:var(--nook);}
-.ff-footer-disc{font-size:9px;color:var(--muted);max-width:400px;line-height:1.5;}
-
-.spacer{height:36px;}
-
-
-/* FUNFACTS MOBILE RESPONSIVE */
-@media(max-width:767px){
-  .hero{padding:28px 16px 22px!important;}
-  .hero-title{font-size:40px!important;}
-  .hero-sub{font-size:14px!important;max-width:100%!important;}
-  .sec-label{padding-left:16px!important;padding-right:16px!important;}
-  .featured{grid-template-columns:1fr!important;margin:0 16px!important;}
-  .feat-right{min-height:160px!important;}
-  .cards-grid{grid-template-columns:1fr!important;padding:0 16px!important;}
-  .infographic{margin:0 16px!important;}
-  .infographic-body{padding:16px!important;}
-  .odds-row{flex-wrap:wrap!important;gap:4px!important;}
-  .odds-label{width:100%!important;margin-bottom:4px!important;}
-  .timeline{padding:0 16px!important;}
-  .tl-item{grid-template-columns:1fr!important;gap:6px!important;}
-  .tl-year{font-size:22px!important;}
-  .quote-wall{grid-template-columns:1fr!important;padding:0 16px!important;}
-  .punters-grid{grid-template-columns:1fr!important;padding:0 16px!important;}
-  .grass-list{padding:0 16px!important;}
-  .gl-item{grid-template-columns:1fr auto!important;gap:4px 10px!important;}
-  .gl-badge{grid-column:2!important;}
-  .parlay-chain{flex-wrap:wrap!important;gap:6px!important;}
-  .pc-leg{width:auto!important;min-width:100px!important;flex:1!important;}
-  .parlay-result{flex-wrap:wrap!important;}
-}
-/* ===== PURCHASING POWER (Variant 3 — tall square tiles) ===== */
-.ppwrap{border-top:2px dashed var(--border);background:#fbfaf6;padding:14px 14px 15px;}
-.ppwrap.lost{background:#fdf3f1;}
-.ppv3-head{font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#7a7060;margin-bottom:11px;display:flex;align-items:center;gap:6px;}
-.ppv3-head.lost{color:var(--coral);}
-.ppv3-tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
-.ppv3-t{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;background:#fff;border:1px solid var(--border);border-bottom:5px solid var(--nook);border-radius:10px;padding:18px 12px;text-align:center;min-height:142px;}
-.ppv3-t.e2{border-bottom-color:var(--blue);}
-.ppv3-t.e3{border-bottom-color:var(--ocre);}
-.ppv3-t.lost{border-bottom-color:var(--coral);}
-.ppv3-flag{font-size:38px;line-height:1;height:46px;width:52px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
-.ppv3-buy{font-family:'Spectral',serif;font-size:17px;font-weight:700;line-height:1.15;color:var(--dark);}
-.ppv3-country{line-height:1.4;}.ppv3-cname{display:block;font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--nook);}.ppv3-t.lost .ppv3-cname{color:var(--coral);}.ppv3-ctag{display:block;font-size:11.5px;color:#5a5346;margin-top:2px;}
-@media(max-width:560px){.ppv3-tiles{grid-template-columns:1fr;}.ppv3-t{min-height:0;flex-direction:row;gap:14px;padding:13px 16px;}.ppv3-flag{font-size:34px;height:44px;width:50px;}.ppv3-buy{font-size:16px;}.ppv3-t{text-align:left;}.ppv3-t .ppv3-buy,.ppv3-t .ppv3-country{text-align:left;}}
-
-/* X3 CHALLENGE */
-.x3b{background:var(--dark);padding:20px 32px 22px;border-bottom:2px solid #252525;}
-@media(max-width:767px){.x3b{padding:18px 16px;}}
-.x3hd{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:14px;}
-.x3t{font-family:'Spectral',serif;font-size:22px;font-weight:700;color:#fff;letter-spacing:-.02em;line-height:1;}
-.x3t span{color:var(--nook);}
-.x3s{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--muted);margin-top:4px;text-transform:uppercase;letter-spacing:.12em;}
-.x3btn{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;color:var(--nook);text-decoration:none;border:1.5px solid var(--nook);padding:7px 14px;border-radius:100px;white-space:nowrap;flex-shrink:0;}
-.x3bar{background:#2a2a2a;border-radius:6px;height:76px;position:relative;overflow:hidden;}
-.x3fill{position:absolute;left:0;top:0;bottom:0;background:var(--nook);}
-.x3tick{position:absolute;left:50%;top:0;bottom:0;width:1px;background:#383838;}
-.x3mult{position:absolute;top:50%;transform:translateY(-50%);font-family:'Spectral',serif;font-size:30px;font-weight:700;color:#fff;line-height:1;white-space:nowrap;}
-.x3scale{display:flex;justify-content:space-between;margin-top:6px;}
-.x3scale span{font-family:'JetBrains Mono',monospace;font-size:8px;color:#555;}
-.x3scale .x3target{color:var(--ocre);}
-/* QUOTES */
-.qt-wrap{background:var(--dark);}
-.qt-hero{padding:24px 32px 20px;border-bottom:1px solid rgba(255,255,255,.07);}
-.qt-eyebrow{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;}
-.qt-ttl{font-family:'Spectral',serif;font-size:32px;font-weight:700;color:#fff;letter-spacing:-.04em;line-height:1;margin-bottom:6px;}
-.qt-ttl span{color:var(--nook);}
-.qt-sub{font-family:'Spectral',serif;font-size:13px;font-style:italic;color:rgba(160,152,128,.65);line-height:1.5;}
-.qt-sec{padding:16px 32px 6px;display:flex;align-items:center;gap:14px;}
-.qt-sec-lbl{font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;white-space:nowrap;}
-.qt-sec-lbl.fire{color:var(--nook);} .qt-sec-lbl.drop{color:var(--ocre);} .qt-sec-lbl.cr{color:var(--coral);}
-.qt-sec-line{flex:1;height:1px;background:rgba(255,255,255,.07);}
-.qt-row{display:flex;align-items:flex-start;gap:16px;padding:14px 32px;border-bottom:1px solid rgba(255,255,255,.05);}
-.qt-row:last-child{border-bottom:none;}
-.qt-qm{font-family:'Spectral',serif;font-size:60px;font-weight:700;color:var(--ocre);line-height:.75;flex-shrink:0;width:30px;padding-top:2px;opacity:.75;}
-.qt-body{flex:1;min-width:0;}
-.qt-q{font-family:'Spectral',serif;font-size:14px;font-style:italic;color:rgba(255,255,255,.87);line-height:1.58;}
-.qt-meta{display:flex;justify-content:space-between;align-items:center;margin-top:9px;gap:8px;flex-wrap:wrap;}
-.qt-about{font-family:'JetBrains Mono',monospace;font-size:7.5px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;padding:3px 9px;border-radius:100px;border:1px solid;white-space:nowrap;}
-.qt-about.fire{color:var(--nook);border-color:rgba(74,124,95,.35);}
-.qt-about.drop{color:var(--ocre);border-color:rgba(245,179,46,.28);}
-.qt-about.cr{color:var(--coral);border-color:rgba(236,90,60,.32);}
-.qt-auth{font-family:'JetBrains Mono',monospace;font-size:8px;color:rgba(160,152,128,.5);text-align:right;line-height:1.4;}
-.qt-match{font-family:'JetBrains Mono',monospace;font-size:7.5px;color:rgba(160,152,128,.35);margin-top:5px;text-transform:uppercase;letter-spacing:.08em;}
-/* QUOTE CARD (Option C) */
-.qc-card{background:rgba(255,255,255,.035);border-radius:10px;border-left:4px solid var(--ocre);padding:16px 18px;margin:0 32px 12px;}
-.qc-card.fire{border-left-color:#7bb592;}
-.qc-card.drop{border-left-color:var(--ocre);}
-.qc-card.cr{border-left-color:#f47a5f;}
-.qc-q{font-family:'Spectral',serif;font-size:15.5px;font-style:italic;color:rgba(255,255,255,.94);line-height:1.58;margin-bottom:13px;}
-.qc-foot{display:flex;justify-content:space-between;align-items:flex-end;gap:14px;flex-wrap:wrap;}
-.qc-left{min-width:0;}
-.qc-author{font-family:'Spectral',serif;font-size:14.5px;font-weight:700;color:#fff;margin-bottom:3px;}
-.qc-src{font-family:'JetBrains Mono',monospace;font-size:10.5px;color:rgba(180,172,152,.7);}
-.qc-src .sep{color:rgba(160,152,128,.4);}
-.qc-tag{font-family:'JetBrains Mono',monospace;font-size:8.5px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;padding:5px 11px;border-radius:100px;white-space:nowrap;flex-shrink:0;}
-.qc-tag.fire{color:#7bb592;background:rgba(123,181,146,.12);}
-.qc-tag.drop{color:var(--ocre);background:rgba(245,179,46,.12);}
-.qc-tag.cr{color:#f47a5f;background:rgba(244,122,95,.12);}
-.qc-ctx{font-family:'Inter',sans-serif;font-size:11.5px;color:rgba(170,162,145,.68);margin-top:11px;padding-top:11px;border-top:1px solid rgba(255,255,255,.06);line-height:1.4;}
-@media(max-width:767px){.qc-card{margin:0 16px 10px;padding:14px 15px;}}
-.qt-foot-note{padding:14px 32px 20px;font-family:'JetBrains Mono',monospace;font-size:8px;color:rgba(160,152,128,.28);text-transform:uppercase;letter-spacing:.1em;border-top:1px solid rgba(255,255,255,.05);}
-.qt-home{background:var(--dark);}
-.qt-home-hd{padding:16px 32px 6px;display:flex;align-items:center;justify-content:space-between;}
-@media(max-width:767px){.qt-hero{padding:18px 16px 16px;}.qt-sec{padding:14px 16px 4px;}.qt-row{padding:12px 16px;gap:10px;}.qt-home-hd{padding:14px 16px 4px;}.qt-foot-note{padding:12px 16px 16px;}}
-
 </style>
 </head>
 <body>
 
 <nav class="nav">
-  <div class="nav-logo" onclick="go('home')"><span>#</span>sportsbetting</div>
+  <a href="index.html" class="nav-logo"><span>#</span>sportsbetting</a>
   <div class="nav-links">
-    <button id="nl-tr" onclick="go('tr')">#TRACK RECORD</button>
-    <button id="nl-zi" onclick="go('zi')">#A PARLAY STORY</button>
-    <a href="x3-challenge.html" style="font-size:13px;font-weight:700;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.06em;text-decoration:none;">#X3 CHALLENGE</a>
-    <a href="quotes.html" style="font-size:13px;font-weight:700;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.06em;text-decoration:none;">#QUOTES</a>
+    <a href="quotes.html" class="on">#QUOTES</a>
+    <a href="#track-record">#TRACK RECORD</a>
+    <a href="#parlay-story">#A PARLAY STORY</a>
   </div>
   <div class="nav-right">
-    <button class="btn-sim" id="simBtn" onclick="toggleSim()">Simulation</button>
-    <button class="btn-sub" onclick="openSubModal()">#SUBSCRIBE &#x2192;</button>
+    <a href="https://t.me/" class="btn-sub">#TELEGRAM &#x2192;</a>
   </div>
-  <button class="nav-hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
 </nav>
-<div class="nav-drawer" id="navDrawer">
-  <button class="ndl" onclick="go('home');closeMenu()">Home</button>
-  <button class="ndl" onclick="go('tr');closeMenu()">#TRACK RECORD</button>
-  <button class="ndl" onclick="go('zi');closeMenu()">#A PARLAY STORY</button>
-  <a class="ndl" href="x3-challenge.html" style="text-decoration:none;display:block;">#X3 CHALLENGE</a>
-  <a class="ndl" href="quotes.html" style="text-decoration:none;display:block;">#QUOTES</a>
-  <div style="margin-top:24px;display:flex;flex-direction:column;gap:10px;">
-    <button class="btn-sim" onclick="toggleSim();closeMenu()">Simulation</button>
-    <button class="btn-sub" onclick="openSubModal();closeMenu()" style="text-align:center;">#SUBSCRIBE &#x2192;</button>
-  </div>
-</div>
-
-<!-- SIMULATION -->
-<div class="sim" id="simPanel">
-  <button onclick="toggleSim()" aria-label="Close" style="position:absolute;top:10px;right:14px;background:rgba(255,255,255,.08);border:none;color:rgba(255,255,255,.7);font-size:16px;cursor:pointer;width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;z-index:5;">&#x2715;</button>
-  <div class="sim-inner">
-    <span style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);">If I had started with</span>
-    <div style="display:flex;align-items:center;gap:4px;background:#252525;border-radius:8px;padding:7px 12px;">
-      <span style="font-family:'Spectral',serif;font-size:16px;color:var(--muted);">&#x20AC;</span>
-      <input id="capI" type="number" value="1000" min="0" step="100" inputmode="numeric" style="background:transparent;border:none;font-family:'Spectral',serif;font-size:20px;font-weight:700;color:#fff;width:90px;outline:none;">
-    </div>
-    <span style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);">I would have made</span>
-    <div style="background:#252525;border-radius:8px;padding:7px 14px;">
-      <span style="font-family:'Spectral',serif;font-size:20px;font-weight:700;color:var(--nook);" id="sResult">+&#x20AC;95.91</span>
-    </div>
-    <span style="font-size:10px;color:#444;font-style:italic;">on the same 19 bets &middot; Jun 16-30</span>
-  </div>
-</div>
 
 <!-- HOME -->
 <div class="pg on" id="pg-home">
+
+<!-- DASHBOARD -->
 <section class="db">
   <div class="ey"><span>#</span>ACTIVITY &middot; JUNE 2026</div>
   <div class="kpis">
@@ -665,44 +249,10 @@ body{font-family:'Inter',sans-serif;background:var(--cream);}
   </div>
 </section>
 
-<!-- X3 CHALLENGE -->
-<div class="x3b">
-  <div class="x3hd">
-    <div>
-      <div class="x3t"><span>#</span>X3 CHALLENGE</div>
-      <div class="x3s">Run 01 &middot; In progress &middot; Palier 02/??</div>
-    </div>
-    <a href="x3-challenge.html" class="x3btn">The challenge &#x2192;</a>
-  </div>
-  <div class="x3bar">
-    <div class="x3fill" style="width:20%;"></div>
-    <div class="x3tick"></div>
-    <div class="x3mult" style="left:calc(20% + 14px);">&times;1.40</div>
-  </div>
-  <div class="x3scale">
-    <span>&times;1</span>
-    <span>&times;2</span>
-    <span class="x3target">&times;3</span>
-  </div>
-</div>
-
-<div class="sh">
-  <div style="display:flex;align-items:baseline;gap:8px;"><div class="st2"><span>#</span>BETSLIPS</div><div class="ssub">Tap to open</div></div>
-</div>
-<div class="slips-grid" id="slipsGrid"></div>
-<div class="slips-nav">
-  <button class="snb" id="spb">&#8592;</button>
-  <div class="sdots" id="sdts"></div>
-  <button class="snb" id="snb2">&#8594;</button>
-</div>
-<div class="sh">
-  <div style="display:flex;align-items:baseline;gap:8px;"><div class="st2"><span>#</span>A PARLAY STORY</div><div class="ssub">Every slip, before and after</div></div>
-  <button class="see-all" onclick="go('zi')">See all &#x2192;</button>
-</div>
-<div class="zi-grid" id="homeZi"></div>
+<!-- 1. BLOC QUOTES (Mis en avant en premier) -->
 <div class="qt-home">
 <div class="qt-home-hd">
-  <div style="display:flex;align-items:baseline;gap:8px;"><div class="qt-ttl" style="font-size:21px;"><span>#</span>QUOTES</div><div class="ssub" style="color:rgba(160,152,128,.6);">Things said out loud that happened to matter</div></div>
+  <div style="display:flex;align-items:baseline;gap:8px;"><div class="qt-ttl"><span>#</span>QUOTES</div><div class="ssub" style="color:rgba(160,152,128,.6);">Things said out loud that happened to matter</div></div>
   <button class="see-all" onclick="location.href='quotes.html'" style="color:var(--nook);">See all &#x2192;</button>
 </div>
 <div id="qtHomeList">
@@ -732,632 +282,70 @@ body{font-family:'Inter',sans-serif;background:var(--cream);}
   </div>
 </div>
 </div>
-</div>
-</div>
 
-<!-- TRACK RECORD -->
-<div class="pg" id="pg-tr">
-<section class="tr-h">
-  <div class="tr-t"><span>#</span>TRACK RECORD</div>
-  <div class="tr-s">All bets &middot; Since Jun 16, 2026 &middot; 100% real data</div>
-  <div class="tr-kpis" style="margin-top:14px;">
-    <div class="kpi"><div class="kn" id="tr-bets">19</div><div class="kl">Bets</div></div>
-    <div class="kpi"><div class="kn" id="tr-wr">53%</div><div class="kl">Win rate</div></div>
-    <div class="kpi"><div class="kn" id="tr-roi">+24.8%</div><div class="kl">ROI</div></div>
-    <div class="kpi"><div class="kn" id="tr-odds">25.46</div><div class="kl">Avg odds</div></div>
-    <div class="kpi hl"><div class="kn g" id="tr-profit">+95.91&#x20AC;</div><div class="kl">Net profit</div></div>
-    <div class="kpi hl"><div class="kn g" id="tr-roc">+9.6%</div><div class="kl">ROC</div><div class="kd">95.91 / 1000&#x20AC;</div></div>
-  </div>
-</section>
-<div class="filters-wrap">
-  <div class="filter-row">
-    <span class="fl">Date</span>
-    <button class="fbtn on" data-g="date" data-v="all" onclick="filt(this)">All time</button>
-    <button class="fbtn" data-g="date" data-v="2026-06" onclick="filt(this)">June 2026</button>
-  </div>
-  <div class="filter-row">
-    <span class="fl">Sport</span>
-    <button class="fbtn on" data-g="sport" data-v="all" onclick="filt(this)">All</button>
-    <button class="fbtn" data-g="sport" data-v="tennis" onclick="filt(this)">Tennis</button>
-    <button class="fbtn" data-g="sport" data-v="basketball" onclick="filt(this)">Basketball</button>
-    <button class="fbtn" data-g="sport" data-v="volleyball" onclick="filt(this)">Volleyball</button>
-  </div>
-  <div class="filter-row">
-    <span class="fl">Surface</span>
-    <button class="fbtn on" data-g="surface" data-v="all" onclick="filt(this)">All</button>
-    <button class="fbtn" data-g="surface" data-v="grass" onclick="filt(this)">Grass</button>
-    <button class="fbtn" data-g="surface" data-v="clay" onclick="filt(this)">Clay</button>
-    <button class="fbtn" data-g="surface" data-v="hard" onclick="filt(this)">Hard</button>
-    <button class="fbtn" data-g="surface" data-v="indoor" onclick="filt(this)">Indoor</button>
-  </div>
-  <div class="filter-row">
-    <span class="fl">Entry</span>
-    <button class="fbtn on" data-g="entry" data-v="all" onclick="filt(this)">All</button>
-    <button class="fbtn" data-g="entry" data-v="live" onclick="filt(this)">Live</button>
-    <button class="fbtn" data-g="entry" data-v="pre-match" onclick="filt(this)">Pre-match</button>
+<!-- 2. BLOC BETSLIPS -->
+<div class="sh">
+  <div style="display:flex;align-items:baseline;gap:8px;"><div class="st2"><span>#</span>BETSLIPS</div><div class="ssub">Tap to open</div></div>
+</div>
+<div class="slips-grid" id="slipsGrid">
+  <div class="slip">
+    <div class="slip-h"><div class="slip-id">83495775305</div><div class="bw">Won &#x2713;</div></div>
+    <div class="slip-b">
+      <div class="slip-tr">Accumulator · 3 legs</div>
+      <div class="slip-m">Grass-court outright parlay</div>
+      <div class="slip-mk">3-leg acca · Grass</div>
+      <div class="slip-div"></div>
+      <div class="slip-ns">
+        <div><div class="slip-ol">Odds</div><div class="slip-o">3.635</div></div>
+        <div><div class="slip-ol" style="text-align:right">Profit</div><div class="slip-p">+13.18€</div></div>
+      </div>
+    </div>
+    <div class="slip-g">
+      <div class="slip-c"><div class="slip-cl">Stake</div><div class="slip-cv">5€</div></div>
+      <div class="slip-c"><div class="slip-cl">Return</div><div class="slip-cv">18.18€</div></div>
+      <div class="slip-c"><div class="slip-cl">Status</div><div class="slip-cv w">Won</div></div>
+    </div>
+    <div class="slip-f"><div class="slip-st">&#x2713; Paid out</div><div class="slip-dt">24.06.2026</div></div>
   </div>
 </div>
-<section class="cal-sec">
-  <div class="cal-mo">June 2026</div>
-  <div class="cal-g" id="calGrid"></div>
-</section>
+
+<!-- 3. BLOC A PARLAY STORY -->
+<div class="sh">
+  <div style="display:flex;align-items:baseline;gap:8px;"><div class="st2"><span>#</span>A PARLAY STORY</div><div class="ssub">Every slip, before and after</div></div>
+  <button class="see-all" style="color:var(--nook);">See all &#x2192;</button>
+</div>
+<div class="zi-grid">
+  <div class="zt">
+    <div class="zt-top"><div class="zt-dn">Jun 29</div><div class="zt-sp">Acca · 3 legs</div></div>
+    <div class="zt-surf-block grass">
+      <div class="zt-score-row"><div class="zt-pl">D. Medvedev</div><div class="zt-sets"><div class="zt-set w">6</div><div class="zt-set w">6</div><div class="zt-set w">6</div></div></div>
+      <div style="height:0.5px;background:rgba(255,255,255,.15);margin:3px 0;"></div>
+      <div class="zt-score-row"><div class="zt-pl dim">M. Cilic</div><div class="zt-sets"><div class="zt-set l">1</div><div class="zt-set l">2</div><div class="zt-set l">4</div></div></div>
+    </div>
+    <div class="zt-body">
+      <div class="zt-tag tg2">Parlay · Won</div>
+      <div class="zt-hl">One lives for the grass, one grazes it, one teaches clay.</div>
+      <div class="zt-cite">Medvedev and van de Zandschulp on the Wimbledon lawns, Cecchinato on Milan clay. Three favourites, ten quid.</div>
+    </div>
+    <div class="zt-ft"><span>+15.49€</span><span>Read &#x2192;</span></div>
+  </div>
 </div>
 
-<!-- ZOOM IN -->
-<div class="pg" id="pg-zi">
-<div class="zi-h">
-  <div class="zi-t"><span>#</span>A PARLAY STORY</div>
-  <div class="zi-s">The story behind every bet &mdash; signal, edge, entry, result. All sourced.</div>
 </div>
-<div class="zi-page-grid" id="ziPageGrid"></div>
-</div>
-
-<!-- ARTICLE -->
-<div class="pg" id="pg-article">
-  <iframe id="articleFrame" src="" style="width:100%;height:100vh;border:none;display:block;"></iframe>
-</div>
-
-<!-- QUOTES -->
-<div class="pg" id="pg-qt">
-<div class="qt-wrap">
-<div class="qt-hero">
-  <div class="qt-eyebrow">Wimbledon &middot; Pre-Match Intelligence &middot; 29 Jun 2026</div>
-  <div class="qt-ttl"><span>#</span>QUOTES</div>
-  <div class="qt-sub">Not technically insider trading. Just things people said out loud that happened to be true.</div>
-</div>
-<div id="qtFullList">
-<div class="qt-sec"><div class="qt-sec-lbl fire">Game-Changing &nbsp;&middot;&nbsp; 5 signals</div><div class="qt-sec-line"></div></div>
-<div class="qt-row"><div class="qt-qm">“</div><div class="qt-body"><div class="qt-q">I’ve done everything possible to try to get to the start line tomorrow but after a final scan tonight, the niggle I’ve been managing has developed into a stress fracture and I’ve been medically advised to stop pushing through.</div><div class="qt-meta"><div class="qt-about cr">Emma Raducanu</div><div class="qt-auth">&mdash; Emma Raducanu &nbsp;&middot;&nbsp; The Guardian &nbsp;&middot;&nbsp; 28 Jun 2026</div></div><div class="qt-match">Raducanu vs Ružić &middot; Wimbledon R1</div></div></div>
-<div class="qt-row"><div class="qt-qm">“</div><div class="qt-body"><div class="qt-q">We’ll see if she can match my power. Of course I can beat her. When I am at my best level, I can beat anyone.</div><div class="qt-meta"><div class="qt-about fire">Sabalenka vs Kostovic</div><div class="qt-auth">&mdash; Teodora Kostovic &nbsp;&middot;&nbsp; Tennis Temple &nbsp;&middot;&nbsp; 28 Jun 2026</div></div><div class="qt-match">Sabalenka vs Kostovic &middot; Wimbledon R1</div></div></div>
-<div class="qt-row"><div class="qt-qm">“</div><div class="qt-body"><div class="qt-q">I felt that I needed someone to unload all my thoughts with and clear my mind a bit before such an important tournament; I believe this is essential.</div><div class="qt-meta"><div class="qt-about drop">Aryna Sabalenka</div><div class="qt-auth">&mdash; Aryna Sabalenka &nbsp;&middot;&nbsp; Punto de Break &nbsp;&middot;&nbsp; 27 Jun 2026</div></div><div class="qt-match">Sabalenka vs Kostovic &middot; Wimbledon R1</div></div></div>
-<div class="qt-row"><div class="qt-qm">“</div><div class="qt-body"><div class="qt-q">I feel like I’m starting from a totally different position and I’m really in a place that I’m keeping my expectations low. I feel like I need to play matches and I need to adjust. It’s not going to be smooth because of last year.</div><div class="qt-meta"><div class="qt-about drop">Iga Swiatek</div><div class="qt-auth">&mdash; Iga Swiatek &nbsp;&middot;&nbsp; Tennis World USA &nbsp;&middot;&nbsp; 27 Jun 2026</div></div><div class="qt-match">Swiatek vs Townsend &middot; Wimbledon R1</div></div></div>
-<div class="qt-row"><div class="qt-qm">“</div><div class="qt-body"><div class="qt-q">I’m better prepared here than I was for Roland Garros. Obviously playing on grass, comparing to clay, you don’t need to exert as much physical effort. So that’s better for me.</div><div class="qt-meta"><div class="qt-about fire">Novak Djokovic</div><div class="qt-auth">&mdash; Novak Djokovic &nbsp;&middot;&nbsp; The Guardian &nbsp;&middot;&nbsp; 27 Jun 2026</div></div><div class="qt-match">Djokovic vs Wu Yibing &middot; Wimbledon R1</div></div></div>
-<div class="qt-sec"><div class="qt-sec-lbl drop">Notable &nbsp;&middot;&nbsp; 5 signals</div><div class="qt-sec-line"></div></div>
-<div class="qt-row"><div class="qt-qm">“</div><div class="qt-body"><div class="qt-q">I would say that my power, when competing, is in a very good place. I’m moving great. Still far from perfect, but I’m getting closer. Now I’m in a position where I’ve got that load for my body and I’m able to go out there and compete.</div><div class="qt-meta"><div class="qt-about drop">Jack Draper</div><div class="qt-auth">&mdash; Jack Draper &nbsp;&middot;&nbsp; The Guardian &nbsp;&middot;&nbsp; 28 Jun 2026</div></div><div class="qt-match">Draper vs Fritz &middot; Wimbledon R1</div></div></div>
-<div class="qt-row"><div class="qt-qm">“</div><div class="qt-body"><div class="qt-q">We have tweaked our physical training a bit. We did a much longer session—both in the gym and on the court—all at once and without breaks, to get as many different sensations as possible. Now we’ll see how I react in a match, and then we’ll see.</div><div class="qt-meta"><div class="qt-about drop">Jannik Sinner</div><div class="qt-auth">&mdash; Jannik Sinner &nbsp;&middot;&nbsp; Ubitennis &nbsp;&middot;&nbsp; 27 Jun 2026</div></div><div class="qt-match">Sinner vs Kecmanovic &middot; Wimbledon R1</div></div></div>
-<div class="qt-row"><div class="qt-qm">“</div><div class="qt-body"><div class="qt-q">You just have to play the ball. You can’t really think about who you are playing because I’ll just get too nervous. I’ll just take it one ball at a time.</div><div class="qt-meta"><div class="qt-about drop">Serena vs Joint</div><div class="qt-auth">&mdash; Maya Joint &nbsp;&middot;&nbsp; AP News &nbsp;&middot;&nbsp; 28 Jun 2026</div></div><div class="qt-match">Williams vs Joint &middot; Wimbledon R1</div></div></div>
-<div class="qt-row"><div class="qt-qm">“</div><div class="qt-body"><div class="qt-q">I expect to be nervous. I was also nervous every single match I ever played in my life. I definitely expect to have those same feelings.</div><div class="qt-meta"><div class="qt-about drop">Serena Williams</div><div class="qt-auth">&mdash; Serena Williams &nbsp;&middot;&nbsp; Olympics.com &nbsp;&middot;&nbsp; 28 Jun 2026</div></div><div class="qt-match">Williams vs Joint &middot; Wimbledon R1</div></div></div>
-<div class="qt-row"><div class="qt-qm">“</div><div class="qt-body"><div class="qt-q">Honestly, no expectations. I’m trying to adjust things, to feel better physically, which is the most important thing. Right now, the first priority is to feel healthy, 100% health with my body.</div><div class="qt-meta"><div class="qt-about drop">Jasmine Paolini</div><div class="qt-auth">&mdash; Jasmine Paolini &nbsp;&middot;&nbsp; WTA Tennis &nbsp;&middot;&nbsp; 28 Jun 2026</div></div><div class="qt-match">Paolini &middot; Wimbledon R1</div></div></div>
-</div>
-<div class="qt-foot-note">All citations confirmed within 48h pre-match &middot; Sources verified &middot; No fabrications &middot; C.C. Farah editorial &middot; hashtagsportsbetting.com</div>
-</div>
-</div>
-
 
 <!-- FOOTER -->
 <footer class="foot">
   <div class="foot-m">
-    <div class="foot-logo" onclick="go('home')"><span>#</span>sportsbetting</div>
+    <div class="foot-logo"><span>#</span>sportsbetting</div>
     <div class="foot-links">
-      <a onclick="go('tr')">#trackrecord</a>
-      <a onclick="go('zi')">#aparlaystory</a>
-      <a onclick="go('qt')">#quotes</a>
-      <a href="#">Privacy</a>
+      <a href="#">#quotes</a>
+      <a href="#">#trackrecord</a>
+      <a href="#">#aparlaystory</a>
     </div>
     <div class="foot-by">A Charles Chambers Farah strategy</div>
   </div>
-  <p class="foot-d">hashtagsportsbetting.com is an editorial blog documenting a personal sports betting journey. Content is for informational and entertainment purposes only. We do not provide financial or betting advice. Past performance does not guarantee future results. Bet responsibly. 18+</p>
+  <p class="foot-d">hashtagsportsbetting.com is an editorial blog documenting a personal sports betting journey. Content is for informational and entertainment purposes only. We do not provide financial or betting advice. 18+</p>
 </footer>
 
-<!-- BETSLIP MODAL -->
-<div class="mo" id="modal">
-  <div class="mb">
-    <div class="mh"><div class="mhl" id="mId"></div><button class="mc" onclick="closeMo()">&#x2715;</button></div>
-    <div class="mi">
-      <div class="mto" id="mTo"></div><div class="mm" id="mMa"></div><div class="mk" id="mMk"></div>
-      <div class="mlegs" id="mLegs" style="display:none"></div>
-      <div class="mr"></div>
-      <div class="mns">
-        <div><div class="ml">Odds</div><div class="modds" id="mOd"></div></div>
-        <div><div class="ml" style="text-align:right">Profit</div><div class="mpr" id="mPr"></div></div>
-      </div>
-    </div>
-    <div class="mgrid">
-      <div class="mce"><div class="mcel">Stake</div><div class="mcev" id="mSt"></div></div>
-      <div class="mce"><div class="mcel">Return</div><div class="mcev" id="mRe"></div></div>
-      <div class="mce"><div class="mcel">Status</div><div class="mcev w" id="mStatusVal">Won</div></div>
-    </div>
-    <div class="mft"><div class="mst" id="mStatusFoot">&#x2713; Paid out</div><div class="mdate" id="mDt"></div></div>
-  </div>
-</div>
-
-<!-- SUBSCRIBE MODAL -->
-<div class="sub-mo" id="subModal">
-  <div class="sub-mb">
-    <div class="sub-mh">
-      <div class="sub-mh-t">Welcome to the <span>#</span>list.</div>
-      <button class="sub-close" onclick="closeSubModal()">&#x2715;</button>
-    </div>
-    <div class="sub-intro">The subscription isn't live yet. Before I launch, I want to build something that actually works for you.<br><br><strong>5 quick questions.</strong> No spam. Ever.</div>
-    <div class="sub-body" id="subForm">
-      <div class="sub-q"><div class="sub-ql">1. Starting betting capital?</div><div class="sub-opts">
-        <button class="sub-opt" data-q="capital" data-v="Under 500" onclick="pick(this)">Under &#x20AC;500</button>
-        <button class="sub-opt" data-q="capital" data-v="500-1000" onclick="pick(this)">&#x20AC;500&#x2013;1K</button>
-        <button class="sub-opt" data-q="capital" data-v="1000-5000" onclick="pick(this)">&#x20AC;1K&#x2013;5K</button>
-        <button class="sub-opt" data-q="capital" data-v="5000+" onclick="pick(this)">&#x20AC;5K+</button>
-      </div></div>
-      <div class="sub-q"><div class="sub-ql">2. Live or pre-match?</div><div class="sub-opts">
-        <button class="sub-opt" data-q="entry" data-v="Live" onclick="pick(this)">Live</button>
-        <button class="sub-opt" data-q="entry" data-v="Pre-match" onclick="pick(this)">Pre-match</button>
-        <button class="sub-opt" data-q="entry" data-v="Both" onclick="pick(this)">Both</button>
-      </div></div>
-      <div class="sub-q"><div class="sub-ql">3. What would make you trust a tipster?</div><div class="sub-opts">
-        <button class="sub-opt" data-q="trust" data-v="Track record" onclick="pick(this)">Track record</button>
-        <button class="sub-opt" data-q="trust" data-v="Transparency" onclick="pick(this)">Transparency</button>
-        <button class="sub-opt" data-q="trust" data-v="Reasoning" onclick="pick(this)">Reasoning</button>
-        <button class="sub-opt" data-q="trust" data-v="All" onclick="pick(this)">All of the above</button>
-      </div></div>
-      <div class="sub-q"><div class="sub-ql">4. Time per week?</div><div class="sub-opts">
-        <button class="sub-opt" data-q="time" data-v="<1h" onclick="pick(this)">Less than 1h</button>
-        <button class="sub-opt" data-q="time" data-v="1-3h" onclick="pick(this)">1&#x2013;3h</button>
-        <button class="sub-opt" data-q="time" data-v="3-7h" onclick="pick(this)">3&#x2013;7h</button>
-        <button class="sub-opt" data-q="time" data-v="full-time" onclick="pick(this)">Full-time</button>
-      </div></div>
-      <div class="sub-q"><div class="sub-ql">5. Preferred channel?</div><div class="sub-opts">
-        <button class="sub-opt" data-q="canal" data-v="Telegram" onclick="pick(this)">Telegram</button>
-        <button class="sub-opt" data-q="canal" data-v="Email" onclick="pick(this)">Email</button>
-        <button class="sub-opt" data-q="canal" data-v="Blogabet" onclick="pick(this)">Blogabet</button>
-        <button class="sub-opt" data-q="canal" data-v="Other" onclick="pick(this)">Other</button>
-      </div>
-      <input class="sub-opt-other" id="canalOther" placeholder="Which platform?" style="display:none;" type="text">
-      </div>
-      <div class="sub-email-wrap">
-        <div class="sub-email-l">Your email</div>
-        <div class="sub-email-sub">I'll only use this to notify you when the subscription launches.</div>
-        <input class="sub-email-in" id="subEmail" type="email" placeholder="you@example.com">
-      </div>
-      <button class="sub-submit" onclick="submitSub()">I'm interested &#x2192;</button>
-    </div>
-    <div class="sub-success" id="subSuccess">
-      <div class="sub-success-icon">&#x1F3AF;</div>
-      <div class="sub-success-t">You're on the list.</div>
-      <div class="sub-success-s">I'll reach out personally before the launch.<br>In the meantime &mdash; watch the track record grow.</div>
-    </div>
-  </div>
-</div>
-
-<script>
-const activeF={sport:'all',surface:'all',entry:'all',date:'all'};
-
-const SLIPS=[
-  {id:"83176558161",date:"16.06",tourn:"Queen's Club · Grass",match:"Fokina vs Norrie",market:"W2 · Live",odds:"1.152",stake:"35",ret:"40.32",profit:"+5.32€",sport:"tennis",entry:"live",surface:"grass",profitN:5.32,stakeN:35,won:true},
-  {id:"83211729885",date:"17.06",tourn:"WTA Nottingham · Grass",match:"Gibson vs Zheng",market:"HCP 1.5 · Pre-match",odds:"1.65",stake:"15",ret:"24.75",profit:"+9.75€",sport:"tennis",entry:"pre-match",surface:"grass",profitN:9.75,stakeN:15,won:true},
-  {id:"83212182707",date:"17.06",tourn:"ITF Monastir · Clay",match:"Lopez vs Schuman",market:"W1 · Live",odds:"3.48",stake:"15",ret:"52.20",profit:"+37.20€",sport:"tennis",entry:"live",surface:"clay",profitN:37.20,stakeN:15,won:true},
-  {id:"83213688001",date:"17.06",tourn:"ATP Challenger Royan · Clay",match:"Raquillet vs Kotov",market:"W1 · Live",odds:"1.78",stake:"75",ret:"133.50",profit:"+58.50€",sport:"tennis",entry:"live",surface:"clay",profitN:58.50,stakeN:75,won:true},
-  {id:"83221846595",date:"17.06",tourn:"WTA Nottingham · Grass",match:"Gibson vs Zheng",market:"W1 · Live",odds:"1.12",stake:"50",ret:"56.00",profit:"+6.00€",sport:"tennis",entry:"live",surface:"grass",profitN:6.00,stakeN:50,won:true},
-  {id:"83198898409",date:"17.06",tourn:"Accumulator · 7 legs",match:"Multi-sport parlay",market:"7-leg acca · Mixed",odds:"4.96",stake:"5",ret:"0.00",profit:"-5.00€",sport:"tennis",entry:"mixed",surface:"mixed",profitN:-5.00,stakeN:5,won:false,slug:"parlay-7"},
-  {id:"83245231485",date:"18.06",tourn:"Accumulator · 8 legs",match:"Multi-sport parlay",market:"8-leg acca · Mixed",odds:"5.784",stake:"15",ret:"0.00",profit:"-15.00€",sport:"tennis",entry:"mixed",surface:"mixed",profitN:-15.00,stakeN:15,won:false,slug:"parlay-8"},
-  {id:"83248956369",date:"18.06",tourn:"ITF W75 Blois · Clay",match:"Riera vs Oz",market:"W2 · Live",odds:"1.45",stake:"50",ret:"72.50",profit:"+22.50€",sport:"tennis",entry:"live",surface:"clay",profitN:22.50,stakeN:50,won:true,slug:"riera-oz"},
-  {id:"83287761763",date:"19.06",tourn:"Accumulator · 6 legs",match:"Multi-sport parlay",market:"6-leg acca · Mixed",odds:"9.417",stake:"15",ret:"0.00",profit:"-15.00€",sport:"tennis",entry:"mixed",surface:"mixed",profitN:-15.00,stakeN:15,won:false,slug:"parlay-6"},
-  {id:"83495775305",date:"24.06",tourn:"Accumulator · 3 legs",match:"Grass-court outright parlay",market:"3-leg acca · Grass",odds:"3.635",stake:"5",ret:"18.18",profit:"+13.18&#x20AC;",sport:"tennis",entry:"pre-match",surface:"grass",profitN:13.18,stakeN:5,won:true,slug:"parlay-bold-grass",legs:[{match:"Samuel vs Tirante",sel:"Toby Samuel to win",mk:"ATP Eastbourne, R16 · Grass",odds:"1.599",st:"won",score:"6-1 7-6"},{match:"Harris vs Piros",sel:"Billy Harris to win",mk:"Wimbledon Qualifying · Grass",odds:"1.57",st:"won",score:"6-4 6-4"},{match:"McDonald vs Carballés Baena",sel:"Mackenzie McDonald to win",mk:"Wimbledon Qualifying · Grass",odds:"1.448",st:"won",score:"6-4 6-4"}]},
-  {id:"83494615331",date:"24.06",tourn:"Accumulator · 5 legs",match:"Set-handicap parlay (+1.5)",market:"5-leg acca · Grass",odds:"2.504",stake:"15",ret:"37.57",profit:"+22.57&#x20AC;",sport:"tennis",entry:"pre-match",surface:"grass",profitN:22.57,stakeN:15,won:true,slug:"parlay-safe-handicap",legs:[{match:"Diallo vs Etcheverry",sel:"Gabriel Diallo +1.5 sets",mk:"ATP Eastbourne, R16 · Grass",odds:"1.22",st:"won",score:"6-7 6-3 6-2"},{match:"Samuel vs Tirante",sel:"Toby Samuel +1.5 sets",mk:"ATP Eastbourne, R16 · Grass",odds:"1.22",st:"won",score:"6-1 7-6"},{match:"Harris vs Piros",sel:"Billy Harris +1.5 sets",mk:"Wimbledon Qualifying · Grass",odds:"1.21",st:"won",score:"6-4 6-4"},{match:"McDonald vs Carballés Baena",sel:"Mackenzie McDonald +1.5 sets",mk:"Wimbledon Qualifying · Grass",odds:"1.159",st:"won",score:"6-4 6-4"},{match:"Schoolkate vs Evans",sel:"Tristan Schoolkate +1.5 sets",mk:"Wimbledon Qualifying · Grass",odds:"1.2",st:"won",score:"7-5 6-0"}]},
-  {id:"83550267937",date:"25.06",tourn:"Accumulator · 16 legs",match:"Sixteen-fold grass acca",market:"16-leg acca · Grass",odds:"398.397",stake:"1.50",ret:"0.00",profit:"-1.50&#x20AC;",sport:"tennis",entry:"pre-match",surface:"grass",profitN:-1.50,stakeN:1.50,won:false,slug:"rob-the-bookie-grass-acca"},
-  {id:"83565180249",date:"25.06",tourn:"Volleyball · FIVB Nations League",match:"Iran vs USA",market:"1X2 W2 · Live",odds:"1.1",stake:"20",ret:"22.00",profit:"+2.00&#x20AC;",sport:"volleyball",entry:"live",surface:"indoor",profitN:2.00,stakeN:20,won:true},
-  {id:"83581915619",date:"25.06",tourn:"Accumulator · 2 legs",match:"Draper + Brazil double",market:"2-leg acca · Mixed",odds:"1.973",stake:"15",ret:"0.00",profit:"-15.00&#x20AC;",sport:"tennis",entry:"pre-match",surface:"mixed",profitN:-15.00,stakeN:15,won:false,slug:"draper-brazil-double",legs:[{match:"Brazil vs Italy",sel:"Brazil to win",mk:"FIVB Nations League · Volleyball",odds:"1.65",st:"lost",score:"1-3"},{match:"Draper vs Humbert",sel:"Jack Draper +1.5 sets",mk:"ATP Eastbourne, SF · Grass",odds:"1.196",st:"lost",score:"5-7 3-6"}]},
-  {id:"83642752925",date:"27.06",tourn:"Accumulator · 4 legs",match:"Finals Saturday four-fold",market:"4-leg acca · Mixed",odds:"2.639",stake:"15",ret:"0.00",profit:"-15.00&#x20AC;",sport:"tennis",entry:"pre-match",surface:"mixed",profitN:-15.00,stakeN:15,won:false,slug:"finals-saturday-four-fold",legs:[{match:"Muchova vs Osaka",sel:"Osaka +1.5 sets",mk:"WTA Bad Homburg, Final · Grass",odds:"1.25",st:"void",score:"Osaka ret."},{match:"Bergs vs Humbert",sel:"Humbert to win",mk:"ATP Eastbourne, Final · Grass",odds:"1.379",st:"lost",score:"6-3 1-6 4-6"},{match:"Maria vs Keys",sel:"Keys to win",mk:"WTA Eastbourne, Final · Grass",odds:"1.29",st:"won",score:"7-5 6-4"},{match:"Poland vs Germany",sel:"Poland to win",mk:"FIVB Nations League · Volleyball",odds:"1.187",st:"won",score:"3-1"}]},
-  {id:"83727311529",date:"29.06",tourn:"Accumulator · 21 legs",match:"Twenty-one set-handicaps",market:"21-leg acca · Set handicaps",odds:"29.271",stake:"5",ret:"0.00",profit:"-5.00&#x20AC;",sport:"tennis",entry:"pre-match",surface:"mixed",profitN:-5.00,stakeN:5,won:false,slug:"twenty-one-handicaps",legs:[{match:"Romano vs Cecchinato",sel:"Cecchinato +1.5 sets",mk:"Milan Challenger R1 · Clay",odds:"1.24",st:"won"},{match:"Kovacevic vs van de Zandschulp",sel:"Van de Zandschulp +1.5 sets",mk:"Wimbledon R1 · Grass",odds:"1.25",st:"won"},{match:"Shapovalov vs Carreno Busta",sel:"Shapovalov +1.5 sets",mk:"Wimbledon R1 · Grass",odds:"1.163",st:"lost"},{match:"Mochizuki vs Basing",sel:"Mochizuki +1.5 sets",mk:"Wimbledon R1 · Grass",odds:"1.174",st:"won"},{match:"M. Zheng vs Norrie",sel:"Norrie +2.5 sets",mk:"Wimbledon R1 · Grass",odds:"1.086",st:"won"},{match:"Borges vs Boyer",sel:"Borges +1.5 sets",mk:"Wimbledon R1 · Grass",odds:"1.144",st:"won"},{match:"Walton vs Prizmic",sel:"Walton +2.5 sets",mk:"Wimbledon R1 · Grass",odds:"1.21",st:"won"},{match:"Quinn vs Darderi",sel:"Quinn +1.5 sets",mk:"Wimbledon R1 · Grass",odds:"1.095",st:"won"},{match:"Davidovich Fokina vs J.M. Cerundolo",sel:"Davidovich Fokina +1.5 sets",mk:"Wimbledon R1 · Grass",odds:"1.113",st:"won"},{match:"Cilic vs Medvedev",sel:"Medvedev +1.5 sets",mk:"Wimbledon R1 · Grass",odds:"1.168",st:"won"},{match:"Struff vs Baez",sel:"Struff +1.5 sets",mk:"Wimbledon R1 · Grass",odds:"1.172",st:"won"},{match:"Virtanen vs Shelton",sel:"Shelton +1.5 sets",mk:"Wimbledon R1 · Grass",odds:"1.128",st:"won"},{match:"Munar vs F. Cerundolo",sel:"F. Cerundolo +1.5 sets",mk:"Wimbledon R1 · Grass",odds:"1.142",st:"won"},{match:"Sonego vs Etcheverry",sel:"Sonego +2.5 sets",mk:"Wimbledon R1 · Grass",odds:"1.127",st:"won"},{match:"Lehecka vs Popyrin",sel:"Lehecka +1.5 sets",mk:"Wimbledon R1 · Grass",odds:"1.116",st:"won"},{match:"Griekspoor vs Duckworth",sel:"Griekspoor +1.5 sets",mk:"Wimbledon R1 · Grass",odds:"1.175",st:"won"},{match:"Tiafoe vs Atmane",sel:"Tiafoe +1.5 sets",mk:"Wimbledon R1 · Grass",odds:"1.099",st:"won"},{match:"Sawangkaew vs Chwalinska",sel:"Sawangkaew +1.5 sets",mk:"Wimbledon Women R1 · Grass",odds:"1.444",st:"won"},{match:"Putintseva vs Maria",sel:"Maria +1.5 sets",mk:"Wimbledon Women R1 · Grass",odds:"1.169",st:"won"},{match:"Siniakova vs Zheng",sel:"Siniakova +1.5 sets",mk:"Wimbledon Women R1 · Grass",odds:"1.28",st:"won"},{match:"Paolini vs Montgomery",sel:"Montgomery +1.5 sets",mk:"Wimbledon Women R1 · Grass",odds:"1.22",st:"won"}]},
-  {id:"TBC",date:"29.06",tourn:"Accumulator · 3 legs",match:"Grass-and-clay treble",market:"3-leg acca · Mixed",odds:"2.54",stake:"10",ret:"25.49",profit:"+15.49&#x20AC;",sport:"tennis",entry:"pre-match",surface:"mixed",profitN:15.49,stakeN:10,won:true,slug:"grass-and-clay-parlay",legs:[{match:"Cilic vs Medvedev",sel:"Medvedev to win",mk:"Wimbledon R1 · Grass",odds:"1.34",st:"won",score:"6-1 6-2 6-4"},{match:"Kovacevic vs van de Zandschulp",sel:"Van de Zandschulp to win",mk:"Wimbledon R1 · Grass",odds:"1.51",st:"won",score:"6-3 6-7 6-4 6-0"},{match:"Romano vs Cecchinato",sel:"Cecchinato to win a set",mk:"Milan Challenger R1 · Clay",odds:"1.26",st:"won"}]},
-  {id:"83753292865",date:"30.06",tourn:"Accumulator · 5 legs",match:"Five set-handicaps",market:"5-leg acca · Set handicaps",odds:"2.985",stake:"15",ret:"0.00",profit:"-15.00&#x20AC;",sport:"tennis",entry:"pre-match",surface:"mixed",profitN:-15.00,stakeN:15,won:false,slug:"five-men-one-set-each-handicap",legs:[{match:"Romano vs Cecchinato",sel:"Cecchinato +1.5 sets",mk:"Milan Challenger R1 · Clay",odds:"1.176",st:"won"},{match:"Sonego vs Etcheverry",sel:"Sonego +1.5 sets",mk:"Wimbledon R1 · Grass",odds:"1.4",st:"won"},{match:"Hanfmann vs Mpetshi Perricard",sel:"Mpetshi Perricard +1.5 sets",mk:"Wimbledon R1 · Grass",odds:"1.32",st:"lost",score:"1-3"},{match:"Kypson vs McDonald",sel:"McDonald +1.5 sets",mk:"Wimbledon R1 · Grass",odds:"1.17",st:"won"},{match:"Griekspoor vs Duckworth",sel:"Griekspoor +1.5 sets",mk:"Wimbledon R1 · Grass",odds:"1.174",st:"won"}]},
-  {id:"TBC",date:"30.06",tourn:"Accumulator · 5 legs",match:"Five to win outright",market:"5-leg acca · Match winners",odds:"7.97",stake:"10.10",ret:"0.00",profit:"-10.10&#x20AC;",sport:"tennis",entry:"pre-match",surface:"mixed",profitN:-10.10,stakeN:10.10,won:false,slug:"same-five-men-win-outright",legs:[{match:"Hanfmann vs Mpetshi Perricard",sel:"Mpetshi Perricard to win",mk:"Wimbledon R1 · Grass",odds:"1.65",st:"lost",score:"1-3"},{match:"Sonego vs Etcheverry",sel:"Sonego to win",mk:"Wimbledon R1 · Grass",odds:"1.79",st:"won"},{match:"Kypson vs McDonald",sel:"McDonald to win",mk:"Wimbledon R1 · Grass",odds:"1.34",st:"won"},{match:"Griekspoor vs Duckworth",sel:"Griekspoor to win",mk:"Wimbledon R1 · Grass",odds:"1.38",st:"won"},{match:"Romano vs Cecchinato",sel:"Cecchinato to win",mk:"Milan Challenger R1 · Clay",odds:"1.46",st:"won"}]},
-  {id:"TBC",date:"01.07",tourn:"Accumulator · 7 legs",match:"Wimbledon R2 seven-fold",market:"7-leg acca · Match/set winners",odds:"7.02",stake:"10",ret:"70.29",profit:"&mdash;",sport:"tennis",entry:"pre-match",surface:"grass",pending:true,slug:"wimbledon-r2-seven-fold",legs:[{match:"Safiullin vs van de Zandschulp",sel:"Safiullin to win a set",mk:"Wimbledon R2 · Grass",odds:"1.12",st:"pending"},{match:"Davidovich Fokina vs Marozsan",sel:"Davidovich Fokina to win",mk:"Wimbledon R2 · Grass",odds:"1.42",st:"pending"},{match:"Siniakova vs Bartunkova",sel:"Siniakova to win a set",mk:"Wimbledon R2 · Grass",odds:"1.22",st:"pending"},{match:"Parry vs Kalinskaya",sel:"Kalinskaya to win",mk:"Wimbledon R2 · Grass",odds:"1.49",st:"pending"},{match:"Nakashima vs Struff",sel:"Nakashima to win",mk:"Wimbledon R2 · Grass",odds:"1.28",st:"pending"},{match:"Krejcikova vs Andreeva",sel:"Andreeva to win",mk:"Wimbledon R2 · Grass",odds:"1.45",st:"pending"},{match:"Bencic vs Wang",sel:"Bencic to win",mk:"Wimbledon R2 · Grass",odds:"1.31",st:"pending"}]},
-  {id:"83814588159",date:"01.07",tourn:"Accumulator · 7 legs",match:"Wimbledon R2 set-handicap insurance",market:"7-leg acca · Set handicaps",odds:"3.877",stake:"15",ret:"58.16",profit:"&mdash;",sport:"tennis",entry:"pre-match",surface:"mixed",pending:true,slug:"wimbledon-r2-set-handicaps",legs:[{match:"Parry vs Kalinskaya",sel:"Kalinskaya +1.5 sets",mk:"Wimbledon R2 · Grass",odds:"1.195",st:"pending"},{match:"Safiullin vs van de Zandschulp",sel:"Safiullin +2.5 sets",mk:"Wimbledon R2 · Grass",odds:"1.115",st:"pending"},{match:"Davidovich Fokina vs Marozsan",sel:"Davidovich Fokina to win",mk:"Wimbledon R2 · Grass",odds:"1.479",st:"pending"},{match:"Siniakova vs Bartunkova",sel:"Siniakova +1.5 sets",mk:"Wimbledon R2 · Grass",odds:"1.21",st:"pending"},{match:"Krejcikova vs Andreeva",sel:"Andreeva +1.5 sets",mk:"Wimbledon R2 · Grass",odds:"1.19",st:"pending"},{match:"Bencic vs Wang",sel:"Bencic +1.5 sets",mk:"Wimbledon R2 · Grass",odds:"1.12",st:"pending"},{match:"Noguchi vs Martinez",sel:"Noguchi +1.5 sets",mk:"Challenger Cary · Hard",odds:"1.22",st:"pending"}]},
-];
-
-/* ===== PURCHASING POWER ENGINE ===== */
-/* 25 countries, two registers. Montenegro fixed anchor + 2 rotating.
-   Computes qty = |profit| / unit, renders Format C tiles (Variant 3: tall square row). */
-const PP_DATA=[
-  {f:"🇲🇪",c:"Montenegro",u:5.30,one:"kg of chicken",many:"kg of chicken",t1:"a starter freezer",tn:"a genuinely full freezer",r:"tangible",anchor:true},
-  {f:"🇬🇪",c:"Georgia",u:1.20,one:"cup of coffee",many:"cups of coffee",t1:"one Tbilisi morning",tn:"mornings in Tbilisi",r:"tangible"},
-  {f:"🇻🇳",c:"Vietnam",u:2.00,one:"bowl of phở",many:"bowls of phở",t1:"one street breakfast",tn:"breakfast for weeks",r:"tangible"},
-  {f:"🇮🇳",c:"India",u:1.50,one:"street meal",many:"street meals",t1:"one proper thali",tn:"lunch for a fortnight",r:"tangible"},
-  {f:"🇪🇬",c:"Egypt",u:0.90,one:"plate of koshari",many:"plates of koshari",t1:"a Cairo classic",tn:"koshari for the street",r:"tangible"},
-  {f:"🇵🇹",c:"Portugal",u:1.30,one:"pastel de nata",many:"pastéis de nata",t1:"one warm custard tart",tn:"a bakery's worth of nata",r:"tangible"},
-  {f:"🇹🇭",c:"Thailand",u:1.50,one:"pad thai",many:"pad thais",t1:"one night-market plate",tn:"pad thai for a month",r:"tangible"},
-  {f:"🇹🇷",c:"Türkiye",u:0.40,one:"glass of çay",many:"glasses of çay",t1:"one tulip glass",tn:"tea for the bazaar",r:"tangible"},
-  {f:"🇲🇽",c:"Mexico",u:0.80,one:"street taco",many:"street tacos",t1:"one al pastor",tn:"tacos for the table, twice",r:"tangible"},
-  {f:"🇲🇦",c:"Morocco",u:0.70,one:"mint tea",many:"glasses of mint tea",t1:"one medina sit-down",tn:"mint tea till sundown",r:"tangible"},
-  {f:"🇮🇩",c:"Indonesia",u:1.40,one:"plate of nasi goreng",many:"plates of nasi goreng",t1:"one warung dinner",tn:"dinner for the village",r:"tangible"},
-  {f:"🇵🇭",c:"Philippines",u:1.60,one:"serving of adobo",many:"servings of adobo",t1:"one carinderia plate",tn:"adobo for the barkada",r:"tangible"},
-  {f:"🇵🇰",c:"Pakistan",u:1.20,one:"plate of biryani",many:"plates of biryani",t1:"one Lahori plate",tn:"biryani for the mohalla",r:"tangible"},
-  {f:"🇧🇷",c:"Brazil",u:0.60,one:"pão de queijo",many:"pães de queijo",t1:"one cheese bread",tn:"a padaria's whole tray",r:"tangible"},
-  {f:"🇰🇪",c:"Kenya",u:0.80,one:"plate of ugali",many:"plates of ugali",t1:"one filling plate",tn:"ugali for the table",r:"tangible"},
-  {f:"🇷🇸",c:"Serbia",u:1.10,one:"burek",many:"bureks",t1:"one greasy slab",tn:"burek for the kafana",r:"tangible"},
-  {f:"🇦🇷",c:"Argentina",u:0.90,one:"empanada",many:"empanadas",t1:"one beef empanada",tn:"a dozen-dozen empanadas",r:"tangible"},
-  {f:"🇲🇨",c:"Monaco",u:51000,dec:4,one:"m² of an apartment",many:"m² of an apartment",t1:"roughly one floor tile",tn:"a generous doormat",r:"absurd"},
-  {f:"🇨🇭",c:"Switzerland",u:3.50,one:"minute of a banker's pay",many:"minutes of a banker's pay",t1:"he didn't look up",tn:"his coffee break, costed",r:"absurd"},
-  {f:"🇳🇴",c:"Norway",u:11.50,one:"beer in Oslo",many:"beers in Oslo",t1:"one eye-watering pint",tn:"a small, painful round",r:"absurd"},
-  {f:"🇮🇸",c:"Iceland",u:14.00,one:"airport sandwich",many:"airport sandwiches",t1:"most of one sandwich",tn:"Keflavík lunch, brutal",r:"absurd"},
-  {f:"🇦🇪",c:"Dubai",u:0.35,sec:true,one:"second of a rented Lambo",many:"seconds of a rented Lambo",t1:"barely a rev",tn:"a quick lap of the block",r:"absurd"},
-  {f:"🇯🇵",c:"Japan",u:22.00,one:"capsule-hotel night",many:"capsule-hotel nights",t1:"most of one pod",tn:"a few nights in a drawer",r:"absurd"},
-  {f:"🇬🇧",c:"London",u:7.50,one:"pint in a City pub",many:"pints in a City pub",t1:"one après-work pint",tn:"a small City round",r:"absurd"},
-  {f:"🇸🇬",c:"Singapore",u:2.80,one:"minute of car ownership",many:"minutes of car ownership",t1:"the COE meter ticking",tn:"the permit, by the minute",r:"absurd"}
-];
-
-function ppFmtQty(q,dec,sec){
-  if(dec){var s=q.toFixed(dec);return s.replace(/\.?0+$/,'');}
-  if(sec&&q>=120){var m=q/60;return (m>=10?Math.round(m):Math.round(m*10)/10)+" min";} // Dubai seconds -> minutes when big
-  if(q>=20)return ""+Math.round(q);            // big counts: clean integer
-  if(q>=2)return ""+Math.round(q);             // small counts: round to nearest whole (avoids "4.4 cups")
-  if(q>=1)return "1";                           // 1.0-1.9 -> "1" (singular)
-  return q.toFixed(2).replace(/\.?0+$/,'');
-}
-function ppPhrase(e,amt){
-  var q=amt/e.u, dec=e.dec||0, sec=e.sec||false;
-  var qty=ppFmtQty(q,dec,sec);
-  // singular if the DISPLAYED quantity is exactly "1" (and not a decimal/seconds-as-minutes case)
-  var one=(qty==="1");
-  var label;
-  if(sec&&q>=120){label=e.many.replace("seconds","minutes").replace("second","minute");}
-  else {label=one?e.one:e.many;}
-  var tag=one?e.t1:e.tn;
-  var buy;
-  if(q<1 && !dec && !sec){buy="part of a "+e.one;}
-  else if(sec&&q>=120){var mm=ppFmtQty(q,0,true);buy=mm+" of a rented Lambo";}
-  else {buy=qty+" "+label;}
-  return {buy:buy,tag:tag,country:e.c,flag:e.f};
-}
-// Pick 3 distinct countries via seeded shuffle (each slip stable, varied across slips). Bias: at least one 'absurd'.
-function ppPick(seed){
-  var arr=PP_DATA.slice();
-  var s=((seed||Math.floor(Math.random()*100000))^0x5bd1e995)>>>0;
-  for(var i=arr.length-1;i>0;i--){s=(s*9301+49297)%233280;var j=Math.floor(s/233280*(i+1));var t=arr[i];arr[i]=arr[j];arr[j]=t;}
-  var three=arr.slice(0,3);
-  if(!three.some(function(x){return x.r==='absurd';})){
-    var ab=arr.find(function(x){return x.r==='absurd'&&three.indexOf(x)<0;});
-    if(ab)three[2]=ab;
-  }
-  return three;
-}
-// Render Format C / Variant 3 (tall square tiles row). won=true green header, false coral.
-function ppRender(amtRaw,opts){
-  opts=opts||{};
-  var amt=Math.abs(amtRaw), won=amtRaw>=0;
-  var picks=ppPick(opts.seed);
-  var edges=['e1','e2','e3'];
-  var tiles=picks.map(function(e,i){
-    var p=ppPhrase(e,amt);
-    return '<div class="ppv3-t '+edges[i]+(won?'':' lost')+'">'+
-      '<div class="ppv3-flag">'+p.flag+'</div>'+
-      '<div class="ppv3-buy">'+p.buy+'</div>'+
-      '<div class="ppv3-country"><span class="ppv3-cname">'+p.country+'</span><span class="ppv3-ctag">'+p.tag+'</span></div>'+
-    '</div>';
-  }).join('');
-  var headTxt = won ? ('🌍 What +'+amt.toFixed(2)+'€ buys you around the world')
-                    : ('✕ What '+amt.toFixed(2)+'€ won\u2019t buy you');
-  return '<div class="ppwrap'+(won?'':' lost')+'">'+
-    '<div class="ppv3-head'+(won?'':' lost')+'">'+headTxt+'</div>'+
-    '<div class="ppv3-tiles">'+tiles+'</div>'+
-  '</div>';
-}
-
-function ppRenderPending(s){
-  var ret=parseFloat(s.ret)||0, stake=parseFloat(s.stake)||1;
-  var gbp=ret*0.855;
-  var straw=Math.round(gbp/2.85), pimms=Math.round(gbp/13.45), bets=Math.round(ret/stake);
-  var rows=[
-    {flag:'🍓',buy:'~'+straw+' punnets',cn:'Wimbledon',ct:'strawberries & cream',e:'e1'},
-    {flag:'🍹',buy:'~'+pimms+' glasses',cn:'Henman Hill',ct:'of Pimm\u2019s',e:'e2'},
-    {flag:'🎲',buy:bets+' more bets',cn:'Reality',ct:'the only way I win it',e:'e3'}
-  ];
-  var tiles=rows.map(function(x){return '<div class="ppv3-t '+x.e+'">'+
-    '<div class="ppv3-flag">'+x.flag+'</div>'+
-    '<div class="ppv3-buy">'+x.buy+'</div>'+
-    '<div class="ppv3-country"><span class="ppv3-cname">'+x.cn+'</span><span class="ppv3-ctag">'+x.ct+'</span></div>'+
-  '</div>';}).join('');
-  return '<div class="ppwrap"><div class="ppv3-head">🎲 If it lands &middot; what &euro;'+ret.toFixed(2)+' would buy</div><div class="ppv3-tiles">'+tiles+'</div></div>';
-}
-
-const ART_URLS={
-  "wimbledon-r2-seven-fold":"wimbledon-r2-seven-fold-preview.html",
-  "wimbledon-r2-set-handicaps":"wimbledon-r2-set-handicaps-preview.html",
-  "grass-and-clay-parlay":"grass-and-clay-parlay-preview.html",
-  "twenty-one-handicaps":"twenty-one-handicaps-preview.html",
-  "five-men-one-set-each-handicap":"five-men-one-set-each-handicap-parlay-preview.html",
-  "same-five-men-win-outright":"same-five-men-win-outright-parlay-preview.html",
-  "finals-saturday-four-fold":"finals-saturday-four-fold-preview.html",
-  "draper-brazil-double":"draper-brazil-double-preview.html",
-  "rob-the-bookie-grass-acca":"rob-the-bookie-grass-acca-preview.html",
-  "parlay-bold-grass":"grass-court-players-better-on-grass-parlay-preview.html",
-  "parlay-safe-handicap":"dont-get-swept-grass-set-handicap-parlay-preview.html",
-  "parlay-6":"de-minaur-nakashima-upset-parlay-analysis.html",
-  "riera-oz":"live-betting-medical-timeout-signal-riera-oz.html",
-  "parlay-8":"one-point-overtime-acb-final-near-miss.html",
-  "parlay-7":"favourites-betray-the-price-hurkacz-gauff-parlay.html",
-  "raquillet":"spotting-a-retirement-live-raquillet-kotov.html",
-  "zheng2":"backing-the-same-read-twice-zheng-grass.html",
-  "norrie":"the-market-priced-reputation-norrie-grass.html",
-  "zheng1":"a-pre-match-handicap-on-grass-zheng.html",
-  "lopez":"a-coinflip-the-press-missed-lopez-live.html"
-};
-const ARTS=[
-  {slug:"wimbledon-r2-seven-fold",date:"Jul 1",sport:"Acca · 7 legs",tag:"Parlay · Pre-match",tc:"tr3",hl:"Seven second-round calls, and a stubborn belief that the better player usually wins.",cite:"Five to win outright — Davidovich Fokina, Kalinskaya, Nakashima, Andreeva, Bencic — and two just to take a set. Ten quid at 7.02.",s:"grass",odds:"7.02",legs:"7 legs",preview:true},
-  {slug:"wimbledon-r2-set-handicaps",date:"Jul 1",sport:"Acca · 7 legs",tag:"Parlay · Pre-match",tc:"tr3",hl:"The same reads, downgraded from ambition to insurance.",cite:"Set-handicap cover on the Wimbledon second round: +1.5 on the favourites, +2.5 on the five-setter, Davidovich Fokina to win. Fifteen quid at 3.877.",s:"grass",odds:"3.877",legs:"7 legs",preview:true},
-  {slug:"five-men-one-set-each-handicap",date:"Jun 30",sport:"Acca · 5 legs",tag:"Parlay · Lost",tc:"tr3",hl:"Five men, one set apiece, and nobody gets swept.",cite:"A set-handicap acca at 2.985: the teacher on Milan clay, a serve-bot and a stranded clay-courter on the grass. Fifteen quid for insurance.",s:"grass",odds:"2.985",legs:"5 legs",result:"-15.00€",summary:true},
-  {slug:"same-five-men-win-outright",date:"Jun 30",sport:"Acca · 5 legs",tag:"Parlay · Lost",tc:"tr3",hl:"The same five men. This time they have to win.",cite:"The same five men, now asked to win outright at 7.97. Ten quid for eighty. Greedier odds, identical logic.",s:"grass",odds:"7.97",legs:"5 legs",result:"-10.10€",summary:true},
-  {slug:"grass-and-clay-parlay",date:"Jun 29",sport:"Acca · 3 legs",tag:"Parlay · Won",tc:"tg2",hl:"One lives for the grass, one grazes it, one teaches clay.",cite:"Medvedev and van de Zandschulp on the Wimbledon lawns, Cecchinato on Milan clay. Three favourites, ten quid.",s:"grass",p1:"D. Medvedev",p2:"M. Cilic",s1:["6","6","6"],s2:["1","2","4"],result:"+15.49€"},
-  {slug:"twenty-one-handicaps",date:"Jun 29-30",sport:"Acca · 21 legs",tag:"Parlay · Lost",tc:"tr3",hl:"Twenty-one handicaps, five quid, one prayer: nobody gets swept.",cite:"Every player just has to stay within a set and a half, across Wimbledon and the Milan clay. One sweep and it is gone.",s:"grass",odds:"29.271",legs:"21 legs",result:"-5.00€",summary:true},
-  {slug:"finals-saturday-four-fold",date:"Jun 27",sport:"Acca · 4 legs",tag:"Parlay · Lost",tc:"tr3",hl:"Three finals, four favourites, one French choker.",cite:"Keys and Poland delivered. Humbert led and lost, Osaka retired — one leg sank the lot.",s:"grass",odds:"2.639",legs:"4 legs",result:"-15.00€",summary:true},
-  {slug:"draper-brazil-double",date:"Jun 25",sport:"Acca · 2 legs",tag:"Parlay · Lost",tc:"tr3",hl:"Draper’s home. Humbert’s in the way. Italy brought the reserves.",cite:"Two near-bankers, two losses. Draper swept, Brazil sunk by the reserves.",s:"grass",odds:"1.973",legs:"2 legs",result:"-15.00€",summary:true},
-  {slug:"rob-the-bookie-grass-acca",date:"Jun 25",sport:"Acca · 16 legs",tag:"Parlay · Lost",tc:"tr3",hl:"Bloody quiet out there. So we're robbing the bookie. Or not.",cite:"Sixteen legs at 398.397. It only takes one to fall — at least one did.",s:"grass",odds:"398.397",legs:"16 legs",result:"-1.50€",summary:true},
-  {slug:"parlay-safe-handicap",date:"Jun 24",sport:"Acca · 5 legs",tag:"Parlay · Won",tc:"tg2",hl:"Five players. One modest request: don't get swept off the lawn.",cite:"+1.5 sets each. Five favourites, five sets held. Nobody swept.",s:"grass",p1:"G. Diallo",p2:"T. Etcheverry",s1:["6","6","6"],s2:["7","3","2"],result:"+22.57€"},
-  {slug:"parlay-bold-grass",date:"Jun 24",sport:"Acca · 3 legs",tag:"Parlay · Won",tc:"tg2",hl:"A wildly original theory: grass-court players are better on grass.",cite:"Three clay-courters thrown onto a lawn. Three grass players at home.",s:"grass",p1:"T. Samuel",p2:"T. Tirante",s1:["6","7"],s2:["1","6"],result:"+13.18€"},
-  {slug:"parlay-6",date:"Jun 19",sport:"Acca · 6 legs",tag:"Parlay · Lost",tc:"tr3",hl:"Do I suck at parlays? Possibly.",cite:"Four legs landed. De Minaur and Bayern did not.",result:"-15.00€",file:"",s:"grass",p1:"B. Nakashima [32]",p2:"A. De Minaur [1]",s1:["7","6"],s2:["5","3"]},
-  {slug:"riera-oz",date:"Jun 18",sport:"Tennis · Clay · ITF",tag:"Single · Live",tc:"tg2",hl:"On my watch-list since the MTO. I sat on it. It paid.",cite:"The body told the story a day early. I just waited.",result:"+22.50€",file:"",s:"clay",p1:"I. Oz",p2:"J. Riera",s1:["2","6","6"],s2:["6","1","1"]},
-  {slug:"parlay-8",date:"Jun 18",sport:"Acca · 8 legs",tag:"Parlay · Lost",tc:"tr3",hl:"One point. One overtime. One dead slip.",cite:"Valencia led 99-95. Clyburn had other ideas. 112-113.",result:"-15.00€",file:"",s:"hard",p1:"FC Barcelona",p2:"Valencia Basket",s1:["113"],s2:["112"]},
-  {slug:"parlay-7",date:"Jun 17",sport:"Acca · 7 legs",tag:"Parlay · Lost",tc:"tr3",hl:"The accumulator that died on the sixth floor.",cite:"Five right. Two favourites went the wrong way.",result:"-5.00€",file:"",s:"grass",p1:"P. Badosa (WC)",p2:"C. Gauff [5]",s1:["1","6","6"],s2:["6","3","2"]},
-  {slug:"raquillet",date:"Jun 17",sport:"Tennis · Clay",tag:"Bet #5 · Live",tc:"tr3",hl:"5-2 up. Limping. Retired in G1 S2. Thanks Pavel.",cite:"Raquillet had a free pass after Kotov retired. — TennisTonic",result:"+58.50€",file:"zoomin_raquillet_kotov.html",s:"clay",p1:"L. Raquillet (WC)",p2:"P. Kotov [3]",s1:["7"],s2:["ret."]},
-  {slug:"zheng2",date:"Jun 17",sport:"Tennis · Grass",tag:"Bet #6 · Live",tc:"to",hl:"Zheng, again. You're added to my grass list.",cite:"Same day. Same player. Same result.",result:"+6.00€",file:"zoomin_gibson_zheng_2.html",s:"grass",p1:"T. Gibson",p2:"Q. Zheng",s1:["6","7"],s2:["3","6"]},
-  {slug:"norrie",date:"Jun 16",sport:"Tennis · Grass",tag:"Bet #1 · Live",tc:"tr3",hl:"Ciao, Cameron. The market paid us 1.152.",cite:"Nothing major, said Norrie about his cracked ribs.",result:"+5.32€",file:"zoomin_bet1_norrie.html",s:"grass",p1:"A. Fokina",p2:"C. Norrie",s1:["7","6"],s2:["6","2"]},
-  {slug:"zheng1",date:"Jun 17",sport:"Tennis · Grass",tag:"Bet #3 · Pre-match",tc:"tg2",hl:"You want to enjoy tennis? Wow me too. Winnings as well.",cite:"On grass, it is not easy for me. — Q. Zheng",result:"+9.75€",file:"zoomin_gibson_zheng.html",s:"grass",p1:"T. Gibson",p2:"Q. Zheng",s1:["6","7"],s2:["3","6"]},
-  {slug:"lopez",date:"Jun 17",sport:"Tennis · Clay · ITF",tag:"Bet #4 · Live",tc:"tr3",hl:"A coinflip at 3.48. The press was not there. We were.",cite:"Medical timeout. Not indexed. That is the edge.",result:"+37.20€",file:"zoomin_lopez_schuman.html",s:"clay",p1:"E. Lopez",p2:"A. Schuman",s1:["7","5"],s2:["6","3"]},
-];
-
-function makeTile(a){
-  const t=document.createElement('div');t.className='zt';
-  t.onclick=()=>{const u=ART_URLS[a.slug];if(u){window.location.href=u;}else{openArt(a.slug);}};
-  if(a.preview){
-    t.innerHTML='<div class="zt-top"><div class="zt-dn">'+a.date+'</div><div class="zt-sp">'+a.sport+'</div></div>'+
-      '<div class="zt-surf-block '+a.s+'" style="display:flex;flex-direction:column;justify-content:center;gap:8px;min-height:70px;">'+
-        '<div style="display:flex;align-items:baseline;justify-content:space-between;">'+
-          '<div style="font-family:\'JetBrains Mono\',monospace;font-size:9px;letter-spacing:.1em;color:rgba(255,255,255,.7);text-transform:uppercase;">Total odds</div>'+
-          '<div style="font-family:\'Spectral\',serif;font-size:30px;font-weight:800;color:#fff;line-height:1;">'+a.odds+'</div>'+
-        '</div>'+
-        '<div style="display:flex;align-items:center;justify-content:space-between;">'+
-          '<div style="font-family:\'JetBrains Mono\',monospace;font-size:9px;color:rgba(255,255,255,.8);">'+a.legs+'</div>'+
-          '<div style="font-family:\'JetBrains Mono\',monospace;font-size:8.5px;font-weight:700;letter-spacing:.08em;color:#1e1e1e;background:var(--ocre);padding:2px 8px;border-radius:10px;">PRE-MATCH</div>'+
-        '</div>'+
-      '</div>'+
-      '<div class="zt-body"><div class="zt-tag '+a.tc+'">'+a.tag+'</div><div class="zt-hl">'+a.hl+'</div><div class="zt-cite">'+a.cite+'</div></div>'+
-      '<div class="zt-ft"><span style="color:var(--ocre);font-weight:700;">&#9203; PRE-MATCH</span><span>Read &#x2192;</span></div>';
-    return t;
-  }
-  if(a.summary){
-    var lostS=(''+a.result).trim().charAt(0)==='-';
-    t.innerHTML='<div class="zt-top"><div class="zt-dn">'+a.date+'</div><div class="zt-sp">'+a.sport+'</div></div>'+
-      '<div class="zt-surf-block '+a.s+'" style="display:flex;flex-direction:column;justify-content:center;gap:8px;min-height:70px;">'+
-        '<div style="display:flex;align-items:baseline;justify-content:space-between;">'+
-          '<div style="font-family:\'JetBrains Mono\',monospace;font-size:9px;letter-spacing:.1em;color:rgba(255,255,255,.7);text-transform:uppercase;">Total odds</div>'+
-          '<div style="font-family:\'Spectral\',serif;font-size:30px;font-weight:800;color:#fff;line-height:1;">'+a.odds+'</div>'+
-        '</div>'+
-        '<div style="display:flex;align-items:center;justify-content:space-between;">'+
-          '<div style="font-family:\'JetBrains Mono\',monospace;font-size:9px;color:rgba(255,255,255,.8);">'+a.legs+'</div>'+
-          '<div style="font-family:\'JetBrains Mono\',monospace;font-size:8.5px;font-weight:700;letter-spacing:.08em;color:#fff;background:var(--coral);padding:2px 8px;border-radius:10px;">'+(lostS?'LOST':'SETTLED')+'</div>'+
-        '</div>'+
-      '</div>'+
-      '<div class="zt-body"><div class="zt-tag '+a.tc+'">'+a.tag+'</div><div class="zt-hl">'+a.hl+'</div><div class="zt-cite">'+a.cite+'</div></div>'+
-      '<div class="zt-ft"><span style="'+(lostS?'color:var(--coral);font-weight:700':'')+'">'+a.result+'</span><span>Read &#x2192;</span></div>';
-    return t;
-  }
-  const sets=(arr,win)=>arr.map(s=>'<div class="zt-set '+(s==='ret.'?'r':win?'w':'l')+'">'+s+'</div>').join('');
-  var lost=(''+a.result).trim().charAt(0)==='-';
-  t.innerHTML='<div class="zt-top"><div class="zt-dn">'+a.date+'</div><div class="zt-sp">'+a.sport+'</div></div>'+
-    '<div class="zt-surf-block '+a.s+'">'+
-    '<div class="zt-score-row"><div class="zt-pl">'+a.p1+'</div><div class="zt-sets">'+sets(a.s1,true)+'</div></div>'+
-    '<div style="height:0.5px;background:rgba(255,255,255,.15);margin:3px 0;"></div>'+
-    '<div class="zt-score-row"><div class="zt-pl dim">'+a.p2+'</div><div class="zt-sets">'+sets(a.s2,false)+'</div></div>'+
-    '</div><div class="zt-body"><div class="zt-tag '+a.tc+'">'+a.tag+'</div><div class="zt-hl">'+a.hl+'</div><div class="zt-cite">'+a.cite+'</div></div>'+
-    '<div class="zt-ft"><span style="'+(lost?'color:var(--coral);font-weight:700':'')+'">'+a.result+'</span><span>Read &#x2192;</span></div>';
-  return t;
-}
-document.getElementById('homeZi').append(...ARTS.slice(0,6).map(makeTile));
-document.getElementById('ziPageGrid').append(...ARTS.map(makeTile));
-
-const PER=3;let pg=0;
-const sdts=document.getElementById('sdts');
-for(let i=0;i<Math.ceil(SLIPS.length/PER);i++){const d=document.createElement('div');d.className='sdot'+(i===0?' on':'');d.onclick=()=>goSl(i);sdts.appendChild(d);}
-
-function getFiltered(){return SLIPS.filter(s=>(activeF.sport==='all'||s.sport===activeF.sport)&&(activeF.surface==='all'||s.surface===activeF.surface)&&(activeF.entry==='all'||s.entry===activeF.entry));}
-function getFilteredDisplay(){return getFiltered().slice().reverse();}
-
-function renderSlips(){
-  const g=document.getElementById('slipsGrid');g.innerHTML='';
-  const f=getFilteredDisplay();
-  f.slice(pg*PER,(pg+1)*PER).forEach(s=>{
-    const c=document.createElement('div');c.className='slip';c.onclick=()=>openMo(s);
-    var P=s.pending===true;
-    var W=s.won!==false;
-    var badge=P?'<div class="bw" style="background:var(--ocre);color:var(--dark)">Pending &#9203;</div>':'<div class="'+(W?'bw':'bl')+'">'+(W?'Won &#x2713;':'Lost &#x2715;')+'</div>';
-    var profitCell=P?'<div class="slip-p" style="color:var(--muted)">&mdash;</div>':'<div class="slip-p" style="'+(W?'':'color:var(--coral)')+'">'+s.profit+'</div>';
-    var retCell=P?'<div class="slip-cv">'+s.ret+'&#x20AC;<span style="font-size:9px;color:var(--muted);font-weight:400"> max</span></div>':'<div class="slip-cv">'+s.ret+'&#x20AC;</div>';
-    var statusCell=P?'<div class="slip-cv" style="color:#b8860b">Pending</div>':'<div class="slip-cv '+(W?'w':'l')+'">'+(W?'Won':'Lost')+'</div>';
-    var footCell=P?'<div class="slip-st" style="background:rgba(245,179,46,.16);color:#b8860b">&#9203; Awaiting result</div>':'<div class="slip-st'+(W?'':' lost')+'">'+(W?'&#x2713; Paid out':'&#x2715; Lost')+'</div>';
-    c.innerHTML='<div class="slip-h"><div class="slip-id">'+s.id+'</div>'+badge+'</div>'+
-      '<div class="slip-b"><div class="slip-tr">'+s.tourn+'</div><div class="slip-m">'+s.match+'</div>'+
-      '<div class="slip-mk">'+s.market+'</div><div class="slip-div"></div>'+
-      '<div class="slip-ns"><div><div class="slip-ol">Odds</div><div class="slip-o">'+s.odds+'</div></div>'+
-      '<div><div class="slip-ol" style="text-align:right">Profit</div>'+profitCell+'</div></div></div>'+
-      '<div class="slip-g"><div class="slip-c"><div class="slip-cl">Stake</div><div class="slip-cv">'+s.stake+'&#x20AC;</div></div>'+
-      '<div class="slip-c"><div class="slip-cl">Return</div>'+retCell+'</div>'+
-      '<div class="slip-c"><div class="slip-cl">Status</div>'+statusCell+'</div></div>'+
-      '<div class="slip-f">'+footCell+'<div class="slip-dt">'+s.date+'.2026</div></div>'+
-      (P?(parseFloat(s.ret)>=100?ppRenderPending(s):''):ppRender(s.profitN,{seed:parseInt((s.id||'0').slice(-5))||1}));
-    g.appendChild(c);
-  });
-  sdts.querySelectorAll('.sdot').forEach((d,i)=>d.classList.toggle('on',i===pg));
-}
-function goSl(p){pg=p;renderSlips();}
-document.getElementById('spb').onclick=()=>goSl(Math.max(0,pg-1));
-document.getElementById('snb2').onclick=()=>goSl(Math.min(Math.ceil(SLIPS.length/PER)-1,pg+1));
-renderSlips();
-
-function openMo(s){
-  ['mId','mTo','mMa','mMk','mOd','mPr','mSt','mRe','mDt'].forEach(function(id,i){
-    document.getElementById(id).innerHTML=['N&deg; '+s.id,s.tourn,s.match,s.market,s.odds,s.profit,s.stake+'&#x20AC;',s.ret+'&#x20AC;',s.date+'.2026'][i];
-  });
-  var P=s.pending===true;
-  var W=s.won!==false;
-  var ms=document.getElementById('mStatusVal');if(ms){ms.textContent=P?'Pending':(W?'Won':'Lost');ms.className='mcev '+(P?'':(W?'w':'l'));if(P)ms.style.color='#b8860b';else ms.style.color='';}
-  var mf=document.getElementById('mStatusFoot');if(mf){mf.innerHTML=P?'&#9203; Awaiting result':(W?'&#x2713; Paid out':'&#x2715; Lost');mf.className=P?'mst':('mst'+(W?'':' lost'));}
-  var mp=document.getElementById('mPr');if(mp){mp.style.color=P?'var(--muted)':(W?'':'var(--coral)');}
-  var ml=document.getElementById('mLegs');
-  if(ml){
-    if(s.legs&&s.legs.length){
-      ml.style.display='block';
-      ml.innerHTML='<div class="mlegs-h">Selections &middot; '+s.legs.length+' legs</div>'+s.legs.map(function(l){
-        var st=l.st||'pending';
-        var dot=st==='won'?'<span class="mleg-dot won">&#x2713;</span>':(st==='lost'?'<span class="mleg-dot lost">&#x2715;</span>':(st==='void'?'<span class="mleg-dot void">&#8635;</span>':'<span class="mleg-dot pend">&#9203;</span>'));
-        var sc=l.score?'<div class="mleg-score">'+l.score+'</div>':'';
-        return '<div class="mleg">'+dot+'<div class="mleg-main"><div class="mleg-match">'+(l.match||l.sel)+'</div><div class="mleg-pick">'+l.sel+'</div><div class="mleg-mk">'+l.mk+'</div></div>'+sc+'<div class="mleg-odds">'+l.odds+'</div></div>';
-      }).join('');
-    }else{ml.style.display='none';ml.innerHTML='';}
-  }
-  document.getElementById('modal').classList.add('on');
-}
-function closeMo(){document.getElementById('modal').classList.remove('on');}
-document.getElementById('modal').onclick=e=>{if(e.target===document.getElementById('modal'))closeMo();};
-
-function filt(el){
-  const g=el.dataset.g,v=el.dataset.v;activeF[g]=v;
-  document.querySelectorAll('.fbtn[data-g="'+g+'"]').forEach(b=>b.classList.remove('on'));
-  el.classList.add('on');pg=0;renderSlips();buildCal();updateKPIs();
-}
-function updateKPIs(){
-  const f=getFiltered().filter(x=>!x.pending);
-  const tp=f.reduce((s,x)=>s+(x.profitN||0),0),ts=f.reduce((s,x)=>s+(x.stakeN||0),0);
-  const ao=f.length?f.reduce((s,x)=>s+parseFloat(x.odds),0)/f.length:0;
-  const roi=ts?Math.round(tp/ts*1000)/10:0,roc=Math.round(tp/1000*1000)/10;
-  const wins=f.filter(x=>x.won!==false).length;
-  const wr=f.length?Math.round(wins/f.length*100):0;
-  document.getElementById('tr-bets').textContent=f.length;
-  document.getElementById('tr-wr').textContent=wr+'%';
-  document.getElementById('tr-roi').textContent=(roi>=0?'+':'')+roi+'%';
-  document.getElementById('tr-odds').textContent=ao?ao.toFixed(2):'--';
-  document.getElementById('tr-profit').innerHTML=(tp>=0?'+':'')+tp.toFixed(2)+'&#x20AC;';
-  document.getElementById('tr-profit').className='kn '+(tp>=0?'g':'l');
-  document.getElementById('tr-roc').textContent=(roc>=0?'+':'')+roc+'%';
-}
-
-const CAL_DATA={
-  16:{legs:['Fokina vs Norrie &middot; 1.152'],total:'+5.32&#x20AC;',badge:'1W',slip:SLIPS[0],sport:'tennis',surface:'grass',entry:'live'},
-  17:{legs:['Gibson&times;2 &middot; Lopez &middot; Raquillet (4W)','7-leg acca (lost)'],total:'+106.45&#x20AC;',badge:'4W 1L',multi:true,sport:'tennis',surface:'mixed',entry:'mixed',
-      modal:{id:'Jun 17 &mdash; 5 bets',tourn:'WTA + ITF + ATP Challenger + Acca',match:'4 singles won &middot; 1 parlay lost',market:'Live &times;4 &middot; Pre-match &times;1 &middot; 7-leg acca',odds:'--',stake:'160',ret:'266.45',profit:'+106.45&#x20AC;',date:'17.06',won:true}},
-  18:{legs:['Riera vs Oz &middot; 1.45 (won)','8-leg acca (lost)'],total:'+7.50&#x20AC;',badge:'1W 1L',multi:true,sport:'tennis',surface:'mixed',entry:'mixed',
-      modal:{id:'Jun 18 &mdash; 2 bets',tourn:'ITF Blois + Acca',match:'Riera single won &middot; 1 parlay lost',market:'Live single &middot; 8-leg acca',odds:'--',stake:'65',ret:'72.50',profit:'+7.50&#x20AC;',date:'18.06',won:true}},
-  19:{legs:['6-leg acca (lost)'],total:'-15.00&#x20AC;',badge:'0W 1L',slip:SLIPS[8],sport:'tennis',surface:'mixed',entry:'mixed'},
-  24:{legs:['Grass outright acca &middot; 3.635 (3W)','Set-handicap acca &middot; 2.504 (5W)'],total:'+35.75&#x20AC;',badge:'2W',multi:true,sport:'tennis',surface:'grass',entry:'pre-match',
-      modal:{id:'Jun 24 &mdash; 2 parlays',tourn:'Grass accumulators &middot; Wimbledon week',match:'Both parlays won &middot; 8 legs landed',market:'Pre-match &times;2 &middot; 3-leg + 5-leg acca',odds:'--',stake:'20',ret:'55.75',profit:'+35.75&#x20AC;',date:'24.06',won:true}},
-  25:{legs:['16-leg acca &middot; 398.397 (lost)','Draper/Brazil double &middot; 1.973 (lost)'],total:'-16.50&#x20AC;',badge:'0W 2L',multi:true,sport:'tennis',surface:'mixed',entry:'pre-match',
-      modal:{id:'Jun 25 &mdash; 2 bets',tourn:'Sixteen-fold + Draper/Brazil double',match:'Both accumulators lost',market:'Pre-match &times;2 &middot; 16-leg + 2-leg acca',odds:'--',stake:'16.50',ret:'0.00',profit:'-16.50&#x20AC;',date:'25.06',won:false}},
-  27:{legs:['4-leg acca · 2.639 (lost)'],total:'-15.00&#x20AC;',badge:'0W 1L',slip:SLIPS[14],sport:'tennis',surface:'mixed',entry:'pre-match'},
-};
-function buildCal(){
-  const g=document.getElementById('calGrid');g.innerHTML='';
-  ['M','T','W','T','F','S','S'].forEach(d=>{const h=document.createElement('div');h.className='cal-dh';h.textContent=d;g.appendChild(h);});
-  for(let d=1;d<=30;d++){
-    const data=CAL_DATA[d];
-    const ok=!data||(activeF.sport==='all'||data.sport===activeF.sport||data.sport==='mixed')&&(activeF.surface==='all'||data.surface===activeF.surface||data.surface==='mixed')&&(activeF.entry==='all'||data.entry===activeF.entry||data.entry==='mixed');
-    const cell=document.createElement('div');
-    if(!data||!ok){cell.className='cc emp';cell.innerHTML='<div class="cd2">'+d+'</div>';}
-    else if(!data.multi){
-      var dayLost=(''+data.total).trim().charAt(0)==='-';
-      cell.className='cc '+(dayLost?'lost':'won');
-      cell.innerHTML='<div class="ca2"></div><div class="cd2">'+d+'</div><div class="cl2">'+data.legs.map(l=>'<div class="cleg">'+l+'</div>').join('')+'</div><div class="cf2"><div class="ct2"'+(dayLost?' style="color:var(--coral)"':'')+'>'+data.total+'</div><div class="cbg"'+(dayLost?' style="background:var(--coral)"':'')+'>'+data.badge+'</div></div>';
-      cell.onclick=()=>openMo(data.slip);
-    } else {
-      cell.className='cc mul';
-      var hdr=data.legs.length+' bets';
-      cell.innerHTML='<div class="ca2"></div><div class="cd2">'+d+'</div><div class="cl2"><div class="cleg" style="color:var(--ocre);font-weight:700">'+hdr+'</div>'+data.legs.map(l=>'<div class="cleg">'+l+'</div>').join('')+'</div><div class="cf2"><div class="ct2">'+data.total+'</div><div class="cbg">'+data.badge+'</div></div>';
-      cell.onclick=()=>openMo(data.modal);
-    }
-    g.appendChild(cell);
-  }
-}
-buildCal();
-
-function showPage(id){
-  document.querySelectorAll('.pg').forEach(p=>p.classList.remove('on'));
-  document.getElementById('pg-'+id).classList.add('on');
-  ['tr','zi'].forEach(k=>{const b=document.getElementById('nl-'+k);if(b)b.classList.toggle('on',k===id);});
-  window.scrollTo(0,0);
-}
-function go(id){
-  showPage(id);
-  closeMenu();
-  history.pushState({page:id},'');
-}
-
-
-function toggleMenu(){document.getElementById('navDrawer').classList.toggle('open');document.getElementById('hamburger').classList.toggle('open');}
-function closeMenu(){document.getElementById('navDrawer').classList.remove('open');document.getElementById('hamburger').classList.remove('open');}
-
-function toggleSim(){
-  const p=document.getElementById('simPanel'),b=document.getElementById('simBtn');
-  p.classList.toggle('on');if(b)b.classList.toggle('on');
-  if(p.classList.contains('on'))calc();
-}
-function calc(){
-  const cap=parseFloat(document.getElementById('capI').value)||0;
-  document.getElementById('sResult').innerHTML='+&#x20AC;'+(cap*0.09591).toFixed(2);
-}
-document.getElementById('capI').addEventListener('input',calc);
-
-function showArticle(slug){
-  const tpl=document.getElementById('art-'+slug);
-  const frame=document.getElementById('articleFrame');
-  if(tpl){
-    frame.srcdoc=tpl.textContent;
-    frame.onload=function(){
-      try{
-        var doc=frame.contentDocument;
-        if(!doc)return;
-        doc.querySelectorAll('a').forEach(function(a){
-          a.addEventListener('click',function(ev){
-            ev.preventDefault();
-            var href=a.getAttribute('href')||'';
-            if(/^https?:/i.test(href)){window.open(href,'_blank');return;}
-            // any internal link (logo, back, nav) leaves the article via the browser back-stack
-            history.back();
-          });
-        });
-      }catch(e){}
-    };
-  }
-  document.querySelectorAll('.pg').forEach(p=>p.classList.remove('on'));
-  document.getElementById('pg-article').classList.add('on');
-  ['tr','zi','qt'].forEach(k=>{const b=document.getElementById('nl-'+k);if(b)b.classList.remove('on');});
-  window.scrollTo(0,0);
-}
-function openArt(slug){
-  const u=ART_URLS[slug];
-  if(u){window.location.href=u;return;}
-  showArticle(slug);
-  history.pushState({page:'article',slug:slug},'');
-}
-document.getElementById('articleFrame').onload=function(){
-  try{const doc=this.contentDocument||this.contentWindow.document;const s=doc.createElement('style');s.textContent='nav,.nav,footer,.footer,.foot{display:none!important;}';doc.head.appendChild(s);}catch(e){}
-};
-window.addEventListener('popstate',function(e){
-  const st=e.state;
-  if(st&&st.page==='article'&&st.slug){showArticle(st.slug);}
-  else if(st&&st.page){showPage(st.page);}
-  else{showPage('home');}
-});
-history.replaceState({page:'home'},'');
-
-// Hash-routing: article pages link back with #zoom-in / #track-record / #fun-facts
-(function(){
-  var map={'parlay-story':'zi','zoom-in':'zi','track-record':'tr','fun-facts':'qt','quotes':'qt','home':'home'};
-  var h=(location.hash||'').replace('#','');
-  if(map[h]){go(map[h]);}
-})();
-
-const subAnswers={};
-function openSubModal(){const m=document.getElementById('subModal');m.classList.add('on');document.body.style.overflow='hidden';m.onclick=function(e){if(e.target===m)closeSubModal();};}
-function closeSubModal(){document.getElementById('subModal').classList.remove('on');document.body.style.overflow='';}
-function pick(el){
-  const q=el.dataset.q,v=el.dataset.v;subAnswers[q]=v;
-  document.querySelectorAll('.sub-opt[data-q="'+q+'"]').forEach(b=>b.classList.remove('on'));
-  el.classList.add('on');
-  if(q==='canal')document.getElementById('canalOther').style.display=v==='Other'?'block':'none';
-}
-function submitSub(){
-  const email=document.getElementById('subEmail').value.trim();
-  if(!email||!email.includes('@')){document.getElementById('subEmail').style.borderColor='var(--coral)';document.getElementById('subEmail').focus();return;}
-  fetch('https://formspree.io/f/xeewbgwe',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(Object.assign({},subAnswers,{email:email,canal_other:document.getElementById('canalOther').value}))}).catch(function(){});
-  document.getElementById('subForm').style.display='none';
-  document.getElementById('subSuccess').style.display='block';
-}
-</script>
 </body>
 </html>
