@@ -3,18 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>hashtagsportsbetting — Quotes & Track Record</title>
-<meta name="description" content="A real sports betting track record driven by pre-match quotes. Process over P&L. No tips, no promises.">
+<title>hashtagsportsbetting — Quotes & Parlays</title>
+<meta name="description" content="A real sports betting record driven by pre-match quotes. Process over P&L. No tips, no promises.">
 <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0;}
 :root{--cream:#f0ede4;--nook:#4a7c5f;--dark:#1e1e1e;--coral:#ec5a3c;--ocre:#f5b32e;--blue:#3d6db5;--muted:#a09880;--border:#e0d9cc;--card:#3d3830;}
 body{font-family:'Inter',sans-serif;background:var(--cream);}
 
-/* NAV */
+/* NAVIGATION & LOGO */
 .nav{background:var(--dark);border-bottom:2px solid var(--nook);display:flex;align-items:center;justify-content:space-between;padding:16px 32px;position:sticky;top:0;z-index:200;}
-.nav-logo{font-family:'Spectral',serif;font-size:20px;color:#fff;letter-spacing:-.02em;cursor:pointer;text-decoration:none;}
-.nav-logo span{color:var(--nook);}
+.nav-logo{font-family:'Spectral',serif;font-size:20px;color:#fff;letter-spacing:-.02em;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;}
+.nav-logo img{height:24px;margin-right:6px;}
 .nav-links{display:flex;gap:24px;}
 .nav-links a{font-size:13px;font-weight:700;color:rgba(255,255,255,.5);background:none;border:none;text-transform:uppercase;letter-spacing:.06em;cursor:pointer;font-family:'Inter',sans-serif;transition:color .15s;text-decoration:none;}
 .nav-links a:hover, .nav-links a.on{color:var(--nook);}
@@ -32,22 +32,18 @@ body{font-family:'Inter',sans-serif;background:var(--cream);}
 @media(max-width:767px){
   .nav{padding:14px 16px;gap:10px;}
   .nav-links{display:none;}
-  .btn-sub{font-size:10px;padding:8px 12px;white-space:nowrap;}
+  .btn-sub{font-size:9px;padding:6px 12px;white-space:normal;max-width:130px;text-align:center;line-height:1.2;}
   .nav-hamburger{display:flex;}
 }
 @media(min-width:768px){.nav-drawer{display:none!important;}}
 
-/* TRACK RECORD & DASHBOARD */
-#track-record { scroll-margin-top: 80px; }
-.db{background:var(--dark);padding:0 32px 20px;border-bottom:2px solid #252525;}
-@media(max-width:767px){.db{padding:0 16px 18px;}}
-
-/* BARRE DE FILTRES */
+/* DASHBOARD & FILTRES */
+.db{background:var(--dark);padding:24px 32px 20px;border-bottom:2px solid #252525;}
+@media(max-width:767px){.db{padding:20px 16px 18px;}}
 .filter-bar { display: flex; gap: 8px; margin-bottom: 20px; flex-wrap: wrap; }
 .flt-btn { background: #252525; border: 1px solid #333; color: var(--muted); padding: 7px 16px; border-radius: 100px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; cursor: pointer; font-family: 'Inter', sans-serif; transition: all 0.2s; }
 .flt-btn:hover { border-color: var(--nook); color: #fff; }
 .flt-btn.on { background: rgba(74,124,95,0.15); border-color: var(--nook); color: var(--nook); }
-
 .ey{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:14px;}
 .ey span{color:var(--nook);}
 .kpis{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-bottom:14px;}
@@ -62,13 +58,11 @@ body{font-family:'Inter',sans-serif;background:var(--cream);}
 .cw-h{display:flex;justify-content:space-between;margin-bottom:9px;font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);}
 
 /* TITRES SECTIONS */
-.sh{padding:20px 32px 12px;display:flex;align-items:center;justify-content:space-between; background: var(--dark);}
+.sh{padding:20px 32px 12px;display:flex;align-items:center;justify-content:space-between;}
 @media(max-width:767px){.sh{padding:16px 16px 10px;}}
 .st2{font-family:'Spectral',serif;font-size:21px;color:var(--dark);letter-spacing:-.02em;}
-.st2.wht{color:#fff;}
 .st2 span{color:var(--nook);}
 .ssub{font-size:12px;color:#7a7060;margin-left:8px;}
-.ssub.wht{color:rgba(160,152,128,.7);}
 
 /* QUOTES HOME */
 .qt-home{background:var(--dark);padding:20px 0 16px;border-bottom:2px solid #252525;}
@@ -86,7 +80,6 @@ body{font-family:'Inter',sans-serif;background:var(--cream);}
 .qc-tag{font-family:'JetBrains Mono',monospace;font-size:8.5px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;padding:5px 11px;border-radius:100px;background:rgba(123,181,146,.12);color:#7bb592;}
 
 /* BETSLIPS (SUMMARY) */
-.sh.dark { background: transparent; }
 .slips-grid{padding:0 32px 8px;display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
 @media(max-width:767px){.slips-grid{grid-template-columns:1fr;padding:0 16px 8px;}}
 .slip{background:#fff;border:2px solid var(--dark);overflow:hidden;cursor:pointer;transition:transform .18s;}
@@ -117,8 +110,8 @@ body{font-family:'Inter',sans-serif;background:var(--cream);}
 .modal-close { position: absolute; top: 15px; right: 15px; background: rgba(255,255,255,0.1); border: none; color: #fff; width: 30px; height: 30px; border-radius: 50%; font-size: 16px; cursor: pointer; display: flex; justify-content: center; align-items: center; transition: background 0.2s; }
 .modal-close:hover { background: rgba(255,255,255,0.3); }
 .mdl-head { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(245, 179, 46, 0.25); padding-bottom: 16px; margin-bottom: 20px; }
-.mdl-logo { font-family: 'Spectral', serif; font-size: 20px; font-weight: 700; color: #f0ede4; }
-.mdl-logo span { color: var(--ocre); }
+.mdl-logo { font-family: 'Spectral', serif; font-size: 20px; font-weight: 700; color: #f0ede4; display:flex; align-items:center; }
+.mdl-logo img { height: 22px; margin-right: 6px; }
 .mdl-odds-lbl { font-family: 'JetBrains Mono', monospace; font-size: 8px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); text-align: right; margin-bottom: 2px; }
 .mdl-odds-val { font-family: 'Spectral', serif; font-size: 20px; font-weight: 700; color: var(--ocre); text-align: right; }
 .mdl-leg { background: #1e1d1b; border-radius: 8px; padding: 12px 16px; margin-bottom: 10px; border-left: 3px solid var(--nook); display: flex; justify-content: space-between; align-items: center; }
@@ -147,22 +140,26 @@ body{font-family:'Inter',sans-serif;background:var(--cream);}
 .foot{background:var(--dark);border-top:2px solid var(--nook);padding:18px 32px;}
 @media(max-width:767px){.foot{padding:16px;}}
 .foot-m{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;flex-wrap:wrap;gap:8px;}
-.foot-logo{font-family:'Spectral',serif;font-size:15px;color:#fff;text-decoration:none;}
-.foot-logo span{color:var(--nook);}
+.foot-logo{font-family:'Spectral',serif;font-size:15px;color:#fff;text-decoration:none;display:inline-flex;align-items:center;}
+.foot-logo img{height:16px;margin-right:5px;}
+.foot-links{display:flex;gap:14px;font-size:10px;flex-wrap:wrap;}
+.foot-links a{color:#888;text-decoration:none;cursor:pointer;transition:color .15s;text-transform:uppercase;letter-spacing:0.05em;}
+.foot-links a:hover{color:var(--nook);}
+.foot-by{font-size:10px;color:#888;font-style:italic;}
+.foot-d{font-size:9px;color:#555;line-height:1.6;border-top:1px solid #2a2a2a;padding-top:10px;margin-top:10px;}
 </style>
 </head>
 <body>
 
-<!-- HEADER UNIFIÉ -->
 <nav class="nav">
-  <a href="index.html" class="nav-logo"><span>#</span>sportsbetting</a>
+  <a href="index.html" class="nav-logo"><img src="logo.png" alt="logo">sportsbetting</a>
   <div class="nav-links">
     <a href="quotes.html">#QUOTES</a>
-    <a href="index.html#track-record">#TRACK RECORD</a>
-    <a href="index.html#quote-story">#A QUOTE STORY</a>
+    <a href="betslips.html">#BETSLIPS</a>
+    <a href="quote-story.html">#A QUOTE STORY</a>
   </div>
   <div class="nav-right">
-    <a href="https://t.me/" class="btn-sub">#TELEGRAM &rarr;</a>
+    <a href="https://t.me/" class="btn-sub">Prematch alerts? Subscribe on telegram &rarr;</a>
   </div>
   <button class="nav-hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
 </nav>
@@ -170,12 +167,44 @@ body{font-family:'Inter',sans-serif;background:var(--cream);}
 <div class="nav-drawer" id="navDrawer">
   <a class="ndl" href="index.html">Home</a>
   <a class="ndl" href="quotes.html">#QUOTES</a>
-  <a class="ndl" href="index.html#track-record">#TRACK RECORD</a>
-  <a class="ndl" href="index.html#quote-story">#A QUOTE STORY</a>
+  <a class="ndl" href="betslips.html">#BETSLIPS</a>
+  <a class="ndl" href="quote-story.html">#A QUOTE STORY</a>
   <div style="margin-top:24px;display:flex;flex-direction:column;gap:10px;">
-    <a href="https://t.me/" class="btn-sub" style="text-align:center;">#TELEGRAM &rarr;</a>
+    <a href="https://t.me/" class="btn-sub" style="text-align:center;">Prematch alerts? Subscribe on telegram &rarr;</a>
   </div>
 </div>
+
+<!-- LE DASHBOARD EST EN HAUT, DIRECTEMENT (SANS TITRE) -->
+<section class="db">
+  <div class="filter-bar">
+    <button class="flt-btn on" onclick="setFilter('all_time', this)">All Time</button>
+    <button class="flt-btn" onclick="setFilter('current_month', this)">Current Month</button>
+    <button class="flt-btn" onclick="setFilter('last_month', this)">Last Month</button>
+    <button class="flt-btn" onclick="setFilter('ytd', this)">YTD</button>
+  </div>
+
+  <div class="ey" id="ey-text"><span>#</span>ACTIVITY &middot; ALL TIME</div>
+  <div class="kpis">
+    <div class="kpi"><div class="kn" id="kpi-bets">1</div><div class="kl">Bets</div></div>
+    <div class="kpi"><div class="kn" id="kpi-odds">5.79</div><div class="kl">Avg odds</div></div>
+    <div class="kpi"><div class="kn" id="kpi-roi">+478%</div><div class="kl">ROI</div></div>
+    <div class="kpi"><div class="kn" id="kpi-wr">100%</div><div class="kl">Win rate</div></div>
+    <div class="kpi hl"><div class="kn g" id="kpi-profit">+71.84&euro;</div><div class="kl">Net profit</div><div class="kd">&uarr; Since Launch</div></div>
+    <div class="kpi hl"><div class="kn g" id="kpi-roc">+7.18%</div><div class="kl">ROC</div><div class="kd">71.84 / 1000&euro;</div></div>
+  </div>
+  <div class="cw">
+    <div class="cw-h"><span>Capital curve &middot; Season 1</span><span style="color:var(--nook);">&#x25CF; Capital &euro;</span></div>
+    <svg width="100%" height="55" viewBox="0 0 620 55" preserveAspectRatio="none">
+      <defs><linearGradient id="cg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#4a7c5f" stop-opacity=".28"/><stop offset="100%" stop-color="#4a7c5f" stop-opacity="0"/></linearGradient></defs>
+      <polygon fill="url(#cg)" points="0,55 0,45 620,15 620,55"/>
+      <polyline fill="none" stroke="#4a7c5f" stroke-width="2.5" stroke-linecap="round" points="0,45 620,15"/>
+      <circle cx="620" cy="15" r="4" fill="#4a7c5f"/>
+    </svg>
+    <div style="display:flex;justify-content:space-between;margin-top:4px;font-size:8px;color:#666;">
+      <span>1000&euro; &mdash; Start</span><span style="color:var(--nook);font-weight:700;" id="cc-end">1071.84&euro; &mdash; Current</span>
+    </div>
+  </div>
+</section>
 
 <div class="qt-home">
 <div class="qt-home-hd">
@@ -198,47 +227,11 @@ body{font-family:'Inter',sans-serif;background:var(--cream);}
   </div>
 </div>
 
-<!-- L'ANCRE TRACK RECORD EST ICI -->
-<div class="sh" id="track-record">
-  <div style="display:flex;align-items:baseline;gap:8px;"><div class="st2 wht"><span>#</span>TRACK RECORD</div><div class="ssub wht">Process over P&L</div></div>
-</div>
-
-<section class="db">
-  <!-- BARRE DE FILTRES -->
-  <div class="filter-bar">
-    <button class="flt-btn on" onclick="setFilter(this)">All Time</button>
-    <button class="flt-btn" onclick="setFilter(this)">Current Month</button>
-    <button class="flt-btn" onclick="setFilter(this)">Last Month</button>
-    <button class="flt-btn" onclick="setFilter(this)">YTD</button>
-  </div>
-
-  <div class="ey"><span>#</span>ACTIVITY &middot; ALL TIME</div>
-  <div class="kpis">
-    <div class="kpi"><div class="kn">1</div><div class="kl">Bets</div></div>
-    <div class="kpi"><div class="kn">5.79</div><div class="kl">Avg odds</div></div>
-    <div class="kpi"><div class="kn">+478%</div><div class="kl">ROI</div></div>
-    <div class="kpi"><div class="kn">100%</div><div class="kl">Win rate</div></div>
-    <div class="kpi hl"><div class="kn g">+71.84&euro;</div><div class="kl">Net profit</div><div class="kd">&uarr; Since Launch</div></div>
-    <div class="kpi hl"><div class="kn g">+7.18%</div><div class="kl">ROC</div><div class="kd">71.84 / 1000&euro;</div></div>
-  </div>
-  <div class="cw">
-    <div class="cw-h"><span>Capital curve &middot; Season 1</span><span style="color:var(--nook);">&#x25CF; Capital &euro;</span></div>
-    <svg width="100%" height="55" viewBox="0 0 620 55" preserveAspectRatio="none">
-      <defs><linearGradient id="cg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#4a7c5f" stop-opacity=".28"/><stop offset="100%" stop-color="#4a7c5f" stop-opacity="0"/></linearGradient></defs>
-      <polygon fill="url(#cg)" points="0,55 0,45 620,15 620,55"/>
-      <polyline fill="none" stroke="#4a7c5f" stroke-width="2.5" stroke-linecap="round" points="0,45 620,15"/>
-      <circle cx="620" cy="15" r="4" fill="#4a7c5f"/>
-    </svg>
-    <div style="display:flex;justify-content:space-between;margin-top:4px;font-size:8px;color:#666;">
-      <span>1000&euro; &mdash; Start</span><span style="color:var(--nook);font-weight:700;">1071.84&euro; &mdash; Current</span>
-    </div>
-  </div>
-</section>
-
-<div class="sh dark">
+<div class="sh">
   <div style="display:flex;align-items:baseline;gap:8px;"><div class="st2"><span>#</span>BETSLIPS</div><div class="ssub">Click slip to view details</div></div>
+  <a href="betslips.html" style="font-size:11px;font-weight:700;color:var(--nook);text-decoration:underline;">See all &rarr;</a>
 </div>
-<div class="slips-grid">
+<div class="slips-grid" id="slip-list">
   <div class="slip" onclick="openSlipModal()">
     <div class="slip-h"><div class="slip-id">#001</div><div class="bw">Won &#x2713;</div></div>
     <div class="slip-b">
@@ -260,10 +253,11 @@ body{font-family:'Inter',sans-serif;background:var(--cream);}
   </div>
 </div>
 
-<div class="sh" id="quote-story">
+<div class="sh">
   <div style="display:flex;align-items:baseline;gap:8px;"><div class="st2"><span>#</span>A QUOTE STORY</div><div class="ssub">Every slip, justified by their own words</div></div>
+  <a href="quote-story.html" style="font-size:11px;font-weight:700;color:var(--nook);text-decoration:underline;">See all &rarr;</a>
 </div>
-<div class="zi-grid">
+<div class="zi-grid" id="tuile-list">
   <a href="parlay-001-the-bare-minimum.html" class="zt">
     <div class="zt-top"><div class="zt-dn">Jul 28</div><div class="zt-sp">Acca · 10 legs</div></div>
     <div class="zt-surf-block">
@@ -281,15 +275,22 @@ body{font-family:'Inter',sans-serif;background:var(--cream);}
 
 <footer class="foot">
   <div class="foot-m">
-    <a href="index.html" class="foot-logo"><span>#</span>sportsbetting</a>
+    <a href="index.html" class="foot-logo"><img src="logo.png" alt="logo">sportsbetting</a>
+    <div class="foot-links">
+      <a href="quotes.html">#quotes</a>
+      <a href="betslips.html">#betslips</a>
+      <a href="quote-story.html">#aquotestory</a>
+    </div>
+    <div class="foot-by">A Charles Chambers Farah strategy</div>
   </div>
+  <p class="foot-d">hashtagsportsbetting.com is an editorial blog documenting a personal sports betting journey. Content is for informational and entertainment purposes only. We do not provide financial or betting advice. 18+</p>
 </footer>
 
 <div class="modal-overlay" id="slipModal" onclick="closeSlipModal(event)">
   <div class="modal-content" onclick="event.stopPropagation()">
     <button class="modal-close" onclick="closeSlipModal()">×</button>
     <div class="mdl-head">
-      <div class="mdl-logo"><span>#</span>sportsbetting</div>
+      <div class="mdl-logo"><img src="logo.png" alt="logo">sportsbetting</div>
       <div>
         <div class="mdl-odds-lbl">Total Odds</div>
         <div class="mdl-odds-val">5.789</div>
@@ -342,12 +343,39 @@ body{font-family:'Inter',sans-serif;background:var(--cream);}
   function toggleMenu(){document.getElementById("navDrawer").classList.toggle("open");document.getElementById("hamburger").classList.toggle("open");}
   function openSlipModal() { document.getElementById('slipModal').classList.add('open'); document.body.style.overflow = 'hidden'; }
   function closeSlipModal(e) { if(e && e.target !== e.currentTarget) return; document.getElementById('slipModal').classList.remove('open'); document.body.style.overflow = ''; }
-  
-  // Logic pour la barre de filtre (visuel)
-  function setFilter(btn) {
+
+  function setFilter(filterType, btn) {
     document.querySelectorAll('.flt-btn').forEach(b => b.classList.remove('on'));
     btn.classList.add('on');
-    // La data update viendra ici quand branchée
+
+    const kpiBets = document.getElementById('kpi-bets');
+    const kpiOdds = document.getElementById('kpi-odds');
+    const kpiRoi = document.getElementById('kpi-roi');
+    const kpiWr = document.getElementById('kpi-wr');
+    const kpiProfit = document.getElementById('kpi-profit');
+    const kpiRoc = document.getElementById('kpi-roc');
+    const ccEnd = document.getElementById('cc-end');
+    const slipList = document.getElementById('slip-list');
+    const tuileList = document.getElementById('tuile-list');
+    const eyText = document.getElementById('ey-text');
+    
+    if(filterType === 'last_month') {
+       kpiBets.innerText = '0'; kpiOdds.innerText = '-'; kpiRoi.innerText = '-'; kpiWr.innerText = '-';
+       kpiProfit.innerText = '0.00€'; kpiRoc.innerText = '0.00%';
+       kpiProfit.style.color = 'rgba(255,255,255,.45)'; kpiRoc.style.color = 'rgba(255,255,255,.45)';
+       ccEnd.innerText = '1000.00€ — Current';
+       slipList.style.display = 'none'; tuileList.style.display = 'none';
+       eyText.innerHTML = '<span>#</span>ACTIVITY &middot; JUNE 2026';
+    } else {
+       kpiBets.innerText = '1'; kpiOdds.innerText = '5.79'; kpiRoi.innerText = '+478%'; kpiWr.innerText = '100%';
+       kpiProfit.innerText = '+71.84€'; kpiRoc.innerText = '+7.18%';
+       kpiProfit.style.color = 'var(--nook)'; kpiRoc.style.color = 'var(--nook)';
+       ccEnd.innerText = '1071.84€ — Current';
+       slipList.style.display = 'grid'; tuileList.style.display = 'grid';
+       if(filterType === 'current_month') eyText.innerHTML = '<span>#</span>ACTIVITY &middot; JULY 2026';
+       if(filterType === 'ytd') eyText.innerHTML = '<span>#</span>ACTIVITY &middot; YTD 2026';
+       if(filterType === 'all_time') eyText.innerHTML = '<span>#</span>ACTIVITY &middot; ALL TIME';
+    }
   }
 </script>
 </body>
