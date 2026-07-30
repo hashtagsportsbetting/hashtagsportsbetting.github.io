@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>#Betslips | hashtagsportsbetting</title>
+<meta name="description" content="The raw track record. Every ticket, transparently documented.">
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{--cream:#f0ede4;--nook:#4a7c5f;--dark:#1e1e1e;--coral:#ec5a3c;--ocre:#f5b32e;--blue:#3d6db5;--muted:#a09880;--border:#e0d9cc;}
+body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--dark);}
+
+/* NAV */
+.nav{background:var(--dark);border-bottom:2px solid var(--nook);display:flex;align-items:center;justify-content:space-between;padding:16px 32px;position:sticky;top:0;z-index:200;}
+.nav-logo{font-family:'Spectral',serif;font-size:20px;color:#fff;letter-spacing:-.02em;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;}
+.nav-logo img{height:24px;margin-right:6px;}
+.nav-links{display:flex;gap:24px;}
+.nav-links a{font-size:13px;font-weight:700;color:rgba(255,255,255,.5);background:none;border:none;text-transform:uppercase;letter-spacing:.06em;cursor:pointer;font-family:'Inter',sans-serif;transition:color .15s;text-decoration:none;}
+.nav-links a:hover, .nav-links a.on{color:var(--nook);}
+.nav-right{display:flex;gap:10px;align-items:center;}
+.btn-sub{background:var(--coral);color:#fff;font-size:11px;font-weight:700;padding:8px 18px;border-radius:100px;border:none;cursor:pointer;text-transform:uppercase;letter-spacing:.06em;text-decoration:none;display:inline-block;}
+.nav-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px;background:none;border:none;}
+.nav-hamburger span{width:22px;height:2px;background:#fff;border-radius:2px;transition:all .2s;}
+.nav-hamburger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px);}
+.nav-hamburger.open span:nth-child(2){opacity:0;}
+.nav-hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px);}
+.nav-drawer{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:var(--dark);z-index:190;flex-direction:column;padding:80px 24px 32px;}
+.nav-drawer.open{display:flex;}
+.ndl{font-size:22px;font-weight:700;color:rgba(255,255,255,.5);padding:16px 0;border-bottom:1px solid #2a2a2a;cursor:pointer;background:none;border-top:none;border-left:none;border-right:none;text-align:left;font-family:'Inter',sans-serif;text-transform:uppercase;letter-spacing:.06em;width:100%;text-decoration:none;display:block;}
+.ndl:hover{color:var(--nook);}
+@media(max-width:767px){
+  .nav{padding:14px 16px;gap:10px;}
+  .nav-links{display:none;}
+  .btn-sub{font-size:9px;padding:6px 12px;white-space:normal;max-width:130px;text-align:center;line-height:1.2;}
+  .nav-hamburger{display:flex;}
+}
+@media(min-width:768px){.nav-drawer{display:none!important;}}
+
+/* HEADER PAGE */
+.pg-head{background:var(--dark);padding:32px 44px 28px;border-bottom:2px solid var(--nook);}
+@media(max-width:767px){.pg-head{padding:22px 16px 20px;}}
+.pg-title{font-family:'Spectral',serif;font-size:46px;font-weight:700;color:#fff;letter-spacing:-.04em;line-height:.95;margin-bottom:10px;}
+.pg-title span{color:var(--nook);}
+.pg-sub{font-family:'Spectral',serif;font-size:15px;font-style:italic;color:rgba(160,152,128,.75);line-height:1.5;max-width:560px;}
+
+/* GRILLE BETSLIPS */
+.wrap{max-width:1100px;margin:0 auto;padding:40px 32px 64px;}
+@media(max-width:767px){.wrap{padding:24px 16px 48px;}}
+.slips-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+@media(max-width:767px){.slips-grid{grid-template-columns:1fr;}}
+.slip{background:#fff;border:2px solid var(--dark);overflow:hidden;cursor:pointer;transition:transform .18s;box-shadow: 0 4px 12px rgba(0,0,0,0.05);}
+.slip:hover{transform:translateY(-3px);box-shadow: 0 8px 20px rgba(0,0,0,0.1);}
+.slip-h{background:var(--nook);padding:7px 11px;display:flex;justify-content:space-between;align-items:center;}
+.slip-id{font-family:'JetBrains Mono',monospace;font-size:8px;color:rgba(255,255,255,.7);}
+.bw{font-size:8px;font-weight:700;padding:2px 7px;border-radius:100px;background:rgba(255,255,255,.18);color:#fff;}
+.slip-b{padding:10px 11px 0;}
+.slip-tr{font-size:8px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--nook);margin-bottom:3px;}
+.slip-m{font-family:'Spectral',serif;font-size:15px;font-weight:700;color:var(--dark);margin-bottom:3px;}
+.slip-mk{font-size:10px;color:#7a7060;border-left:2px solid var(--nook);padding-left:5px;margin-bottom:8px;}
+.slip-ns{display:flex;justify-content:space-between;align-items:flex-end;padding-bottom:8px;}
+.slip-o{font-family:'Spectral',serif;font-size:26px;font-weight:700;color:var(--dark);line-height:1;}
+.slip-p{font-family:'Spectral',serif;font-size:18px;font-weight:700;color:var(--nook);text-align:right;}
+.slip-g{display:grid;grid-template-columns:1fr 1fr 1fr;background:#f8f5ef;border-top:1px solid var(--border);}
+.slip-c{padding:7px;text-align:center;border-right:1px solid var(--border);}
+.slip-cl{font-size:7px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:2px;}
+.slip-cv{font-family:'Spectral',serif;font-size:13px;font-weight:700;color:var(--dark);}
+.slip-cv.w{color:var(--nook);}
+.slip-f{display:flex;justify-content:space-between;align-items:center;padding:6px 11px;border-top:2px solid var(--dark);}
+.slip-st{font-size:9px;font-weight:700;text-transform:uppercase;color:var(--nook);}
+.slip-dt{font-family:'JetBrains Mono',monospace;font-size:8px;color:var(--muted);}
+
+/* MODAL SYSTEM */
+.modal-overlay { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.85); z-index: 999; justify-content: center; align-items: center; padding: 20px; }
+.modal-overlay.open { display: flex; }
+.modal-content { background: #121110; border: 1.5px solid var(--ocre); border-radius: 12px; width: 100%; max-width: 500px; max-height: 90vh; overflow-y: auto; padding: 30px; position: relative; box-shadow: 0 20px 50px rgba(0,0,0,0.8); }
+.modal-close { position: absolute; top: 15px; right: 15px; background: rgba(255,255,255,0.1); border: none; color: #fff; width: 30px; height: 30px; border-radius: 50%; font-size: 16px; cursor: pointer; display: flex; justify-content: center; align-items: center; transition: background 0.2s; }
+.modal-close:hover { background: rgba(255,255,255,0.3); }
+.mdl-head { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(245, 179, 46, 0.25); padding-bottom: 16px; margin-bottom: 20px; }
+.mdl-logo { font-family: 'Spectral', serif; font-size: 20px; font-weight: 700; color: #f0ede4; display:flex; align-items:center; }
+.mdl-logo img { height: 22px; margin-right: 6px; }
+.mdl-odds-lbl { font-family: 'JetBrains Mono', monospace; font-size: 8px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); text-align: right; margin-bottom: 2px; }
+.mdl-odds-val { font-family: 'Spectral', serif; font-size: 20px; font-weight: 700; color: var(--ocre); text-align: right; }
+.mdl-leg { background: #1e1d1b; border-radius: 8px; padding: 12px 16px; margin-bottom: 10px; border-left: 3px solid var(--nook); display: flex; justify-content: space-between; align-items: center; }
+.mdl-match { font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 700; color: var(--muted); margin-bottom: 4px; text-transform: uppercase; }
+.mdl-pick { font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 700; color: #f0ede4; }
+.mdl-status { text-align: right; }
+.mdl-stat-odds { font-family: 'Spectral', serif; font-size: 14px; font-weight: 700; color: #fff; margin-bottom: 4px; }
+.mdl-stat-res { font-family: 'JetBrains Mono', monospace; font-size: 9px; font-weight: 700; color: var(--nook); text-transform: uppercase; background: rgba(74, 124, 95, 0.2); padding: 3px 8px; border-radius: 100px; }
+
+/* FOOTER */
+.foot{background:var(--dark);border-top:2px solid var(--nook);padding:18px 32px;}
+@media(max-width:767px){.foot{padding:16px;}}
+.foot-m{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;flex-wrap:wrap;gap:8px;}
+.foot-logo{font-family:'Spectral',serif;font-size:15px;color:#fff;text-decoration:none;display:inline-flex;align-items:center;}
+.foot-logo img{height:16px;margin-right:5px;}
+.foot-links{display:flex;gap:14px;font-size:10px;flex-wrap:wrap;}
+.foot-links a{color:#888;text-decoration:none;cursor:pointer;transition:color .15s;text-transform:uppercase;letter-spacing:0.05em;}
+.foot-links a:hover{color:var(--nook);}
+.foot-by{font-size:10px;color:#888;font-style:italic;}
+.foot-d{font-size:9px;color:#555;line-height:1.6;border-top:1px solid #2a2a2a;padding-top:10px;margin-top:10px;}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="index.html" class="nav-logo"><img src="logo.png" alt="logo">sportsbetting</a>
+  <div class="nav-links">
+    <a href="quotes.html">#QUOTES</a>
+    <a href="betslips.html" class="on">#BETSLIPS</a>
+    <a href="quote-story.html">#A QUOTE STORY</a>
+  </div>
+  <div class="nav-right">
+    <a href="https://t.me/" class="btn-sub">Prematch alerts? Subscribe on telegram &rarr;</a>
+  </div>
+  <button class="nav-hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+</nav>
+
+<div class="nav-drawer" id="navDrawer">
+  <a class="ndl" href="index.html">Home</a>
+  <a class="ndl" href="quotes.html">#QUOTES</a>
+  <a class="ndl on" href="betslips.html">#BETSLIPS</a>
+  <a class="ndl" href="quote-story.html">#A QUOTE STORY</a>
+  <div style="margin-top:24px;display:flex;flex-direction:column;gap:10px;">
+    <a href="https://t.me/" class="btn-sub" style="text-align:center;">Prematch alerts? Subscribe on telegram &rarr;</a>
+  </div>
+</div>
+
+<div class="pg-head">
+  <h1 class="pg-title"><span>#</span>BETSLIPS</h1>
+  <div class="pg-sub">The raw track record. Every ticket, transparently documented.</div>
+</div>
+
+<div class="wrap">
+  <div class="slips-grid">
+    <!-- Parlay 001 -->
+    <div class="slip" onclick="openSlipModal()">
+      <div class="slip-h"><div class="slip-id">#001</div><div class="bw">Won &#x2713;</div></div>
+      <div class="slip-b">
+        <div class="slip-tr">Accumulator · 10 legs</div>
+        <div class="slip-m">The Bare Minimum</div>
+        <div class="slip-mk">Global Hard Courts & Clay</div>
+        <div style="height:1.5px;background:var(--dark);margin-bottom:8px;"></div>
+        <div class="slip-ns">
+          <div><div style="font-size:7px;text-transform:uppercase;color:var(--muted);margin-bottom:2px;">Odds</div><div class="slip-o">5.789</div></div>
+          <div><div style="font-size:7px;text-transform:uppercase;color:var(--muted);margin-bottom:2px;text-align:right;">Profit</div><div class="slip-p">+71.84&euro;</div></div>
+        </div>
+      </div>
+      <div class="slip-g">
+        <div class="slip-c"><div class="slip-cl">Stake</div><div class="slip-cv">15&euro;</div></div>
+        <div class="slip-c"><div class="slip-cl">Return</div><div class="slip-cv">86.84&euro;</div></div>
+        <div class="slip-c"><div class="slip-cl">Status</div><div class="slip-cv w">Won</div></div>
+      </div>
+      <div class="slip-f"><div class="slip-st">&#x2713; Paid out</div><div class="slip-dt">28.07.2026</div></div>
+    </div>
+  </div>
+</div>
+
+<footer class="foot">
+  <div class="foot-m">
+    <a href="index.html" class="foot-logo"><img src="logo.png" alt="logo">sportsbetting</a>
+    <div class="foot-links">
+      <a href="quotes.html">#quotes</a>
+      <a href="betslips.html">#betslips</a>
+      <a href="quote-story.html">#aquotestory</a>
+    </div>
+    <div class="foot-by">A Charles Chambers Farah strategy</div>
+  </div>
+  <p class="foot-d">hashtagsportsbetting.com is an editorial blog documenting a personal sports betting journey. Content is for informational and entertainment purposes only. We do not provide financial or betting advice. 18+</p>
+</footer>
+
+<div class="modal-overlay" id="slipModal" onclick="closeSlipModal(event)">
+  <div class="modal-content" onclick="event.stopPropagation()">
+    <button class="modal-close" onclick="closeSlipModal()">×</button>
+    <div class="mdl-head">
+      <div class="mdl-logo"><img src="logo.png" alt="logo">sportsbetting</div>
+      <div>
+        <div class="mdl-odds-lbl">Total Odds</div>
+        <div class="mdl-odds-val">5.789</div>
+      </div>
+    </div>
+    <div class="mdl-leg">
+      <div><div class="mdl-match">Menšík vs Svajda</div><div class="mdl-pick">Menšík +1.5 Sets</div></div>
+      <div class="mdl-status"><div class="mdl-stat-odds">1.08</div><div class="mdl-stat-res">✓ Won</div></div>
+    </div>
+    <div class="mdl-leg">
+      <div><div class="mdl-match">Shelton vs Damm Jr</div><div class="mdl-pick">Shelton +1.5 Sets</div></div>
+      <div class="mdl-status"><div class="mdl-stat-odds">1.13</div><div class="mdl-stat-res">✓ Won</div></div>
+    </div>
+    <div class="mdl-leg">
+      <div><div class="mdl-match">Pellegrino vs Caniato</div><div class="mdl-pick">Pellegrino +1.5 Sets</div></div>
+      <div class="mdl-status"><div class="mdl-stat-odds">1.12</div><div class="mdl-stat-res">✓ Won</div></div>
+    </div>
+    <div class="mdl-leg">
+      <div><div class="mdl-match">Alexandrova vs Lyutova</div><div class="mdl-pick">Alexandrova +1.5 Sets</div></div>
+      <div class="mdl-status"><div class="mdl-stat-odds">1.18</div><div class="mdl-stat-res">✓ Won</div></div>
+    </div>
+    <div class="mdl-leg">
+      <div><div class="mdl-match">Wang vs Pareja</div><div class="mdl-pick">Wang +1.5 Sets</div></div>
+      <div class="mdl-status"><div class="mdl-stat-odds">1.25</div><div class="mdl-stat-res">✓ Won</div></div>
+    </div>
+    <div class="mdl-leg">
+      <div><div class="mdl-match">Tikhonova vs Pohle</div><div class="mdl-pick">Tikhonova +1.5 Sets</div></div>
+      <div class="mdl-status"><div class="mdl-stat-odds">1.15</div><div class="mdl-stat-res">✓ Won</div></div>
+    </div>
+    <div class="mdl-leg">
+      <div><div class="mdl-match">Park vs Giza</div><div class="mdl-pick">Park +1.5 Sets</div></div>
+      <div class="mdl-status"><div class="mdl-stat-odds">1.17</div><div class="mdl-stat-res">✓ Won</div></div>
+    </div>
+    <div class="mdl-leg">
+      <div><div class="mdl-match">Patiño-Samudio vs Vasami</div><div class="mdl-pick">Patiño-Samudio +1.5</div></div>
+      <div class="mdl-status"><div class="mdl-stat-odds">1.48</div><div class="mdl-stat-res">✓ Won</div></div>
+    </div>
+    <div class="mdl-leg">
+      <div><div class="mdl-match">Friberg vs Luemkemann</div><div class="mdl-pick">Friberg +1.5 Sets</div></div>
+      <div class="mdl-status"><div class="mdl-stat-odds">1.10</div><div class="mdl-stat-res">✓ Won</div></div>
+    </div>
+    <div class="mdl-leg">
+      <div><div class="mdl-match">Carballés vs Houkes</div><div class="mdl-pick">Carballés Baena +1.5</div></div>
+      <div class="mdl-status"><div class="mdl-stat-odds">1.27</div><div class="mdl-stat-res">✓ Won</div></div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function toggleMenu(){document.getElementById("navDrawer").classList.toggle("open");document.getElementById("hamburger").classList.toggle("open");}
+  function openSlipModal() { document.getElementById('slipModal').classList.add('open'); document.body.style.overflow = 'hidden'; }
+  function closeSlipModal(e) { if(e && e.target !== e.currentTarget) return; document.getElementById('slipModal').classList.remove('open'); document.body.style.overflow = ''; }
+</script>
+</body>
+</html>
