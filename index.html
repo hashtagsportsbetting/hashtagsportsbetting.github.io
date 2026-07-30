@@ -10,18 +10,48 @@
 *{box-sizing:border-box;margin:0;padding:0;}
 :root{--cream:#f0ede4;--nook:#4a7c5f;--dark:#1e1e1e;--coral:#ec5a3c;--ocre:#f5b32e;--blue:#3d6db5;--muted:#a09880;--border:#e0d9cc;--card:#3d3830;}
 body{font-family:'Inter',sans-serif;background:var(--cream);}
+
+/* NAV */
 .nav{background:var(--dark);border-bottom:2px solid var(--nook);display:flex;align-items:center;justify-content:space-between;padding:16px 32px;position:sticky;top:0;z-index:200;}
 .nav-logo{font-family:'Spectral',serif;font-size:20px;color:#fff;letter-spacing:-.02em;cursor:pointer;text-decoration:none;}
 .nav-logo span{color:var(--nook);}
 .nav-links{display:flex;gap:24px;}
-.nav-links a{font-size:13px;font-weight:700;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.06em;text-decoration:none;transition:color .15s;}
-.nav-links a:hover{color:var(--nook);}
+.nav-links a{font-size:13px;font-weight:700;color:rgba(255,255,255,.5);background:none;border:none;text-transform:uppercase;letter-spacing:.06em;cursor:pointer;font-family:'Inter',sans-serif;transition:color .15s;text-decoration:none;}
+.nav-links a:hover, .nav-links a.on{color:var(--nook);}
 .nav-right{display:flex;gap:10px;align-items:center;}
-.btn-sub{background:var(--coral);color:#fff;font-size:11px;font-weight:700;padding:8px 18px;border-radius:100px;text-transform:uppercase;letter-spacing:.06em;text-decoration:none;}
-.db{background:var(--dark);padding:24px 32px 20px;border-bottom:2px solid #252525;}
+.btn-sub{background:var(--coral);color:#fff;font-size:11px;font-weight:700;padding:8px 18px;border-radius:100px;border:none;cursor:pointer;text-transform:uppercase;letter-spacing:.06em;text-decoration:none;display:inline-block;}
+.nav-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px;background:none;border:none;}
+.nav-hamburger span{width:22px;height:2px;background:#fff;border-radius:2px;transition:all .2s;}
+.nav-hamburger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px);}
+.nav-hamburger.open span:nth-child(2){opacity:0;}
+.nav-hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px);}
+.nav-drawer{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:var(--dark);z-index:190;flex-direction:column;padding:80px 24px 32px;}
+.nav-drawer.open{display:flex;}
+.ndl{font-size:22px;font-weight:700;color:rgba(255,255,255,.5);padding:16px 0;border-bottom:1px solid #2a2a2a;cursor:pointer;background:none;border-top:none;border-left:none;border-right:none;text-align:left;font-family:'Inter',sans-serif;text-transform:uppercase;letter-spacing:.06em;width:100%;text-decoration:none;display:block;}
+.ndl:hover{color:var(--nook);}
+@media(max-width:767px){
+  .nav{padding:14px 16px;gap:10px;}
+  .nav-links{display:none;}
+  .btn-sub{font-size:10px;padding:8px 12px;white-space:nowrap;}
+  .nav-hamburger{display:flex;}
+}
+@media(min-width:768px){.nav-drawer{display:none!important;}}
+
+/* TRACK RECORD & DASHBOARD */
+#track-record { scroll-margin-top: 80px; }
+.db{background:var(--dark);padding:0 32px 20px;border-bottom:2px solid #252525;}
+@media(max-width:767px){.db{padding:0 16px 18px;}}
+
+/* BARRE DE FILTRES */
+.filter-bar { display: flex; gap: 8px; margin-bottom: 20px; flex-wrap: wrap; }
+.flt-btn { background: #252525; border: 1px solid #333; color: var(--muted); padding: 7px 16px; border-radius: 100px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; cursor: pointer; font-family: 'Inter', sans-serif; transition: all 0.2s; }
+.flt-btn:hover { border-color: var(--nook); color: #fff; }
+.flt-btn.on { background: rgba(74,124,95,0.15); border-color: var(--nook); color: var(--nook); }
+
 .ey{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:14px;}
 .ey span{color:var(--nook);}
 .kpis{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-bottom:14px;}
+@media(max-width:767px){.kpis{grid-template-columns:1fr 1fr;}}
 .kpi{background:var(--card);border-radius:11px;padding:14px;}
 .kpi.hl{border-top:2px solid var(--nook);background:#252525;}
 .kn{font-family:'Spectral',serif;font-size:24px;font-weight:600;color:rgba(255,255,255,.45);line-height:1;margin-bottom:5px;}
@@ -30,11 +60,35 @@ body{font-family:'Inter',sans-serif;background:var(--cream);}
 .kd{font-size:8px;color:var(--nook);margin-top:3px;font-weight:600;}
 .cw{background:var(--card);border-radius:11px;padding:14px 18px 12px;}
 .cw-h{display:flex;justify-content:space-between;margin-bottom:9px;font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);}
-.sh{padding:20px 32px 12px;display:flex;align-items:center;justify-content:space-between;}
+
+/* TITRES SECTIONS */
+.sh{padding:20px 32px 12px;display:flex;align-items:center;justify-content:space-between; background: var(--dark);}
+@media(max-width:767px){.sh{padding:16px 16px 10px;}}
 .st2{font-family:'Spectral',serif;font-size:21px;color:var(--dark);letter-spacing:-.02em;}
+.st2.wht{color:#fff;}
 .st2 span{color:var(--nook);}
 .ssub{font-size:12px;color:#7a7060;margin-left:8px;}
+.ssub.wht{color:rgba(160,152,128,.7);}
+
+/* QUOTES HOME */
+.qt-home{background:var(--dark);padding:20px 0 16px;border-bottom:2px solid #252525;}
+.qt-home-hd{padding:0 32px 14px;display:flex;align-items:center;justify-content:space-between;}
+@media(max-width:767px){.qt-home-hd{padding:0 16px 10px;}}
+.qt-ttl{font-family:'Spectral',serif;font-size:21px;font-weight:700;color:#fff;letter-spacing:-.02em;}
+.qt-ttl span{color:var(--nook);}
+.qc-card{background:rgba(255,255,255,.035);border-radius:10px;border-left:4px solid var(--ocre);padding:16px 18px;margin:0 32px 12px;}
+@media(max-width:767px){.qc-card{margin:0 16px 10px;padding:14px 15px;}}
+.qc-card.fire{border-left-color:#7bb592;}
+.qc-q{font-family:'Spectral',serif;font-size:15.5px;font-style:italic;color:rgba(255,255,255,.94);line-height:1.58;margin-bottom:13px;}
+.qc-foot{display:flex;justify-content:space-between;align-items:flex-end;gap:14px;flex-wrap:wrap;}
+.qc-author{font-family:'Spectral',serif;font-size:14.5px;font-weight:700;color:#fff;margin-bottom:3px;}
+.qc-src{font-family:'JetBrains Mono',monospace;font-size:10.5px;color:rgba(180,172,152,.7);}
+.qc-tag{font-family:'JetBrains Mono',monospace;font-size:8.5px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;padding:5px 11px;border-radius:100px;background:rgba(123,181,146,.12);color:#7bb592;}
+
+/* BETSLIPS (SUMMARY) */
+.sh.dark { background: transparent; }
 .slips-grid{padding:0 32px 8px;display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
+@media(max-width:767px){.slips-grid{grid-template-columns:1fr;padding:0 16px 8px;}}
 .slip{background:#fff;border:2px solid var(--dark);overflow:hidden;cursor:pointer;transition:transform .18s;}
 .slip:hover{transform:translateY(-2px);box-shadow: 0 4px 12px rgba(0,0,0,0.1);}
 .slip-h{background:var(--nook);padding:7px 11px;display:flex;justify-content:space-between;align-items:center;}
@@ -74,22 +128,11 @@ body{font-family:'Inter',sans-serif;background:var(--cream);}
 .mdl-stat-odds { font-family: 'Spectral', serif; font-size: 14px; font-weight: 700; color: #fff; margin-bottom: 4px; }
 .mdl-stat-res { font-family: 'JetBrains Mono', monospace; font-size: 9px; font-weight: 700; color: var(--nook); text-transform: uppercase; background: rgba(74, 124, 95, 0.2); padding: 3px 8px; border-radius: 100px; }
 
-/* QUOTES HOME */
-.qt-home{background:var(--dark);padding:20px 0 16px;border-bottom:2px solid #252525;}
-.qt-home-hd{padding:0 32px 14px;display:flex;align-items:center;justify-content:space-between;}
-.qt-ttl{font-family:'Spectral',serif;font-size:21px;font-weight:700;color:#fff;letter-spacing:-.02em;}
-.qt-ttl span{color:var(--nook);}
-.qc-card{background:rgba(255,255,255,.035);border-radius:10px;border-left:4px solid var(--ocre);padding:16px 18px;margin:0 32px 12px;}
-.qc-card.fire{border-left-color:#7bb592;}
-.qc-q{font-family:'Spectral',serif;font-size:15.5px;font-style:italic;color:rgba(255,255,255,.94);line-height:1.58;margin-bottom:13px;}
-.qc-foot{display:flex;justify-content:space-between;align-items:flex-end;gap:14px;flex-wrap:wrap;}
-.qc-author{font-family:'Spectral',serif;font-size:14.5px;font-weight:700;color:#fff;margin-bottom:3px;}
-.qc-src{font-family:'JetBrains Mono',monospace;font-size:10.5px;color:rgba(180,172,152,.7);}
-.qc-tag{font-family:'JetBrains Mono',monospace;font-size:8.5px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;padding:5px 11px;border-radius:100px;background:rgba(123,181,146,.12);color:#7bb592;}
-
 /* A QUOTE STORY (TUILE) */
 .zi-grid{padding:0 32px 20px;display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
-.zt{border-radius:10px;overflow:hidden;background:#fff;border:0.5px solid var(--border);display:flex;flex-direction:column;cursor:pointer;text-decoration:none;}
+@media(max-width:767px){.zi-grid{grid-template-columns:1fr;padding:0 16px 16px;}}
+.zt{border-radius:10px;overflow:hidden;background:#fff;border:0.5px solid var(--border);display:flex;flex-direction:column;cursor:pointer;text-decoration:none;transition:transform .18s;}
+.zt:hover{transform:translateY(-3px);}
 .zt-top{padding:8px 12px 6px;display:flex;justify-content:space-between;border-bottom:0.5px solid var(--border);}
 .zt-dn{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:var(--dark);}
 .zt-sp{font-size:8px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);}
@@ -99,46 +142,40 @@ body{font-family:'Inter',sans-serif;background:var(--cream);}
 .zt-body{padding:10px 12px;flex:1;border-top:0.5px solid var(--border);}
 .zt-hl{font-family:'Spectral',serif;font-size:13px;font-weight:700;color:var(--dark);line-height:1.25;margin-bottom:4px;}
 .zt-ft{padding:8px 12px;border-top:0.5px solid var(--border);font-size:9px;font-weight:700;color:var(--nook);display:flex;justify-content:space-between;}
+
+/* FOOTER */
 .foot{background:var(--dark);border-top:2px solid var(--nook);padding:18px 32px;}
-.foot-m{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;}
-.foot-logo{font-family:'Spectral',serif;font-size:15px;color:#fff;}
+@media(max-width:767px){.foot{padding:16px;}}
+.foot-m{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;flex-wrap:wrap;gap:8px;}
+.foot-logo{font-family:'Spectral',serif;font-size:15px;color:#fff;text-decoration:none;}
 .foot-logo span{color:var(--nook);}
 </style>
 </head>
 <body>
+
+<!-- HEADER UNIFIÉ -->
 <nav class="nav">
   <a href="index.html" class="nav-logo"><span>#</span>sportsbetting</a>
   <div class="nav-links">
     <a href="quotes.html">#QUOTES</a>
-    <a href="#track-record">#TRACK RECORD</a>
-    <a href="#quote-story">#A QUOTE STORY</a>
+    <a href="index.html#track-record">#TRACK RECORD</a>
+    <a href="index.html#quote-story">#A QUOTE STORY</a>
   </div>
-  <div class="nav-right"><a href="https://t.me/" class="btn-sub">#TELEGRAM &rarr;</a></div>
+  <div class="nav-right">
+    <a href="https://t.me/" class="btn-sub">#TELEGRAM &rarr;</a>
+  </div>
+  <button class="nav-hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
 </nav>
 
-<section class="db" id="track-record">
-  <div class="ey"><span>#</span>ACTIVITY &middot; STARTING JULY 2026</div>
-  <div class="kpis">
-    <div class="kpi"><div class="kn">1</div><div class="kl">Bets</div></div>
-    <div class="kpi"><div class="kn">5.79</div><div class="kl">Avg odds</div></div>
-    <div class="kpi"><div class="kn">+478%</div><div class="kl">ROI</div></div>
-    <div class="kpi"><div class="kn">100%</div><div class="kl">Win rate</div></div>
-    <div class="kpi hl"><div class="kn g">+71.84&euro;</div><div class="kl">Net profit</div><div class="kd">&uarr; Since Launch</div></div>
-    <div class="kpi hl"><div class="kn g">+7.18%</div><div class="kl">ROC</div><div class="kd">71.84 / 1000&euro;</div></div>
+<div class="nav-drawer" id="navDrawer">
+  <a class="ndl" href="index.html">Home</a>
+  <a class="ndl" href="quotes.html">#QUOTES</a>
+  <a class="ndl" href="index.html#track-record">#TRACK RECORD</a>
+  <a class="ndl" href="index.html#quote-story">#A QUOTE STORY</a>
+  <div style="margin-top:24px;display:flex;flex-direction:column;gap:10px;">
+    <a href="https://t.me/" class="btn-sub" style="text-align:center;">#TELEGRAM &rarr;</a>
   </div>
-  <div class="cw">
-    <div class="cw-h"><span>Capital curve &middot; Season 1</span><span style="color:var(--nook);">&#x25CF; Capital &euro;</span></div>
-    <svg width="100%" height="55" viewBox="0 0 620 55" preserveAspectRatio="none">
-      <defs><linearGradient id="cg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#4a7c5f" stop-opacity=".28"/><stop offset="100%" stop-color="#4a7c5f" stop-opacity="0"/></linearGradient></defs>
-      <polygon fill="url(#cg)" points="0,55 0,45 620,15 620,55"/>
-      <polyline fill="none" stroke="#4a7c5f" stroke-width="2.5" stroke-linecap="round" points="0,45 620,15"/>
-      <circle cx="620" cy="15" r="4" fill="#4a7c5f"/>
-    </svg>
-    <div style="display:flex;justify-content:space-between;margin-top:4px;font-size:8px;color:#666;">
-      <span>1000&euro; &mdash; Start</span><span style="color:var(--nook);font-weight:700;">1071.84&euro; &mdash; Current</span>
-    </div>
-  </div>
-</section>
+</div>
 
 <div class="qt-home">
 <div class="qt-home-hd">
@@ -161,8 +198,45 @@ body{font-family:'Inter',sans-serif;background:var(--cream);}
   </div>
 </div>
 
-<div class="sh">
-  <div style="display:flex;align-items:baseline;gap:8px;"><div class="st2"><span>#</span>BETSLIPS</div><div class="ssub">Click to view full ticket</div></div>
+<!-- L'ANCRE TRACK RECORD EST ICI -->
+<div class="sh" id="track-record">
+  <div style="display:flex;align-items:baseline;gap:8px;"><div class="st2 wht"><span>#</span>TRACK RECORD</div><div class="ssub wht">Process over P&L</div></div>
+</div>
+
+<section class="db">
+  <!-- BARRE DE FILTRES -->
+  <div class="filter-bar">
+    <button class="flt-btn on" onclick="setFilter(this)">All Time</button>
+    <button class="flt-btn" onclick="setFilter(this)">Current Month</button>
+    <button class="flt-btn" onclick="setFilter(this)">Last Month</button>
+    <button class="flt-btn" onclick="setFilter(this)">YTD</button>
+  </div>
+
+  <div class="ey"><span>#</span>ACTIVITY &middot; ALL TIME</div>
+  <div class="kpis">
+    <div class="kpi"><div class="kn">1</div><div class="kl">Bets</div></div>
+    <div class="kpi"><div class="kn">5.79</div><div class="kl">Avg odds</div></div>
+    <div class="kpi"><div class="kn">+478%</div><div class="kl">ROI</div></div>
+    <div class="kpi"><div class="kn">100%</div><div class="kl">Win rate</div></div>
+    <div class="kpi hl"><div class="kn g">+71.84&euro;</div><div class="kl">Net profit</div><div class="kd">&uarr; Since Launch</div></div>
+    <div class="kpi hl"><div class="kn g">+7.18%</div><div class="kl">ROC</div><div class="kd">71.84 / 1000&euro;</div></div>
+  </div>
+  <div class="cw">
+    <div class="cw-h"><span>Capital curve &middot; Season 1</span><span style="color:var(--nook);">&#x25CF; Capital &euro;</span></div>
+    <svg width="100%" height="55" viewBox="0 0 620 55" preserveAspectRatio="none">
+      <defs><linearGradient id="cg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#4a7c5f" stop-opacity=".28"/><stop offset="100%" stop-color="#4a7c5f" stop-opacity="0"/></linearGradient></defs>
+      <polygon fill="url(#cg)" points="0,55 0,45 620,15 620,55"/>
+      <polyline fill="none" stroke="#4a7c5f" stroke-width="2.5" stroke-linecap="round" points="0,45 620,15"/>
+      <circle cx="620" cy="15" r="4" fill="#4a7c5f"/>
+    </svg>
+    <div style="display:flex;justify-content:space-between;margin-top:4px;font-size:8px;color:#666;">
+      <span>1000&euro; &mdash; Start</span><span style="color:var(--nook);font-weight:700;">1071.84&euro; &mdash; Current</span>
+    </div>
+  </div>
+</section>
+
+<div class="sh dark">
+  <div style="display:flex;align-items:baseline;gap:8px;"><div class="st2"><span>#</span>BETSLIPS</div><div class="ssub">Click slip to view details</div></div>
 </div>
 <div class="slips-grid">
   <div class="slip" onclick="openSlipModal()">
@@ -207,7 +281,7 @@ body{font-family:'Inter',sans-serif;background:var(--cream);}
 
 <footer class="foot">
   <div class="foot-m">
-    <div class="foot-logo"><span>#</span>sportsbetting</div>
+    <a href="index.html" class="foot-logo"><span>#</span>sportsbetting</a>
   </div>
 </footer>
 
@@ -265,16 +339,16 @@ body{font-family:'Inter',sans-serif;background:var(--cream);}
 </div>
 
 <script>
-  function openSlipModal() {
-    document.getElementById('slipModal').classList.add('open');
-    document.body.style.overflow = 'hidden';
-  }
-  function closeSlipModal(e) {
-    if(e && e.target !== e.currentTarget) return;
-    document.getElementById('slipModal').classList.remove('open');
-    document.body.style.overflow = ''; 
+  function toggleMenu(){document.getElementById("navDrawer").classList.toggle("open");document.getElementById("hamburger").classList.toggle("open");}
+  function openSlipModal() { document.getElementById('slipModal').classList.add('open'); document.body.style.overflow = 'hidden'; }
+  function closeSlipModal(e) { if(e && e.target !== e.currentTarget) return; document.getElementById('slipModal').classList.remove('open'); document.body.style.overflow = ''; }
+  
+  // Logic pour la barre de filtre (visuel)
+  function setFilter(btn) {
+    document.querySelectorAll('.flt-btn').forEach(b => b.classList.remove('on'));
+    btn.classList.add('on');
+    // La data update viendra ici quand branchée
   }
 </script>
-
 </body>
 </html>
