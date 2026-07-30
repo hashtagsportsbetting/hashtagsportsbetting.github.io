@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Parlay #002: The Tennis Grind | #A QUOTE STORY</title>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700&family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{--cream:#f0ede4;--paper:#f7f4ec;--nook:#3f7257;--grass1:#1c4a29;--grass2:#2f6b40;--coral:#e8502f;--ocre:#f5b32e;--blue:#3361a8;--dark:#1e1e1e;--ink:#211e18;--muted:#8f897a;--border:#ddd6c7;}
+body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--ink);-webkit-font-smoothing:antialiased;font-weight:450;}
+.h{color:var(--ocre);}
+
+.nav{background:var(--dark);border-bottom:2px solid var(--nook);display:flex;align-items:center;justify-content:space-between;padding:16px 32px;position:sticky;top:0;z-index:200;}
+.nav-logo{font-family:'Spectral',serif;font-size:20px;color:#fff;letter-spacing:-.02em;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;}
+.nav-logo img{height:24px;margin-right:6px;}
+.nav-links{display:flex;gap:24px;}
+.nav-links a{font-size:13px;font-weight:700;color:rgba(255,255,255,.5);background:none;border:none;text-transform:uppercase;letter-spacing:.06em;cursor:pointer;font-family:'Inter',sans-serif;transition:color .15s;text-decoration:none;}
+.nav-links a:hover, .nav-links a.on{color:var(--nook);}
+.nav-right{display:flex;gap:10px;align-items:center;}
+.btn-sub{background:var(--coral);color:#fff;font-size:11px;font-weight:700;padding:8px 18px;border-radius:100px;border:none;cursor:pointer;text-transform:uppercase;letter-spacing:.06em;text-decoration:none;display:inline-block;}
+.nav-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px;background:none;border:none;}
+.nav-hamburger span{width:22px;height:2px;background:#fff;border-radius:2px;transition:all .2s;}
+.nav-hamburger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px);}
+.nav-hamburger.open span:nth-child(2){opacity:0;}
+.nav-hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px);}
+.nav-drawer{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:var(--dark);z-index:190;flex-direction:column;padding:80px 24px 32px;}
+.nav-drawer.open{display:flex;}
+.ndl{font-size:22px;font-weight:700;color:rgba(255,255,255,.5);padding:16px 0;border-bottom:1px solid #2a2a2a;cursor:pointer;background:none;border-top:none;border-left:none;border-right:none;text-align:left;font-family:'Inter',sans-serif;text-transform:uppercase;letter-spacing:.06em;width:100%;text-decoration:none;display:block;}
+.ndl:hover{color:var(--nook);}
+@media(max-width:767px){
+  .nav{padding:14px 16px;gap:10px;}
+  .nav-links{display:none;}
+  .btn-sub{font-size:9px;padding:6px 12px;white-space:normal;max-width:130px;text-align:center;line-height:1.2;}
+  .nav-hamburger{display:flex;}
+}
+@media(min-width:768px){.nav-drawer{display:none!important;}}
+
+.phead{color:#fff;padding:42px 56px 48px;position:relative;overflow:hidden;}
+.phead.win{background:linear-gradient(160deg,var(--grass1),var(--grass2));}
+.headC{display:grid;grid-template-columns:1fr auto;align-items:end;gap:24px;}
+.headC .left{min-width:0;position:relative;z-index:3;}
+.wordC{font-family:'Spectral',serif;font-weight:800;line-height:.82;letter-spacing:-.02em;text-align:right;flex-shrink:0;padding-bottom:4px;}
+.wordC .w{font-size:112px;color:#fff;}
+.wordC .badge{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.1em;padding:5px 14px;border-radius:4px;margin-top:8px;}
+.phead.win .wordC .badge{background:var(--ocre);color:var(--ink);}
+.wordC .ret{font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:600;color:rgba(255,255,255,.88);margin-top:10px;letter-spacing:.04em;}
+.phead .backrow{margin-bottom:18px;}
+.phead .backrow a{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:600;color:rgba(255,255,255,.7);text-decoration:none;letter-spacing:.05em;}
+.pk{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.82);margin-bottom:20px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+.ptitle{font-family:'Spectral',serif;font-size:44px;font-weight:800;line-height:1.06;letter-spacing:-.02em;max-width:820px;margin-bottom:16px;}
+.psub{font-family:'Spectral',serif;font-style:italic;font-size:18px;line-height:1.45;color:#fff;max-width:620px;font-weight:500;}
+.wrap{max-width:1060px;margin:0 auto;padding:0 56px 64px;}
+.coupon-wrap{margin:-30px auto 40px;max-width:780px;position:relative;z-index:2;}
+.coupon{border:1.5px solid var(--ink);border-radius:5px;overflow:hidden;background:#fff;box-shadow:0 10px 30px rgba(28,74,41,.18);}
+.cphead{background:linear-gradient(150deg,var(--grass1),var(--grass2));color:#fff;padding:20px 26px;display:flex;justify-content:space-between;align-items:center;border-bottom:3px solid var(--ocre);gap:16px;}
+.cphead .lg{font-family:'Spectral',serif;font-size:19px;font-weight:800;}.cphead .lg b{color:var(--ocre);}
+.cphead .id{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:500;color:rgba(255,255,255,.72);margin-top:5px;}
+.cphead .fig{text-align:right;flex-shrink:0;}
+.cphead .fig .o{font-family:'Spectral',serif;font-size:38px;font-weight:800;line-height:1;}
+.cphead .fig .s{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;color:rgba(255,255,255,.85);margin-top:5px;}
+.cprow{display:flex;justify-content:space-between;align-items:center;padding:13px 26px;border-bottom:1px solid #ece6d8;gap:14px;}
+.cprow:last-of-type{border-bottom:none;}
+.cprow .lft{display:flex;align-items:center;gap:13px;min-width:0;}
+.cprow .sport{font-family:'JetBrains Mono',monospace;font-size:8px;font-weight:700;letter-spacing:.05em;color:#fff;background:var(--blue);padding:3px 7px;border-radius:2px;flex-shrink:0;}
+.cprow .mt{font-family:'Spectral',serif;font-size:15.5px;font-weight:800;color:var(--ink);line-height:1.12;}
+.cprow .mk{font-size:10px;font-weight:500;color:var(--muted);margin-top:2px;}
+.cprow .rt{display:flex;align-items:center;gap:9px;flex-shrink:0;}
+.cprow .od{font-family:'Spectral',serif;font-size:18px;font-weight:800;}
+.cpfoot.won{background:rgba(63,114,87,.16);color:#2f6b40;text-align:center;padding:12px;font-family:'JetBrains Mono',monospace;font-size:9.5px;font-weight:700;letter-spacing:.06em;}
+.body{max-width:700px;margin:0 auto;}
+.lead{font-family:'Spectral',serif;font-size:20px;font-weight:500;line-height:1.5;color:var(--ink);margin-bottom:26px;}
+.q{margin:26px 0;padding:22px;background:#fff;border:1px solid var(--border);border-left:4px solid var(--ocre);border-radius:6px;}
+.q-flex{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;}
+.q-txt{font-family:'Spectral',serif;font-style:italic;font-weight:500;font-size:18px;line-height:1.45;color:var(--ink);}
+.q-odds{font-family:'Spectral',serif;font-size:22px;font-weight:800;color:var(--ocre);line-height:1;}
+.q-src{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.05em;color:var(--nook);text-transform:uppercase;margin-top:12px;}
+.closing{font-family:'Spectral',serif;font-style:italic;font-weight:500;font-size:15.5px;line-height:1.5;color:#4a4538;margin-top:36px;padding-top:20px;border-top:2px solid var(--ink);}
+.status-line{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;color:var(--muted);margin-top:16px;padding-top:16px;border-top:1px solid var(--border);letter-spacing:.03em;}
+
+.foot{background:var(--dark);border-top:2px solid var(--nook);padding:18px 32px;margin-top:36px;}
+@media(max-width:767px){.foot{padding:16px;}}
+.foot-m{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;flex-wrap:wrap;gap:8px;}
+.foot-logo{font-family:'Spectral',serif;font-size:15px;color:#fff;text-decoration:none;display:inline-flex;align-items:center;}
+.foot-logo img{height:16px;margin-right:5px;}
+.foot-links{display:flex;gap:14px;font-size:10px;flex-wrap:wrap;}
+.foot-links a{color:#888;text-decoration:none;cursor:pointer;transition:color .15s;text-transform:uppercase;letter-spacing:0.05em;}
+.foot-links a:hover{color:var(--nook);}
+.foot-by{font-size:10px;color:#888;font-style:italic;}
+.foot-d{font-size:9px;color:#555;line-height:1.6;border-top:1px solid #2a2a2a;padding-top:10px;margin-top:10px;}
+
+.cpscore{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;color:var(--nook);}.cpwin{color:var(--nook);font-weight:800;font-size:16px;}.fig .s.won{color:#cdebd8;}
+
+@media(max-width:820px){
+.phead{padding:30px 22px 40px;}.ptitle{font-size:29px;}.psub{font-size:16px;}
+.headC{grid-template-columns:1fr;gap:14px;}.wordC{text-align:left;order:-1;}.wordC .w{font-size:74px;}
+.wrap{padding:0 18px 44px;}.coupon-wrap{margin:-26px auto 32px;}
+.cphead{flex-direction:column;align-items:flex-start;gap:12px;}.cphead .fig{text-align:left;}.cphead .fig .o{font-size:32px;}
+.cprow{flex-wrap:wrap;gap:8px;}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="index.html" class="nav-logo"><img src="logo.svg" alt="logo">sportsbetting</a>
+  <div class="nav-links">
+    <a href="quotes.html">#QUOTES</a>
+    <a href="betslips.html">#BETSLIPS</a>
+    <a href="quote-story.html">#A QUOTE STORY</a>
+  </div>
+  <div class="nav-right">
+    <a href="https://whop.com/" class="btn-sub">Prematch alerts? Subscribe on telegram &rarr;</a>
+  </div>
+  <button class="nav-hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+</nav>
+
+<div class="nav-drawer" id="navDrawer">
+  <a class="ndl" href="index.html">Home</a>
+  <a class="ndl" href="quotes.html">#QUOTES</a>
+  <a class="ndl" href="betslips.html">#BETSLIPS</a>
+  <a class="ndl" href="quote-story.html">#A QUOTE STORY</a>
+  <div style="margin-top:24px;display:flex;flex-direction:column;gap:10px;">
+    <a href="https://whop.com/" class="btn-sub" style="text-align:center;">Prematch alerts? Subscribe on telegram &rarr;</a>
+  </div>
+</div>
+
+<div class="phead win">
+  <div class="headC">
+    <div class="left">
+      <div class="backrow"><a href="index.html">&larr; Back to home</a></div>
+      <div class="pk"><span>A Quote Story</span><span>&middot;</span><span>29 July 2026</span></div>
+      <div class="ptitle">Parlay #002: The Tennis Grind.</div>
+      <div class="psub">A seven-leg accumulator on the Challenger and WTA tours. By heavily utilizing the +1.5 sets handicap market, the inherent volatility of straight-up Moneyline betting is neutralized. A masterclass in variance reduction.</div>
+    </div>
+    <div class="wordC"><div class="w">WIN</div><div><span class="badge">PAID OUT</span></div><div class="ret">+&euro;7.61 &middot; returned &euro;12.61</div></div>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="coupon-wrap"><div class="coupon">
+    <div class="cphead"><div><div class="lg"><b>#</b>betslip &middot; Accumulator</div><div class="id">Bet slip #002 &middot; 29.07.2026 &middot; 7 selections</div></div><div class="fig"><div class="o">2.522</div><div class="s won">&euro;5 &rarr; &euro;12.61 &#x2713;</div></div></div>
+    
+    <div class="cprow"><div class="lft"><span class="sport">TENNIS</span><div><div class="mt">Wallin vs Carballés Baena <span class="cpscore" style="color:var(--coral);">2-1</span></div><div class="mk">CH Bonn &middot; Carballés Baena +1.5 sets</div></div></div><div class="rt"><span class="od">1.164</span><span class="cpwin">&#x2713;</span></div></div>
+    
+    <div class="cprow"><div class="lft"><span class="sport">TENNIS</span><div><div class="mt">Ishii vs Gandolfi <span class="cpscore">2-1</span></div><div class="mk">WTA Aldershot &middot; Ishii +1.5 sets</div></div></div><div class="rt"><span class="od">1.210</span><span class="cpwin">&#x2713;</span></div></div>
+    
+    <div class="cprow"><div class="lft"><span class="sport">TENNIS</span><div><div class="mt">Brunclik vs Nagal <span class="cpscore">0-2</span></div><div class="mk">CH Liberec &middot; Nagal +1.5 sets</div></div></div><div class="rt"><span class="od">1.440</span><span class="cpwin">&#x2713;</span></div></div>
+    
+    <div class="cprow"><div class="lft"><span class="sport">TENNIS</span><div><div class="mt" style="color:var(--muted);">Prado Angelo vs Dellien <span class="cpscore" style="color:var(--muted);">1-0 (Ab.)</span></div><div class="mk" style="color:var(--muted);">CH San Marino &middot; Dellien +1.5 sets</div></div></div><div class="rt"><span class="od" style="color:var(--muted);">1.000</span><span class="cpscore" style="color:var(--muted);">REFUND</span></div></div>
+    
+    <div class="cprow"><div class="lft"><span class="sport">TENNIS</span><div><div class="mt">Sorribes Tormo vs Hennemann <span class="cpscore">2-0</span></div><div class="mk">WTA Targu Mures &middot; Sorribes Tormo +1.5 sets</div></div></div><div class="rt"><span class="od">1.089</span><span class="cpwin">&#x2713;</span></div></div>
+    
+    <div class="cprow"><div class="lft"><span class="sport">TENNIS</span><div><div class="mt" style="color:var(--muted);">Vujovic vs Cortez Llorca <span class="cpscore" style="color:var(--muted);">(Canc.)</span></div><div class="mk" style="color:var(--muted);">WTA Knokke-Heist &middot; Cortez Llorca +1.5 sets</div></div></div><div class="rt"><span class="od" style="color:var(--muted);">1.000</span><span class="cpscore" style="color:var(--muted);">REFUND</span></div></div>
+    
+    <div class="cprow"><div class="lft"><span class="sport">TENNIS</span><div><div class="mt">Uchijima vs Kinoshita <span class="cpscore">2-1</span></div><div class="mk">WTA Vancouver &middot; Uchijima +1.5 sets</div></div></div><div class="rt"><span class="od">1.142</span><span class="cpwin">&#x2713;</span></div></div>
+
+    <div class="cpfoot won">&#x2713; WON &middot; PAID OUT &euro;12.61</div>
+  </div></div>
+  
+  <div class="body">
+    <div class="lead">Seven matches, a mix of Challenger and WTA events, and a textbook lesson on why the spread exists. Straight-up Moneyline betting on these courts would have destroyed this slip multiple times. The +1.5 sets handicap was the ultimate structural safeguard. Here is what they said before the grind began:</div>
+    
+    <div style="font-size:15px; color:var(--ink); line-height:1.6; margin-bottom:12px;">The ultimate proof of concept for the spread strategy. Carballés Baena actually lost the match to Olle Wallin, but his second-set surge was all that was required to cover the handicap and keep the accumulator alive. A raw ML bet would have been an instant kill.</div>
+    <div class="q">
+      <div class="q-flex">
+        <div class="q-txt">&ldquo;[INSERT_PRE_MATCH_QUOTE_HERE]&rdquo;</div>
+        <div class="q-odds">1.164</div>
+      </div>
+      <div class="q-src">&mdash; Roberto Carballés Baena &middot; Wallin vs Carballés Baena</div>
+    </div>
+    
+    <div style="font-size:15px; color:var(--ink); line-height:1.6; margin-bottom:12px;">Another near-death experience mitigated by the handicap. Ishii dropped a grueling first-set tiebreak (6:7) to Gandolfi. The structural cushion allowed her to rally back and win the next two sets (6:4, 6:3) without the added pressure of an already-dead slip.</div>
+    <div class="q">
+      <div class="q-flex">
+        <div class="q-txt">&ldquo;[INSERT_PRE_MATCH_QUOTE_HERE]&rdquo;</div>
+        <div class="q-odds">1.210</div>
+      </div>
+      <div class="q-src">&mdash; Sayaka Ishii &middot; Ishii vs Gandolfi</div>
+    </div>
+
+    <div style="font-size:15px; color:var(--ink); line-height:1.6; margin-bottom:12px;">Operating with a significant baseline edge on clay, Nagal was the heavy anchor of this ticket. The +1.5 sets acted as a safety net against early rust, but it wasn't required. He imposed his heavy topspin to secure a clean 2-0 sweep (6:4, 6:4) against Brunclik.</div>
+    <div class="q">
+      <div class="q-flex">
+        <div class="q-txt">&ldquo;[INSERT_PRE_MATCH_QUOTE_HERE]&rdquo;</div>
+        <div class="q-odds">1.440</div>
+      </div>
+      <div class="q-src">&mdash; Sumit Nagal &middot; Brunclik vs Nagal</div>
+    </div>
+
+    <div style="font-size:15px; color:var(--ink); line-height:1.6; margin-bottom:12px;">A classic low-variance yield booster. Facing Hennemann, Sorribes Tormo's defensive consistency makes dropping two consecutive sets highly improbable. She dismantled her opponent effortlessly, securing a 2-0 victory (6:1, 6:3) with zero sweat.</div>
+    <div class="q">
+      <div class="q-flex">
+        <div class="q-txt">&ldquo;[INSERT_PRE_MATCH_QUOTE_HERE]&rdquo;</div>
+        <div class="q-odds">1.089</div>
+      </div>
+      <div class="q-src">&mdash; Sara Sorribes Tormo &middot; Sorribes Tormo vs Hennemann</div>
+    </div>
+
+    <div style="font-size:15px; color:var(--ink); line-height:1.6; margin-bottom:12px;">Similar to the Ishii matchup, Uchijima started slow, dropping the opening set 2:6 to Kinoshita. The +1.5 sets cushion did exactly what it was designed to do: absorb the initial blow while Uchijima found her rhythm to eventually grind out a 2:1 victory (2:6, 6:4, 7:5).</div>
+    <div class="q">
+      <div class="q-flex">
+        <div class="q-txt">&ldquo;[INSERT_PRE_MATCH_QUOTE_HERE]&rdquo;</div>
+        <div class="q-odds">1.142</div>
+      </div>
+      <div class="q-src">&mdash; Moyuka Uchijima &middot; Uchijima vs Kinoshita</div>
+    </div>
+
+    <div class="closing">Five active legs covering the spread, two refunds managing the variance, and zero sweeps across the board. The quotes wrote the script, the structure absorbed the shocks. Next.</div>
+    <div class="status-line">Status: <b style="color:var(--nook)">&#x2713; SETTLED &middot; WON</b> &middot; 29 July 2026.</div>
+  </div>
+</div>
+
+<footer class="foot">
+  <div class="foot-m">
+    <a href="index.html" class="foot-logo"><img src="logo.svg" alt="logo">sportsbetting</a>
+    <div class="foot-links">
+      <a href="quotes.html">#quotes</a>
+      <a href="betslips.html">#betslips</a>
+      <a href="quote-story.html">#aquotestory</a>
+    </div>
+    <div class="foot-by">A Charles Chambers Farah strategy</div>
+  </div>
+  <p class="foot-d">hashtagsportsbetting.com is an editorial blog documenting a personal sports betting journey. Content is for informational and entertainment purposes only. We do not provide financial or betting advice. 18+</p>
+</footer>
+
+<script>
+  function toggleMenu(){document.getElementById("navDrawer").classList.toggle("open");document.getElementById("hamburger").classList.toggle("open");}
+</script>
+</body>
+</html>
