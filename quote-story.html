@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>#A Quote Story | hashtagsportsbetting</title>
+<meta name="description" content="Every slip, justified by their own words. The archive of our sports betting parlays.">
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{--cream:#f0ede4;--nook:#4a7c5f;--dark:#1e1e1e;--coral:#ec5a3c;--ocre:#f5b32e;--blue:#3d6db5;--muted:#a09880;--border:#e0d9cc;}
+body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--dark);}
+
+/* NAV */
+.nav{background:var(--dark);border-bottom:2px solid var(--nook);display:flex;align-items:center;justify-content:space-between;padding:16px 32px;position:sticky;top:0;z-index:200;}
+.nav-logo{font-family:'Spectral',serif;font-size:20px;color:#fff;letter-spacing:-.02em;cursor:pointer;text-decoration:none;}
+.nav-logo span{color:var(--nook);}
+.nav-links{display:flex;gap:24px;}
+.nav-links a{font-size:13px;font-weight:700;color:rgba(255,255,255,.5);background:none;border:none;text-transform:uppercase;letter-spacing:.06em;cursor:pointer;font-family:'Inter',sans-serif;transition:color .15s;text-decoration:none;}
+.nav-links a:hover, .nav-links a.on{color:var(--nook);}
+.nav-right{display:flex;gap:10px;align-items:center;}
+.btn-sub{background:var(--coral);color:#fff;font-size:11px;font-weight:700;padding:8px 18px;border-radius:100px;border:none;cursor:pointer;text-transform:uppercase;letter-spacing:.06em;text-decoration:none;display:inline-block;}
+.nav-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px;background:none;border:none;}
+.nav-hamburger span{width:22px;height:2px;background:#fff;border-radius:2px;transition:all .2s;}
+.nav-hamburger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px);}
+.nav-hamburger.open span:nth-child(2){opacity:0;}
+.nav-hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px);}
+.nav-drawer{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:var(--dark);z-index:190;flex-direction:column;padding:80px 24px 32px;}
+.nav-drawer.open{display:flex;}
+.ndl{font-size:22px;font-weight:700;color:rgba(255,255,255,.5);padding:16px 0;border-bottom:1px solid #2a2a2a;cursor:pointer;background:none;border-top:none;border-left:none;border-right:none;text-align:left;font-family:'Inter',sans-serif;text-transform:uppercase;letter-spacing:.06em;width:100%;text-decoration:none;display:block;}
+.ndl:hover{color:var(--nook);}
+@media(max-width:767px){
+  .nav{padding:14px 16px;gap:10px;}
+  .nav-links{display:none;}
+  .btn-sub{font-size:10px;padding:8px 12px;white-space:nowrap;}
+  .nav-hamburger{display:flex;}
+}
+@media(min-width:768px){.nav-drawer{display:none!important;}}
+
+/* HEADER PAGE */
+.pg-head{background:var(--dark);padding:32px 44px 28px;border-bottom:2px solid var(--nook);}
+@media(max-width:767px){.pg-head{padding:22px 16px 20px;}}
+.pg-title{font-family:'Spectral',serif;font-size:46px;font-weight:700;color:#fff;letter-spacing:-.04em;line-height:.95;margin-bottom:10px;}
+.pg-title span{color:var(--nook);}
+.pg-sub{font-family:'Spectral',serif;font-size:15px;font-style:italic;color:rgba(160,152,128,.75);line-height:1.5;max-width:560px;}
+
+/* GRILLE ARTICLES */
+.wrap{max-width:1100px;margin:0 auto;padding:40px 32px 64px;}
+@media(max-width:767px){.wrap{padding:24px 16px 48px;}}
+.zi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+@media(max-width:767px){.zi-grid{grid-template-columns:1fr;}}
+.zt{border-radius:10px;overflow:hidden;background:#fff;border:1px solid var(--border);display:flex;flex-direction:column;cursor:pointer;text-decoration:none;transition:transform .18s;box-shadow: 0 4px 12px rgba(0,0,0,0.05);}
+.zt:hover{transform:translateY(-3px);box-shadow: 0 8px 20px rgba(0,0,0,0.1);}
+.zt-top{padding:10px 14px 8px;display:flex;justify-content:space-between;border-bottom:1px solid var(--border);}
+.zt-dn{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:var(--dark);}
+.zt-sp{font-size:8px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);}
+.zt-surf-block{padding:16px;background:linear-gradient(160deg,#28241d 0%,#3d3830 100%);display:flex;flex-direction:column;gap:8px;}
+.zt-score-row{display:flex;align-items:center;justify-content:space-between;}
+.zt-pl{font-size:15px;font-weight:600;color:#fff;}
+.zt-body{padding:14px 14px;flex:1;border-top:1px solid var(--border);}
+.zt-hl{font-family:'Spectral',serif;font-size:15px;font-weight:700;color:var(--dark);line-height:1.3;margin-bottom:6px;}
+.zt-ft{padding:10px 14px;border-top:1px solid var(--border);font-size:10px;font-weight:700;color:var(--nook);display:flex;justify-content:space-between;}
+
+/* FOOTER RESTAURÉ */
+.foot{background:var(--dark);border-top:2px solid var(--nook);padding:18px 32px;}
+@media(max-width:767px){.foot{padding:16px;}}
+.foot-m{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;flex-wrap:wrap;gap:8px;}
+.foot-logo{font-family:'Spectral',serif;font-size:15px;color:#fff;text-decoration:none;}
+.foot-logo span{color:var(--nook);}
+.foot-links{display:flex;gap:14px;font-size:10px;flex-wrap:wrap;}
+.foot-links a{color:#888;text-decoration:none;cursor:pointer;transition:color .15s;text-transform:uppercase;letter-spacing:0.05em;}
+.foot-links a:hover{color:var(--nook);}
+.foot-by{font-size:10px;color:#888;font-style:italic;}
+.foot-d{font-size:9px;color:#555;line-height:1.6;border-top:1px solid #2a2a2a;padding-top:10px;margin-top:10px;}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="index.html" class="nav-logo"><span>#</span>sportsbetting</a>
+  <div class="nav-links">
+    <a href="quotes.html">#QUOTES</a>
+    <a href="index.html#track-record">#TRACK RECORD</a>
+    <a href="quote-story.html" class="on">#A QUOTE STORY</a>
+  </div>
+  <div class="nav-right">
+    <a href="https://t.me/" class="btn-sub">#TELEGRAM &rarr;</a>
+  </div>
+  <button class="nav-hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+</nav>
+
+<div class="nav-drawer" id="navDrawer">
+  <a class="ndl" href="index.html">Home</a>
+  <a class="ndl" href="quotes.html">#QUOTES</a>
+  <a class="ndl" href="index.html#track-record">#TRACK RECORD</a>
+  <a class="ndl on" href="quote-story.html">#A QUOTE STORY</a>
+  <div style="margin-top:24px;display:flex;flex-direction:column;gap:10px;">
+    <a href="https://t.me/" class="btn-sub" style="text-align:center;">#TELEGRAM &rarr;</a>
+  </div>
+</div>
+
+<div class="pg-head">
+  <h1 class="pg-title"><span>#</span>A QUOTE STORY</h1>
+  <div class="pg-sub">Every slip, justified by their own words. The archive of our sports betting parlays.</div>
+</div>
+
+<div class="wrap">
+  <div class="zi-grid">
+    <!-- Parlay 001 -->
+    <a href="parlay-001-the-bare-minimum.html" class="zt">
+      <div class="zt-top"><div class="zt-dn">Jul 28</div><div class="zt-sp">Acca · 10 legs</div></div>
+      <div class="zt-surf-block">
+        <div class="zt-score-row"><div class="zt-pl">Ten Players</div></div>
+        <div style="height:0.5px;background:rgba(255,255,255,.15);margin:5px 0;"></div>
+        <div class="zt-score-row"><div class="zt-pl" style="color:var(--nook);">0 Sweeps</div></div>
+      </div>
+      <div class="zt-body">
+        <div class="zt-hl">Ten men. The absolute bare minimum.</div>
+        <div style="font-size:12px;color:var(--muted);line-height:1.4;">We asked ten players to do one simple thing: just don't get swept. We let them do the talking.</div>
+      </div>
+      <div class="zt-ft"><span>+71.84&euro;</span><span>Read &rarr;</span></div>
+    </a>
+  </div>
+</div>
+
+<footer class="foot">
+  <div class="foot-m">
+    <a href="index.html" class="foot-logo"><span>#</span>sportsbetting</a>
+    <div class="foot-links">
+      <a href="quotes.html">#quotes</a>
+      <a href="index.html#track-record">#trackrecord</a>
+      <a href="quote-story.html">#aquotestory</a>
+    </div>
+    <div class="foot-by">A Charles Chambers Farah strategy</div>
+  </div>
+  <p class="foot-d">hashtagsportsbetting.com is an editorial blog documenting a personal sports betting journey. Content is for informational and entertainment purposes only. We do not provide financial or betting advice. 18+</p>
+</footer>
+
+<script>
+  function toggleMenu(){document.getElementById("navDrawer").classList.toggle("open");document.getElementById("hamburger").classList.toggle("open");}
+</script>
+</body>
+</html>
