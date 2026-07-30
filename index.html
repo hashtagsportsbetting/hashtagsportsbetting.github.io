@@ -120,6 +120,7 @@ body{font-family:'Inter',sans-serif;background:var(--cream);}
 .mdl-status { text-align: right; }
 .mdl-stat-odds { font-family: 'Spectral', serif; font-size: 14px; font-weight: 700; color: #fff; margin-bottom: 4px; }
 .mdl-stat-res { font-family: 'JetBrains Mono', monospace; font-size: 9px; font-weight: 700; color: var(--nook); text-transform: uppercase; background: rgba(74, 124, 95, 0.2); padding: 3px 8px; border-radius: 100px; }
+.mdl-stat-refund { font-family: 'JetBrains Mono', monospace; font-size: 9px; font-weight: 700; color: var(--muted); text-transform: uppercase; background: rgba(160, 152, 128, 0.2); padding: 3px 8px; border-radius: 100px; }
 
 /* A QUOTE STORY (TUILE) */
 .zi-grid{padding:0 32px 20px;display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
@@ -159,7 +160,7 @@ body{font-family:'Inter',sans-serif;background:var(--cream);}
     <a href="quote-story.html">#A QUOTE STORY</a>
   </div>
   <div class="nav-right">
-    <a href="https://t.me/" class="btn-sub">Prematch alerts? Subscribe on telegram &rarr;</a>
+    <a href="https://whop.com/" class="btn-sub">Prematch alerts? Subscribe on telegram &rarr;</a>
   </div>
   <button class="nav-hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
 </nav>
@@ -170,11 +171,10 @@ body{font-family:'Inter',sans-serif;background:var(--cream);}
   <a class="ndl" href="betslips.html">#BETSLIPS</a>
   <a class="ndl" href="quote-story.html">#A QUOTE STORY</a>
   <div style="margin-top:24px;display:flex;flex-direction:column;gap:10px;">
-    <a href="https://t.me/" class="btn-sub" style="text-align:center;">Prematch alerts? Subscribe on telegram &rarr;</a>
+    <a href="https://whop.com/" class="btn-sub" style="text-align:center;">Prematch alerts? Subscribe on telegram &rarr;</a>
   </div>
 </div>
 
-<!-- LE DASHBOARD EST EN HAUT, DIRECTEMENT (SANS TITRE) -->
 <section class="db">
   <div class="filter-bar">
     <button class="flt-btn on" onclick="setFilter('all_time', this)">All Time</button>
@@ -185,12 +185,12 @@ body{font-family:'Inter',sans-serif;background:var(--cream);}
 
   <div class="ey" id="ey-text"><span>#</span>ACTIVITY &middot; ALL TIME</div>
   <div class="kpis">
-    <div class="kpi"><div class="kn" id="kpi-bets">1</div><div class="kl">Bets</div></div>
-    <div class="kpi"><div class="kn" id="kpi-odds">5.79</div><div class="kl">Avg odds</div></div>
-    <div class="kpi"><div class="kn" id="kpi-roi">+478%</div><div class="kl">ROI</div></div>
+    <div class="kpi"><div class="kn" id="kpi-bets">2</div><div class="kl">Bets</div></div>
+    <div class="kpi"><div class="kn" id="kpi-odds">4.16</div><div class="kl">Avg odds</div></div>
+    <div class="kpi"><div class="kn" id="kpi-roi">+397%</div><div class="kl">ROI</div></div>
     <div class="kpi"><div class="kn" id="kpi-wr">100%</div><div class="kl">Win rate</div></div>
-    <div class="kpi hl"><div class="kn g" id="kpi-profit">+71.84&euro;</div><div class="kl">Net profit</div><div class="kd">&uarr; Since Launch</div></div>
-    <div class="kpi hl"><div class="kn g" id="kpi-roc">+7.18%</div><div class="kl">ROC</div><div class="kd">71.84 / 1000&euro;</div></div>
+    <div class="kpi hl"><div class="kn g" id="kpi-profit">+79.45&euro;</div><div class="kl">Net profit</div><div class="kd">&uarr; Since Launch</div></div>
+    <div class="kpi hl"><div class="kn g" id="kpi-roc">+7.95%</div><div class="kl">ROC</div><div class="kd">79.45 / 1000&euro;</div></div>
   </div>
   <div class="cw">
     <div class="cw-h"><span>Capital curve &middot; Season 1</span><span style="color:var(--nook);">&#x25CF; Capital &euro;</span></div>
@@ -201,7 +201,7 @@ body{font-family:'Inter',sans-serif;background:var(--cream);}
       <circle cx="620" cy="15" r="4" fill="#4a7c5f"/>
     </svg>
     <div style="display:flex;justify-content:space-between;margin-top:4px;font-size:8px;color:#666;">
-      <span>1000&euro; &mdash; Start</span><span style="color:var(--nook);font-weight:700;" id="cc-end">1071.84&euro; &mdash; Current</span>
+      <span>1000&euro; &mdash; Start</span><span style="color:var(--nook);font-weight:700;" id="cc-end">1079.45&euro; &mdash; Current</span>
     </div>
   </div>
 </section>
@@ -232,7 +232,30 @@ body{font-family:'Inter',sans-serif;background:var(--cream);}
   <a href="betslips.html" style="font-size:11px;font-weight:700;color:var(--nook);text-decoration:underline;">See all &rarr;</a>
 </div>
 <div class="slips-grid" id="slip-list">
-  <div class="slip" onclick="openSlipModal()">
+  
+  <!-- NOUVEAU PARLAY #002 -->
+  <div class="slip" onclick="openSlipModal('slipModal2')">
+    <div class="slip-h"><div class="slip-id">#002</div><div class="bw">Won &#x2713;</div></div>
+    <div class="slip-b">
+      <div class="slip-tr">Accumulator · 7 legs</div>
+      <div class="slip-m">The Tennis Grind</div>
+      <div class="slip-mk">Challenger & WTA</div>
+      <div style="height:1.5px;background:var(--dark);margin-bottom:8px;"></div>
+      <div class="slip-ns">
+        <div><div style="font-size:7px;text-transform:uppercase;color:var(--muted);margin-bottom:2px;">Odds</div><div class="slip-o">2.522</div></div>
+        <div><div style="font-size:7px;text-transform:uppercase;color:var(--muted);margin-bottom:2px;text-align:right;">Profit</div><div class="slip-p">+7.61&euro;</div></div>
+      </div>
+    </div>
+    <div class="slip-g">
+      <div class="slip-c"><div class="slip-cl">Stake</div><div class="slip-cv">5&euro;</div></div>
+      <div class="slip-c"><div class="slip-cl">Return</div><div class="slip-cv">12.61&euro;</div></div>
+      <div class="slip-c"><div class="slip-cl">Status</div><div class="slip-cv w">Won</div></div>
+    </div>
+    <div class="slip-f"><div class="slip-st">&#x2713; Paid out</div><div class="slip-dt">29.07.2026</div></div>
+  </div>
+
+  <!-- PARLAY #001 -->
+  <div class="slip" onclick="openSlipModal('slipModal1')">
     <div class="slip-h"><div class="slip-id">#001</div><div class="bw">Won &#x2713;</div></div>
     <div class="slip-b">
       <div class="slip-tr">Accumulator · 10 legs</div>
@@ -251,6 +274,7 @@ body{font-family:'Inter',sans-serif;background:var(--cream);}
     </div>
     <div class="slip-f"><div class="slip-st">&#x2713; Paid out</div><div class="slip-dt">28.07.2026</div></div>
   </div>
+
 </div>
 
 <div class="sh">
@@ -258,6 +282,23 @@ body{font-family:'Inter',sans-serif;background:var(--cream);}
   <a href="quote-story.html" style="font-size:11px;font-weight:700;color:var(--nook);text-decoration:underline;">See all &rarr;</a>
 </div>
 <div class="zi-grid" id="tuile-list">
+
+  <!-- NOUVELLE TUILE #002 -->
+  <a href="parlay-002-tennis-grind.html" class="zt">
+    <div class="zt-top"><div class="zt-dn">Jul 29</div><div class="zt-sp">Acca · 7 legs</div></div>
+    <div class="zt-surf-block">
+      <div class="zt-score-row"><div class="zt-pl">Seven Matches</div></div>
+      <div style="height:0.5px;background:rgba(255,255,255,.15);margin:3px 0;"></div>
+      <div class="zt-score-row"><div class="zt-pl" style="color:var(--nook);">+1.5 Sets Edge</div></div>
+    </div>
+    <div class="zt-body">
+      <div class="zt-hl">Parlay #002: The Tennis Grind</div>
+      <div style="font-size:11px;color:var(--muted);">A masterclass in variance reduction. How the +1.5 sets handicap acted as the ultimate structural safeguard.</div>
+    </div>
+    <div class="zt-ft"><span>+7.61&euro;</span><span>Read &rarr;</span></div>
+  </a>
+
+  <!-- ANCIENNE TUILE #001 -->
   <a href="parlay-001-the-bare-minimum.html" class="zt">
     <div class="zt-top"><div class="zt-dn">Jul 28</div><div class="zt-sp">Acca · 10 legs</div></div>
     <div class="zt-surf-block">
@@ -271,6 +312,7 @@ body{font-family:'Inter',sans-serif;background:var(--cream);}
     </div>
     <div class="zt-ft"><span>+71.84&euro;</span><span>Read &rarr;</span></div>
   </a>
+
 </div>
 
 <footer class="foot">
@@ -286,9 +328,10 @@ body{font-family:'Inter',sans-serif;background:var(--cream);}
   <p class="foot-d">hashtagsportsbetting.com is an editorial blog documenting a personal sports betting journey. Content is for informational and entertainment purposes only. We do not provide financial or betting advice. 18+</p>
 </footer>
 
-<div class="modal-overlay" id="slipModal" onclick="closeSlipModal(event)">
+<!-- MODAL PARLAY #001 -->
+<div class="modal-overlay" id="slipModal1" onclick="closeSlipModal('slipModal1', event)">
   <div class="modal-content" onclick="event.stopPropagation()">
-    <button class="modal-close" onclick="closeSlipModal()">×</button>
+    <button class="modal-close" onclick="closeSlipModal('slipModal1')">×</button>
     <div class="mdl-head">
       <div class="mdl-logo"><img src="logo.svg" alt="logo">sportsbetting</div>
       <div>
@@ -339,10 +382,54 @@ body{font-family:'Inter',sans-serif;background:var(--cream);}
   </div>
 </div>
 
+<!-- MODAL PARLAY #002 -->
+<div class="modal-overlay" id="slipModal2" onclick="closeSlipModal('slipModal2', event)">
+  <div class="modal-content" onclick="event.stopPropagation()">
+    <button class="modal-close" onclick="closeSlipModal('slipModal2')">×</button>
+    <div class="mdl-head">
+      <div class="mdl-logo"><img src="logo.svg" alt="logo">sportsbetting</div>
+      <div>
+        <div class="mdl-odds-lbl">Total Odds</div>
+        <div class="mdl-odds-val">2.522</div>
+      </div>
+    </div>
+    <div class="mdl-leg">
+      <div><div class="mdl-match">Wallin vs Carballés Baena</div><div class="mdl-pick">Carballés Baena +1.5 Sets</div></div>
+      <div class="mdl-status"><div class="mdl-stat-odds">1.164</div><div class="mdl-stat-res">✓ Won</div></div>
+    </div>
+    <div class="mdl-leg">
+      <div><div class="mdl-match">Ishii vs Gandolfi</div><div class="mdl-pick">Ishii +1.5 Sets</div></div>
+      <div class="mdl-status"><div class="mdl-stat-odds">1.21</div><div class="mdl-stat-res">✓ Won</div></div>
+    </div>
+    <div class="mdl-leg">
+      <div><div class="mdl-match">Brunclik vs Nagal</div><div class="mdl-pick">Nagal +1.5 Sets</div></div>
+      <div class="mdl-status"><div class="mdl-stat-odds">1.44</div><div class="mdl-stat-res">✓ Won</div></div>
+    </div>
+    <div class="mdl-leg">
+      <div><div class="mdl-match">Prado Angelo vs Dellien</div><div class="mdl-pick">Dellien +1.5 Sets</div></div>
+      <div class="mdl-status"><div class="mdl-stat-odds">1.00</div><div class="mdl-stat-refund">Refund</div></div>
+    </div>
+    <div class="mdl-leg">
+      <div><div class="mdl-match">Sorribes Tormo vs Hennemann</div><div class="mdl-pick">Sorribes Tormo +1.5</div></div>
+      <div class="mdl-status"><div class="mdl-stat-odds">1.089</div><div class="mdl-stat-res">✓ Won</div></div>
+    </div>
+    <div class="mdl-leg">
+      <div><div class="mdl-match">Vujovic vs Cortez Llorca</div><div class="mdl-pick">Cortez Llorca +1.5</div></div>
+      <div class="mdl-status"><div class="mdl-stat-odds">1.00</div><div class="mdl-stat-refund">Refund</div></div>
+    </div>
+    <div class="mdl-leg">
+      <div><div class="mdl-match">Uchijima vs Kinoshita</div><div class="mdl-pick">Uchijima +1.5 Sets</div></div>
+      <div class="mdl-status"><div class="mdl-stat-odds">1.142</div><div class="mdl-stat-res">✓ Won</div></div>
+    </div>
+  </div>
+</div>
+
 <script>
   function toggleMenu(){document.getElementById("navDrawer").classList.toggle("open");document.getElementById("hamburger").classList.toggle("open");}
-  function openSlipModal() { document.getElementById('slipModal').classList.add('open'); document.body.style.overflow = 'hidden'; }
-  function closeSlipModal(e) { if(e && e.target !== e.currentTarget) return; document.getElementById('slipModal').classList.remove('open'); document.body.style.overflow = ''; }
+  
+  /* Scripts des modales adaptés pour supporter des IDs multiples */
+  function openSlipModal(id) { document.getElementById(id).classList.add('open'); document.body.style.overflow = 'hidden'; }
+  function closeSlipModal(id, e) { if(e && e.target !== e.currentTarget) return; document.getElementById(id).classList.remove('open'); document.body.style.overflow = ''; }
 
   function setFilter(filterType, btn) {
     document.querySelectorAll('.flt-btn').forEach(b => b.classList.remove('on'));
@@ -367,10 +454,11 @@ body{font-family:'Inter',sans-serif;background:var(--cream);}
        slipList.style.display = 'none'; tuileList.style.display = 'none';
        eyText.innerHTML = '<span>#</span>ACTIVITY &middot; JUNE 2026';
     } else {
-       kpiBets.innerText = '1'; kpiOdds.innerText = '5.79'; kpiRoi.innerText = '+478%'; kpiWr.innerText = '100%';
-       kpiProfit.innerText = '+71.84€'; kpiRoc.innerText = '+7.18%';
+       /* Nouveaux calculs intégrant Parlay #001 & #002 */
+       kpiBets.innerText = '2'; kpiOdds.innerText = '4.16'; kpiRoi.innerText = '+397%'; kpiWr.innerText = '100%';
+       kpiProfit.innerText = '+79.45€'; kpiRoc.innerText = '+7.95%';
        kpiProfit.style.color = 'var(--nook)'; kpiRoc.style.color = 'var(--nook)';
-       ccEnd.innerText = '1071.84€ — Current';
+       ccEnd.innerText = '1079.45€ — Current';
        slipList.style.display = 'grid'; tuileList.style.display = 'grid';
        if(filterType === 'current_month') eyText.innerHTML = '<span>#</span>ACTIVITY &middot; JULY 2026';
        if(filterType === 'ytd') eyText.innerHTML = '<span>#</span>ACTIVITY &middot; YTD 2026';
