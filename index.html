@@ -51,6 +51,8 @@
             font-size: 2.5rem;
             color: var(--neon-pink);
             text-shadow: 0 0 10px var(--neon-pink), 0 0 20px var(--neon-pink);
+            display: flex;
+            align-items: center;
         }
 
         .nav-links { display: flex; align-items: center; gap: 20px; }
@@ -125,20 +127,12 @@
         }
 
         .reel-strip {
+            font-size: 4.5rem; 
             line-height: 90px;
             text-align: center;
             display: flex;
             flex-direction: column;
             transform: translateY(0);
-        }
-
-        .symbol-img {
-            width: 70px;
-            height: 70px;
-            object-fit: contain;
-            vertical-align: middle;
-            margin-top: 10px;
-            filter: drop-shadow(0 0 5px var(--neon-cyan));
         }
 
         .spin-animation {
@@ -278,7 +272,7 @@
 <body>
 
     <header>
-        <a href="/" class="logo-home">#</a>
+        <a href="/" class="logo-home"># <span style="font-size: 0.55em; vertical-align: middle; margin-left: 2px; text-shadow: none;">🎾</span></a>
         <nav class="nav-links">
             <a href="/results" class="nav-item">Results</a>
             <a href="https://whop.com/ton-lien-subscribe" class="btn-subscribe">Subscribe</a>
@@ -292,54 +286,24 @@
             <div class="grid-3x3">
                 <div class="reel-column">
                     <div class="reel-strip" id="reel1">
-                        <div><img src="tennis-ball.png" class="symbol-img"></div>
-                        <div><img src="tennis-racket.png" class="symbol-img"></div>
-                        <div><img src="charles-avatar.png" class="symbol-img"></div>
-                        <div><img src="tennis-ball.png" class="symbol-img"></div>
-                        <div><img src="tennis-racket.png" class="symbol-img"></div>
-                        <div><img src="charles-avatar.png" class="symbol-img"></div>
-                        <div><img src="tennis-ball.png" class="symbol-img"></div>
-                        <div><img src="tennis-racket.png" class="symbol-img"></div>
-                        <div><img src="charles-avatar.png" class="symbol-img"></div>
-                        
-                        <div><img src="charles-avatar.png" class="symbol-img"></div>
-                        <div><img src="tennis-ball.png" class="symbol-img"></div>
-                        <div><img src="tennis-racket.png" class="symbol-img"></div>
-                    </div>
+                        <div>🎾</div><div>🍔</div><div>🤖</div>
+                        <div>🎾</div><div>🍔</div><div>🤖</div>
+                        <div>🎾</div><div>🍔</div><div>🤖</div>
+                        <div>🍔</div> <div>🎾</div> <div>🤖</div> </div>
                 </div>
                 <div class="reel-column">
                     <div class="reel-strip" id="reel2">
-                        <div><img src="tennis-racket.png" class="symbol-img"></div>
-                        <div><img src="charles-avatar.png" class="symbol-img"></div>
-                        <div><img src="tennis-ball.png" class="symbol-img"></div>
-                        <div><img src="tennis-racket.png" class="symbol-img"></div>
-                        <div><img src="charles-avatar.png" class="symbol-img"></div>
-                        <div><img src="tennis-ball.png" class="symbol-img"></div>
-                        <div><img src="tennis-racket.png" class="symbol-img"></div>
-                        <div><img src="charles-avatar.png" class="symbol-img"></div>
-                        <div><img src="tennis-ball.png" class="symbol-img"></div>
-                        
-                        <div><img src="tennis-racket.png" class="symbol-img"></div>
-                        <div><img src="tennis-ball.png" class="symbol-img"></div>
-                        <div><img src="charles-avatar.png" class="symbol-img"></div>
-                    </div>
+                        <div>🍔</div><div>🤖</div><div>🎾</div>
+                        <div>🍔</div><div>🤖</div><div>🎾</div>
+                        <div>🍔</div><div>🤖</div><div>🎾</div>
+                        <div>🤖</div> <div>🎾</div> <div>🍔</div> </div>
                 </div>
                 <div class="reel-column">
                     <div class="reel-strip" id="reel3">
-                        <div><img src="charles-avatar.png" class="symbol-img"></div>
-                        <div><img src="tennis-ball.png" class="symbol-img"></div>
-                        <div><img src="tennis-racket.png" class="symbol-img"></div>
-                        <div><img src="charles-avatar.png" class="symbol-img"></div>
-                        <div><img src="tennis-ball.png" class="symbol-img"></div>
-                        <div><img src="tennis-racket.png" class="symbol-img"></div>
-                        <div><img src="charles-avatar.png" class="symbol-img"></div>
-                        <div><img src="tennis-ball.png" class="symbol-img"></div>
-                        <div><img src="tennis-racket.png" class="symbol-img"></div>
-                        
-                        <div><img src="charles-avatar.png" class="symbol-img"></div>
-                        <div><img src="tennis-ball.png" class="symbol-img"></div>
-                        <div><img src="tennis-racket.png" class="symbol-img"></div>
-                    </div>
+                        <div>🤖</div><div>🎾</div><div>🍔</div>
+                        <div>🤖</div><div>🎾</div><div>🍔</div>
+                        <div>🤖</div><div>🎾</div><div>🍔</div>
+                        <div>🍔</div> <div>🎾</div> <div>🤖</div> </div>
                 </div>
             </div>
 
@@ -420,11 +384,9 @@
                 const osc = audioCtx.createOscillator();
                 const gain = audioCtx.createGain();
                 
-                // Onde SINE pour le rendu cloche métallique/mécanique Las Vegas
                 osc.type = 'sine'; 
                 osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
                 
-                // Attack et Decay naturel
                 gain.gain.setValueAtTime(0.3, audioCtx.currentTime);
                 gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
                 
@@ -448,7 +410,6 @@
                         }
                     });
 
-                    // Son de rotation
                     let spinInterval = setInterval(() => {
                         playImpactSound(200, 0.1);
                     }, 100);
@@ -461,7 +422,6 @@
                             mainSlot.style.boxShadow = "0 0 50px rgba(0, 255, 255, 0.5)";
                         }
                         
-                        // Strike des balles de tennis : gros BOUM cloche
                         playImpactSound(600, 0.5);
                         setTimeout(() => playImpactSound(900, 0.8), 100);
 
@@ -483,7 +443,7 @@
                 setTimeout(() => {
                     if (finalOdds) finalOdds.style.display = 'block';
                     if (btnUnlock) btnUnlock.style.display = 'block';
-                    playImpactSound(1200, 1.0); // Son de victoire final
+                    playImpactSound(1200, 1.0); 
                 }, delay + 300);
             }
 
@@ -506,7 +466,6 @@
                 
                 stackWrapper.appendChild(block);
                 
-                // Son de "jeton" qui tombe pour chaque match ajouté
                 playImpactSound(400 + (index * 40), 0.2);
 
                 requestAnimationFrame(() => {
