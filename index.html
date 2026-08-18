@@ -1,470 +1,519 @@
 <!DOCTYPE html>
-<html lang="en-GB">
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>hashtagsportsbetting — Quotes & Parlays</title>
-<meta name="description" content="A real sports betting record driven by pre-match quotes. Process over P&L. No tips, no promises.">
-<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
-<style>
-*{box-sizing:border-box;margin:0;padding:0;}
-:root{--cream:#f0ede4;--nook:#4a7c5f;--dark:#1e1e1e;--coral:#ec5a3c;--ocre:#f5b32e;--blue:#3d6db5;--muted:#a09880;--border:#e0d9cc;--card:#3d3830;}
-body{font-family:'Inter',sans-serif;background:var(--cream);}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>#sportsbetting - TENNIS AI PARLAY BUILDER</title>
+    <link href="https://fonts.googleapis.com/css2?family=Righteous&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --neon-pink: #ff00ff;
+            --neon-cyan: #00ffff;
+            --brand-orange: #ff5733;
+            --dark-bg: #090014;
+            --grid-color: rgba(0, 255, 255, 0.05);
+        }
 
-/* NAVIGATION & LOGO */
-.nav{background:var(--dark);border-bottom:2px solid var(--nook);display:flex;align-items:center;justify-content:space-between;padding:16px 32px;position:sticky;top:0;z-index:200;}
-.nav-logo{font-family:'Spectral',serif;font-size:20px;color:#fff;letter-spacing:-.02em;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;}
-.nav-logo img{height:24px;margin-right:6px;}
-.nav-links{display:flex;gap:24px;}
-.nav-links a{font-size:13px;font-weight:700;color:rgba(255,255,255,.5);background:none;border:none;text-transform:uppercase;letter-spacing:.06em;cursor:pointer;font-family:'Inter',sans-serif;transition:color .15s;text-decoration:none;}
-.nav-links a:hover, .nav-links a.on{color:var(--nook);}
-.nav-right{display:flex;gap:10px;align-items:center;}
-.btn-sub{background:var(--coral);color:#fff;font-size:11px;font-weight:700;padding:8px 18px;border-radius:100px;border:none;cursor:pointer;text-transform:uppercase;letter-spacing:.06em;text-decoration:none;display:inline-block;}
-.nav-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px;background:none;border:none;}
-.nav-hamburger span{width:22px;height:2px;background:#fff;border-radius:2px;transition:all .2s;}
-.nav-hamburger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px);}
-.nav-hamburger.open span:nth-child(2){opacity:0;}
-.nav-hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px);}
-.nav-drawer{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:var(--dark);z-index:190;flex-direction:column;padding:80px 24px 32px;}
-.nav-drawer.open{display:flex;}
-.ndl{font-size:22px;font-weight:700;color:rgba(255,255,255,.5);padding:16px 0;border-bottom:1px solid #2a2a2a;cursor:pointer;background:none;border-top:none;border-left:none;border-right:none;text-align:left;font-family:'Inter',sans-serif;text-transform:uppercase;letter-spacing:.06em;width:100%;text-decoration:none;display:block;}
-.ndl:hover{color:var(--nook);}
-@media(max-width:767px){
-  .nav{padding:14px 16px;gap:10px;}
-  .nav-links{display:none;}
-  .btn-sub{font-size:9px;padding:6px 12px;white-space:normal;max-width:130px;text-align:center;line-height:1.2;}
-  .nav-hamburger{display:flex;}
-}
-@media(min-width:768px){.nav-drawer{display:none!important;}}
+        * { box-sizing: border-box; margin: 0; padding: 0; }
 
-/* DASHBOARD & FILTRES */
-.db{background:var(--dark);padding:24px 32px 20px;border-bottom:2px solid #252525;}
-@media(max-width:767px){.db{padding:20px 16px 18px;}}
-.filter-bar { display: flex; gap: 8px; margin-bottom: 20px; flex-wrap: wrap; }
-.flt-btn { background: #252525; border: 1px solid #333; color: var(--muted); padding: 7px 16px; border-radius: 100px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; cursor: pointer; font-family: 'Inter', sans-serif; transition: all 0.2s; }
-.flt-btn:hover { border-color: var(--nook); color: #fff; }
-.flt-btn.on { background: rgba(74,124,95,0.15); border-color: var(--nook); color: var(--nook); }
-.ey{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:14px;}
-.ey span{color:var(--nook);}
-.kpis{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-bottom:14px;}
-@media(max-width:767px){.kpis{grid-template-columns:1fr 1fr;}}
-.kpi{background:var(--card);border-radius:11px;padding:14px;}
-.kpi.hl{border-top:2px solid var(--nook);background:#252525;}
-.kn{font-family:'Spectral',serif;font-size:24px;font-weight:600;color:rgba(255,255,255,.45);line-height:1;margin-bottom:5px;}
-.kn.g{color:var(--nook);}
-.kl{font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:.09em;}
-.kd{font-size:8px;color:var(--nook);margin-top:3px;font-weight:600;}
-.cw{background:var(--card);border-radius:11px;padding:14px 18px 12px;}
-.cw-h{display:flex;justify-content:space-between;margin-bottom:9px;font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);}
+        body {
+            background-color: var(--dark-bg);
+            color: #fff;
+            font-family: 'Share Tech Mono', monospace;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background-image: 
+                linear-gradient(var(--grid-color) 1px, transparent 1px),
+                linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+            background-size: 40px 40px;
+            overflow-x: hidden;
+        }
 
-/* TITRES SECTIONS */
-.sh{padding:20px 32px 12px;display:flex;align-items:center;justify-content:space-between;}
-@media(max-width:767px){.sh{padding:16px 16px 10px;}}
-.st2{font-family:'Spectral',serif;font-size:21px;color:var(--dark);letter-spacing:-.02em;}
-.st2 span{color:var(--nook);}
-.ssub{font-size:12px;color:#7a7060;margin-left:8px;}
+        header {
+            width: 100%;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(9, 0, 20, 0.9);
+            border-bottom: 2px solid var(--neon-cyan);
+            backdrop-filter: blur(5px);
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.2);
+            position: relative;
+            z-index: 10;
+        }
 
-/* QUOTES HOME */
-.qt-home{background:var(--dark);padding:20px 0 16px;border-bottom:2px solid #252525;}
-.qt-home-hd{padding:0 32px 14px;display:flex;align-items:center;justify-content:space-between;}
-@media(max-width:767px){.qt-home-hd{padding:0 16px 10px;}}
-.qt-ttl{font-family:'Spectral',serif;font-size:21px;font-weight:700;color:#fff;letter-spacing:-.02em;}
-.qt-ttl span{color:var(--nook);}
-.qc-card{background:rgba(255,255,255,.035);border-radius:10px;border-left:4px solid var(--ocre);padding:16px 18px;margin:0 32px 12px;}
-@media(max-width:767px){.qc-card{margin:0 16px 10px;padding:14px 15px;}}
-.qc-card.fire{border-left-color:#7bb592;}
-.qc-q{font-family:'Spectral',serif;font-size:15.5px;font-style:italic;color:rgba(255,255,255,.94);line-height:1.58;margin-bottom:13px;}
-.qc-foot{display:flex;justify-content:space-between;align-items:flex-end;gap:14px;flex-wrap:wrap;}
-.qc-author{font-family:'Spectral',serif;font-size:14.5px;font-weight:700;color:#fff;margin-bottom:3px;}
-.qc-src{font-family:'JetBrains Mono',monospace;font-size:10.5px;color:rgba(180,172,152,.7);}
-.qc-tag{font-family:'JetBrains Mono',monospace;font-size:8.5px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;padding:5px 11px;border-radius:100px;background:rgba(123,181,146,.12);color:#7bb592;}
+        .logo-home {
+            text-decoration: none;
+            font-family: 'Righteous', cursive;
+            font-size: 2.5rem;
+            color: var(--neon-pink);
+            text-shadow: 0 0 10px var(--neon-pink), 0 0 20px var(--neon-pink);
+        }
 
-/* BETSLIPS (SUMMARY) */
-.slips-grid{padding:0 32px 8px;display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
-@media(max-width:767px){.slips-grid{grid-template-columns:1fr;padding:0 16px 8px;}}
-.slip{background:#fff;border:2px solid var(--dark);overflow:hidden;cursor:pointer;transition:transform .18s;}
-.slip:hover{transform:translateY(-2px);box-shadow: 0 4px 12px rgba(0,0,0,0.1);}
-.slip-h{background:var(--nook);padding:7px 11px;display:flex;justify-content:space-between;align-items:center;}
-.slip-id{font-family:'JetBrains Mono',monospace;font-size:8px;color:rgba(255,255,255,.7);}
-.bw{font-size:8px;font-weight:700;padding:2px 7px;border-radius:100px;background:rgba(255,255,255,.18);color:#fff;}
-.slip-b{padding:10px 11px 0;}
-.slip-tr{font-size:8px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--nook);margin-bottom:3px;}
-.slip-m{font-family:'Spectral',serif;font-size:15px;font-weight:700;color:var(--dark);margin-bottom:3px;}
-.slip-mk{font-size:10px;color:#7a7060;border-left:2px solid var(--nook);padding-left:5px;margin-bottom:8px;}
-.slip-ns{display:flex;justify-content:space-between;align-items:flex-end;padding-bottom:8px;}
-.slip-o{font-family:'Spectral',serif;font-size:26px;font-weight:700;color:var(--dark);line-height:1;}
-.slip-p{font-family:'Spectral',serif;font-size:18px;font-weight:700;color:var(--nook);text-align:right;}
-.slip-g{display:grid;grid-template-columns:1fr 1fr 1fr;background:#f8f5ef;border-top:1px solid var(--border);}
-.slip-c{padding:7px;text-align:center;border-right:1px solid var(--border);}
-.slip-cl{font-size:7px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:2px;}
-.slip-cv{font-family:'Spectral',serif;font-size:13px;font-weight:700;color:var(--dark);}
-.slip-cv.w{color:var(--nook);}
-.slip-f{display:flex;justify-content:space-between;align-items:center;padding:6px 11px;border-top:2px solid var(--dark);}
-.slip-st{font-size:9px;font-weight:700;text-transform:uppercase;color:var(--nook);}
-.slip-dt{font-family:'JetBrains Mono',monospace;font-size:8px;color:var(--muted);}
+        .nav-links { display: flex; align-items: center; gap: 20px; }
+        .nav-item { text-decoration: none; color: #fff; font-size: 1.2rem; text-transform: uppercase; transition: color 0.2s; }
+        .nav-item:hover { color: var(--neon-cyan); text-shadow: 0 0 8px var(--neon-cyan); }
 
-/* MODAL SYSTEM */
-.modal-overlay { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.85); z-index: 999; justify-content: center; align-items: center; padding: 20px; }
-.modal-overlay.open { display: flex; }
-.modal-content { background: #121110; border: 1.5px solid var(--ocre); border-radius: 12px; width: 100%; max-width: 500px; max-height: 90vh; overflow-y: auto; padding: 30px; position: relative; box-shadow: 0 20px 50px rgba(0,0,0,0.8); }
-.modal-close { position: absolute; top: 15px; right: 15px; background: rgba(255,255,255,0.1); border: none; color: #fff; width: 30px; height: 30px; border-radius: 50%; font-size: 16px; cursor: pointer; display: flex; justify-content: center; align-items: center; transition: background 0.2s; }
-.modal-close:hover { background: rgba(255,255,255,0.3); }
-.mdl-head { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(245, 179, 46, 0.25); padding-bottom: 16px; margin-bottom: 20px; }
-.mdl-logo { font-family: 'Spectral', serif; font-size: 20px; font-weight: 700; color: #f0ede4; display:flex; align-items:center; }
-.mdl-logo img { height: 22px; margin-right: 6px; }
-.mdl-odds-lbl { font-family: 'JetBrains Mono', monospace; font-size: 8px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); text-align: right; margin-bottom: 2px; }
-.mdl-odds-val { font-family: 'Spectral', serif; font-size: 20px; font-weight: 700; color: var(--ocre); text-align: right; }
-.mdl-leg { background: #1e1d1b; border-radius: 8px; padding: 12px 16px; margin-bottom: 10px; border-left: 3px solid var(--nook); display: flex; justify-content: space-between; align-items: center; }
-.mdl-match { font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 700; color: var(--muted); margin-bottom: 4px; text-transform: uppercase; }
-.mdl-pick { font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 700; color: #f0ede4; }
-.mdl-status { text-align: right; }
-.mdl-stat-odds { font-family: 'Spectral', serif; font-size: 14px; font-weight: 700; color: #fff; margin-bottom: 4px; }
-.mdl-stat-res { font-family: 'JetBrains Mono', monospace; font-size: 9px; font-weight: 700; color: var(--nook); text-transform: uppercase; background: rgba(74, 124, 95, 0.2); padding: 3px 8px; border-radius: 100px; }
-.mdl-stat-refund { font-family: 'JetBrains Mono', monospace; font-size: 9px; font-weight: 700; color: var(--muted); text-transform: uppercase; background: rgba(160, 152, 128, 0.2); padding: 3px 8px; border-radius: 100px; }
+        .btn-subscribe {
+            background-color: transparent;
+            color: var(--neon-cyan);
+            border: 2px solid var(--neon-cyan);
+            padding: 8px 15px;
+            border-radius: 4px;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-weight: bold;
+            box-shadow: inset 0 0 10px rgba(0, 255, 255, 0.2);
+            transition: all 0.2s;
+        }
+        .btn-subscribe:hover { background-color: var(--neon-cyan); color: #000; box-shadow: 0 0 20px var(--neon-cyan); }
 
-/* A QUOTE STORY (TUILE) */
-.zi-grid{padding:0 32px 20px;display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
-@media(max-width:767px){.zi-grid{grid-template-columns:1fr;padding:0 16px 16px;}}
-.zt{border-radius:10px;overflow:hidden;background:#fff;border:0.5px solid var(--border);display:flex;flex-direction:column;cursor:pointer;text-decoration:none;transition:transform .18s;}
-.zt:hover{transform:translateY(-3px);}
-.zt-top{padding:8px 12px 6px;display:flex;justify-content:space-between;border-bottom:0.5px solid var(--border);}
-.zt-dn{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:var(--dark);}
-.zt-sp{font-size:8px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);}
-.zt-surf-block{padding:12px;background:linear-gradient(160deg,#28241d 0%,#3d3830 100%);display:flex;flex-direction:column;gap:8px;}
-.zt-score-row{display:flex;align-items:center;justify-content:space-between;}
-.zt-pl{font-size:13px;font-weight:600;color:#fff;}
-.zt-body{padding:10px 12px;flex:1;border-top:0.5px solid var(--border);}
-.zt-hl{font-family:'Spectral',serif;font-size:13px;font-weight:700;color:var(--dark);line-height:1.25;margin-bottom:4px;}
-.zt-ft{padding:8px 12px;border-top:0.5px solid var(--border);font-size:9px;font-weight:700;color:var(--nook);display:flex;justify-content:space-between;}
+        main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px;
+            position: relative;
+        }
 
-/* FOOTER */
-.foot{background:var(--dark);border-top:2px solid var(--nook);padding:18px 32px;}
-@media(max-width:767px){.foot{padding:16px;}}
-.foot-m{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;flex-wrap:wrap;gap:8px;}
-.foot-logo{font-family:'Spectral',serif;font-size:15px;color:#fff;text-decoration:none;display:inline-flex;align-items:center;}
-.foot-logo img{height:16px;margin-right:5px;}
-.foot-links{display:flex;gap:14px;font-size:10px;flex-wrap:wrap;}
-.foot-links a{color:#888;text-decoration:none;cursor:pointer;transition:color .15s;text-transform:uppercase;letter-spacing:0.05em;}
-.foot-links a:hover{color:var(--nook);}
-.foot-by{font-size:10px;color:#888;font-style:italic;}
-.foot-d{font-size:9px;color:#555;line-height:1.6;border-top:1px solid #2a2a2a;padding-top:10px;margin-top:10px;}
-</style>
+        .slot-title {
+            font-family: 'Righteous', cursive;
+            font-size: 2.2rem;
+            color: #fff;
+            text-transform: uppercase;
+            text-shadow: 2px 2px 0px var(--neon-pink), 4px 4px 0px var(--neon-cyan);
+            margin-bottom: 30px;
+            letter-spacing: 2px;
+            text-align: center;
+        }
+
+        .slot-machine-container {
+            background: #110022;
+            padding: 20px;
+            border: 3px solid var(--neon-pink);
+            border-radius: 10px;
+            box-shadow: 0 0 30px rgba(255, 0, 255, 0.3), inset 0 0 20px rgba(0, 255, 255, 0.1);
+            width: 100%;
+            max-width: 450px;
+            position: relative;
+            z-index: 5;
+            transition: all 0.3s ease;
+        }
+
+        .grid-3x3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            background: #000;
+            padding: 10px;
+            border-radius: 5px;
+            border: 2px solid #333;
+        }
+
+        .reel-column {
+            height: 270px;
+            overflow: hidden;
+            position: relative;
+            background: #050010;
+            border: 1px solid var(--neon-cyan);
+            border-radius: 4px;
+            box-shadow: inset 0 0 15px rgba(0,0,0,1);
+        }
+
+        .reel-strip {
+            line-height: 90px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            transform: translateY(0);
+        }
+
+        .symbol-img {
+            width: 70px;
+            height: 70px;
+            object-fit: contain;
+            vertical-align: middle;
+            margin-top: 10px;
+            filter: drop-shadow(0 0 5px var(--neon-cyan));
+        }
+
+        .spin-animation {
+            transition: transform 2.5s cubic-bezier(0.1, 0.9, 0.2, 1);
+            transform: translateY(-810px) !important; 
+        }
+
+        .btn-generate {
+            margin-top: 30px;
+            padding: 15px 40px;
+            font-family: 'Righteous', cursive;
+            font-size: 1.8rem;
+            color: #000;
+            background-color: var(--neon-cyan);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 0 0 20px var(--neon-cyan);
+            transition: transform 0.1s;
+        }
+        .btn-generate:active { transform: scale(0.95); }
+
+        #stack-wrapper {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            width: 100%;
+        }
+
+        .selection-block {
+            width: 100%;
+            background: rgba(20, 5, 35, 0.95);
+            border: 1px solid var(--neon-pink);
+            border-left: 4px solid var(--neon-cyan);
+            padding: 10px 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            opacity: 0;
+            transform: scale(1.1); 
+            transition: all 0.15s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: inset 0 0 10px rgba(0, 255, 255, 0.1);
+        }
+
+        .selection-block.show {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .blurred-data {
+            background: repeating-linear-gradient(45deg, #000, #000 5px, #333 5px, #333 10px);
+            color: transparent;
+            padding: 2px 10px;
+            font-family: monospace;
+        }
+
+        #final-odds {
+            font-family: 'Righteous', cursive;
+            font-size: 2.8rem;
+            color: #fff;
+            text-shadow: 0 0 20px var(--neon-pink);
+            margin: 20px 0 10px 0;
+            text-align: center;
+            display: none;
+        }
+
+        .btn-unlock {
+            background-color: var(--neon-pink);
+            color: #fff;
+            padding: 15px 40px;
+            font-family: 'Righteous', cursive;
+            font-size: 1.5rem;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            box-shadow: 0 0 20px var(--neon-pink);
+            display: none;
+            text-align: center;
+            width: 100%;
+            animation: pulse 1.5s infinite;
+        }
+
+        footer {
+            width: 100%;
+            background: #000;
+            padding: 20px;
+            text-align: center;
+            border-top: 1px solid #222;
+            font-size: 0.85rem;
+            color: #888;
+            position: relative;
+            z-index: 10;
+        }
+
+        .footer-links a { color: #aaa; text-decoration: none; margin: 0 10px; cursor: pointer; }
+        .footer-links a:hover { color: var(--neon-cyan); }
+
+        .warning-text {
+            color: #ff4444;
+            font-weight: bold;
+            margin-top: 15px;
+            font-size: 0.75rem;
+            line-height: 1.4;
+        }
+
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(3px);
+            z-index: 100;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: #0a0a0a;
+            border: 2px solid var(--neon-cyan);
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+            padding: 30px;
+            width: 90%;
+            max-width: 600px;
+            max-height: 80vh;
+            overflow-y: auto;
+            color: #0f0;
+            position: relative;
+        }
+
+        .close-modal { position: absolute; top: 10px; right: 15px; color: #f00; font-size: 1.5rem; cursor: pointer; font-weight: bold; }
+        .modal-title { color: var(--neon-cyan); margin-bottom: 20px; font-family: 'Righteous', cursive; text-transform: uppercase; }
+
+        @keyframes pulse { 0% { box-shadow: 0 0 10px var(--neon-pink); } 50% { box-shadow: 0 0 30px var(--neon-pink); } 100% { box-shadow: 0 0 10px var(--neon-pink); } }
+    </style>
 </head>
 <body>
 
-<nav class="nav">
-  <a href="index.html" class="nav-logo"><img src="logo.svg" alt="logo">sportsbetting</a>
-  <div class="nav-links">
-    <a href="quotes.html">#QUOTES</a>
-    <a href="betslips.html">#BETSLIPS</a>
-    <a href="quote-story.html">#A QUOTE STORY</a>
-  </div>
-  <div class="nav-right">
-    <a href="https://whop.com/" class="btn-sub">Prematch alerts? Subscribe on telegram &rarr;</a>
-  </div>
-  <button class="nav-hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
-</nav>
+    <header>
+        <a href="/" class="logo-home">#</a>
+        <nav class="nav-links">
+            <a href="/results" class="nav-item">Results</a>
+            <a href="https://whop.com/ton-lien-subscribe" class="btn-subscribe">Subscribe</a>
+        </nav>
+    </header>
 
-<div class="nav-drawer" id="navDrawer">
-  <a class="ndl" href="index.html">Home</a>
-  <a class="ndl" href="quotes.html">#QUOTES</a>
-  <a class="ndl" href="betslips.html">#BETSLIPS</a>
-  <a class="ndl" href="quote-story.html">#A QUOTE STORY</a>
-  <div style="margin-top:24px;display:flex;flex-direction:column;gap:10px;">
-    <a href="https://whop.com/" class="btn-sub" style="text-align:center;">Prematch alerts? Subscribe on telegram &rarr;</a>
-  </div>
-</div>
+    <main>
+        <div class="slot-title">TENNIS AI PARLAY BUILDER</div>
+        
+        <div class="slot-machine-container" id="main-slot">
+            <div class="grid-3x3">
+                <div class="reel-column">
+                    <div class="reel-strip" id="reel1">
+                        <div><img src="tennis-ball.png" class="symbol-img"></div>
+                        <div><img src="tennis-racket.png" class="symbol-img"></div>
+                        <div><img src="charles-avatar.png" class="symbol-img"></div>
+                        <div><img src="tennis-ball.png" class="symbol-img"></div>
+                        <div><img src="tennis-racket.png" class="symbol-img"></div>
+                        <div><img src="charles-avatar.png" class="symbol-img"></div>
+                        <div><img src="tennis-ball.png" class="symbol-img"></div>
+                        <div><img src="tennis-racket.png" class="symbol-img"></div>
+                        <div><img src="charles-avatar.png" class="symbol-img"></div>
+                        
+                        <div><img src="charles-avatar.png" class="symbol-img"></div>
+                        <div><img src="tennis-ball.png" class="symbol-img"></div>
+                        <div><img src="tennis-racket.png" class="symbol-img"></div>
+                    </div>
+                </div>
+                <div class="reel-column">
+                    <div class="reel-strip" id="reel2">
+                        <div><img src="tennis-racket.png" class="symbol-img"></div>
+                        <div><img src="charles-avatar.png" class="symbol-img"></div>
+                        <div><img src="tennis-ball.png" class="symbol-img"></div>
+                        <div><img src="tennis-racket.png" class="symbol-img"></div>
+                        <div><img src="charles-avatar.png" class="symbol-img"></div>
+                        <div><img src="tennis-ball.png" class="symbol-img"></div>
+                        <div><img src="tennis-racket.png" class="symbol-img"></div>
+                        <div><img src="charles-avatar.png" class="symbol-img"></div>
+                        <div><img src="tennis-ball.png" class="symbol-img"></div>
+                        
+                        <div><img src="tennis-racket.png" class="symbol-img"></div>
+                        <div><img src="tennis-ball.png" class="symbol-img"></div>
+                        <div><img src="charles-avatar.png" class="symbol-img"></div>
+                    </div>
+                </div>
+                <div class="reel-column">
+                    <div class="reel-strip" id="reel3">
+                        <div><img src="charles-avatar.png" class="symbol-img"></div>
+                        <div><img src="tennis-ball.png" class="symbol-img"></div>
+                        <div><img src="tennis-racket.png" class="symbol-img"></div>
+                        <div><img src="charles-avatar.png" class="symbol-img"></div>
+                        <div><img src="tennis-ball.png" class="symbol-img"></div>
+                        <div><img src="tennis-racket.png" class="symbol-img"></div>
+                        <div><img src="charles-avatar.png" class="symbol-img"></div>
+                        <div><img src="tennis-ball.png" class="symbol-img"></div>
+                        <div><img src="tennis-racket.png" class="symbol-img"></div>
+                        
+                        <div><img src="charles-avatar.png" class="symbol-img"></div>
+                        <div><img src="tennis-ball.png" class="symbol-img"></div>
+                        <div><img src="tennis-racket.png" class="symbol-img"></div>
+                    </div>
+                </div>
+            </div>
 
-<section class="db">
-  <div class="filter-bar">
-    <button class="flt-btn on" onclick="setFilter('all_time', this)">All Time</button>
-    <button class="flt-btn" onclick="setFilter('current_month', this)">Current Month</button>
-    <button class="flt-btn" onclick="setFilter('last_month', this)">Last Month</button>
-    <button class="flt-btn" onclick="setFilter('ytd', this)">YTD</button>
-  </div>
+            <div id="stack-wrapper"></div>
+            <div id="final-odds">@ 7.395 ODDS</div>
+            <a href="https://whop.com/ton-lien-unlock" id="btn-unlock" class="btn-unlock">🔓 UNLOCK - 9,99€</a>
+        </div>
 
-  <div class="ey" id="ey-text"><span>#</span>ACTIVITY &middot; ALL TIME</div>
-  <div class="kpis">
-    <div class="kpi"><div class="kn" id="kpi-bets">2</div><div class="kl">Bets</div></div>
-    <div class="kpi"><div class="kn" id="kpi-odds">4.16</div><div class="kl">Avg odds</div></div>
-    <div class="kpi"><div class="kn" id="kpi-roi">+397%</div><div class="kl">ROI</div></div>
-    <div class="kpi"><div class="kn" id="kpi-wr">100%</div><div class="kl">Win rate</div></div>
-    <div class="kpi hl"><div class="kn g" id="kpi-profit">+79.45&euro;</div><div class="kl">Net profit</div><div class="kd">&uarr; Since Launch</div></div>
-    <div class="kpi hl"><div class="kn g" id="kpi-roc">+7.95%</div><div class="kl">ROC</div><div class="kd">79.45 / 1000&euro;</div></div>
-  </div>
-  <div class="cw">
-    <div class="cw-h"><span>Capital curve &middot; Season 1</span><span style="color:var(--nook);">&#x25CF; Capital &euro;</span></div>
-    <svg width="100%" height="55" viewBox="0 0 620 55" preserveAspectRatio="none">
-      <defs><linearGradient id="cg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#4a7c5f" stop-opacity=".28"/><stop offset="100%" stop-color="#4a7c5f" stop-opacity="0"/></linearGradient></defs>
-      <polygon fill="url(#cg)" points="0,55 0,45 620,15 620,55"/>
-      <polyline fill="none" stroke="#4a7c5f" stroke-width="2.5" stroke-linecap="round" points="0,45 620,15"/>
-      <circle cx="620" cy="15" r="4" fill="#4a7c5f"/>
-    </svg>
-    <div style="display:flex;justify-content:space-between;margin-top:4px;font-size:8px;color:#666;">
-      <span>1000&euro; &mdash; Start</span><span style="color:var(--nook);font-weight:700;" id="cc-end">1079.45&euro; &mdash; Current</span>
-    </div>
-  </div>
-</section>
+        <button id="btn-generate" class="btn-generate">GENERATE PARLAY</button>
+    </main>
 
-<div class="qt-home">
-<div class="qt-home-hd">
-  <div style="display:flex;align-items:baseline;gap:8px;"><div class="qt-ttl"><span>#</span>QUOTES</div><div class="ssub" style="color:rgba(160,152,128,.6);">Things said out loud that happened to matter</div></div>
-  <a href="quotes.html" style="font-size:11px;font-weight:700;color:var(--nook);text-decoration:underline;">See all &rarr;</a>
-</div>
-  <div class="qc-card fire">
-    <div class="qc-q">&ldquo;On American hard courts, my goal is to impose a heavy ball on serve from the very first strike to leave zero reaction time.&rdquo;</div>
-    <div class="qc-foot">
-      <div class="qc-left"><div class="qc-author">Jakub Menšík</div><div class="qc-src">Pre-match press <span class="sep">&middot;</span> 28 Jul 2026</div></div>
-      <div class="qc-tag">Menšík vs Svajda</div>
-    </div>
-  </div>
-  <div class="qc-card fire">
-    <div class="qc-q">&ldquo;My court coverage and absolute experience on European clay should allow me to impose a suffocating rhythm.&rdquo;</div>
-    <div class="qc-foot">
-      <div class="qc-left"><div class="qc-author">Roberto Carballés Baena</div><div class="qc-src">Pre-match press <span class="sep">&middot;</span> 28 Jul 2026</div></div>
-      <div class="qc-tag">Carballés vs Houkes</div>
-    </div>
-  </div>
-</div>
+    <footer>
+        <div class="footer-links">
+            <a onclick="openModal('modal-tos')">Terms of Service</a> | 
+            <a onclick="openModal('modal-privacy')">Privacy Policy</a> | 
+            <a onclick="openModal('modal-legal')">Legal Notice</a>
+        </div>
+        <div style="margin-top: 10px;">&copy; 2026 hashtagsportsbetting.com</div>
+        <div class="warning-text">
+            🔞 WARNING: Sports betting carries significant financial risk. We do not provide financial advice. Past performance is no guarantee of future results. Only wager what you can afford to lose. We are not a bookmaker and do not accept bets. Please gamble responsibly.
+        </div>
+    </footer>
 
-<div class="sh">
-  <div style="display:flex;align-items:baseline;gap:8px;"><div class="st2"><span>#</span>BETSLIPS</div><div class="ssub">Click slip to view details</div></div>
-  <a href="betslips.html" style="font-size:11px;font-weight:700;color:var(--nook);text-decoration:underline;">See all &rarr;</a>
-</div>
-<div class="slips-grid" id="slip-list">
-  
-  <!-- NOUVEAU PARLAY #002 -->
-  <div class="slip" onclick="openSlipModal('slipModal2')">
-    <div class="slip-h"><div class="slip-id">#002</div><div class="bw">Won &#x2713;</div></div>
-    <div class="slip-b">
-      <div class="slip-tr">Accumulator · 7 legs</div>
-      <div class="slip-m">The Tennis Grind</div>
-      <div class="slip-mk">Challenger & WTA</div>
-      <div style="height:1.5px;background:var(--dark);margin-bottom:8px;"></div>
-      <div class="slip-ns">
-        <div><div style="font-size:7px;text-transform:uppercase;color:var(--muted);margin-bottom:2px;">Odds</div><div class="slip-o">2.522</div></div>
-        <div><div style="font-size:7px;text-transform:uppercase;color:var(--muted);margin-bottom:2px;text-align:right;">Profit</div><div class="slip-p">+7.61&euro;</div></div>
-      </div>
+    <div class="modal-overlay" id="modal-legal">
+        <div class="modal-content">
+            <div class="close-modal" onclick="closeModal('modal-legal')">X</div>
+            <h2 class="modal-title">Legal Notice (Mentions Légales)</h2>
+            <p><strong>Publisher:</strong><br>Charles Edouard Chambers Farah<br>Registered Auto-entreprise<br>SIRET: 790 059 190<br>Address: 18 RUE SAINT-MARC, SARL GETCCF, 75002 PARIS, FRANCE<br>Email: contact@hashtagsportsbetting.com</p>
+            <br>
+            <p><strong>Hosting Provider:</strong><br>GitHub Pages (GitHub, Inc.)<br>88 Colin P Kelly Jr St, San Francisco, CA 94107, USA</p>
+            <br>
+            <p><strong>Nature of Business:</strong><br>Consulting and information services related to sports data and probability modeling. We are not a licensed gambling operator or bookmaker.</p>
+        </div>
     </div>
-    <div class="slip-g">
-      <div class="slip-c"><div class="slip-cl">Stake</div><div class="slip-cv">5&euro;</div></div>
-      <div class="slip-c"><div class="slip-cl">Return</div><div class="slip-cv">12.61&euro;</div></div>
-      <div class="slip-c"><div class="slip-cl">Status</div><div class="slip-cv w">Won</div></div>
-    </div>
-    <div class="slip-f"><div class="slip-st">&#x2713; Paid out</div><div class="slip-dt">29.07.2026</div></div>
-  </div>
-
-  <!-- PARLAY #001 -->
-  <div class="slip" onclick="openSlipModal('slipModal1')">
-    <div class="slip-h"><div class="slip-id">#001</div><div class="bw">Won &#x2713;</div></div>
-    <div class="slip-b">
-      <div class="slip-tr">Accumulator · 10 legs</div>
-      <div class="slip-m">The Bare Minimum</div>
-      <div class="slip-mk">Global Hard Courts & Clay</div>
-      <div style="height:1.5px;background:var(--dark);margin-bottom:8px;"></div>
-      <div class="slip-ns">
-        <div><div style="font-size:7px;text-transform:uppercase;color:var(--muted);margin-bottom:2px;">Odds</div><div class="slip-o">5.789</div></div>
-        <div><div style="font-size:7px;text-transform:uppercase;color:var(--muted);margin-bottom:2px;text-align:right;">Profit</div><div class="slip-p">+71.84&euro;</div></div>
-      </div>
-    </div>
-    <div class="slip-g">
-      <div class="slip-c"><div class="slip-cl">Stake</div><div class="slip-cv">15&euro;</div></div>
-      <div class="slip-c"><div class="slip-cl">Return</div><div class="slip-cv">86.84&euro;</div></div>
-      <div class="slip-c"><div class="slip-cl">Status</div><div class="slip-cv w">Won</div></div>
-    </div>
-    <div class="slip-f"><div class="slip-st">&#x2713; Paid out</div><div class="slip-dt">28.07.2026</div></div>
-  </div>
-
-</div>
-
-<div class="sh">
-  <div style="display:flex;align-items:baseline;gap:8px;"><div class="st2"><span>#</span>A QUOTE STORY</div><div class="ssub">Every slip, justified by their own words</div></div>
-  <a href="quote-story.html" style="font-size:11px;font-weight:700;color:var(--nook);text-decoration:underline;">See all &rarr;</a>
-</div>
-<div class="zi-grid" id="tuile-list">
-
-  <!-- NOUVELLE TUILE #002 -->
-  <a href="parlay-002-tennis-grind.html" class="zt">
-    <div class="zt-top"><div class="zt-dn">Jul 29</div><div class="zt-sp">Acca · 7 legs</div></div>
-    <div class="zt-surf-block">
-      <div class="zt-score-row"><div class="zt-pl">Seven Matches</div></div>
-      <div style="height:0.5px;background:rgba(255,255,255,.15);margin:3px 0;"></div>
-      <div class="zt-score-row"><div class="zt-pl" style="color:var(--nook);">+1.5 Sets Edge</div></div>
-    </div>
-    <div class="zt-body">
-      <div class="zt-hl">Parlay #002: The Tennis Grind</div>
-      <div style="font-size:11px;color:var(--muted);">A masterclass in variance reduction. How the +1.5 sets handicap acted as the ultimate structural safeguard.</div>
-    </div>
-    <div class="zt-ft"><span>+7.61&euro;</span><span>Read &rarr;</span></div>
-  </a>
-
-  <!-- ANCIENNE TUILE #001 -->
-  <a href="parlay-001-the-bare-minimum.html" class="zt">
-    <div class="zt-top"><div class="zt-dn">Jul 28</div><div class="zt-sp">Acca · 10 legs</div></div>
-    <div class="zt-surf-block">
-      <div class="zt-score-row"><div class="zt-pl">Ten Players</div></div>
-      <div style="height:0.5px;background:rgba(255,255,255,.15);margin:3px 0;"></div>
-      <div class="zt-score-row"><div class="zt-pl" style="color:var(--nook);">0 Sweeps</div></div>
-    </div>
-    <div class="zt-body">
-      <div class="zt-hl">Ten men. The absolute bare minimum.</div>
-      <div style="font-size:11px;color:var(--muted);">We asked ten players to do one simple thing: just don't get swept. We let them do the talking.</div>
-    </div>
-    <div class="zt-ft"><span>+71.84&euro;</span><span>Read &rarr;</span></div>
-  </a>
-
-</div>
-
-<footer class="foot">
-  <div class="foot-m">
-    <a href="index.html" class="foot-logo"><img src="logo.svg" alt="logo">sportsbetting</a>
-    <div class="foot-links">
-      <a href="quotes.html">#quotes</a>
-      <a href="betslips.html">#betslips</a>
-      <a href="quote-story.html">#aquotestory</a>
-    </div>
-    <div class="foot-by">A Charles Chambers Farah strategy</div>
-  </div>
-  <p class="foot-d">hashtagsportsbetting.com is an editorial blog documenting a personal sports betting journey. Content is for informational and entertainment purposes only. We do not provide financial or betting advice. 18+</p>
-</footer>
-
-<!-- MODAL PARLAY #001 -->
-<div class="modal-overlay" id="slipModal1" onclick="closeSlipModal('slipModal1', event)">
-  <div class="modal-content" onclick="event.stopPropagation()">
-    <button class="modal-close" onclick="closeSlipModal('slipModal1')">×</button>
-    <div class="mdl-head">
-      <div class="mdl-logo"><img src="logo.svg" alt="logo">sportsbetting</div>
-      <div>
-        <div class="mdl-odds-lbl">Total Odds</div>
-        <div class="mdl-odds-val">5.789</div>
-      </div>
-    </div>
-    <div class="mdl-leg">
-      <div><div class="mdl-match">Menšík vs Svajda</div><div class="mdl-pick">Menšík +1.5 Sets</div></div>
-      <div class="mdl-status"><div class="mdl-stat-odds">1.08</div><div class="mdl-stat-res">✓ Won</div></div>
-    </div>
-    <div class="mdl-leg">
-      <div><div class="mdl-match">Shelton vs Damm Jr</div><div class="mdl-pick">Shelton +1.5 Sets</div></div>
-      <div class="mdl-status"><div class="mdl-stat-odds">1.13</div><div class="mdl-stat-res">✓ Won</div></div>
-    </div>
-    <div class="mdl-leg">
-      <div><div class="mdl-match">Pellegrino vs Caniato</div><div class="mdl-pick">Pellegrino +1.5 Sets</div></div>
-      <div class="mdl-status"><div class="mdl-stat-odds">1.12</div><div class="mdl-stat-res">✓ Won</div></div>
-    </div>
-    <div class="mdl-leg">
-      <div><div class="mdl-match">Alexandrova vs Lyutova</div><div class="mdl-pick">Alexandrova +1.5 Sets</div></div>
-      <div class="mdl-status"><div class="mdl-stat-odds">1.18</div><div class="mdl-stat-res">✓ Won</div></div>
-    </div>
-    <div class="mdl-leg">
-      <div><div class="mdl-match">Wang vs Pareja</div><div class="mdl-pick">Wang +1.5 Sets</div></div>
-      <div class="mdl-status"><div class="mdl-stat-odds">1.25</div><div class="mdl-stat-res">✓ Won</div></div>
-    </div>
-    <div class="mdl-leg">
-      <div><div class="mdl-match">Tikhonova vs Pohle</div><div class="mdl-pick">Tikhonova +1.5 Sets</div></div>
-      <div class="mdl-status"><div class="mdl-stat-odds">1.15</div><div class="mdl-stat-res">✓ Won</div></div>
-    </div>
-    <div class="mdl-leg">
-      <div><div class="mdl-match">Park vs Giza</div><div class="mdl-pick">Park +1.5 Sets</div></div>
-      <div class="mdl-status"><div class="mdl-stat-odds">1.17</div><div class="mdl-stat-res">✓ Won</div></div>
-    </div>
-    <div class="mdl-leg">
-      <div><div class="mdl-match">Patiño-Samudio vs Vasami</div><div class="mdl-pick">Patiño-Samudio +1.5</div></div>
-      <div class="mdl-status"><div class="mdl-stat-odds">1.48</div><div class="mdl-stat-res">✓ Won</div></div>
-    </div>
-    <div class="mdl-leg">
-      <div><div class="mdl-match">Friberg vs Luemkemann</div><div class="mdl-pick">Friberg +1.5 Sets</div></div>
-      <div class="mdl-status"><div class="mdl-stat-odds">1.10</div><div class="mdl-stat-res">✓ Won</div></div>
-    </div>
-    <div class="mdl-leg">
-      <div><div class="mdl-match">Carballés vs Houkes</div><div class="mdl-pick">Carballés Baena +1.5</div></div>
-      <div class="mdl-status"><div class="mdl-stat-odds">1.27</div><div class="mdl-stat-res">✓ Won</div></div>
-    </div>
-  </div>
-</div>
-
-<!-- MODAL PARLAY #002 -->
-<div class="modal-overlay" id="slipModal2" onclick="closeSlipModal('slipModal2', event)">
-  <div class="modal-content" onclick="event.stopPropagation()">
-    <button class="modal-close" onclick="closeSlipModal('slipModal2')">×</button>
-    <div class="mdl-head">
-      <div class="mdl-logo"><img src="logo.svg" alt="logo">sportsbetting</div>
-      <div>
-        <div class="mdl-odds-lbl">Total Odds</div>
-        <div class="mdl-odds-val">2.522</div>
-      </div>
-    </div>
-    <div class="mdl-leg">
-      <div><div class="mdl-match">Wallin vs Carballés Baena</div><div class="mdl-pick">Carballés Baena +1.5 Sets</div></div>
-      <div class="mdl-status"><div class="mdl-stat-odds">1.164</div><div class="mdl-stat-res">✓ Won</div></div>
-    </div>
-    <div class="mdl-leg">
-      <div><div class="mdl-match">Ishii vs Gandolfi</div><div class="mdl-pick">Ishii +1.5 Sets</div></div>
-      <div class="mdl-status"><div class="mdl-stat-odds">1.21</div><div class="mdl-stat-res">✓ Won</div></div>
-    </div>
-    <div class="mdl-leg">
-      <div><div class="mdl-match">Brunclik vs Nagal</div><div class="mdl-pick">Nagal +1.5 Sets</div></div>
-      <div class="mdl-status"><div class="mdl-stat-odds">1.44</div><div class="mdl-stat-res">✓ Won</div></div>
-    </div>
-    <div class="mdl-leg">
-      <div><div class="mdl-match">Prado Angelo vs Dellien</div><div class="mdl-pick">Dellien +1.5 Sets</div></div>
-      <div class="mdl-status"><div class="mdl-stat-odds">1.00</div><div class="mdl-stat-refund">Refund</div></div>
-    </div>
-    <div class="mdl-leg">
-      <div><div class="mdl-match">Sorribes Tormo vs Hennemann</div><div class="mdl-pick">Sorribes Tormo +1.5</div></div>
-      <div class="mdl-status"><div class="mdl-stat-odds">1.089</div><div class="mdl-stat-res">✓ Won</div></div>
-    </div>
-    <div class="mdl-leg">
-      <div><div class="mdl-match">Vujovic vs Cortez Llorca</div><div class="mdl-pick">Cortez Llorca +1.5</div></div>
-      <div class="mdl-status"><div class="mdl-stat-odds">1.00</div><div class="mdl-stat-refund">Refund</div></div>
-    </div>
-    <div class="mdl-leg">
-      <div><div class="mdl-match">Uchijima vs Kinoshita</div><div class="mdl-pick">Uchijima +1.5 Sets</div></div>
-      <div class="mdl-status"><div class="mdl-stat-odds">1.142</div><div class="mdl-stat-res">✓ Won</div></div>
-    </div>
-  </div>
-</div>
-
-<script>
-  function toggleMenu(){document.getElementById("navDrawer").classList.toggle("open");document.getElementById("hamburger").classList.toggle("open");}
-  
-  /* Scripts des modales adaptés pour supporter des IDs multiples */
-  function openSlipModal(id) { document.getElementById(id).classList.add('open'); document.body.style.overflow = 'hidden'; }
-  function closeSlipModal(id, e) { if(e && e.target !== e.currentTarget) return; document.getElementById(id).classList.remove('open'); document.body.style.overflow = ''; }
-
-  function setFilter(filterType, btn) {
-    document.querySelectorAll('.flt-btn').forEach(b => b.classList.remove('on'));
-    btn.classList.add('on');
-
-    const kpiBets = document.getElementById('kpi-bets');
-    const kpiOdds = document.getElementById('kpi-odds');
-    const kpiRoi = document.getElementById('kpi-roi');
-    const kpiWr = document.getElementById('kpi-wr');
-    const kpiProfit = document.getElementById('kpi-profit');
-    const kpiRoc = document.getElementById('kpi-roc');
-    const ccEnd = document.getElementById('cc-end');
-    const slipList = document.getElementById('slip-list');
-    const tuileList = document.getElementById('tuile-list');
-    const eyText = document.getElementById('ey-text');
     
-    if(filterType === 'last_month') {
-       kpiBets.innerText = '0'; kpiOdds.innerText = '-'; kpiRoi.innerText = '-'; kpiWr.innerText = '-';
-       kpiProfit.innerText = '0.00€'; kpiRoc.innerText = '0.00%';
-       kpiProfit.style.color = 'rgba(255,255,255,.45)'; kpiRoc.style.color = 'rgba(255,255,255,.45)';
-       ccEnd.innerText = '1000.00€ — Current';
-       slipList.style.display = 'none'; tuileList.style.display = 'none';
-       eyText.innerHTML = '<span>#</span>ACTIVITY &middot; JUNE 2026';
-    } else {
-       /* Nouveaux calculs intégrant Parlay #001 & #002 */
-       kpiBets.innerText = '2'; kpiOdds.innerText = '4.16'; kpiRoi.innerText = '+397%'; kpiWr.innerText = '100%';
-       kpiProfit.innerText = '+79.45€'; kpiRoc.innerText = '+7.95%';
-       kpiProfit.style.color = 'var(--nook)'; kpiRoc.style.color = 'var(--nook)';
-       ccEnd.innerText = '1079.45€ — Current';
-       slipList.style.display = 'grid'; tuileList.style.display = 'grid';
-       if(filterType === 'current_month') eyText.innerHTML = '<span>#</span>ACTIVITY &middot; JULY 2026';
-       if(filterType === 'ytd') eyText.innerHTML = '<span>#</span>ACTIVITY &middot; YTD 2026';
-       if(filterType === 'all_time') eyText.innerHTML = '<span>#</span>ACTIVITY &middot; ALL TIME';
-    }
-  }
-</script>
+    <div class="modal-overlay" id="modal-tos">
+        <div class="modal-content">
+            <div class="close-modal" onclick="closeModal('modal-tos')">X</div>
+            <h2 class="modal-title">Terms of Service</h2>
+            <p>[Insert Terms of Service content here]</p>
+        </div>
+    </div>
+    
+    <div class="modal-overlay" id="modal-privacy">
+        <div class="modal-content">
+            <div class="close-modal" onclick="closeModal('modal-privacy')">X</div>
+            <h2 class="modal-title">Privacy Policy</h2>
+            <p>[Insert Privacy Policy content here]</p>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            window.openModal = function(id) {
+                const modal = document.getElementById(id);
+                if (modal) modal.style.display = 'flex';
+            }
+
+            window.closeModal = function(id) {
+                const modal = document.getElementById(id);
+                if (modal) modal.style.display = 'none';
+            }
+
+            const btnGenerate = document.getElementById('btn-generate');
+            const mainSlot = document.getElementById('main-slot');
+            const reels = [document.getElementById('reel1'), document.getElementById('reel2'), document.getElementById('reel3')];
+            const stackWrapper = document.getElementById('stack-wrapper');
+            const finalOdds = document.getElementById('final-odds');
+            const btnUnlock = document.getElementById('btn-unlock');
+            
+            const totalSelections = 11; 
+
+            const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            
+            function playImpactSound(freq, duration) {
+                if(audioCtx.state === 'suspended') audioCtx.resume();
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                
+                // Onde SINE pour le rendu cloche métallique/mécanique Las Vegas
+                osc.type = 'sine'; 
+                osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+                
+                // Attack et Decay naturel
+                gain.gain.setValueAtTime(0.3, audioCtx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
+                
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+                
+                osc.start();
+                osc.stop(audioCtx.currentTime + duration);
+            }
+
+            if (btnGenerate) {
+                btnGenerate.addEventListener('click', () => {
+                    if(audioCtx.state === 'suspended') audioCtx.resume();
+                    btnGenerate.style.display = 'none';
+                    
+                    reels.forEach((reel, index) => {
+                        if (reel) {
+                            setTimeout(() => {
+                                reel.classList.add('spin-animation');
+                            }, index * 150); 
+                        }
+                    });
+
+                    // Son de rotation
+                    let spinInterval = setInterval(() => {
+                        playImpactSound(200, 0.1);
+                    }, 100);
+
+                    setTimeout(() => {
+                        clearInterval(spinInterval);
+                        
+                        if (mainSlot) {
+                            mainSlot.style.borderColor = "var(--neon-cyan)";
+                            mainSlot.style.boxShadow = "0 0 50px rgba(0, 255, 255, 0.5)";
+                        }
+                        
+                        // Strike des balles de tennis : gros BOUM cloche
+                        playImpactSound(600, 0.5);
+                        setTimeout(() => playImpactSound(900, 0.8), 100);
+
+                        triggerStackDropInSlot();
+                    }, 2700); 
+                });
+            }
+
+            function triggerStackDropInSlot() {
+                let delay = 300;
+
+                for (let i = 1; i <= totalSelections; i++) {
+                    setTimeout(() => {
+                        createSelectionBlockInSlot(i);
+                    }, delay);
+                    delay += 250; 
+                }
+
+                setTimeout(() => {
+                    if (finalOdds) finalOdds.style.display = 'block';
+                    if (btnUnlock) btnUnlock.style.display = 'block';
+                    playImpactSound(1200, 1.0); // Son de victoire final
+                }, delay + 300);
+            }
+
+            function createSelectionBlockInSlot(index) {
+                if (!stackWrapper) return;
+                
+                const block = document.createElement('div');
+                block.className = 'selection-block';
+                
+                const fakeDataLength = Math.floor(Math.random() * 12) + 18;
+                const fakeString = "#".repeat(fakeDataLength);
+
+                block.innerHTML = `
+                    <div>
+                        <span style="color: var(--neon-cyan); font-size: 0.8rem; font-weight: bold;">MATCH ${index.toString().padStart(2, '0')}</span><br>
+                        <span class="blurred-data">${fakeString}</span>
+                    </div>
+                    <div style="font-size: 1.1rem;">🔒</div>
+                `;
+                
+                stackWrapper.appendChild(block);
+                
+                // Son de "jeton" qui tombe pour chaque match ajouté
+                playImpactSound(400 + (index * 40), 0.2);
+
+                requestAnimationFrame(() => {
+                    block.classList.add('show');
+                });
+            }
+        });
+    </script>
 </body>
 </html>
