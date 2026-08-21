@@ -136,21 +136,22 @@
         .mosaic-container { width: 100%; margin-top: 10px; }
         .mosaic-title { font-size: 1.2rem; color: var(--neon-cyan); margin-bottom: 15px; border-bottom: 1px solid #333; padding-bottom: 5px; text-align: left; }
         .mosaic-grid {
-            display: flex;
-            flex-wrap: wrap;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
             gap: 10px;
-            justify-content: flex-start;
+            width: 100%;
         }
 
         .mosaic-item {
-            width: 60px; height: 60px;
+            aspect-ratio: 1;
             display: flex; justify-content: center; align-items: center;
             border-radius: 6px;
             font-family: 'Righteous', cursive;
-            font-size: 0.9rem;
+            font-size: 1.1rem;
             cursor: pointer;
             transition: transform 0.1s, box-shadow 0.2s;
             user-select: none;
+            min-height: 70px;
         }
         .mosaic-item:hover { transform: scale(1.05); }
         .mosaic-item:active { transform: scale(0.95); }
@@ -359,10 +360,40 @@
         function openLegalModal(id) { document.getElementById(id).style.display = 'flex'; }
         function closeLegalModal(id) { document.getElementById(id).style.display = 'none'; }
 
-        // LA BASE DE DONNÉES DES PARIS (NE PAS TOUCHER AU RESTE DU FICHIER, JUSTE AJOUTER ICI)
+        // LA BASE DE DONNÉES DES PARIS — 5 PARIS AU TOTAL (du plus ancien au plus récent)
         const bets = [
             {
                 id: 1,
+                date: "2026-08-18",
+                tournament: "Challenger Sion",
+                match: "T. Compagnucci vs M. Dahlin",
+                selection: "M. Dahlin ML",
+                odds: 1.55,
+                stake: 1,
+                status: "LOSS"
+            },
+            {
+                id: 2,
+                date: "2026-08-19",
+                tournament: "ITF W15 Logrono",
+                match: "A. Gillan vs J. Garcia",
+                selection: "J. Garcia ML",
+                odds: 1.80,
+                stake: 2,
+                status: "WIN"
+            },
+            {
+                id: 3,
+                date: "2026-08-19",
+                tournament: "ATP 1000 Cincinnati",
+                match: "A. Fils vs A. de Minaur",
+                selection: "A. Fils ML",
+                odds: 1.55,
+                stake: 1,
+                status: "WIN"
+            },
+            {
+                id: 4,
                 date: "2026-08-20",
                 tournament: "ITF M15 Asuncion",
                 match: "M. Exsted vs S. de la Fuente",
@@ -372,7 +403,7 @@
                 status: "WIN"
             },
             {
-                id: 2,
+                id: 5,
                 date: "2026-08-21",
                 tournament: "ITF W75 Kursumlijska Banja 3",
                 match: "G. Pedone vs L. Zaar",
@@ -393,6 +424,7 @@
             const grid = document.getElementById('mosaic-grid');
             grid.innerHTML = '';
 
+            // Affichage NEW TO OLD = reverse du tableau
             const reversedBets = [...bets].reverse();
 
             reversedBets.forEach(bet => {
@@ -430,8 +462,15 @@
             roiEl.innerText = `${roi > 0 ? '+' : ''}${roi.toFixed(2)}%`;
 
             if(profit < 0) {
-                profitEl.style.color = "var(--loss-red)"; profitEl.style.textShadow = "0 0 5px var(--loss-red)";
-                roiEl.style.color = "var(--loss-red)"; roiEl.style.textShadow = "0 0 5px var(--loss-red)";
+                profitEl.style.color = "var(--loss-red)";
+                profitEl.style.textShadow = "0 0 5px var(--loss-red)";
+                roiEl.style.color = "var(--loss-red)";
+                roiEl.style.textShadow = "0 0 5px var(--loss-red)";
+            } else {
+                profitEl.style.color = "var(--win-green)";
+                profitEl.style.textShadow = "0 0 5px var(--win-green)";
+                roiEl.style.color = "var(--win-green)";
+                roiEl.style.textShadow = "0 0 5px var(--win-green)";
             }
         }
 
