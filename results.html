@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>#sportsbetting - RESULTS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Righteous&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <style>
+        :root { --neon-pink: #ff00ff; --neon-cyan: #00ffff; --dark-bg: #090014; --win-green: #00ff00; }
+        body { background-color: var(--dark-bg); color: #fff; font-family: 'Share Tech Mono', monospace; padding: 20px; }
+        .dashboard { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px; }
+        .stat-box { background: rgba(0,255,255,0.05); border: 1px solid var(--neon-cyan); padding: 10px; text-align: center; border-radius: 4px; }
+        .stat-value { font-family: 'Righteous', cursive; font-size: 1.2rem; }
+        .mosaic-grid { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+        .mosaic-item { width: 60px; height: 60px; display: flex; justify-content: center; align-items: center; border: 2px solid var(--win-green); color: var(--win-green); border-radius: 6px; cursor: pointer; font-family: 'Righteous', cursive; }
+        .modal { display: none; position: fixed; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.9); justify-content: center; align-items: center; }
+        .card { background: #050010; border-left: 4px solid var(--win-green); padding: 20px; width: 90%; max-width: 400px; border-radius: 8px; position: relative; }
+    </style>
+</head>
+<body>
+    <header style="margin-bottom: 20px; padding: 10px 0; border-bottom: 1px solid #333; display:flex; justify-content:space-between;">
+        <a href="index.html" style="text-decoration:none; color:var(--neon-pink); font-family:'Righteous',cursive; font-size:1.5rem;"># HOME</a>
+    </header>
+    <div class="dashboard">
+        <div class="stat-box"><div style="font-size:0.7rem;">WIN RATE</div><div class="stat-value">100%</div></div>
+        <div class="stat-box"><div style="font-size:0.7rem;">PROFIT</div><div class="stat-value" style="color:var(--win-green)">+1.12 U</div></div>
+    </div>
+    <div class="mosaic-grid" id="grid"></div>
+    <div class="modal" id="modal">
+        <div class="card" id="card">
+            <span onclick="document.getElementById('modal').style.display='none'" style="float:right; cursor:pointer;">✕</span>
+            <div id="modal-content"></div>
+        </div>
+    </div>
+    <script>
+        const bets = [
+            { date: "2026-08-20", match: "M. Exsted vs S. de la Fuente", odds: 1.55, stake: 1, status: "WIN" },
+            { date: "2026-08-21", match: "G. Pedone vs L. Zaar", odds: 1.57, stake: 1, status: "WIN" }
+        ];
+        const grid = document.getElementById('grid');
+        bets.forEach((b, i) => {
+            const div = document.createElement('div');
+            div.className = 'mosaic-item';
+            div.innerText = `@ ${b.odds}`;
+            div.onclick = () => {
+                document.getElementById('modal').style.display = 'flex';
+                document.getElementById('modal-content').innerHTML = `<h3>${b.match}</h3><p>Date: ${b.date}</p><p>Odds: ${b.odds}</p><p>Result: ${b.status}</p>`;
+            };
+            grid.appendChild(div);
+        });
+    </script>
+</body>
+</html>
