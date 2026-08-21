@@ -3,72 +3,378 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>#sportsbetting - VALUE FINDER</title>
+    <title>#sportsbetting - PREDICTION OF THE DAY</title>
     <link href="https://fonts.googleapis.com/css2?family=Righteous&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    
     <style>
-        :root { --neon-pink: #ff00ff; --neon-cyan: #00ffff; --dark-bg: #090014; --brand-orange: #ff5733; }
+        :root {
+            --neon-pink: #ff00ff;
+            --neon-cyan: #00ffff;
+            --dark-bg: #090014;
+            --grid-color: rgba(0, 255, 255, 0.05);
+            --brand-orange: #ff5733;
+        }
+
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { background-color: var(--dark-bg); color: #fff; font-family: 'Share Tech Mono', monospace; min-height: 100vh; overflow-x: hidden; padding-bottom: 20px; }
-        header { width: 100%; padding: 10px 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid var(--neon-cyan); }
-        .logo-home { text-decoration: none; font-family: 'Righteous', cursive; font-size: 2rem; color: var(--neon-pink); display: flex; align-items: center; text-shadow: 0 0 10px var(--neon-pink); }
-        .sports-icons-header { font-size: 0.55em; margin-left: 5px; }
-        .btn-subscribe { background: transparent; color: var(--neon-cyan); border: 1px solid var(--neon-cyan); padding: 5px 10px; border-radius: 4px; font-size: 0.8rem; cursor: pointer; }
-        main { display: flex; flex-direction: column; align-items: center; padding: 10px; }
-        .slot-title { font-family: 'Righteous', cursive; font-size: 2rem; margin: 5px 0; text-shadow: 2px 2px var(--neon-pink); text-align: center; }
-        .slot-machine-container { background: #110022; padding: 10px; border: 3px solid var(--neon-pink); border-radius: 10px; width: 100%; max-width: 450px; }
-        .grid-3x3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 5px; background: #000; padding: 5px; border-radius: 5px; }
-        .reel-column { height: 210px; overflow: hidden; border: 1px solid var(--neon-cyan); background: #050010; }
-        .reel-strip { font-size: 3rem; line-height: 70px; text-align: center; display: flex; flex-direction: column; }
-        @keyframes dynamic-spin { 0% { transform: translateY(0); } 100% { transform: translateY(-560px); } }
+
+        body {
+            background-color: var(--dark-bg);
+            color: #fff;
+            font-family: 'Share Tech Mono', monospace;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background-image: linear-gradient(var(--grid-color) 1px, transparent 1px), linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+            background-size: 40px 40px;
+            overflow-x: hidden;
+        }
+
+        /* HEADER */
+        header {
+            width: 100%;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(9, 0, 20, 0.9);
+            border-bottom: 2px solid var(--neon-cyan);
+            backdrop-filter: blur(5px);
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.2);
+            position: relative;
+            z-index: 10;
+        }
+
+        .logo-home {
+            text-decoration: none;
+            font-family: 'Righteous', cursive;
+            font-size: 2.2rem;
+            color: var(--neon-pink);
+            display: flex;
+            align-items: center;
+            text-shadow: 0 0 10px var(--neon-pink), 0 0 20px var(--neon-pink);
+        }
+
+        .sports-icons-header { font-size: 0.55em; vertical-align: middle; margin-left: 2px; text-shadow: none;}
+
+        .btn-subscribe {
+            background-color: transparent;
+            color: var(--neon-cyan);
+            border: 1px solid var(--neon-cyan);
+            padding: 8px 12px;
+            border-radius: 4px;
+            text-transform: uppercase;
+            font-weight: bold;
+            font-size: 0.85rem;
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+        .btn-subscribe:hover { background-color: var(--neon-cyan); color: #000; box-shadow: 0 0 10px var(--neon-cyan); }
+
+        /* MAIN CONTENT */
+        main { flex: 1; display: flex; flex-direction: column; align-items: center; padding: 10px; }
+        
+        .slot-title { 
+            font-family: 'Righteous', cursive; 
+            font-size: 2.2rem; 
+            color: #fff; 
+            margin-top: 5px; 
+            margin-bottom: 5px; 
+            text-shadow: 2px 2px var(--neon-pink); 
+            text-align: center;
+            letter-spacing: 1px;
+        }
+
+        /* SLOT MACHINE - 3 LIGNES (270px) */
+        .slot-machine-container {
+            background: #110022;
+            padding: 10px;
+            border: 3px solid var(--neon-pink);
+            border-radius: 10px;
+            box-shadow: 0 0 30px rgba(255, 0, 255, 0.3), inset 0 0 20px rgba(0, 255, 255, 0.1);
+            width: 100%;
+            max-width: 450px;
+            position: relative;
+            z-index: 5;
+            transition: all 0.3s ease;
+        }
+
+        .grid-3x3 { 
+            display: grid; 
+            grid-template-columns: repeat(3, 1fr); 
+            gap: 5px; 
+            background: #000; 
+            padding: 5px; 
+            border-radius: 5px;
+            border: 2px solid #333;
+        }
+        
+        .reel-column { 
+            height: 270px; 
+            overflow: hidden; 
+            border: 1px solid var(--neon-cyan); 
+            border-radius: 4px;
+            background: #050010;
+            box-shadow: inset 0 0 15px rgba(0,0,0,1);
+        }
+        
+        .reel-strip { 
+            font-size: 3.5rem; 
+            line-height: 90px; 
+            text-align: center; 
+            display: flex;
+            flex-direction: column;
+            transform: translateY(0);
+        }
+        
+        @keyframes dynamic-spin {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-810px); }
+        }
         .fast-spinning { animation: dynamic-spin 0.2s linear infinite; filter: blur(3px); }
-        .bet-card { margin-top: 10px; width: 100%; padding: 10px; border: 1px solid var(--neon-cyan); background: rgba(0,255,255,0.05); display: none; }
-        .btn-unlock { margin-top: 10px; width: 100%; background-color: var(--neon-pink); color: #fff; padding: 10px; font-family: 'Righteous', cursive; font-size: 1.2rem; border: none; border-radius: 5px; text-align: center; display: block; animation: pulse 2s infinite; }
-        .btn-generate { margin-top: 15px; padding: 12px 30px; font-family: 'Righteous', cursive; font-size: 1.5rem; background: var(--neon-cyan); border: none; border-radius: 5px; color: #000; cursor: pointer; }
-        @keyframes pulse { 0% { box-shadow: 0 0 10px var(--neon-pink); } 50% { box-shadow: 0 0 25px var(--neon-pink); } 100% { box-shadow: 0 0 10px var(--neon-pink); } }
+        .stopping-phase { transition: transform 0.6s cubic-bezier(0.1, 0.9, 0.2, 1); filter: none; }
+
+        /* CARDS */
+        .bet-card {
+            margin-top: 10px; 
+            width: 100%;
+            padding: 10px; 
+            border: 1px solid var(--neon-cyan);
+            background: rgba(0, 255, 255, 0.05);
+            display: none;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        .blurred-data {
+            background: repeating-linear-gradient(45deg, #000, #000 5px, #333 5px, #333 10px);
+            color: transparent;
+            padding: 2px 10px;
+            font-family: monospace;
+            border-radius: 3px;
+        }
+
+        .btn-unlock {
+            margin-top: 10px; 
+            width: 100%;
+            background-color: var(--neon-pink);
+            color: #fff;
+            padding: 10px; 
+            font-family: 'Righteous', cursive;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            text-align: center;
+            display: block;
+            box-shadow: 0 0 15px var(--neon-pink);
+            animation: pulseUnlock 2s infinite;
+            cursor: pointer;
+        }
+        .btn-unlock:hover { box-shadow: 0 0 25px var(--neon-pink); }
+
+        .no-bet-card {
+            margin-top: 10px;
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ff4444;
+            background: rgba(255, 68, 68, 0.05);
+            display: none;
+            text-align: center;
+            color: #ff4444;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        /* ALERTE & BOUTON GENERATE */
+        .alert-form { margin-top: 15px; width: 100%; max-width: 450px; display: flex; gap: 10px; }
+        input { flex: 1; padding: 10px; background: #000; border: 1px solid var(--neon-cyan); color: #fff; border-radius: 4px; }
+        input:focus { outline: none; box-shadow: 0 0 10px rgba(0,255,255,0.3); }
+
+        .btn-generate { 
+            margin-top: 15px; 
+            padding: 12px 35px; 
+            font-family: 'Righteous', cursive; 
+            font-size: 1.5rem; 
+            background: var(--neon-cyan); 
+            border: none; 
+            cursor: pointer; 
+            border-radius: 5px;
+            box-shadow: 0 0 20px var(--neon-cyan);
+            color: #000;
+        }
+        .btn-generate:active { transform: scale(0.95); }
+
+        /* FOOTER & MODALS (VRAIE VERSION) */
+        footer { width: 100%; background: #000; padding: 10px; text-align: center; border-top: 1px solid #222; color: #888; font-size: 0.8rem; margin-top: auto; }
+        .footer-links a { color: #aaa; text-decoration: none; margin: 0 10px; cursor: pointer; }
+        .footer-links a:hover { color: var(--neon-cyan); }
+
+        .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.8); backdrop-filter: blur(3px); z-index: 100; justify-content: center; align-items: center; }
+        .modal-content { background: #0a0a0a; border: 2px solid var(--neon-cyan); padding: 30px; width: 90%; max-width: 600px; color: #fff; position: relative; box-shadow: 0 0 20px rgba(0,255,255,0.2); }
+        .close-modal { position: absolute; top: 10px; right: 15px; color: #f00; font-size: 1.5rem; cursor: pointer; font-weight: bold; }
+        .modal-title { color: var(--neon-cyan); margin-bottom: 20px; font-family: 'Righteous', cursive; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes pulseUnlock { 0% { box-shadow: 0 0 10px var(--neon-pink); } 50% { box-shadow: 0 0 25px var(--neon-pink); } 100% { box-shadow: 0 0 10px var(--neon-pink); } }
     </style>
 </head>
 <body>
+
     <header>
         <a href="/" class="logo-home"># <span class="sports-icons-header">🎾🏀🏐</span></a>
-        <a href="results.html" class="btn-subscribe">RESULTS</a>
+        <div class="nav-links">
+            <a href="results.html" style="color:#fff; text-decoration:none; margin-right: 20px;">RESULTS</a>
+            <button class="btn-subscribe">SUBSCRIBE</button>
+        </div>
     </header>
+
     <main>
         <div class="slot-title" id="main-title">PREDICTION OF THE DAY</div>
+        
         <div class="slot-machine-container" id="main-slot">
             <div class="grid-3x3">
-                <div class="reel-column"><div class="reel-strip" id="reel1"><div>🏀</div><div>🎾</div><div>🏐</div><div>🏀</div><div>🎾</div><div>🏐</div><div>🎾</div></div></div>
-                <div class="reel-column"><div class="reel-strip" id="reel2"><div>🎾</div><div>🏐</div><div>🏀</div><div>🎾</div><div>🏐</div><div>🏀</div><div>🎾</div></div></div>
-                <div class="reel-column"><div class="reel-strip" id="reel3"><div>🏐</div><div>🏀</div><div>🎾</div><div>🏐</div><div>🏀</div><div>🎾</div><div>🎾</div></div></div>
-            </div>
-            <div id="bet-card" class="bet-card">
-                <div style="display:flex; justify-content:space-between; align-items: center;">
-                    <span style="font-size: 0.9rem;">Player A vs Player B</span>
-                    <span style="color:var(--neon-cyan); font-size: 1.3rem;">@ 2.10</span>
+                <div class="reel-column">
+                    <div class="reel-strip" id="reel1">
+                        <div>🏀</div><div>🎾</div><div>🏐</div>
+                        <div>🏐</div><div>🏀</div><div>🎾</div>
+                        <div>🏀</div><div class="target-symbol">🎾</div><div>🏐</div>
+                    </div>
                 </div>
-                <a href="https://whop.com/checkout" class="btn-unlock">🔓 UNLOCK - 4,90€</a>
+                <div class="reel-column">
+                    <div class="reel-strip" id="reel2">
+                        <div>🏐</div><div>🏀</div><div>🎾</div>
+                        <div>🏐</div><div>🏀</div><div>🎾</div>
+                        <div>🏐</div><div class="target-symbol">🎾</div><div>🏀</div>
+                    </div>
+                </div>
+                <div class="reel-column">
+                    <div class="reel-strip" id="reel3">
+                        <div>🎾</div><div>🏐</div><div>🏀</div>
+                        <div>🎾</div><div>🏐</div><div>🏀</div>
+                        <div>🏀</div><div class="target-symbol">🎾</div><div>🏐</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Carte dynamique gérée en JS -->
+            <div id="bet-card" class="bet-card"></div>
+
+            <div id="no-bet-card" class="no-bet-card">
+                <strong>No valid value detected today.</strong><br>
+                <span style="font-size: 0.8rem;">Check again tomorrow or subscribe to alerts.</span>
             </div>
         </div>
+
+        <form class="alert-form" onsubmit="event.preventDefault(); alert('Subscribed to alerts!');">
+            <input type="email" placeholder="Enter email for new alerts" required>
+            <button type="submit" class="btn-subscribe">SUBSCRIBE</button>
+        </form>
+
         <button id="btn-generate" class="btn-generate">GENERATE</button>
     </main>
+
+    <footer>
+        <div class="footer-links">
+            <a onclick="openModal('modal-tos')">TOS</a> | 
+            <a onclick="openModal('modal-privacy')">Privacy</a> | 
+            <a onclick="openModal('modal-legal')">Legal</a>
+        </div>
+        <p style="margin-top:5px;">&copy; 2026 HashtagSportsBetting.com</p>
+    </footer>
+
+    <!-- MODALES JURIDIQUES -->
+    <div class="modal-overlay" id="modal-legal"><div class="modal-content"><span class="close-modal" onclick="closeModal('modal-legal')">X</span><h2 class="modal-title">Legal Notice</h2><p><strong>Editeur :</strong> Charles Edouard Chambers Farah.<br><strong>SIRET :</strong> 790 059 190.<br><strong>Adresse :</strong> 18 RUE SAINT-MARC, 75002 PARIS, FRANCE.</p></div></div>
+    <div class="modal-overlay" id="modal-tos"><div class="modal-content"><span class="close-modal" onclick="closeModal('modal-tos')">X</span><h2 class="modal-title">Terms of Service</h2><p>En utilisant ce service, vous reconnaissez que les paris comportent des risques financiers significatifs. Nous sommes un service de conseil, pas un bookmaker.</p></div></div>
+    <div class="modal-overlay" id="modal-privacy"><div class="modal-content"><span class="close-modal" onclick="closeModal('modal-privacy')">X</span><h2 class="modal-title">Privacy Policy</h2><p>Votre email est utilisé exclusivement pour l'envoi d'alertes de prédictions et ne sera jamais partagé avec des agences de marketing tierces.</p></div></div>
+
     <script>
+        // MODALES
+        function openModal(id) { document.getElementById(id).style.display = 'flex'; }
+        function closeModal(id) { document.getElementById(id).style.display = 'none'; }
+
+        // AUDIO
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        function playSound(freq, duration) {
+            if(audioCtx.state === 'suspended') audioCtx.resume();
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+            gain.gain.setValueAtTime(0.3, audioCtx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
+            osc.connect(gain); gain.connect(audioCtx.destination);
+            osc.start(); osc.stop(audioCtx.currentTime + duration);
+        }
+
+        // LOGIQUE ANIMATION
         const reels = document.querySelectorAll('.reel-strip');
         const btnGenerate = document.getElementById('btn-generate');
+        const mainSlot = document.getElementById('main-slot');
+        const betCard = document.getElementById('bet-card');
         const title = document.getElementById('main-title');
+
         btnGenerate.addEventListener('click', function() {
-            this.style.display = 'none';
-            let status = 'active'; // Change à 'too_late' pour tester
-            reels.forEach(r => r.classList.add('fast-spinning'));
+            if(audioCtx.state === 'suspended') audioCtx.resume();
+            btnGenerate.style.display = 'none';
+            
+            // STATUT DU JOUR : 'too_late', 'active', ou 'none'
+            let status = 'too_late'; 
+
+            reels.forEach((reel) => { reel.classList.add('fast-spinning'); });
+            let spinInterval = setInterval(() => { playSound(200, 0.1); }, 100);
+
+            setTimeout(() => { reels[0].classList.remove('fast-spinning'); reels[0].style.transform = 'translateY(-540px)'; reels[0].classList.add('stopping-phase'); playSound(600, 0.5); }, 2000);
+            setTimeout(() => { reels[1].classList.remove('fast-spinning'); reels[1].style.transform = 'translateY(-540px)'; reels[1].classList.add('stopping-phase'); playSound(600, 0.5); }, 2300);
+            setTimeout(() => { reels[2].classList.remove('fast-spinning'); reels[2].style.transform = 'translateY(-540px)'; reels[2].classList.add('stopping-phase'); playSound(600, 0.5); }, 2600);
+
             setTimeout(() => {
-                reels.forEach(r => { r.classList.remove('fast-spinning'); r.style.transform = 'translateY(-350px)'; });
+                clearInterval(spinInterval);
+                
                 if(status === 'active') {
-                    title.innerText = "VALUE FOUND"; title.style.color = "var(--neon-cyan)";
-                    document.getElementById('bet-card').style.display = 'block';
-                } else {
                     title.innerText = "VALUE FOUND";
-                    document.getElementById('bet-card').innerHTML = `<div style="text-align:center; color:#ff4444; font-family:'Righteous',cursive;">MATCH ENDED | TOO LATE</div>`;
-                    document.getElementById('bet-card').style.display = 'block';
+                    title.style.color = "var(--neon-cyan)";
+                    title.style.textShadow = "2px 2px 0px #000";
+                    mainSlot.style.borderColor = "var(--neon-cyan)";
+                    mainSlot.style.boxShadow = "0 0 50px rgba(0, 255, 255, 0.5)";
+                    betCard.innerHTML = `
+                        <div style="display:flex; justify-content:space-between; align-items: center; margin-bottom: 5px;">
+                            <span class="blurred-data">Player A vs Player B</span> 
+                            <span style="color:var(--neon-cyan); font-size: 1.3rem; font-family: 'Righteous', cursive;">@ 2.10</span> 
+                        </div>
+                        <div style="color:var(--brand-orange); display:flex; align-items: center; justify-content: space-between; font-size: 0.85rem; margin-bottom: 5px;">
+                            <span>Starts in: 02h 45m</span>
+                            <span style="font-size:1rem;">🔒</span>
+                        </div>
+                        <a href="https://whop.com/ton-lien-unlock-4-90" class="btn-unlock">🔓 UNLOCK - 4,90€</a>
+                    `;
+                    betCard.style.display = 'block';
+                    playSound(900, 0.8);
+
+                } else if(status === 'too_late') {
+                    title.innerText = "VALUE FOUND";
+                    title.style.color = "#aaaaaa";
+                    title.style.textShadow = "2px 2px 0px #000";
+                    betCard.innerHTML = `
+                        <div style="display:flex; justify-content:space-between; align-items: center; margin-bottom: 5px;">
+                            <span style="color:#888; text-decoration: line-through;">G. Pedone vs L. Zaar</span> 
+                            <span style="color:#aaaaaa; font-size: 1.3rem; font-family: 'Righteous', cursive;">@ 1.57</span> 
+                        </div>
+                        <div style="margin-top:15px; color:#ff4444; text-align: center; font-weight: bold; font-size: 1.2rem; font-family: 'Righteous', cursive; letter-spacing: 1px;">
+                            MATCH ENDED | TOO LATE
+                        </div>
+                    `;
+                    betCard.style.borderColor = "#aaaaaa";
+                    mainSlot.style.borderColor = "#aaaaaa";
+                    mainSlot.style.boxShadow = "0 0 40px rgba(170, 170, 170, 0.2)";
+                    betCard.style.display = 'block';
+                    playSound(150, 1.0); 
+                    
+                } else {
+                    title.innerText = "NO PREDICTION TODAY";
+                    title.style.color = "#ff4444";
+                    title.style.textShadow = "2px 2px 0px #000";
+                    document.getElementById('no-bet-card').style.display = 'block';
+                    playSound(150, 1.0); 
                 }
-            }, 2000);
+            }, 2900); 
         });
     </script>
 </body>
