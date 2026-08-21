@@ -3,475 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>#sportsbetting - TENNIS AI PARLAY BUILDER</title>
+    <title>#sportsbetting - VALUE FINDER</title>
     <link href="https://fonts.googleapis.com/css2?family=Righteous&family=Share+Tech+Mono&display=swap" rel="stylesheet">
-    
     <style>
-        :root {
-            --neon-pink: #ff00ff;
-            --neon-cyan: #00ffff;
-            --brand-orange: #ff5733;
-            --dark-bg: #090014;
-            --grid-color: rgba(0, 255, 255, 0.05);
-        }
-
+        :root { --neon-pink: #ff00ff; --neon-cyan: #00ffff; --dark-bg: #090014; --brand-orange: #ff5733; }
         * { box-sizing: border-box; margin: 0; padding: 0; }
-
-        body {
-            background-color: var(--dark-bg);
-            color: #fff;
-            font-family: 'Share Tech Mono', monospace;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-            background-image: 
-                linear-gradient(var(--grid-color) 1px, transparent 1px),
-                linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
-            background-size: 40px 40px;
-            overflow-x: hidden;
-        }
-
-        header {
-            width: 100%;
-            padding: 15px 30px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: rgba(9, 0, 20, 0.9);
-            border-bottom: 2px solid var(--neon-cyan);
-            backdrop-filter: blur(5px);
-            box-shadow: 0 0 15px rgba(0, 255, 255, 0.2);
-            position: relative;
-            z-index: 10;
-        }
-
-        .logo-home {
-            text-decoration: none;
-            font-family: 'Righteous', cursive;
-            font-size: 2.5rem;
-            color: var(--neon-pink);
-            text-shadow: 0 0 10px var(--neon-pink), 0 0 20px var(--neon-pink);
-            display: flex;
-            align-items: center;
-        }
-
-        .nav-links { display: flex; align-items: center; gap: 20px; }
-        .nav-item { text-decoration: none; color: #fff; font-size: 1.2rem; text-transform: uppercase; transition: color 0.2s; }
-        .nav-item:hover { color: var(--neon-cyan); text-shadow: 0 0 8px var(--neon-cyan); }
-
-        .btn-subscribe {
-            background-color: transparent;
-            color: var(--neon-cyan);
-            border: 2px solid var(--neon-cyan);
-            padding: 8px 15px;
-            border-radius: 4px;
-            text-decoration: none;
-            text-transform: uppercase;
-            font-weight: bold;
-            box-shadow: inset 0 0 10px rgba(0, 255, 255, 0.2);
-            transition: all 0.2s;
-        }
-        .btn-subscribe:hover { background-color: var(--neon-cyan); color: #000; box-shadow: 0 0 20px var(--neon-cyan); }
-
-        main {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 40px 20px;
-            position: relative;
-        }
-
-        .slot-title {
-            font-family: 'Righteous', cursive;
-            font-size: 2.2rem;
-            color: #fff;
-            text-transform: uppercase;
-            text-shadow: 2px 2px 0px var(--neon-pink), 4px 4px 0px var(--neon-cyan);
-            margin-bottom: 30px;
-            letter-spacing: 2px;
-            text-align: center;
-        }
-
-        .slot-machine-container {
-            background: #110022;
-            padding: 20px;
-            border: 3px solid var(--neon-pink);
-            border-radius: 10px;
-            box-shadow: 0 0 30px rgba(255, 0, 255, 0.3), inset 0 0 20px rgba(0, 255, 255, 0.1);
-            width: 100%;
-            max-width: 450px;
-            position: relative;
-            z-index: 5;
-            transition: all 0.3s ease;
-        }
-
-        .grid-3x3 {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
-            background: #000;
-            padding: 10px;
-            border-radius: 5px;
-            border: 2px solid #333;
-        }
-
-        .reel-column {
-            height: 270px;
-            overflow: hidden;
-            position: relative;
-            background: #050010;
-            border: 1px solid var(--neon-cyan);
-            border-radius: 4px;
-            box-shadow: inset 0 0 15px rgba(0,0,0,1);
-        }
-
-        .reel-strip {
-            font-size: 4.5rem; 
-            line-height: 90px;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            transform: translateY(0);
-        }
-
-        .spin-animation {
-            transition: transform 2.5s cubic-bezier(0.1, 0.9, 0.2, 1);
-            transform: translateY(-810px) !important; 
-        }
-
-        .btn-generate {
-            margin-top: 30px;
-            padding: 15px 40px;
-            font-family: 'Righteous', cursive;
-            font-size: 1.8rem;
-            color: #000;
-            background-color: var(--neon-cyan);
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            box-shadow: 0 0 20px var(--neon-cyan);
-            transition: transform 0.1s;
-        }
-        .btn-generate:active { transform: scale(0.95); }
-
-        #stack-wrapper {
-            margin-top: 15px;
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            width: 100%;
-        }
-
-        .selection-block {
-            width: 100%;
-            background: rgba(20, 5, 35, 0.95);
-            border: 1px solid var(--neon-pink);
-            border-left: 4px solid var(--neon-cyan);
-            padding: 10px 15px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            opacity: 0;
-            transform: scale(1.1); 
-            transition: all 0.15s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: inset 0 0 10px rgba(0, 255, 255, 0.1);
-        }
-
-        .selection-block.show {
-            opacity: 1;
-            transform: scale(1);
-        }
-
-        .blurred-data {
-            background: repeating-linear-gradient(45deg, #000, #000 5px, #333 5px, #333 10px);
-            color: transparent;
-            padding: 2px 10px;
-            font-family: monospace;
-        }
-
-        #final-odds {
-            font-family: 'Righteous', cursive;
-            font-size: 2.8rem;
-            color: #fff;
-            text-shadow: 0 0 20px var(--neon-pink);
-            margin: 20px 0 10px 0;
-            text-align: center;
-            display: none;
-        }
-
-        .btn-unlock {
-            background-color: var(--neon-pink);
-            color: #fff;
-            padding: 15px 40px;
-            font-family: 'Righteous', cursive;
-            font-size: 1.5rem;
-            border: none;
-            border-radius: 5px;
-            text-decoration: none;
-            box-shadow: 0 0 20px var(--neon-pink);
-            display: none;
-            text-align: center;
-            width: 100%;
-            animation: pulse 1.5s infinite;
-        }
-
-        footer {
-            width: 100%;
-            background: #000;
-            padding: 20px;
-            text-align: center;
-            border-top: 1px solid #222;
-            font-size: 0.85rem;
-            color: #888;
-            position: relative;
-            z-index: 10;
-        }
-
-        .footer-links a { color: #aaa; text-decoration: none; margin: 0 10px; cursor: pointer; }
-        .footer-links a:hover { color: var(--neon-cyan); }
-
-        .warning-text {
-            color: #ff4444;
-            font-weight: bold;
-            margin-top: 15px;
-            font-size: 0.75rem;
-            line-height: 1.4;
-        }
-
-        .modal-overlay {
-            display: none;
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(3px);
-            z-index: 100;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .modal-content {
-            background: #0a0a0a;
-            border: 2px solid var(--neon-cyan);
-            box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
-            padding: 30px;
-            width: 90%;
-            max-width: 600px;
-            max-height: 80vh;
-            overflow-y: auto;
-            color: #0f0;
-            position: relative;
-        }
-
-        .close-modal { position: absolute; top: 10px; right: 15px; color: #f00; font-size: 1.5rem; cursor: pointer; font-weight: bold; }
-        .modal-title { color: var(--neon-cyan); margin-bottom: 20px; font-family: 'Righteous', cursive; text-transform: uppercase; }
-
-        @keyframes pulse { 0% { box-shadow: 0 0 10px var(--neon-pink); } 50% { box-shadow: 0 0 30px var(--neon-pink); } 100% { box-shadow: 0 0 10px var(--neon-pink); } }
+        body { background-color: var(--dark-bg); color: #fff; font-family: 'Share Tech Mono', monospace; min-height: 100vh; overflow-x: hidden; padding-bottom: 20px; }
+        header { width: 100%; padding: 10px 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid var(--neon-cyan); }
+        .logo-home { text-decoration: none; font-family: 'Righteous', cursive; font-size: 2rem; color: var(--neon-pink); display: flex; align-items: center; text-shadow: 0 0 10px var(--neon-pink); }
+        .sports-icons-header { font-size: 0.55em; margin-left: 5px; }
+        .btn-subscribe { background: transparent; color: var(--neon-cyan); border: 1px solid var(--neon-cyan); padding: 5px 10px; border-radius: 4px; font-size: 0.8rem; cursor: pointer; }
+        main { display: flex; flex-direction: column; align-items: center; padding: 10px; }
+        .slot-title { font-family: 'Righteous', cursive; font-size: 2rem; margin: 5px 0; text-shadow: 2px 2px var(--neon-pink); text-align: center; }
+        .slot-machine-container { background: #110022; padding: 10px; border: 3px solid var(--neon-pink); border-radius: 10px; width: 100%; max-width: 450px; }
+        .grid-3x3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 5px; background: #000; padding: 5px; border-radius: 5px; }
+        .reel-column { height: 210px; overflow: hidden; border: 1px solid var(--neon-cyan); background: #050010; }
+        .reel-strip { font-size: 3rem; line-height: 70px; text-align: center; display: flex; flex-direction: column; }
+        @keyframes dynamic-spin { 0% { transform: translateY(0); } 100% { transform: translateY(-560px); } }
+        .fast-spinning { animation: dynamic-spin 0.2s linear infinite; filter: blur(3px); }
+        .bet-card { margin-top: 10px; width: 100%; padding: 10px; border: 1px solid var(--neon-cyan); background: rgba(0,255,255,0.05); display: none; }
+        .btn-unlock { margin-top: 10px; width: 100%; background-color: var(--neon-pink); color: #fff; padding: 10px; font-family: 'Righteous', cursive; font-size: 1.2rem; border: none; border-radius: 5px; text-align: center; display: block; animation: pulse 2s infinite; }
+        .btn-generate { margin-top: 15px; padding: 12px 30px; font-family: 'Righteous', cursive; font-size: 1.5rem; background: var(--neon-cyan); border: none; border-radius: 5px; color: #000; cursor: pointer; }
+        @keyframes pulse { 0% { box-shadow: 0 0 10px var(--neon-pink); } 50% { box-shadow: 0 0 25px var(--neon-pink); } 100% { box-shadow: 0 0 10px var(--neon-pink); } }
     </style>
 </head>
 <body>
-
     <header>
-        <a href="/" class="logo-home"># <span style="font-size: 0.55em; vertical-align: middle; margin-left: 2px; text-shadow: none;">🎾</span></a>
-        <nav class="nav-links">
-            <a href="/results" class="nav-item">Results</a>
-            <a href="https://whop.com/ton-lien-subscribe" class="btn-subscribe">Subscribe</a>
-        </nav>
+        <a href="/" class="logo-home"># <span class="sports-icons-header">🎾🏀🏐</span></a>
+        <a href="results.html" class="btn-subscribe">RESULTS</a>
     </header>
-
     <main>
-        <div class="slot-title">TENNIS AI PARLAY BUILDER</div>
-        
+        <div class="slot-title" id="main-title">PREDICTION OF THE DAY</div>
         <div class="slot-machine-container" id="main-slot">
             <div class="grid-3x3">
-                <div class="reel-column">
-                    <div class="reel-strip" id="reel1">
-                        <div>🎾</div><div>🍔</div><div>🤖</div>
-                        <div>🎾</div><div>🍔</div><div>🤖</div>
-                        <div>🎾</div><div>🍔</div><div>🤖</div>
-                        <div>🍔</div> <div>🎾</div> <div>🤖</div> </div>
-                </div>
-                <div class="reel-column">
-                    <div class="reel-strip" id="reel2">
-                        <div>🍔</div><div>🤖</div><div>🎾</div>
-                        <div>🍔</div><div>🤖</div><div>🎾</div>
-                        <div>🍔</div><div>🤖</div><div>🎾</div>
-                        <div>🤖</div> <div>🎾</div> <div>🍔</div> </div>
-                </div>
-                <div class="reel-column">
-                    <div class="reel-strip" id="reel3">
-                        <div>🤖</div><div>🎾</div><div>🍔</div>
-                        <div>🤖</div><div>🎾</div><div>🍔</div>
-                        <div>🤖</div><div>🎾</div><div>🍔</div>
-                        <div>🍔</div> <div>🎾</div> <div>🤖</div> </div>
-                </div>
+                <div class="reel-column"><div class="reel-strip" id="reel1"><div>🏀</div><div>🎾</div><div>🏐</div><div>🏀</div><div>🎾</div><div>🏐</div><div>🎾</div></div></div>
+                <div class="reel-column"><div class="reel-strip" id="reel2"><div>🎾</div><div>🏐</div><div>🏀</div><div>🎾</div><div>🏐</div><div>🏀</div><div>🎾</div></div></div>
+                <div class="reel-column"><div class="reel-strip" id="reel3"><div>🏐</div><div>🏀</div><div>🎾</div><div>🏐</div><div>🏀</div><div>🎾</div><div>🎾</div></div></div>
             </div>
-
-            <div id="stack-wrapper"></div>
-            <div id="final-odds">@ 7.395 ODDS</div>
-            <a href="https://whop.com/ton-lien-unlock" id="btn-unlock" class="btn-unlock">🔓 UNLOCK - 9,99€</a>
+            <div id="bet-card" class="bet-card">
+                <div style="display:flex; justify-content:space-between; align-items: center;">
+                    <span style="font-size: 0.9rem;">Player A vs Player B</span>
+                    <span style="color:var(--neon-cyan); font-size: 1.3rem;">@ 2.10</span>
+                </div>
+                <a href="https://whop.com/checkout" class="btn-unlock">🔓 UNLOCK - 4,90€</a>
+            </div>
         </div>
-
-        <button id="btn-generate" class="btn-generate">GENERATE PARLAY</button>
+        <button id="btn-generate" class="btn-generate">GENERATE</button>
     </main>
-
-    <footer>
-        <div class="footer-links">
-            <a onclick="openModal('modal-tos')">Terms of Service</a> | 
-            <a onclick="openModal('modal-privacy')">Privacy Policy</a> | 
-            <a onclick="openModal('modal-legal')">Legal Notice</a>
-        </div>
-        <div style="margin-top: 10px;">&copy; 2026 hashtagsportsbetting.com</div>
-        <div class="warning-text">
-            🔞 WARNING: Sports betting carries significant financial risk. We do not provide financial advice. Past performance is no guarantee of future results. Only wager what you can afford to lose. We are not a bookmaker and do not accept bets. Please gamble responsibly.
-        </div>
-    </footer>
-
-    <div class="modal-overlay" id="modal-legal">
-        <div class="modal-content">
-            <div class="close-modal" onclick="closeModal('modal-legal')">X</div>
-            <h2 class="modal-title">Legal Notice (Mentions Légales)</h2>
-            <p><strong>Publisher:</strong><br>Charles Edouard Chambers Farah<br>Registered Auto-entreprise<br>SIRET: 790 059 190<br>Address: 18 RUE SAINT-MARC, SARL GETCCF, 75002 PARIS, FRANCE<br>Email: contact@hashtagsportsbetting.com</p>
-            <br>
-            <p><strong>Hosting Provider:</strong><br>GitHub Pages (GitHub, Inc.)<br>88 Colin P Kelly Jr St, San Francisco, CA 94107, USA</p>
-            <br>
-            <p><strong>Nature of Business:</strong><br>Consulting and information services related to sports data and probability modeling. We are not a licensed gambling operator or bookmaker.</p>
-        </div>
-    </div>
-    
-    <div class="modal-overlay" id="modal-tos">
-        <div class="modal-content">
-            <div class="close-modal" onclick="closeModal('modal-tos')">X</div>
-            <h2 class="modal-title">Terms of Service</h2>
-            <p>[Insert Terms of Service content here]</p>
-        </div>
-    </div>
-    
-    <div class="modal-overlay" id="modal-privacy">
-        <div class="modal-content">
-            <div class="close-modal" onclick="closeModal('modal-privacy')">X</div>
-            <h2 class="modal-title">Privacy Policy</h2>
-            <p>[Insert Privacy Policy content here]</p>
-        </div>
-    </div>
-
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            
-            window.openModal = function(id) {
-                const modal = document.getElementById(id);
-                if (modal) modal.style.display = 'flex';
-            }
-
-            window.closeModal = function(id) {
-                const modal = document.getElementById(id);
-                if (modal) modal.style.display = 'none';
-            }
-
-            const btnGenerate = document.getElementById('btn-generate');
-            const mainSlot = document.getElementById('main-slot');
-            const reels = [document.getElementById('reel1'), document.getElementById('reel2'), document.getElementById('reel3')];
-            const stackWrapper = document.getElementById('stack-wrapper');
-            const finalOdds = document.getElementById('final-odds');
-            const btnUnlock = document.getElementById('btn-unlock');
-            
-            const totalSelections = 11; 
-
-            const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-            
-            function playImpactSound(freq, duration) {
-                if(audioCtx.state === 'suspended') audioCtx.resume();
-                const osc = audioCtx.createOscillator();
-                const gain = audioCtx.createGain();
-                
-                osc.type = 'sine'; 
-                osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
-                
-                gain.gain.setValueAtTime(0.3, audioCtx.currentTime);
-                gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
-                
-                osc.connect(gain);
-                gain.connect(audioCtx.destination);
-                
-                osc.start();
-                osc.stop(audioCtx.currentTime + duration);
-            }
-
-            if (btnGenerate) {
-                btnGenerate.addEventListener('click', () => {
-                    if(audioCtx.state === 'suspended') audioCtx.resume();
-                    btnGenerate.style.display = 'none';
-                    
-                    reels.forEach((reel, index) => {
-                        if (reel) {
-                            setTimeout(() => {
-                                reel.classList.add('spin-animation');
-                            }, index * 150); 
-                        }
-                    });
-
-                    let spinInterval = setInterval(() => {
-                        playImpactSound(200, 0.1);
-                    }, 100);
-
-                    setTimeout(() => {
-                        clearInterval(spinInterval);
-                        
-                        if (mainSlot) {
-                            mainSlot.style.borderColor = "var(--neon-cyan)";
-                            mainSlot.style.boxShadow = "0 0 50px rgba(0, 255, 255, 0.5)";
-                        }
-                        
-                        playImpactSound(600, 0.5);
-                        setTimeout(() => playImpactSound(900, 0.8), 100);
-
-                        triggerStackDropInSlot();
-                    }, 2700); 
-                });
-            }
-
-            function triggerStackDropInSlot() {
-                let delay = 300;
-
-                for (let i = 1; i <= totalSelections; i++) {
-                    setTimeout(() => {
-                        createSelectionBlockInSlot(i);
-                    }, delay);
-                    delay += 250; 
+        const reels = document.querySelectorAll('.reel-strip');
+        const btnGenerate = document.getElementById('btn-generate');
+        const title = document.getElementById('main-title');
+        btnGenerate.addEventListener('click', function() {
+            this.style.display = 'none';
+            let status = 'active'; // Change à 'too_late' pour tester
+            reels.forEach(r => r.classList.add('fast-spinning'));
+            setTimeout(() => {
+                reels.forEach(r => { r.classList.remove('fast-spinning'); r.style.transform = 'translateY(-350px)'; });
+                if(status === 'active') {
+                    title.innerText = "VALUE FOUND"; title.style.color = "var(--neon-cyan)";
+                    document.getElementById('bet-card').style.display = 'block';
+                } else {
+                    title.innerText = "VALUE FOUND";
+                    document.getElementById('bet-card').innerHTML = `<div style="text-align:center; color:#ff4444; font-family:'Righteous',cursive;">MATCH ENDED | TOO LATE</div>`;
+                    document.getElementById('bet-card').style.display = 'block';
                 }
-
-                setTimeout(() => {
-                    if (finalOdds) finalOdds.style.display = 'block';
-                    if (btnUnlock) btnUnlock.style.display = 'block';
-                    playImpactSound(1200, 1.0); 
-                }, delay + 300);
-            }
-
-            function createSelectionBlockInSlot(index) {
-                if (!stackWrapper) return;
-                
-                const block = document.createElement('div');
-                block.className = 'selection-block';
-                
-                const fakeDataLength = Math.floor(Math.random() * 12) + 18;
-                const fakeString = "#".repeat(fakeDataLength);
-
-                block.innerHTML = `
-                    <div>
-                        <span style="color: var(--neon-cyan); font-size: 0.8rem; font-weight: bold;">MATCH ${index.toString().padStart(2, '0')}</span><br>
-                        <span class="blurred-data">${fakeString}</span>
-                    </div>
-                    <div style="font-size: 1.1rem;">🔒</div>
-                `;
-                
-                stackWrapper.appendChild(block);
-                
-                playImpactSound(400 + (index * 40), 0.2);
-
-                requestAnimationFrame(() => {
-                    block.classList.add('show');
-                });
-            }
+            }, 2000);
         });
     </script>
 </body>
