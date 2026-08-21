@@ -3,51 +3,303 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>#sportsbetting - RESULTS</title>
+    <title>#sportsbetting - RESULTS & DASHBOARD</title>
     <link href="https://fonts.googleapis.com/css2?family=Righteous&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    
     <style>
-        :root { --neon-pink: #ff00ff; --neon-cyan: #00ffff; --dark-bg: #090014; --win-green: #00ff00; }
-        body { background-color: var(--dark-bg); color: #fff; font-family: 'Share Tech Mono', monospace; padding: 20px; }
-        .dashboard { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px; }
-        .stat-box { background: rgba(0,255,255,0.05); border: 1px solid var(--neon-cyan); padding: 10px; text-align: center; border-radius: 4px; }
-        .stat-value { font-family: 'Righteous', cursive; font-size: 1.2rem; }
-        .mosaic-grid { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
-        .mosaic-item { width: 60px; height: 60px; display: flex; justify-content: center; align-items: center; border: 2px solid var(--win-green); color: var(--win-green); border-radius: 6px; cursor: pointer; font-family: 'Righteous', cursive; }
-        .modal { display: none; position: fixed; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.9); justify-content: center; align-items: center; }
-        .card { background: #050010; border-left: 4px solid var(--win-green); padding: 20px; width: 90%; max-width: 400px; border-radius: 8px; position: relative; }
+        :root {
+            --neon-pink: #ff00ff;
+            --neon-cyan: #00ffff;
+            --dark-bg: #090014;
+            --grid-color: rgba(0, 255, 255, 0.05);
+            --win-green: #00ff00;
+            --loss-red: #ff4444;
+            --void-gray: #aaaaaa;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            background-color: var(--dark-bg);
+            color: #fff;
+            font-family: 'Share Tech Mono', monospace;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background-image: linear-gradient(var(--grid-color) 1px, transparent 1px), linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+
+        /* HEADER */
+        header {
+            width: 100%; padding: 10px 20px; display: flex; justify-content: space-between; align-items: center;
+            background: rgba(9, 0, 20, 0.9); border-bottom: 2px solid var(--neon-cyan);
+            backdrop-filter: blur(5px); z-index: 10;
+        }
+        .logo-home { text-decoration: none; font-family: 'Righteous', cursive; font-size: 2.2rem; color: var(--neon-pink); display: flex; align-items: center; text-shadow: 0 0 10px var(--neon-pink); }
+        .sports-icons-header { font-size: 0.55em; vertical-align: middle; margin-left: 2px; text-shadow: none; }
+        .nav-links { display: flex; align-items: center; }
+        .btn-subscribe { background-color: transparent; color: var(--neon-cyan); border: 1px solid var(--neon-cyan); padding: 8px 12px; border-radius: 4px; text-transform: uppercase; font-weight: bold; font-size: 0.85rem; cursor: pointer; }
+        
+        main { flex: 1; padding: 20px; display: flex; flex-direction: column; align-items: center; max-width: 800px; margin: 0 auto; width: 100%; }
+
+        h1 { font-family: 'Righteous', cursive; color: #fff; text-shadow: 2px 2px var(--neon-pink); margin-bottom: 20px; font-size: 2rem; }
+
+        /* DASHBOARD STATS */
+        .dashboard {
+            width: 100%;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        @media (min-width: 600px) { .dashboard { grid-template-columns: repeat(4, 1fr); } }
+        
+        .stat-box {
+            background: rgba(0, 255, 255, 0.05);
+            border: 1px solid var(--neon-cyan);
+            border-radius: 6px;
+            padding: 15px;
+            text-align: center;
+            box-shadow: inset 0 0 10px rgba(0,255,255,0.1);
+        }
+        .stat-label { font-size: 0.8rem; color: #aaa; text-transform: uppercase; margin-bottom: 5px; }
+        .stat-value { font-family: 'Righteous', cursive; font-size: 1.5rem; color: #fff; }
+        .stat-profit { color: var(--win-green); text-shadow: 0 0 5px var(--win-green); }
+
+        /* MOSAIC GRID */
+        .mosaic-container { width: 100%; }
+        .mosaic-title { font-size: 1.2rem; color: var(--neon-cyan); margin-bottom: 15px; border-bottom: 1px solid #333; padding-bottom: 5px; }
+        .mosaic-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .mosaic-item {
+            width: 60px; height: 60px;
+            display: flex; justify-content: center; align-items: center;
+            border-radius: 6px;
+            font-family: 'Righteous', cursive;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: transform 0.1s, box-shadow 0.2s;
+            user-select: none;
+        }
+        .mosaic-item:hover { transform: scale(1.05); }
+        .mosaic-item:active { transform: scale(0.95); }
+
+        .mosaic-win { background: rgba(0, 255, 0, 0.15); border: 2px solid var(--win-green); color: var(--win-green); box-shadow: 0 0 10px rgba(0, 255, 0, 0.2); }
+        .mosaic-loss { background: rgba(255, 68, 68, 0.15); border: 2px solid var(--loss-red); color: var(--loss-red); box-shadow: 0 0 10px rgba(255, 68, 68, 0.2); }
+        .mosaic-void { background: rgba(170, 170, 170, 0.15); border: 2px solid var(--void-gray); color: var(--void-gray); }
+
+        /* MODAL & BETSLIP (OPTION 2 CYBER) */
+        .modal-overlay {
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(5px); z-index: 100;
+            justify-content: center; align-items: center; padding: 15px;
+        }
+        
+        .opt2-card {
+            background: linear-gradient(135deg, rgba(255,0,255,0.05), rgba(0,255,255,0.05));
+            background-color: #050010;
+            border-left: 4px solid var(--win-green);
+            border-right: 1px solid rgba(0,255,255,0.3);
+            border-top: 1px solid rgba(0,255,255,0.3);
+            border-bottom: 1px solid rgba(0,255,255,0.3);
+            border-radius: 8px;
+            padding: 20px;
+            width: 100%;
+            max-width: 450px;
+            box-shadow: 0 0 25px rgba(0, 255, 0, 0.1);
+            position: relative;
+        }
+        .close-modal { position: absolute; top: 10px; right: 15px; color: #fff; font-size: 1.5rem; cursor: pointer; font-family: sans-serif; opacity: 0.7; }
+        .opt2-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; margin-top: 10px;}
+        .opt2-badge { padding: 3px 8px; border-radius: 3px; font-weight: bold; font-family: 'Righteous', cursive; letter-spacing: 1px;}
+        .opt2-match { font-size: 1.3rem; font-weight: bold; color: #fff; margin-bottom: 8px; }
+        .opt2-details { color: #ccc; font-size: 0.95rem; line-height: 1.6; }
+        .opt2-odds-box { 
+            margin-top: 20px; background: rgba(0,0,0,0.6); padding: 15px; border-radius: 4px; 
+            display: flex; justify-content: space-between; align-items: center; border: 1px solid #333;
+        }
+
+        /* Dynamiques de couleurs pour la modale */
+        .modal-win { border-left-color: var(--win-green); box-shadow: 0 0 25px rgba(0, 255, 0, 0.15); }
+        .modal-win .opt2-badge { background: rgba(0,255,0,0.2); color: var(--win-green); }
+        .modal-win .opt2-odds { color: var(--win-green); }
+        
+        .modal-loss { border-left-color: var(--loss-red); box-shadow: 0 0 25px rgba(255, 68, 68, 0.15); }
+        .modal-loss .opt2-badge { background: rgba(255,68,68,0.2); color: var(--loss-red); }
+        .modal-loss .opt2-odds { color: var(--loss-red); }
+        
+        .modal-void { border-left-color: var(--void-gray); box-shadow: 0 0 25px rgba(170, 170, 170, 0.15); }
+        .modal-void .opt2-badge { background: rgba(170,170,170,0.2); color: var(--void-gray); }
+        .modal-void .opt2-odds { color: var(--void-gray); }
+
     </style>
 </head>
 <body>
-    <header style="margin-bottom: 20px; padding: 10px 0; border-bottom: 1px solid #333; display:flex; justify-content:space-between;">
-        <a href="index.html" style="text-decoration:none; color:var(--neon-pink); font-family:'Righteous',cursive; font-size:1.5rem;"># HOME</a>
+
+    <header>
+        <a href="index.html" class="logo-home"># <span class="sports-icons-header">🎾🏀🏐</span></a>
+        <div class="nav-links">
+            <a href="index.html" style="color:#fff; text-decoration:none; margin-right: 20px; font-size: 0.85rem;">HOME</a>
+            <button class="btn-subscribe">SUBSCRIBE</button>
+        </div>
     </header>
-    <div class="dashboard">
-        <div class="stat-box"><div style="font-size:0.7rem;">WIN RATE</div><div class="stat-value">100%</div></div>
-        <div class="stat-box"><div style="font-size:0.7rem;">PROFIT</div><div class="stat-value" style="color:var(--win-green)">+1.12 U</div></div>
-    </div>
-    <div class="mosaic-grid" id="grid"></div>
-    <div class="modal" id="modal">
-        <div class="card" id="card">
-            <span onclick="document.getElementById('modal').style.display='none'" style="float:right; cursor:pointer;">✕</span>
-            <div id="modal-content"></div>
+
+    <main>
+        <h1>DASHBOARD</h1>
+
+        <div class="dashboard">
+            <div class="stat-box">
+                <div class="stat-label">Total Bets</div>
+                <div class="stat-value" id="stat-total">0</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-label">Win Rate</div>
+                <div class="stat-value" id="stat-winrate">0%</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-label">Profit (Units)</div>
+                <div class="stat-value stat-profit" id="stat-profit">+0.00 U</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-label">Yield (ROI)</div>
+                <div class="stat-value stat-profit" id="stat-roi">+0.00%</div>
+            </div>
+        </div>
+
+        <div class="mosaic-container">
+            <div class="mosaic-title">BET HISTORY (NEW TO OLD)</div>
+            <div class="mosaic-grid" id="mosaic-grid">
+                <!-- Les carrés générés par JS -->
+            </div>
+        </div>
+    </main>
+
+    <!-- MODALE BETSLIP (OPTION 2) -->
+    <div class="modal-overlay" id="bet-modal" onclick="closeModal(event)">
+        <div class="opt2-card" id="modal-card">
+            <div class="close-modal" onclick="document.getElementById('bet-modal').style.display='none'">✕</div>
+            <div class="opt2-top">
+                <span style="color:#aaa; font-size:0.85rem;" id="modal-date-tourney">Date • Tournoi</span>
+                <span class="opt2-badge" id="modal-badge">WON</span>
+            </div>
+            <div class="opt2-match" id="modal-match">Player A vs Player B</div>
+            <div class="opt2-details">
+                Selection: <span style="color:var(--neon-cyan)" id="modal-selection">Selection ML</span><br>
+                Stake: <span id="modal-stake">1</span> Unit(s)
+            </div>
+            <div class="opt2-odds-box">
+                <span style="font-family:'Righteous', cursive; color:var(--neon-pink);">ODDS</span>
+                <span style="font-size:1.8rem; font-family:'Righteous', cursive;" class="opt2-odds" id="modal-odds">@ 1.00</span>
+            </div>
         </div>
     </div>
+
     <script>
+        // LA BASE DE DONNÉES DES PARIS 
         const bets = [
-            { date: "2026-08-20", match: "M. Exsted vs S. de la Fuente", odds: 1.55, stake: 1, status: "WIN" },
-            { date: "2026-08-21", match: "G. Pedone vs L. Zaar", odds: 1.57, stake: 1, status: "WIN" }
+            {
+                id: 1,
+                date: "2026-08-20",
+                tournament: "ITF M15 Asuncion",
+                match: "M. Exsted vs S. de la Fuente",
+                selection: "M. Exsted ML",
+                odds: 1.55,
+                stake: 1,
+                status: "WIN"
+            },
+            {
+                id: 2,
+                date: "2026-08-21",
+                tournament: "ITF W75 Kursumlijska Banja 3",
+                match: "G. Pedone vs L. Zaar",
+                selection: "L. Zaar ML",
+                odds: 1.57,
+                stake: 1,
+                status: "WIN"
+            }
         ];
-        const grid = document.getElementById('grid');
-        bets.forEach((b, i) => {
-            const div = document.createElement('div');
-            div.className = 'mosaic-item';
-            div.innerText = `@ ${b.odds}`;
-            div.onclick = () => {
-                document.getElementById('modal').style.display = 'flex';
-                document.getElementById('modal-content').innerHTML = `<h3>${b.match}</h3><p>Date: ${b.date}</p><p>Odds: ${b.odds}</p><p>Result: ${b.status}</p>`;
-            };
-            grid.appendChild(div);
-        });
+
+        // LOGIQUE D'AFFICHAGE ET DE CALCUL
+        function initDashboard() {
+            let totalBets = 0;
+            let wins = 0;
+            let totalStake = 0;
+            let totalReturn = 0;
+
+            const grid = document.getElementById('mosaic-grid');
+            grid.innerHTML = '';
+
+            const reversedBets = [...bets].reverse();
+
+            reversedBets.forEach(bet => {
+                if(bet.status === "WIN" || bet.status === "LOSS") {
+                    totalBets++;
+                    totalStake += bet.stake;
+                    if(bet.status === "WIN") {
+                        wins++;
+                        totalReturn += (bet.stake * bet.odds);
+                    }
+                } else if(bet.status === "VOID") {
+                    totalStake += bet.stake;
+                    totalReturn += bet.stake; 
+                }
+
+                const square = document.createElement('div');
+                square.className = `mosaic-item mosaic-${bet.status.toLowerCase()}`;
+                square.innerText = `@ ${bet.odds.toFixed(2)}`;
+                
+                square.addEventListener('click', () => openBetModal(bet));
+                grid.appendChild(square);
+            });
+
+            const profit = totalReturn - totalStake;
+            const roi = totalStake > 0 ? (profit / totalStake) * 100 : 0;
+            const winrate = totalBets > 0 ? (wins / totalBets) * 100 : 0;
+
+            document.getElementById('stat-total').innerText = `${wins}W - ${totalBets - wins}L`;
+            document.getElementById('stat-winrate').innerText = `${winrate.toFixed(1)}%`;
+            
+            const profitEl = document.getElementById('stat-profit');
+            const roiEl = document.getElementById('stat-roi');
+            
+            profitEl.innerText = `${profit > 0 ? '+' : ''}${profit.toFixed(2)} U`;
+            roiEl.innerText = `${roi > 0 ? '+' : ''}${roi.toFixed(2)}%`;
+
+            if(profit < 0) {
+                profitEl.style.color = "var(--loss-red)"; profitEl.style.textShadow = "0 0 5px var(--loss-red)";
+                roiEl.style.color = "var(--loss-red)"; roiEl.style.textShadow = "0 0 5px var(--loss-red)";
+            }
+        }
+
+        function openBetModal(bet) {
+            const modal = document.getElementById('bet-modal');
+            const card = document.getElementById('modal-card');
+            
+            document.getElementById('modal-date-tourney').innerText = `${bet.date} • ${bet.tournament}`;
+            document.getElementById('modal-match').innerText = bet.match;
+            document.getElementById('modal-selection').innerText = bet.selection;
+            document.getElementById('modal-stake').innerText = bet.stake;
+            document.getElementById('modal-odds').innerText = `@ ${bet.odds.toFixed(2)}`;
+            document.getElementById('modal-badge').innerText = bet.status;
+
+            card.classList.remove('modal-win', 'modal-loss', 'modal-void');
+            card.classList.add(`modal-${bet.status.toLowerCase()}`);
+
+            modal.style.display = 'flex';
+        }
+
+        function closeModal(e) {
+            if(e.target.id === 'bet-modal') {
+                document.getElementById('bet-modal').style.display = 'none';
+            }
+        }
+
+        window.onload = initDashboard;
     </script>
 </body>
 </html>
