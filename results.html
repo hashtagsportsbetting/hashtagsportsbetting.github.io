@@ -17,7 +17,11 @@
             --void-gray: #aaaaaa;
         }
 
-        * { box-sizing: border-box; margin: 0; padding: 0; }
+        * { 
+            box-sizing: border-box; 
+            margin: 0; 
+            padding: 0; 
+        }
 
         body {
             background-color: var(--dark-bg);
@@ -28,23 +32,83 @@
             min-height: 100vh;
             background-image: linear-gradient(var(--grid-color) 1px, transparent 1px), linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
             background-size: 40px 40px;
+            overflow-x: hidden;
         }
 
         /* HEADER */
         header {
-            width: 100%; padding: 10px 20px; display: flex; justify-content: space-between; align-items: center;
-            background: rgba(9, 0, 20, 0.9); border-bottom: 2px solid var(--neon-cyan);
-            backdrop-filter: blur(5px); z-index: 10;
+            width: 100%; 
+            padding: 10px 20px; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center;
+            background: rgba(9, 0, 20, 0.9); 
+            border-bottom: 2px solid var(--neon-cyan);
+            backdrop-filter: blur(5px); 
+            z-index: 10;
         }
-        .logo-home { text-decoration: none; font-family: 'Righteous', cursive; font-size: 2.2rem; color: var(--neon-pink); display: flex; align-items: center; text-shadow: 0 0 10px var(--neon-pink); }
-        .sports-icons-header { font-size: 0.55em; vertical-align: middle; margin-left: 2px; text-shadow: none; }
-        .nav-links { display: flex; align-items: center; }
-        .btn-subscribe { background-color: transparent; color: var(--neon-cyan); border: 1px solid var(--neon-cyan); padding: 8px 12px; border-radius: 4px; text-transform: uppercase; font-weight: bold; font-size: 0.85rem; cursor: pointer; transition: all 0.2s; }
-        .btn-subscribe:hover { background-color: var(--neon-cyan); color: #000; box-shadow: 0 0 10px var(--neon-cyan); }
         
-        main { flex: 1; padding: 20px; display: flex; flex-direction: column; align-items: center; max-width: 800px; margin: 0 auto; width: 100%; }
+        .logo-home { 
+            text-decoration: none; 
+            font-family: 'Righteous', cursive; 
+            font-size: 2.2rem; 
+            color: var(--neon-pink); 
+            display: flex; 
+            align-items: center; 
+            text-shadow: 0 0 10px var(--neon-pink); 
+        }
+        
+        .sports-icons-header { 
+            font-size: 0.55em; 
+            vertical-align: middle; 
+            margin-left: 5px; 
+            text-shadow: none; 
+        }
+        
+        .nav-links { 
+            display: flex; 
+            align-items: center; 
+            gap: 15px; 
+        }
+        
+        .btn-subscribe { 
+            background-color: transparent; 
+            color: var(--neon-cyan); 
+            border: 1px solid var(--neon-cyan); 
+            padding: 8px 12px; 
+            border-radius: 4px; 
+            text-transform: uppercase; 
+            font-weight: bold; 
+            font-size: 0.85rem; 
+            cursor: pointer; 
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+        .btn-subscribe:hover { 
+            background-color: var(--neon-cyan); 
+            color: #000; 
+            box-shadow: 0 0 10px var(--neon-cyan); 
+        }
+        
+        /* MAIN CONTENT */
+        main { 
+            flex: 1; 
+            padding: 20px 10px; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            max-width: 800px; 
+            margin: 0 auto; 
+            width: 100%; 
+        }
 
-        h1 { font-family: 'Righteous', cursive; color: #fff; text-shadow: 2px 2px var(--neon-pink); margin-bottom: 20px; font-size: 2rem; }
+        h1 { 
+            font-family: 'Righteous', cursive; 
+            color: #fff; 
+            text-shadow: 2px 2px var(--neon-pink); 
+            margin-bottom: 25px; 
+            font-size: 2rem; 
+        }
 
         /* DASHBOARD STATS */
         .dashboard {
@@ -69,12 +133,13 @@
         .stat-profit { color: var(--win-green); text-shadow: 0 0 5px var(--win-green); }
 
         /* MOSAIC GRID */
-        .mosaic-container { width: 100%; }
-        .mosaic-title { font-size: 1.2rem; color: var(--neon-cyan); margin-bottom: 15px; border-bottom: 1px solid #333; padding-bottom: 5px; }
+        .mosaic-container { width: 100%; margin-top: 10px; }
+        .mosaic-title { font-size: 1.2rem; color: var(--neon-cyan); margin-bottom: 15px; border-bottom: 1px solid #333; padding-bottom: 5px; text-align: left; }
         .mosaic-grid {
             display: flex;
             flex-wrap: wrap;
             gap: 10px;
+            justify-content: flex-start;
         }
 
         .mosaic-item {
@@ -138,15 +203,63 @@
         .modal-void .opt2-odds { color: var(--void-gray); }
 
         /* FOOTER & MODALES JURIDIQUES */
-        footer { width: 100%; background: #000; padding: 15px; text-align: center; border-top: 1px solid #222; color: #888; font-size: 0.85rem; margin-top: auto; }
-        .footer-links a { color: #aaa; text-decoration: none; margin: 0 10px; cursor: pointer; }
-        .footer-links a:hover { color: var(--neon-cyan); }
+        footer { 
+            width: 100%; 
+            background: #000; 
+            padding: 15px; 
+            text-align: center; 
+            border-top: 1px solid #222; 
+            color: #888; 
+            font-size: 0.8rem; 
+            margin-top: auto; 
+        }
+        .footer-links a { 
+            color: #aaa; 
+            text-decoration: none; 
+            margin: 0 10px; 
+            cursor: pointer; 
+        }
+        .footer-links a:hover { 
+            color: var(--neon-cyan); 
+        }
 
-        .legal-modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.8); backdrop-filter: blur(3px); z-index: 200; justify-content: center; align-items: center; }
-        .legal-modal-content { background: #0a0a0a; border: 2px solid var(--neon-cyan); padding: 30px; width: 90%; max-width: 600px; color: #fff; position: relative; box-shadow: 0 0 20px rgba(0,255,255,0.2); }
-        .legal-close-modal { position: absolute; top: 10px; right: 15px; color: #f00; font-size: 1.5rem; cursor: pointer; font-weight: bold; }
-        .legal-modal-title { color: var(--neon-cyan); margin-bottom: 20px; font-family: 'Righteous', cursive; }
-
+        .legal-modal-overlay { 
+            display: none; 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%; 
+            background: rgba(0, 0, 0, 0.8); 
+            backdrop-filter: blur(3px); 
+            z-index: 200; 
+            justify-content: center; 
+            align-items: center; 
+        }
+        .legal-modal-content { 
+            background: #0a0a0a; 
+            border: 2px solid var(--neon-cyan); 
+            padding: 30px; 
+            width: 90%; 
+            max-width: 600px; 
+            color: #fff; 
+            position: relative; 
+            box-shadow: 0 0 20px rgba(0,255,255,0.2); 
+        }
+        .legal-close-modal { 
+            position: absolute; 
+            top: 10px; 
+            right: 15px; 
+            color: #f00; 
+            font-size: 1.5rem; 
+            cursor: pointer; 
+            font-weight: bold; 
+        }
+        .legal-modal-title { 
+            color: var(--neon-cyan); 
+            margin-bottom: 20px; 
+            font-family: 'Righteous', cursive; 
+        }
     </style>
 </head>
 <body>
@@ -154,8 +267,7 @@
     <header>
         <a href="index.html" class="logo-home"># <span class="sports-icons-header">🎾🏀🏐</span></a>
         <div class="nav-links">
-            <a href="index.html" style="color:#fff; text-decoration:none; margin-right: 20px; font-size: 0.85rem;">HOME</a>
-            <button class="btn-subscribe">SUBSCRIBE</button>
+            <a href="index.html" class="btn-subscribe">HOME</a>
         </div>
     </header>
 
@@ -189,7 +301,7 @@
         </div>
     </main>
 
-    <!-- FOOTER -->
+    <!-- FOOTER COMPLET AVEC LES 3 LIENS -->
     <footer>
         <div class="footer-links">
             <a onclick="openLegalModal('modal-tos')">TOS</a> | 
@@ -199,12 +311,30 @@
         <p style="margin-top:10px;">&copy; 2026 HashtagSportsBetting.com</p>
     </footer>
 
-    <!-- MODALES JURIDIQUES CACHÉES -->
-    <div class="legal-modal-overlay" id="modal-legal"><div class="legal-modal-content"><span class="legal-close-modal" onclick="closeLegalModal('modal-legal')">X</span><h2 class="legal-modal-title">Legal Notice</h2><p><strong>Editeur :</strong> Charles Edouard Chambers Farah.<br><strong>SIRET :</strong> 790 059 190.<br><strong>Adresse :</strong> 18 RUE SAINT-MARC, 75002 PARIS, FRANCE.</p></div></div>
-    <div class="legal-modal-overlay" id="modal-tos"><div class="legal-modal-content"><span class="legal-close-modal" onclick="closeLegalModal('modal-tos')">X</span><h2 class="legal-modal-title">Terms of Service</h2><p>En utilisant ce service, vous reconnaissez que les paris comportent des risques financiers significatifs. Nous sommes un service de conseil, pas un bookmaker.</p></div></div>
-    <div class="legal-modal-overlay" id="modal-privacy"><div class="legal-modal-content"><span class="legal-close-modal" onclick="closeLegalModal('modal-privacy')">X</span><h2 class="legal-modal-title">Privacy Policy</h2><p>Votre email est utilisé exclusivement pour l'envoi d'alertes de prédictions et ne sera jamais partagé avec des agences de marketing tierces.</p></div></div>
+    <!-- LES 3 MODALES JURIDIQUES -->
+    <div class="legal-modal-overlay" id="modal-legal">
+        <div class="legal-modal-content">
+            <span class="legal-close-modal" onclick="closeLegalModal('modal-legal')">X</span>
+            <h2 class="legal-modal-title">Legal Notice</h2>
+            <p><strong>Editeur :</strong> Charles Edouard Chambers Farah.<br><strong>SIRET :</strong> 790 059 190.<br><strong>Adresse :</strong> 18 RUE SAINT-MARC, 75002 PARIS, FRANCE.</p>
+        </div>
+    </div>
+    <div class="legal-modal-overlay" id="modal-tos">
+        <div class="legal-modal-content">
+            <span class="legal-close-modal" onclick="closeLegalModal('modal-tos')">X</span>
+            <h2 class="legal-modal-title">Terms of Service</h2>
+            <p>En utilisant ce service, vous reconnaissez que les paris comportent des risques financiers significatifs. Nous sommes un service de conseil, pas un bookmaker.</p>
+        </div>
+    </div>
+    <div class="legal-modal-overlay" id="modal-privacy">
+        <div class="legal-modal-content">
+            <span class="legal-close-modal" onclick="closeLegalModal('modal-privacy')">X</span>
+            <h2 class="legal-modal-title">Privacy Policy</h2>
+            <p>Votre email est utilisé exclusivement pour l'envoi d'alertes de prédictions et ne sera jamais partagé avec des agences de marketing tierces.</p>
+        </div>
+    </div>
 
-    <!-- MODALE BETSLIP -->
+    <!-- MODALE BETSLIP (OPTION 2 CYBER) -->
     <div class="modal-overlay" id="bet-modal" onclick="closeBetModal(event)">
         <div class="opt2-card" id="modal-card">
             <div class="close-bet-modal" onclick="document.getElementById('bet-modal').style.display='none'">✕</div>
@@ -229,7 +359,7 @@
         function openLegalModal(id) { document.getElementById(id).style.display = 'flex'; }
         function closeLegalModal(id) { document.getElementById(id).style.display = 'none'; }
 
-        // LA BASE DE DONNÉES DES PARIS 
+        // LA BASE DE DONNÉES DES PARIS (NE PAS TOUCHER AU RESTE DU FICHIER, JUSTE AJOUTER ICI)
         const bets = [
             {
                 id: 1,
