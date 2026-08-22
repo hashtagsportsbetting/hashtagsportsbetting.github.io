@@ -413,54 +413,55 @@
     </div>
 
     <script>
+        // Réglage remis sur J. Maute, heure fixée en fin de journée pour voir le timer tourner
         const ACTIVE_BET = {
-            match: "A. Fils vs A. de Minaur",
-            selection: "A. Fils ML",
-            odds: 1.55,
+            match: "J. Maute vs A. Nagel",
+            selection: "J. Maute (Moneyline)",
+            odds: 5.00,
             stake: 1,
-            matchTime: "2026-08-22T21:00:00",
+            matchTime: "2026-08-22T23:59:00",
             isActive: true,
-            unlockPrice: "4,90\u20AC",
-            whopLink: "https://whop.com/ton-lien-unlock-4-90"
+            unlockPrice: "FREE PREDICTION",
+            whopLink: "results.html"
         };
 
-        function openModal(id) { document.getElementById(id).style.display = 'flex'; }
-        function closeModal(id) { document.getElementById(id).style.display = 'none'; }
+        function openModal(id) { 
+            const el = document.getElementById(id);
+            if(el) el.style.display = 'flex'; 
+        }
+        function closeModal(id) { 
+            const el = document.getElementById(id);
+            if(el) el.style.display = 'none'; 
+        }
 
-        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-
+        // L'audio est encapsulé pour ne jamais faire planter le navigateur
+        let audioCtx = null;
         function playTone(freq, duration, type, volume) {
-            if (audioCtx.state === 'suspended') audioCtx.resume();
-            const osc = audioCtx.createOscillator();
-            const gain = audioCtx.createGain();
-            osc.type = type || 'sine';
-            osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
-            gain.gain.setValueAtTime(volume || 0.3, audioCtx.currentTime);
-            gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
-            osc.connect(gain);
-            gain.connect(audioCtx.destination);
-            osc.start();
-            osc.stop(audioCtx.currentTime + duration);
+            try {
+                if (!audioCtx) return;
+                if (audioCtx.state === 'suspended') audioCtx.resume();
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                osc.type = type || 'sine';
+                osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+                gain.gain.setValueAtTime(volume || 0.3, audioCtx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+                osc.start();
+                osc.stop(audioCtx.currentTime + duration);
+            } catch(e) {}
         }
 
-        function playSpinSound() {
-            playTone(200, 0.08, 'sawtooth', 0.08);
-        }
-
+        function playSpinSound() { playTone(200, 0.08, 'sawtooth', 0.08); }
         function playStopSound() {
             playTone(800, 0.15, 'sine', 0.4);
             setTimeout(() => playTone(1200, 0.2, 'sine', 0.3), 80);
         }
-
         function playJackpotSound() {
             [523, 659, 784, 1047, 1319, 1568].forEach((freq, i) => {
                 setTimeout(() => playTone(freq, 0.25, 'sine', 0.35), i * 80);
             });
-            setTimeout(() => {
-                playTone(400, 0.6, 'square', 0.2);
-                playTone(800, 0.5, 'sine', 0.5);
-                playTone(1200, 0.4, 'triangle', 0.3);
-            }, 500);
         }
 
         const reels = document.querySelectorAll('.reel-strip');
@@ -489,12 +490,13 @@
         }
 
         function renderBetCard() {
+            if(!betCard || !title || !mainSlot) return;
+            
             const timer = updateCountdown();
             const isExpired = !ACTIVE_BET.isActive || timer.ended;
-            const unlockText = '&#128275; UNLOCK \u2014 ' + ACTIVE_BET.unlockPrice;
 
             if (isExpired) {
-                title.innerText = "VALUE FOUND";
+                title.innerText = "TARGET LOCKED";
                 title.style.color = "#aaaaaa";
                 title.style.textShadow = "2px 2px 0px #000";
                 title.classList.remove('value-found');
@@ -509,11 +511,10 @@
                 mainSlot.style.borderColor = "#aaaaaa";
                 mainSlot.style.boxShadow = "0 0 40px rgba(170, 170, 170, 0.2)";
             } else {
-                title.innerText = "VALUE FOUND";
+                title.innerText = "TARGET LOCKED";
                 title.classList.add('value-found');
 
                 betCard.innerHTML =
                     '<div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:5px;">' +
                         '<span class="blurred-data">' + ACTIVE_BET.match + '</span>' +
-                        '<span style="color:var(--neon-cyan); font-size:1.4rem; font-family:\'Righteous\',cursive;">@ ' + ACTIVE_BET.odds.toFixed(2) + '</span>' +
-             
+                        '<span style="color:var(--neon-cyan); font-size:1
