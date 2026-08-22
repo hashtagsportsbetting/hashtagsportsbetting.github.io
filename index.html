@@ -5,21 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>#sportsbetting - VALUE FINDER</title>
     <link href="https://fonts.googleapis.com/css2?family=Righteous&family=Share+Tech+Mono&display=swap" rel="stylesheet">
-    
     <style>
         :root {
             --neon-pink: #ff00ff;
             --neon-cyan: #00ffff;
             --dark-bg: #090014;
             --grid-color: rgba(0, 255, 255, 0.05);
+            --win-green: #00ff00;
+            --loss-red: #ff4444;
+            --void-gray: #aaaaaa;
             --brand-orange: #ff5733;
         }
 
-        * { 
-            box-sizing: border-box; 
-            margin: 0; 
-            padding: 0; 
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
 
         body {
             background-color: var(--dark-bg);
@@ -33,7 +31,6 @@
             overflow-x: hidden;
         }
 
-        /* HEADER */
         header {
             width: 100%;
             padding: 10px 20px;
@@ -43,11 +40,8 @@
             background: rgba(9, 0, 20, 0.9);
             border-bottom: 2px solid var(--neon-cyan);
             backdrop-filter: blur(5px);
-            box-shadow: 0 0 15px rgba(0, 255, 255, 0.2);
-            position: relative;
             z-index: 10;
         }
-
         .logo-home {
             text-decoration: none;
             font-family: 'Righteous', cursive;
@@ -55,22 +49,10 @@
             color: var(--neon-pink);
             display: flex;
             align-items: center;
-            text-shadow: 0 0 10px var(--neon-pink), 0 0 20px var(--neon-pink);
+            text-shadow: 0 0 10px var(--neon-pink);
         }
-
-        .sports-icons-header { 
-            font-size: 0.55em; 
-            vertical-align: middle; 
-            margin-left: 5px; 
-            text-shadow: none;
-        }
-
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
+        .sports-icons-header { font-size: 0.55em; vertical-align: middle; margin-left: 5px; text-shadow: none; }
+        .nav-links { display: flex; align-items: center; gap: 15px; }
         .btn-subscribe {
             background-color: transparent;
             color: var(--neon-cyan);
@@ -80,205 +62,286 @@
             text-transform: uppercase;
             font-weight: bold;
             font-size: 0.85rem;
-            transition: all 0.2s;
             cursor: pointer;
             text-decoration: none;
+            transition: all 0.2s;
         }
-        .btn-subscribe:hover { 
-            background-color: var(--neon-cyan); 
-            color: #000; 
-            box-shadow: 0 0 10px var(--neon-cyan); 
+        .btn-subscribe:hover { background-color: var(--neon-cyan); color: #000; box-shadow: 0 0 10px var(--neon-cyan); }
+
+        main {
+            flex: 1;
+            padding: 15px 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 800px;
+            margin: 0 auto;
+            width: 100%;
         }
 
-        /* MAIN CONTENT */
-        main { 
-            flex: 1; 
-            display: flex; 
-            flex-direction: column; 
-            align-items: center; 
-            padding: 10px; 
-        }
-        
-        .slot-title { 
-            font-family: 'Righteous', cursive; 
-            font-size: 2.2rem; 
-            color: #fff; 
-            margin-top: 5px; 
-            margin-bottom: 15px; 
-            text-shadow: 2px 2px var(--neon-pink); 
+        .slot-title {
+            font-family: 'Righteous', cursive;
+            font-size: 2rem;
+            color: #fff;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px var(--neon-pink);
             text-align: center;
             letter-spacing: 1px;
+            transition: all 0.5s ease;
+        }
+        .slot-title.value-found {
+            color: var(--neon-cyan);
+            text-shadow: 0 0 20px var(--neon-cyan), 2px 2px var(--neon-pink);
+            animation: titlePulse 1.5s ease-in-out infinite;
+        }
+        @keyframes titlePulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
         }
 
-        /* SLOT MACHINE */
         .slot-machine-container {
             background: #110022;
-            padding: 10px;
+            padding: 12px;
             border: 3px solid var(--neon-pink);
             border-radius: 10px;
             box-shadow: 0 0 30px rgba(255, 0, 255, 0.3), inset 0 0 20px rgba(0, 255, 255, 0.1);
             width: 100%;
-            max-width: 450px;
+            max-width: 380px;
             position: relative;
-            z-index: 5;
             transition: all 0.3s ease;
         }
+        .slot-machine-container.jackpot {
+            border-color: var(--neon-cyan);
+            box-shadow: 0 0 50px rgba(0, 255, 255, 0.5), inset 0 0 30px rgba(0, 255, 255, 0.15);
+            animation: jackpotGlow 0.5s ease-in-out 3;
+        }
+        @keyframes jackpotGlow {
+            0%, 100% { box-shadow: 0 0 50px rgba(0, 255, 255, 0.5); }
+            50% { box-shadow: 0 0 80px rgba(0, 255, 255, 0.8), 0 0 100px rgba(255, 0, 255, 0.3); }
+        }
 
-        .grid-3x3 { 
-            display: grid; 
-            grid-template-columns: repeat(3, 1fr); 
-            gap: 5px; 
-            background: #000; 
-            padding: 5px; 
+        .grid-3x3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 6px;
+            background: #000;
+            padding: 6px;
             border-radius: 5px;
             border: 2px solid #333;
         }
-        
-        .reel-column { 
-            height: 270px; 
-            overflow: hidden; 
-            border: 1px solid var(--neon-cyan); 
+
+        .reel-column {
+            height: 270px;
+            overflow: hidden;
+            border: 1px solid var(--neon-cyan);
             border-radius: 4px;
             background: #050010;
             box-shadow: inset 0 0 15px rgba(0,0,0,1);
+            position: relative;
         }
-        
-        .reel-strip { 
-            font-size: 3.5rem; 
-            line-height: 90px; 
-            text-align: center; 
+        .reel-column::after {
+            content: '';
+            position: absolute;
+            top: 90px;
+            left: 0;
+            right: 0;
+            height: 90px;
+            border-top: 2px solid rgba(255, 0, 255, 0.4);
+            border-bottom: 2px solid rgba(255, 0, 255, 0.4);
+            background: rgba(255, 0, 255, 0.05);
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .reel-strip {
+            font-size: 3.2rem;
+            text-align: center;
             display: flex;
             flex-direction: column;
             transform: translateY(0);
+            will-change: transform;
         }
-        
+        .reel-strip > div {
+            height: 90px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
         @keyframes dynamic-spin {
             0% { transform: translateY(0); }
             100% { transform: translateY(-810px); }
         }
-        .fast-spinning { 
-            animation: dynamic-spin 0.2s linear infinite; 
-            filter: blur(3px); 
+        .fast-spinning {
+            animation: dynamic-spin 0.18s linear infinite;
+            filter: blur(3px);
         }
-        .stopping-phase { 
-            transition: transform 0.6s cubic-bezier(0.1, 0.9, 0.2, 1); 
-            filter: none; 
+        .stopping-phase {
+            transition: transform 0.6s cubic-bezier(0.1, 0.9, 0.2, 1);
+            filter: none;
         }
 
-        /* CARDS */
+        .jackpot-flash {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%);
+            opacity: 0;
+            pointer-events: none;
+            border-radius: 10px;
+            z-index: 10;
+        }
+        .jackpot-flash.active {
+            animation: flashBang 0.8s ease-out;
+        }
+        @keyframes flashBang {
+            0% { opacity: 0; transform: scale(0.5); }
+            30% { opacity: 1; transform: scale(1.2); }
+            100% { opacity: 0; transform: scale(1.5); }
+        }
+
         .bet-card {
-            margin-top: 10px; 
+            margin-top: 10px;
             width: 100%;
-            padding: 10px; 
+            padding: 12px;
             border: 1px solid var(--neon-cyan);
             background: rgba(0, 255, 255, 0.05);
             display: none;
-            animation: fadeIn 0.5s ease-in;
+            animation: cardSlideIn 0.6s cubic-bezier(0.1, 0.9, 0.2, 1);
+        }
+        @keyframes cardSlideIn {
+            from { opacity: 0; transform: translateY(-20px) scale(0.95); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
         }
 
-        /* ZAPIER FORM */
-        .alert-form { 
-            margin-top: 15px; 
-            width: 100%; 
-            max-width: 450px; 
-            display: flex; 
-            gap: 10px; 
-        }
-        input { 
-            flex: 1; 
-            padding: 10px; 
-            background: #000; 
-            border: 1px solid var(--neon-cyan); 
-            color: #fff; 
-            border-radius: 4px; 
-        }
-        input:focus { 
-            outline: none; 
-            box-shadow: 0 0 10px rgba(0,255,255,0.3); 
+        .blurred-data {
+            background: repeating-linear-gradient(45deg, #000, #000 5px, #333 5px, #333 10px);
+            color: transparent;
+            padding: 3px 10px;
+            font-family: monospace;
+            border-radius: 3px;
+            font-size: 0.85rem;
         }
 
-        .btn-generate { 
-            margin-top: 20px; 
-            padding: 12px 35px; 
-            font-family: 'Righteous', cursive; 
-            font-size: 1.5rem; 
-            background: var(--neon-cyan); 
-            border: none; 
-            cursor: pointer; 
+        .countdown-timer {
+            margin-top: 10px;
+            color: var(--brand-orange);
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-family: 'Share Tech Mono', monospace;
+        }
+        .countdown-timer.ended {
+            color: var(--loss-red);
+            font-weight: bold;
+            justify-content: center;
+            font-size: 1rem;
+            font-family: 'Righteous', cursive;
+            letter-spacing: 1px;
+        }
+
+        .btn-unlock {
+            margin-top: 10px;
+            width: 100%;
+            background: linear-gradient(135deg, var(--neon-pink), #ff1493);
+            color: #fff;
+            padding: 12px;
+            font-family: 'Righteous', cursive;
+            font-size: 1.2rem;
+            border: none;
             border-radius: 5px;
-            box-shadow: 0 0 20px var(--neon-cyan);
+            text-decoration: none;
+            text-align: center;
+            display: block;
+            box-shadow: 0 0 15px rgba(255, 0, 255, 0.4);
+            animation: pulseUnlock 2s infinite;
+            cursor: pointer;
+        }
+        .btn-unlock:hover { box-shadow: 0 0 25px rgba(255, 0, 255, 0.6); }
+        @keyframes pulseUnlock {
+            0%, 100% { box-shadow: 0 0 10px rgba(255, 0, 255, 0.4); transform: scale(1); }
+            50% { box-shadow: 0 0 25px rgba(255, 0, 255, 0.7); transform: scale(1.02); }
+        }
+
+        .alert-form {
+            margin-top: 12px;
+            width: 100%;
+            max-width: 380px;
+            display: flex;
+            gap: 8px;
+        }
+        input {
+            flex: 1;
+            padding: 10px;
+            background: #000;
+            border: 1px solid var(--neon-cyan);
+            color: #fff;
+            border-radius: 4px;
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 0.85rem;
+        }
+        input:focus { outline: none; box-shadow: 0 0 10px rgba(0,255,255,0.3); }
+        input::placeholder { color: #666; }
+
+        .btn-generate {
+            margin-top: 15px;
+            padding: 12px 40px;
+            font-family: 'Righteous', cursive;
+            font-size: 1.5rem;
+            background: var(--neon-cyan);
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
             color: #000;
+            box-shadow: 0 0 20px var(--neon-cyan);
+            transition: all 0.2s;
         }
+        .btn-generate:hover { box-shadow: 0 0 30px var(--neon-cyan); transform: translateY(-2px); }
+        .btn-generate:active { transform: scale(0.95); }
 
-        /* FOOTER & MODALS */
-        footer { 
-            width: 100%; 
-            background: #000; 
-            padding: 15px; 
-            text-align: center; 
-            border-top: 1px solid #222; 
-            color: #888; 
-            font-size: 0.8rem; 
-            margin-top: auto; 
+        footer {
+            width: 100%;
+            background: #000;
+            padding: 12px;
+            text-align: center;
+            border-top: 1px solid #222;
+            color: #888;
+            font-size: 0.8rem;
+            margin-top: auto;
         }
-        .footer-links a { 
-            color: #aaa; 
-            text-decoration: none; 
-            margin: 0 10px; 
-            cursor: pointer; 
-        }
-        .footer-links a:hover { 
-            color: var(--neon-cyan); 
-        }
+        .footer-links a { color: #aaa; text-decoration: none; margin: 0 10px; cursor: pointer; }
+        .footer-links a:hover { color: var(--neon-cyan); }
 
-        .modal-overlay { 
-            display: none; 
-            position: fixed; 
-            top: 0; 
-            left: 0; 
-            width: 100%; 
-            height: 100%; 
-            background: rgba(0, 0, 0, 0.8); 
-            backdrop-filter: blur(3px); 
-            z-index: 100; 
-            justify-content: center; 
-            align-items: center; 
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(3px);
+            z-index: 200;
+            justify-content: center;
+            align-items: center;
         }
-        .modal-content { 
-            background: #0a0a0a; 
-            border: 2px solid var(--neon-cyan); 
-            padding: 30px; 
-            width: 90%; 
-            max-width: 600px; 
-            color: #fff; 
-            position: relative; 
-            box-shadow: 0 0 20px rgba(0,255,255,0.2); 
+        .modal-content {
+            background: #0a0a0a;
+            border: 2px solid var(--neon-cyan);
+            padding: 30px;
+            width: 90%;
+            max-width: 600px;
+            color: #fff;
+            position: relative;
+            box-shadow: 0 0 20px rgba(0,255,255,0.2);
         }
-        .close-modal { 
-            position: absolute; 
-            top: 10px; 
-            right: 15px; 
-            color: #f00; 
-            font-size: 1.5rem; 
-            cursor: pointer; 
-            font-weight: bold; 
-        }
-        .modal-title { 
-            color: var(--neon-cyan); 
-            margin-bottom: 20px; 
-            font-family: 'Righteous', cursive; 
-        }
-
-        @keyframes fadeIn { 
-            from { opacity: 0; transform: translateY(-10px); } 
-            to { opacity: 1; transform: translateY(0); } 
-        }
+        .close-modal { position: absolute; top: 10px; right: 15px; color: #f00; font-size: 1.5rem; cursor: pointer; font-weight: bold; }
+        .modal-title { color: var(--neon-cyan); margin-bottom: 20px; font-family: 'Righteous', cursive; }
     </style>
 </head>
 <body>
 
     <header>
-        <a href="/" class="logo-home"># <span class="sports-icons-header">🎾🏀🏐</span></a>
+        <a href="/" class="logo-home"># <span class="sports-icons-header">&#127936;&#127934;&#127952;</span></a>
         <div class="nav-links">
             <a href="results.html" class="btn-subscribe">RESULTS</a>
         </div>
@@ -286,37 +349,30 @@
 
     <main>
         <div class="slot-title" id="main-title">PREDICTION OF THE DAY</div>
-        
+
         <div class="slot-machine-container" id="main-slot">
+            <div class="jackpot-flash" id="jackpot-flash"></div>
             <div class="grid-3x3">
-                <div class="reel-column">
-                    <div class="reel-strip" id="reel1">
-                        <div>🏀</div><div>🎾</div><div>🏐</div>
-                        <div>🏐</div><div>🏀</div><div>🎾</div>
-                        <div>🏀</div><div class="target-symbol">🎾</div><div>🏐</div>
-                    </div>
-                </div>
-                <div class="reel-column">
-                    <div class="reel-strip" id="reel2">
-                        <div>🏐</div><div>🏀</div><div>🎾</div>
-                        <div>🏐</div><div>🏀</div><div>🎾</div>
-                        <div>🏐</div><div class="target-symbol">🎾</div><div>🏀</div>
-                    </div>
-                </div>
-                <div class="reel-column">
-                    <div class="reel-strip" id="reel3">
-                        <div>🎾</div><div>🏐</div><div>🏀</div>
-                        <div>🎾</div><div>🏐</div><div>🏀</div>
-                        <div>🏀</div><div class="target-symbol">🎾</div><div>🏐</div>
-                    </div>
-                </div>
+                <div class="reel-column"><div class="reel-strip" id="reel1">
+                    <div>&#127936;</div><div>&#127934;</div><div>&#127952;</div>
+                    <div>&#127952;</div><div>&#127936;</div><div>&#127934;</div>
+                    <div>&#127936;</div><div>&#127934;</div><div>&#127952;</div>
+                </div></div>
+                <div class="reel-column"><div class="reel-strip" id="reel2">
+                    <div>&#127952;</div><div>&#127934;</div><div>&#127936;</div>
+                    <div>&#127952;</div><div>&#127936;</div><div>&#127934;</div>
+                    <div>&#127952;</div><div>&#127934;</div><div>&#127936;</div>
+                </div></div>
+                <div class="reel-column"><div class="reel-strip" id="reel3">
+                    <div>&#127936;</div><div>&#127934;</div><div>&#127952;</div>
+                    <div>&#127934;</div><div>&#127952;</div><div>&#127936;</div>
+                    <div>&#127936;</div><div>&#127934;</div><div>&#127952;</div>
+                </div></div>
             </div>
 
-            <!-- Carte dynamique de résultat gérée en JS -->
             <div id="bet-card" class="bet-card"></div>
         </div>
 
-        <!-- FORMULAIRE ZAPIER -->
         <form action="https://hooks.zapier.com/hooks/catch/28613327/4tfmq4u/" method="POST" class="alert-form">
             <input type="email" name="email" placeholder="Enter email for alerts" required>
             <button type="submit" class="btn-subscribe">SUBSCRIBE</button>
@@ -325,17 +381,15 @@
         <button id="btn-generate" class="btn-generate">GENERATE</button>
     </main>
 
-    <!-- FOOTER COMPLET AVEC LES 3 LIENS -->
     <footer>
         <div class="footer-links">
-            <a onclick="openModal('modal-tos')">TOS</a> | 
-            <a onclick="openModal('modal-privacy')">Privacy</a> | 
+            <a onclick="openModal('modal-tos')">TOS</a> |
+            <a onclick="openModal('modal-privacy')">Privacy</a> |
             <a onclick="openModal('modal-legal')">Legal Notice</a>
         </div>
-        <p style="margin-top:10px;">&copy; 2026 HashtagSportsBetting.com</p>
+        <p style="margin-top:8px;">&copy; 2026 HashtagSportsBetting.com</p>
     </footer>
 
-    <!-- LES 3 MODALES JURIDIQUES -->
     <div class="modal-overlay" id="modal-legal">
         <div class="modal-content">
             <span class="close-modal" onclick="closeModal('modal-legal')">X</span>
@@ -354,75 +408,121 @@
         <div class="modal-content">
             <span class="close-modal" onclick="closeModal('modal-privacy')">X</span>
             <h2 class="modal-title">Privacy Policy</h2>
-            <p>Votre email est utilisé exclusivement pour l'envoi d'alertes de prédictions et ne sera jamais partagé avec des agences de marketing tierces.</p>
+            <p>Votre email est utilis&eacute; exclusivement pour l'envoi d'alertes de pr&eacute;dictions et ne sera jamais partag&eacute; avec des agences de marketing tierces.</p>
         </div>
     </div>
 
-    <!-- SCRIPT DE LOGIQUE -->
+    <div id="debug-panel" style="position:fixed;bottom:0;left:0;right:0;background:#000;color:#0f0;font-family:monospace;font-size:10px;max-height:120px;overflow:auto;z-index:9999;padding:5px;border-top:2px solid #0f0;"></div>
+
     <script>
-        // Gestion des modales du footer
+        // ============ MOBILE DEBUG ============
+        const debugPanel = document.getElementById('debug-panel');
+        function dbg(...args) {
+            const txt = args.join(' ');
+            debugPanel.innerHTML += txt + '<br>';
+            debugPanel.scrollTop = debugPanel.scrollHeight;
+        }
+        window.onerror = function(msg, url, line, col, error) {
+            dbg('ERROR:', msg, 'line', line);
+            return false;
+        };
+        // =====================================
+
+        // ============ CONFIGURATION DU PARI ACTIF ============
+        const ACTIVE_BET = {
+            match: "A. Fils vs A. de Minaur",
+            selection: "A. Fils ML",
+            odds: 1.55,
+            stake: 1,
+            matchTime: "2026-08-22T21:00:00",
+            isActive: true,
+            unlockPrice: "4,90\u20AC",
+            whopLink: "https://whop.com/ton-lien-unlock-4-90"
+        };
+        // ======================================================
+
         function openModal(id) { document.getElementById(id).style.display = 'flex'; }
         function closeModal(id) { document.getElementById(id).style.display = 'none'; }
 
-        // Animation Slot Machine
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+        function playTone(freq, duration, type, volume) {
+            if (audioCtx.state === 'suspended') audioCtx.resume();
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            osc.type = type || 'sine';
+            osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+            gain.gain.setValueAtTime(volume || 0.3, audioCtx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+            osc.start();
+            osc.stop(audioCtx.currentTime + duration);
+        }
+
+        function playSpinSound() {
+            playTone(200, 0.08, 'sawtooth', 0.08);
+        }
+
+        function playStopSound() {
+            playTone(800, 0.15, 'sine', 0.4);
+            setTimeout(() => playTone(1200, 0.2, 'sine', 0.3), 80);
+        }
+
+        function playJackpotSound() {
+            [523, 659, 784, 1047, 1319, 1568].forEach((freq, i) => {
+                setTimeout(() => playTone(freq, 0.25, 'sine', 0.35), i * 80);
+            });
+            setTimeout(() => {
+                playTone(400, 0.6, 'square', 0.2);
+                playTone(800, 0.5, 'sine', 0.5);
+                playTone(1200, 0.4, 'triangle', 0.3);
+            }, 500);
+        }
+
+        // Cross-browser helper: extract translateY from computed transform
+        function getTranslateY(transformStr) {
+            const tMatch = transformStr.match(/translateY\(([-\d.]+)px\)/);
+            if (tMatch) return parseFloat(tMatch[1]);
+            const mMatch = transformStr.match(/matrix\(([^)]+)\)/);
+            if (mMatch) {
+                const vals = mMatch[1].split(',').map(v => parseFloat(v.trim()));
+                if (vals.length === 6) return vals[5];
+            }
+            return 0;
+        }
+
         const reels = document.querySelectorAll('.reel-strip');
         const btnGenerate = document.getElementById('btn-generate');
         const mainSlot = document.getElementById('main-slot');
         const betCard = document.getElementById('bet-card');
         const title = document.getElementById('main-title');
+        const jackpotFlash = document.getElementById('jackpot-flash');
 
-        btnGenerate.addEventListener('click', function() {
-            this.style.display = 'none';
-            
-            // Lancement du spin
-            reels.forEach((reel) => { reel.classList.add('fast-spinning'); });
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const matchTime = new Date(ACTIVE_BET.matchTime).getTime();
+            const diff = matchTime - now;
 
-            // Arrêt des rouleaux
-            setTimeout(() => { 
-                reels[0].classList.remove('fast-spinning'); 
-                reels[0].style.transform = 'translateY(-540px)'; 
-                reels[0].classList.add('stopping-phase'); 
-            }, 2000);
-            
-            setTimeout(() => { 
-                reels[1].classList.remove('fast-spinning'); 
-                reels[1].style.transform = 'translateY(-540px)'; 
-                reels[1].classList.add('stopping-phase'); 
-            }, 2300);
-            
-            setTimeout(() => { 
-                reels[2].classList.remove('fast-spinning'); 
-                reels[2].style.transform = 'translateY(-540px)'; 
-                reels[2].classList.add('stopping-phase'); 
-            }, 2600);
+            if (diff <= 0) {
+                return { ended: true, text: "MATCH STARTED" };
+            }
 
-            // Affichage de la carte de résultat avec délai pour correspondre à la fin de l'animation
-            setTimeout(() => {
-                // STATUT : TOO LATE (Match de Zaar terminé)
+            const hours = Math.floor(diff / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+            return {
+                ended: false,
+                text: (hours < 10 ? '0' : '') + hours + 'h ' + (minutes < 10 ? '0' : '') + minutes + 'm ' + (seconds < 10 ? '0' : '') + seconds + 's'
+            };
+        }
+
+        function renderBetCard() {
+            const timer = updateCountdown();
+            const isExpired = !ACTIVE_BET.isActive || timer.ended;
+            const unlockText = '&#128275; UNLOCK \u2014 ' + ACTIVE_BET.unlockPrice;
+
+            if (isExpired) {
                 title.innerText = "VALUE FOUND";
                 title.style.color = "#aaaaaa";
-                title.style.textShadow = "2px 2px 0px #000";
-                
-                // Carte détaillée du match expirée
-                betCard.innerHTML = `
-                    <div style="display:flex; justify-content:space-between; align-items: center; margin-bottom: 5px;">
-                        <span style="color:#888; text-decoration: line-through;">G. Pedone vs L. Zaar</span> 
-                        <span style="color:#aaaaaa; font-size: 1.3rem; font-family: 'Righteous', cursive;">@ 1.57</span> 
-                    </div>
-                    <div style="margin-top:15px; color:#ff4444; text-align: center; font-weight: bold; font-size: 1.2rem; font-family: 'Righteous', cursive; letter-spacing: 1px;">
-                        MATCH ENDED | TOO LATE
-                    </div>
-                `;
-                
-                // Changement des bordures en gris pour l'effet expiré
-                betCard.style.borderColor = "#aaaaaa";
-                mainSlot.style.borderColor = "#aaaaaa";
-                mainSlot.style.boxShadow = "0 0 40px rgba(170, 170, 170, 0.2)";
-                
-                // Affichage final
-                betCard.style.display = 'block';
-            }, 2900); 
-        });
-    </script>
-</body>
-</html>
+   
