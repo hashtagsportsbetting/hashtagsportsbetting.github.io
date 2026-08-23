@@ -107,12 +107,13 @@
         /* ===== BADGE ===== */
         .pred-badge {
             font-family: 'Righteous', cursive;
-            font-size: 1.3rem;
+            font-size: 2rem;
             color: #fff;
             text-shadow: 2px 2px var(--neon-pink);
             letter-spacing: 2px;
             text-transform: uppercase;
             flex-shrink: 0;
+            margin-bottom: 8px;
         }
 
         /* ===== CARD ===== */
@@ -485,11 +486,11 @@
         @media (max-width: 768px) {
             header { height: 50px; padding: 0 16px; }
             .logo-home { font-size: 1.8rem; }
-            .btn-results { padding: 6px 12px; font-size: 0.8rem; }
+            .btn-nav { padding: 6px 12px; font-size: 0.8rem; }
 
             main { padding: 8px 16px; gap: 10px; }
 
-            .pred-badge { font-size: 0.75rem; padding: 5px 14px; }
+            .pred-badge { font-size: 1.6rem; margin-bottom: 6px; }
 
             .pred-card {
                 max-width: 100%;
@@ -563,15 +564,15 @@
 
             <div class="pred-countdown" id="pred-countdown">
                 <div class="pred-countdown-unit">
-                    <span class="pred-countdown-num" id="cd-h">--</span>
+                    <span class="pred-countdown-num" id="cd-h">00</span>
                     <span class="pred-countdown-label">Hours</span>
                 </div>
                 <div class="pred-countdown-unit">
-                    <span class="pred-countdown-num" id="cd-m">--</span>
+                    <span class="pred-countdown-num" id="cd-m">00</span>
                     <span class="pred-countdown-label">Minutes</span>
                 </div>
                 <div class="pred-countdown-unit">
-                    <span class="pred-countdown-num" id="cd-s">--</span>
+                    <span class="pred-countdown-num" id="cd-s">00</span>
                     <span class="pred-countdown-label">Seconds</span>
                 </div>
             </div>
@@ -622,5 +623,4 @@
             <h2 class="modal-title">Terms of Service</h2>
             <p>En utilisant ce service, vous reconnaissez que les paris comportent des risques financiers significatifs. Nous sommes un service de conseil, pas un bookmaker.</p>
         </div>
-    </div>
-    <div class="mod
+    
