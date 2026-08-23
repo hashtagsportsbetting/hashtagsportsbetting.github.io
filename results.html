@@ -268,12 +268,42 @@
             margin-bottom: 20px; 
             font-family: 'Righteous', cursive; 
         }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            header { height: 50px; padding: 0 16px; }
+            .logo-home { font-size: 1.8rem; }
+            .btn-nav { padding: 6px 12px; font-size: 0.8rem; }
+
+            main { padding: 15px 10px; }
+            h1 { font-size: 1.6rem; margin-bottom: 18px; }
+
+            .stat-box { padding: 12px; }
+            .stat-label { font-size: 0.7rem; }
+            .stat-value { font-size: 1.2rem; }
+
+            .mosaic-title { font-size: 1rem; margin-bottom: 10px; }
+            .mosaic-grid { gap: 8px; }
+            .mosaic-item { font-size: 0.9rem; min-height: 60px; }
+
+            .opt2-card { padding: 15px; }
+            .opt2-match { font-size: 1.1rem; }
+            .opt2-odds { font-size: 1.5rem; }
+
+            footer { height: 46px; font-size: 0.75rem; }
+        }
+
+        @media (max-width: 480px) {
+            .dashboard { gap: 10px; }
+            .stat-value { font-size: 1rem; }
+            .mosaic-item { font-size: 0.8rem; min-height: 50px; }
+        }
     </style>
 </head>
 <body>
 
     <header>
-        <a href="index.html" class="logo-home"># <span class="sports-icons-header">🎾🏀🏐</span></a>
+        <a href="index.html" class="logo-home"># <span class="sports-icons-header">&#127934;&#127936;&#127952;</span></a>
         <div class="nav-links">
             <a href="index.html" class="btn-nav">HOME</a>
         </div>
@@ -309,7 +339,6 @@
         </div>
     </main>
 
-    <!-- FOOTER COMPLET AVEC LES 3 LIENS -->
     <footer>
         <div class="footer-links">
             <a onclick="openLegalModal('modal-tos')">TOS</a> | 
@@ -319,7 +348,6 @@
         <p style="margin-top:4px;">&copy; 2026 HashtagSportsBetting.com</p>
     </footer>
 
-    <!-- LES 3 MODALES JURIDIQUES -->
     <div class="legal-modal-overlay" id="modal-legal">
         <div class="legal-modal-content">
             <span class="legal-close-modal" onclick="closeLegalModal('modal-legal')">X</span>
@@ -342,7 +370,6 @@
         </div>
     </div>
 
-    <!-- MODALE BETSLIP (OPTION 2 CYBER) -->
     <div class="modal-overlay" id="bet-modal" onclick="closeBetModal(event)">
         <div class="opt2-card" id="modal-card">
             <div class="close-bet-modal" onclick="document.getElementById('bet-modal').style.display='none'">✕</div>
@@ -363,11 +390,9 @@
     </div>
 
     <script>
-        // GESTION MODALES JURIDIQUES
         function openLegalModal(id) { document.getElementById(id).style.display = 'flex'; }
         function closeLegalModal(id) { document.getElementById(id).style.display = 'none'; }
 
-        // LA BASE DE DONNÉES DES PARIS — 5 PARIS AU TOTAL (du plus ancien au plus récent)
         const bets = [
             {
                 id: 1,
@@ -421,7 +446,6 @@
             }
         ];
 
-        // LOGIQUE D'AFFICHAGE ET DE CALCUL
         function initDashboard() {
             let totalBets = 0;
             let wins = 0;
@@ -431,7 +455,6 @@
             const grid = document.getElementById('mosaic-grid');
             grid.innerHTML = '';
 
-            // Affichage NEW TO OLD = reverse du tableau
             const reversedBets = [...bets].reverse();
 
             reversedBets.forEach(bet => {
@@ -481,7 +504,6 @@
             }
         }
 
-        // GESTION MODALE BETSLIP
         function openBetModal(bet) {
             const modal = document.getElementById('bet-modal');
             const card = document.getElementById('modal-card');
@@ -489,23 +511,4 @@
             document.getElementById('modal-date-tourney').innerText = `${bet.date} • ${bet.tournament}`;
             document.getElementById('modal-match').innerText = bet.match;
             document.getElementById('modal-selection').innerText = bet.selection;
-            document.getElementById('modal-stake').innerText = bet.stake;
-            document.getElementById('modal-odds').innerText = `@ ${bet.odds.toFixed(2)}`;
-            document.getElementById('modal-badge').innerText = bet.status;
-
-            card.classList.remove('modal-win', 'modal-loss', 'modal-void');
-            card.classList.add(`modal-${bet.status.toLowerCase()}`);
-
-            modal.style.display = 'flex';
-        }
-
-        function closeBetModal(e) {
-            if(e.target.id === 'bet-modal') {
-                document.getElementById('bet-modal').style.display = 'none';
-            }
-        }
-
-        window.onload = initDashboard;
-    </script>
-</body>
-</html>
+            document.getElementById('modal-st
