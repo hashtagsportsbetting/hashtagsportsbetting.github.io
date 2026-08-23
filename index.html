@@ -69,7 +69,7 @@
 
         .nav-links { display: flex; align-items: center; gap: 15px; }
 
-        .btn-results {
+        .btn-nav {
             background-color: transparent;
             color: var(--neon-cyan);
             border: 1px solid var(--neon-cyan);
@@ -83,7 +83,7 @@
             transition: all 0.2s;
             font-family: 'Share Tech Mono', monospace;
         }
-        .btn-results:hover {
+        .btn-nav:hover {
             background-color: var(--neon-cyan);
             color: #000;
             box-shadow: 0 0 10px var(--neon-cyan);
@@ -106,23 +106,13 @@
 
         /* ===== BADGE ===== */
         .pred-badge {
-            display: inline-block;
-            background: var(--neon-cyan);
-            color: #000;
             font-family: 'Righteous', cursive;
-            font-size: 0.85rem;
-            padding: 6px 18px;
-            border-radius: 20px;
+            font-size: 1.3rem;
+            color: #fff;
+            text-shadow: 2px 2px var(--neon-pink);
             letter-spacing: 2px;
             text-transform: uppercase;
-            box-shadow: 0 0 15px rgba(0, 255, 255, 0.4);
-            animation: pulseBadge 2s ease-in-out infinite;
             flex-shrink: 0;
-        }
-
-        @keyframes pulseBadge {
-            0%, 100% { box-shadow: 0 0 15px rgba(0, 255, 255, 0.4); }
-            50% { box-shadow: 0 0 25px rgba(0, 255, 255, 0.7); }
         }
 
         /* ===== CARD ===== */
@@ -429,6 +419,7 @@
         /* ===== FOOTER ===== */
         footer {
             width: 100%;
+            background: #000;
             height: 50px;
             padding: 0;
             text-align: center;
@@ -439,6 +430,7 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
+            margin-top: auto;
         }
 
         .footer-links a {
@@ -541,9 +533,9 @@
 <body>
 
     <header>
-        <a href="/" class="logo-home"># <span class="sports-icons-header">&#127936;&#127934;&#127952;</span></a>
+        <a href="/" class="logo-home"># <span class="sports-icons-header">&#127934;&#127936;&#127952;</span></a>
         <div class="nav-links">
-            <a href="results.html" class="btn-results">RESULTS</a>
+            <a href="results.html" class="btn-nav">RESULTS</a>
         </div>
     </header>
 
@@ -626,4 +618,9 @@
     </div>
     <div class="modal-overlay" id="modal-tos">
         <div class="modal-content">
-            <span class="
+            <span class="close-modal" onclick="closeModal('modal-tos')">X</span>
+            <h2 class="modal-title">Terms of Service</h2>
+            <p>En utilisant ce service, vous reconnaissez que les paris comportent des risques financiers significatifs. Nous sommes un service de conseil, pas un bookmaker.</p>
+        </div>
+    </div>
+    <div class="mod
