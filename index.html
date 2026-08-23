@@ -35,7 +35,6 @@
             background-size: 40px 40px;
         }
 
-        /* ===== HEADER ===== */
         header {
             width: 100%;
             height: 56px;
@@ -89,7 +88,6 @@
             box-shadow: 0 0 10px var(--neon-cyan);
         }
 
-        /* ===== MAIN ===== */
         main {
             flex: 1;
             display: flex;
@@ -104,7 +102,6 @@
             min-height: 0;
         }
 
-        /* ===== BADGE ===== */
         .pred-badge {
             font-family: 'Righteous', cursive;
             font-size: 2rem;
@@ -116,7 +113,6 @@
             margin-bottom: 8px;
         }
 
-        /* ===== CARD ===== */
         .pred-card {
             width: 100%;
             max-width: 480px;
@@ -148,7 +144,6 @@
             transition: filter 0.5s ease;
         }
 
-        /* ===== BLURRED INFO (hidden) ===== */
         .pred-info-blur {
             margin-bottom: 18px;
             display: flex;
@@ -183,7 +178,6 @@
             height: 14px;
         }
 
-        /* ===== ODDS ===== */
         .pred-odds-row {
             display: flex;
             justify-content: center;
@@ -208,7 +202,6 @@
             transition: color 0.5s ease, text-shadow 0.5s ease;
         }
 
-        /* ===== DIVIDER ===== */
         .pred-divider {
             height: 1px;
             background: linear-gradient(90deg, transparent, var(--neon-cyan), transparent);
@@ -217,7 +210,6 @@
             transition: background 0.5s ease;
         }
 
-        /* ===== COUNTDOWN ===== */
         .pred-countdown {
             display: flex;
             justify-content: center;
@@ -246,7 +238,6 @@
             letter-spacing: 1px;
         }
 
-        /* ===== CTA ===== */
         .pred-cta {
             display: block;
             width: 100%;
@@ -282,7 +273,6 @@
             transition: color 0.5s ease;
         }
 
-        /* ===== TOO LATE STATE ===== */
         .pred-card.too-late {
             border-color: #444;
             box-shadow: 0 0 20px rgba(100, 100, 100, 0.1);
@@ -335,7 +325,6 @@
             to { transform: translateY(0); opacity: 1; }
         }
 
-        /* ===== NEXT PREDICTION ===== */
         .next-pred {
             width: 100%;
             max-width: 480px;
@@ -372,7 +361,6 @@
             margin-top: 6px;
         }
 
-        /* ===== ALERT FORM ===== */
         .alert-form {
             width: 100%;
             max-width: 480px;
@@ -417,7 +405,6 @@
             box-shadow: 0 0 10px var(--neon-cyan);
         }
 
-        /* ===== FOOTER ===== */
         footer {
             width: 100%;
             background: #000;
@@ -443,7 +430,6 @@
 
         .footer-links a:hover { color: var(--neon-cyan); }
 
-        /* ===== MODALS ===== */
         .modal-overlay {
             display: none;
             position: fixed;
@@ -482,7 +468,6 @@
             font-family: 'Righteous', cursive;
         }
 
-        /* ===== RESPONSIVE ===== */
         @media (max-width: 768px) {
             header { height: 50px; padding: 0 16px; }
             .logo-home { font-size: 1.8rem; }
@@ -623,4 +608,15 @@
     </div>
     <div class="modal-overlay" id="modal-privacy">
         <div class="modal-content">
-            <span class="close-modal" onclic
+            <span class="close-modal" onclick="closeModal('modal-privacy')">X</span>
+            <h2 class="modal-title">Privacy Policy</h2>
+            <p>Votre email est utilis&eacute; exclusivement pour l'envoi d'alertes de pr&eacute;dictions et ne sera jamais partag&eacute; avec des agences de marketing tierces.</p>
+        </div>
+    </div>
+
+    <script>
+        function openModal(id) { document.getElementById(id).style.display = 'flex'; }
+        function closeModal(id) { document.getElementById(id).style.display = 'none'; }
+
+        (function() {
+            v
