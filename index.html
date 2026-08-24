@@ -534,10 +534,11 @@
         function closeModal(id) { document.getElementById(id).style.display = 'none'; }
 
         // ==========================================================
-        // AUTOMATISATION DU COMPTE À REBOURS ET DU MODE "TOO LATE"
-        // Change simplement cette date/heure pour tes prochains matchs :
+        // AUTOMATISATION ROBUSTE (TIMESTAMP UTC SANS BUG DE STRING)
+        // Pour les prochains matchs : Date.UTC(Année, Mois_0_à_11, Jour, Heure_UTC, Minute)
+        // Exemple : 17:00 CEST = 15:00 UTC en été.
         // ==========================================================
-        const matchTime = new Date("2026-08-24T17:00:00+02:00").getTime();
+        const matchTime = Date.UTC(2026, 7, 24, 15, 0, 0);
 
         function startCountdown() {
             function update() {
@@ -549,7 +550,7 @@
                 const footer = document.getElementById('pred-footer');
 
                 if (diff <= 0) {
-                    // C'est l'heure ou c'est dépassé : Automatisation propre
+                    // MODE TOO LATE AUTOMATIQUE
                     card.classList.add('too-late');
                     
                     document.getElementById('cd-h').innerText = "00";
@@ -557,7 +558,7 @@
                     document.getElementById('cd-s').innerText = "00";
                     
                     cta.innerHTML = "TOO LATE :(";
-                    cta.href = "javascript:void(0);"; // Tue le lien de paiement
+                    cta.href = "javascript:void(0);";
 
                     footer.innerText = "MATCH IN PROGRESS / FINISHED";
                     
