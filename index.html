@@ -3,6 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    
+    <!-- BALISES ANTI-CACHE STRICTES (Bloque la mise en mémoire cache) -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+
     <title>#sportsbetting - VALUE FINDER</title>
     <link href="https://fonts.googleapis.com/css2?family=Righteous&family=Share+Tech+Mono&display=swap" rel="stylesheet">
     <style>
@@ -516,14 +522,14 @@
     </div>
     <div class="modal-overlay" id="modal-tos">
         <div class="modal-content">
-            <span class="close-modal" onclick="closeModal('modal-tos')">X</span>
+            <span class="close-modal" onclick="openModal('modal-tos')">X</span>
             <h2 class="modal-title">Terms of Service</h2>
             <p>En utilisant ce service, vous reconnaissez que les paris comportent des risques financiers significatifs. Nous sommes un service de conseil, pas un bookmaker.</p>
         </div>
     </div>
     <div class="modal-overlay" id="modal-privacy">
         <div class="modal-content">
-            <span class="close-modal" onclick="closeModal('modal-privacy')">X</span>
+            <span class="close-modal" onclick="openModal('modal-privacy')">X</span>
             <h2 class="modal-title">Privacy Policy</h2>
             <p>Votre email est utilisé exclusivement pour l'envoi d'alertes de prédictions et ne sera jamais partagé avec des agences de marketing tierces.</p>
         </div>
@@ -534,28 +540,25 @@
         function closeModal(id) { document.getElementById(id).style.display = 'none'; }
 
         // ==========================================================
-        // CONFIGURATION PAR HEURE LOCALE (Zéro bug de fuseau horaire)
-        // Modifie juste Année, Mois (1-12), Jour, Heure, Minute pour les prochains matchs
+        // GESTION DU TEMPS DIRECTE (Comparaison claire et nette)
+        // Modifie uniquement ces lignes pour tes prochains matchs :
         // ==========================================================
-        const targetYear = 2026;
-        const targetMonth = 8;  // 8 = Août
-        const targetDay = 24;
-        const targetHour = 17;  // 17h00
-        const targetMinute = 0;
+        const matchYear = 2026;
+        const matchMonth = 8;  // 8 = Août
+        const matchDay = 24;
+        const matchHour = 17;  // 17h00
+        const matchMinute = 0;
 
         function checkMatchStatus() {
             const now = new Date();
-            
-            // Création de la date cible en heure locale du visiteur
-            const matchDate = new Date(targetYear, targetMonth - 1, targetDay, targetHour, targetMinute, 0);
-            const diff = matchDate.getTime() - now.getTime();
+            const matchDate = new Date(matchYear, matchMonth - 1, matchDay, matchHour, matchMinute, 0);
 
             const card = document.getElementById('pred-card');
             const cta = document.getElementById('pred-cta');
             const footer = document.getElementById('pred-footer');
 
-            if (diff <= 0) {
-                // Le match a commencé ou est passé -> MODE TOO LATE DIRECT
+            // Si l'heure actuelle est supérieure ou égale à l'heure du match
+            if (now >= matchDate) {
                 if (card) card.classList.add('too-late');
                 
                 if (document.getElementById('cd-h')) document.getElementById('cd-h').innerText = "00";
@@ -564,13 +567,11 @@
                 
                 if (cta) {
                     cta.innerHTML = "TOO LATE :(";
-                    cta.setAttribute('href', '#');
+                    cta.setAttribute('href', 'javascript:void(0);');
                     cta.style.cursor = 'not-allowed';
                     cta.style.pointerEvents = 'none';
                 }
                 
                 if (footer) footer.innerText = "MATCH IN PROGRESS / FINISHED";
             } else {
-                const hours = Math.floor(diff / (1000 * 60 * 60));
-                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-       
+                const diff = matchDate.getTime() - now.g
