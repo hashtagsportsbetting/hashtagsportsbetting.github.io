@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>#Christophe Louie - PANETTONE SLOT</title>
+    <link href="https://fonts.googleapis.com/css2?family=Righteous&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <style>
+        :root {
+            --neon-pink: #ff00ff;
+            --neon-cyan: #00ffff;
+            --dark-bg: #090014;
+            --grid-color: rgba(0, 255, 255, 0.05);
+            --win-green: #00ff00;
+            --loss-red: #ff4444;
+            --gold-crust: #ffb703;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
+        body {
+            background-color: var(--dark-bg);
+            color: #fff;
+            font-family: 'Share Tech Mono', monospace;
+            height: 100vh;
+            height: 100dvh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            background-image:
+                linear-gradient(var(--grid-color) 1px, transparent 1px),
+                linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+            background-size: 40px 40px;
+            overflow: hidden;
+            padding: 0 0 16px 0;
+        }
+
+        header {
+            width: 100%;
+            height: 56px;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(9, 0, 20, 0.9);
+            border-bottom: 2px solid var(--neon-cyan);
+            backdrop-filter: blur(5px);
+            z-index: 10;
+            flex-shrink: 0;
+        }
+
+        .logo-home {
+            text-decoration: none;
+            font-family: 'Righteous', cursive;
+            font-size: 1.6rem;
+            color: var(--neon-pink);
+            display: flex;
+            align-items: center;
+            text-shadow: 0 0 10px var(--neon-pink);
+        }
+
+        .header-tag {
+            color: var(--neon-cyan);
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        main {
+            flex: 1;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            max-width: 500px;
+            width: 100%;
+            gap: 10px;
+        }
+
+        .title-block {
+            text-align: center;
+        }
+
+        h1 {
+            font-family: 'Righteous', cursive;
+            color: #fff;
+            text-shadow: 2px 2px var(--neon-pink);
+            font-size: clamp(1.3rem, 5.5vw, 1.8rem);
+            letter-spacing: 1px;
+        }
+
+        .sub-tagline {
+            font-size: 0.85rem;
+            color: var(--gold-crust);
+            text-shadow: 0 0 5px var(--gold-crust);
+            margin-top: 2px;
+        }
+
+        .slot-card {
+            background: linear-gradient(135deg, rgba(255, 0, 255, 0.05), rgba(0, 255, 255, 0.05));
+            background-color: #050010;
+            border-left: 4px solid var(--neon-cyan);
+            border-right: 1px solid rgba(0, 255, 255, 0.3);
+            border-top: 1px solid rgba(0, 255, 255, 0.3);
+            border-bottom: 1px solid rgba(0, 255, 255, 0.3);
+            border-radius: 8px;
+            padding: 8px;
+            width: 100%;
+            height: 52vh;
+            box-shadow: 0 0 25px rgba(0, 255, 255, 0.1);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .slot-card::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            height: 20%;
+            border-top: 2px solid var(--gold-crust);
+            border-bottom: 2px solid var(--gold-crust);
+            background: rgba(255, 183, 3, 0.08);
+            box-shadow: 0 0 10px rgba(255, 183, 3, 0.2);
+            pointer-events: none;
+            z-index: 5;
+        }
+
+        .reels-board {
+            display: flex;
+            gap: 6px;
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+            background: rgba(0, 0, 0, 0.6);
+            border: 1px solid #222;
+            border-radius: 4px;
+        }
+
+        .reel-column {
+            flex: 1;
+            height: 100%;
+            overflow: hidden;
+            position: relative;
+            border-right: 1px solid rgba(0, 255, 255, 0.08);
+        }
+
+        .reel-column:last-child {
+            border-right: none;
+        }
+
+        .reel-strip {
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            width: 100%;
+            top: 0;
+            left: 0;
+        }
+
+        .emoji-cell {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: clamp(1.5rem, 5.5vw, 2.2rem);
+        }
+
+        .controls-zone {
+            width: 100%;
+            max-width: 500px;
+            padding: 0 10px;
+        }
+
+        .spin-btn {
+            width: 100%;
+            padding: 16px;
+            font-family: 'Righteous', cursive;
+            font-size: 1.3rem;
+            color: #000;
+            background-color: var(--gold-crust);
+            border: 1px solid var(--gold-crust);
+            border-radius: 6px;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 0 15px rgba(255, 183, 3, 0.4);
+            transition: all 0.15s ease;
+        }
+
+        .spin-btn:active:not(:disabled) {
+            transform: scale(0.98);
+            background-color: var(--neon-pink);
+            border-color: var(--neon-pink);
+            box-shadow: 0 0 20px var(--neon-pink);
+            color: #fff;
+        }
+
+        .spin-btn:disabled {
+            background-color: #1a1a1a;
+            border-color: #333;
+            color: #555;
+            box-shadow: none;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .toast-loss {
+            position: fixed;
+            bottom: 80px;
+            background: rgba(255, 68, 68, 0.15);
+            border: 2px solid var(--loss-red);
+            color: var(--loss-red);
+            box-shadow: 0 0 15px rgba(255, 68, 68, 0.3);
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-family: 'Righteous', cursive;
+            font-size: 0.95rem;
+            display: none;
+            z-index: 90;
+            text-align: center;
+        }
+
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(5px);
+            z-index: 100;
+            justify-content: center;
+            align-items: center;
+            padding: 15px;
+        }
+
+        .opt2-card {
+            background: linear-gradient(135deg, rgba(255, 183, 3, 0.08), rgba(0, 255, 255, 0.05));
+            background-color: #050010;
+            border-left: 4px solid var(--gold-crust);
+            border-right: 1px solid rgba(255, 183, 3, 0.3);
+            border-top: 1px solid rgba(255, 183, 3, 0.3);
+            border-bottom: 1px solid rgba(255, 183, 3, 0.3);
+            border-radius: 8px;
+            padding: 24px;
+            width: 100%;
+            max-width: 420px;
+            box-shadow: 0 0 35px rgba(255, 183, 3, 0.2);
+            text-align: center;
+        }
+
+        .opt2-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 3px;
+            font-weight: bold;
+            font-family: 'Righteous', cursive;
+            letter-spacing: 1px;
+            background: rgba(255, 183, 3, 0.2);
+            color: var(--gold-crust);
+            margin-bottom: 10px;
+        }
+
+        .opt2-emojis {
+            font-size: 3.5rem;
+            margin: 8px 0;
+            filter: drop-shadow(0 0 10px rgba(255, 183, 3, 0.5));
+        }
+
+        .opt2-match {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #fff;
+            font-family: 'Righteous', cursive;
+            text-shadow: 0 0 10px var(--gold-crust);
+            margin-bottom: 6px;
+        }
+
+        .opt2-details {
+            color: #ccc;
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+            line-height: 1.4;
+        }
+
+        .btn-confirm {
+            background-color: transparent;
+            color: var(--gold-crust);
+            border: 1px solid var(--gold-crust);
+            padding: 10px 20px;
+            border-radius: 4px;
+            text-transform: uppercase;
+            font-weight: bold;
+            font-size: 0.95rem;
+            cursor: pointer;
+            font-family: 'Share Tech Mono', monospace;
+            width: 100%;
+            box-shadow: 0 0 10px rgba(255, 183, 3, 0.2);
+        }
+
+        .btn-confirm:hover {
+            background-color: var(--gold-crust);
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="#" class="logo-home"># <span style="font-size:0.6em; margin-left:6px;">🍞🥐🌾</span></a>
+        <div class="header-tag">HAUT-MARAIS • PARIS 3</div>
+    </header>
+
+    <main>
+        <div class="title-block">
+            <h1>CHRISTOPHE LOUIE</h1>
+            <div class="sub-tagline">Levain naturel & Panettone d'orfèvre</div>
+        </div>
+
+        <div class="slot-card">
+            <div class="reels-board" id="reels-board">
+                <div class="reel-column"><div class="reel-strip" id="strip-0"></div></div>
+                <div class="reel-column"><div class="reel-strip" id="strip-1"></div></div>
+                <div class="reel-column"><div class="reel-strip" id="strip-2"></div></div>
+                <div class="reel-column"><div class="reel-strip" id="strip-3"></div></div>
+                <div class="reel-column"><div class="reel-strip" id="strip-4"></div></div>
+            </div>
+        </div>
+    </main>
+
+    <div class="controls-zone">
+        <button class="spin-btn" id="spin-btn">FAIT TOURNER FRERE</button>
+    </div>
+
+    <div class="toast-loss" id="toast-loss">RUPTURE DE FOURNÉE • REFAIS UN TOUR</div>
+
+    <div class="modal-overlay" id="bet-modal">
+        <div class="opt2-card">
+            <div class="opt2-badge">COMMANDE VALIDÉE AU FOURNIL</div>
+            <div class="opt2-emojis" id="win-emojis">🍞 🍊 ✨</div>
+            <div class="opt2-match" id="win-name">PANETTONE TRADITION</div>
+            <div class="opt2-details" id="win-desc">Alvéolage parfait, levain madre vivant et agrumes confits d'exception.</div>
+            <button class="btn-confirm" id="close-btn">JE PRENDS MA PART</button>
+        </div>
+    </div>
+
+    <script>
+        const PRODUCTS = [
+            { 
+                id: 'panettone-tradition', 
+                name: 'PANETTONE TRADITION', 
+                mainEmoji: '🍞', 
+                display: '🍞 🍊 ✨', 
+                pool: ['🍞', '🍊', '✨', '🍯'], 
+                desc: 'La signature absolue : levain madre séculaire, vanille de Madagascar et oranges confites.' 
+            },
+            { 
+                id: 'panettone-choc', 
+                name: 'PANETTONE CHOCOLAT', 
+                mainEmoji: '🍫', 
+                display: '🍫 🍞 🌰', 
+                pool: ['🍫', '🍞', '🌰', '✨'], 
+                desc: 'Pépites de chocolat grand cru et noisettes du Piémont torréfiées.' 
+            },
+            { 
+                id: 'croissant-feuillete', 
+                name: 'VIENNOISERIE FEUILLETÉE', 
+                mainEmoji: '🥐', 
+                display: '🥐 🧈 🥐', 
+                pool: ['🥐', '🧈', '🔥', '✨'], 
+                desc: 'Beurre AOP Charentes-Poitou, feuilletage croustillant et cœur ultra aéré.' 
+            },
+            { 
+                id: 'pain-levain', 
+                name: 'PAIN AU LEVAIN NATUREL', 
+                mainEmoji: '🥖', 
+                display: '🥖 🌾 🍞', 
+                pool: ['🥖', '🌾', '🍞', '🧂'], 
+                desc: 'Farines de meule paysannes, fermentation longue et croûte bien dorée.' 
+            },
+            { 
+                id: 'financiers-biscuits', 
+                name: 'FINANCIERS & BISCUITS', 
+                mainEmoji: '🍪', 
+                display: '🍪 🧈 🍯', 
+                pool: ['🍪', '🧈', '🍯', '🌰'], 
+                desc: 'Beurre noisette, amandes brutes et textures fondantes.' 
+            }
+        ];
+
+        const ALL_EMOJIS = PRODUCTS.flatMap(p => p.pool);
+        const NUM_COLS = 5;
+        const NUM_ROWS = 5;
+        const STRIP_LEN = 35;
+        let cellHeight = 60;
+
+        let audioCtx = null;
+        function initAudio() {
+            if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        }
+
+        function playTick() {
+            if (!audioCtx) return;
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            osc.type = 'triangle';
+            osc.frequency.setValueAtTime(170, audioCtx.currentTime);
+            gain.gain.setValueAtTime(0.04, audioCtx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.04);
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+            osc.start();
+            osc.stop(audioCtx.currentTime + 0.04);
+        }
+
+        function playWinSound() {
+            if (!audioCtx) return;
+            const freqs = [523.25, 659.25, 783.99, 1046.50];
+            freqs.forEach((f, i) => {
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                osc.type = 'square';
+                osc.frequency.setValueAtTime(f, audioCtx.currentTime + i * 0.1);
+                gain.gain.setValueAtTime(0.08, audioCtx.currentTime + i * 0.1);
+                gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + (i + 1) * 0.2);
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+                osc.start(audioCtx.currentTime + i * 0.1);
+                osc.stop(audioCtx.currentTime + (i + 1) * 0.2);
+            });
+        }
+
+        function playLossSound() {
+            if (!audioCtx) return;
+            const notes = [280, 240, 200, 150];
+            notes.forEach((f, i) => {
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                osc.type = 'sawtooth';
+                osc.frequency.setValueAtTime(f, audioCtx.currentTime + i * 0.12);
+                gain.gain.setValueAtTime(0.05, audioCtx.currentTime + i * 0.12);
+                gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + (i + 1) * 0.12);
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+                osc.start(audioCtx.currentTime + i * 0.12);
+                osc.stop(audioCtx.currentTime + (i + 1) * 0.12);
+            });
+        }
+
+        function populateStrip(c) {
+            const strip = document.getElementById(`strip-${c}`);
+            strip.innerHTML = '';
+            for (let i = 0; i < STRIP_LEN; i++) {
+                const div = document.createElement('div');
+                div.className = 'emoji-cell';
+                div.style.height = `${cellHeight}px`;
+                div.textContent = ALL_EMOJIS[Math.floor(Math.random() * ALL_EMOJIS.length)];
+                strip.appendChild(div);
+            }
+        }
+
+        function computeSize() {
+            const board = document.getElementById('reels-board');
+            cellHeight = board.clientHeight / NUM_ROWS;
+            for (let c = 0; c < NUM_COLS; c++) {
+                const cells = document.querySelectorAll(`#strip-${c} .emoji-cell`);
+                cells.forEach(cell => cell.style.height = `${cellHeight}px`);
+            }
+        }
+
+        for (let c = 0; c < NUM_COLS; c++) populateStrip(c);
+        window.addEventListener('resize', computeSize);
+        setTimeout(computeSize, 50);
+
+        const spinBtn = document.getElementById('spin-btn');
+        const toast = document.getElementById('toast-loss');
+        const modal = document.getElementById('bet-modal');
+
+        spinBtn.addEventListener('click', () => {
+            initAudio();
+            spinBtn.disabled = true;
+            toast.style.display = 'none';
+
+            // 1 chance sur 5 (20%)
+            const isWinner = Math.random() < 0.20;
+            const target = PRODUCTS[Math.floor(Math.random() * PRODUCTS.length)];
+
+            const stopIdx = STRIP_LEN - NUM_ROWS - 2;
+            const centerWinningRow = stopIdx + 2;
+            let finished = 0;
+
+            for (let c = 0; c < NUM_COLS; c++) {
+                const strip = document.getElementById(`strip-${c}`);
+                const cells = strip.querySelectorAll('.emoji-cell');
+
+                if (isWinner) {
+                    cells[centerWinningRow].textContent = target.mainEmoji;
+                } else {
+                    if (c === 1 || c === 3) {
+                        let diff;
+                        do {
+                            diff = PRODUCTS[Math.floor(Math.random() * PRODUCTS.length)];
+                        } while (diff.id === target.id);
+                        cells[centerWinningRow].textContent = diff.mainEmoji;
+                    }
+                }
+
+                const duration = 1600 + c * 350;
+                const targetY = -(stopIdx * cellHeight);
+
+                strip.style.transition = `transform ${duration}ms cubic-bezier(0.12, 0.88, 0.25, 1)`;
+                strip.style.transform = `translateY(${targetY}px)`;
+
+                const ticker = setInterval(playTick, 85);
+
+                setTimeout(() => {
+                    clearInterval(ticker);
+                    finished++;
+
+                    if (finished === NUM_COLS) {
+                        spinBtn.disabled = false;
+
+                        if (isWinner) {
+                            playWinSound();
+                            confetti({
+                                particleCount: 100,
+                                spread: 90,
+                                origin: { y: 0.5 },
+                                colors: ['#ffb703', '#00ffff', '#ff00ff', '#ffffff']
+                            });
+                            document.getElementById('win-emojis').textContent = target.display;
+                            document.getElementById('win-name').textContent = target.name;
+                            document.getElementById('win-desc').textContent = target.desc;
+                            modal.style.display = 'flex';
+                        } else {
+                            playLossSound();
+                            toast.style.display = 'block';
+                            setTimeout(() => { toast.style.display = 'none'; }, 2200);
+                        }
+
+                        setTimeout(() => {
+                            for (let i = 0; i < NUM_COLS; i++) {
+                                const s = document.getElementById(`strip-${i}`);
+                                s.style.transition = 'none';
+                                s.style.transform = 'translateY(0px)';
+                                populateStrip(i);
+                            }
+                            computeSize();
+                        }, 500);
+                    }
+                }, duration);
+            }
+        });
+
+        document.getElementById('close-btn').addEventListener('click', () => {
+            modal.style.display = 'none';
+        });
+    </script>
+</body>
+</html>
