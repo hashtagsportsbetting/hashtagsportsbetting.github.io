@@ -270,32 +270,32 @@
 
         /* ETAT : TOO LATE */
         .pred-card.too-late {
-            border-color: #444;
-            box-shadow: 0 0 20px rgba(100, 100, 100, 0.1);
+            border-color: #444 !important;
+            box-shadow: 0 0 20px rgba(100, 100, 100, 0.1) !important;
         }
         .pred-card.too-late .pred-sport-icon {
             filter: drop-shadow(0 0 8px rgba(100, 100, 100, 0.3));
         }
         .pred-card.too-late .pred-odds-value {
-            color: #666;
-            text-shadow: none;
+            color: #666 !important;
+            text-shadow: none !important;
         }
         .pred-card.too-late .pred-countdown-num {
-            color: var(--loss-red);
-            text-shadow: 0 0 10px rgba(255, 68, 68, 0.3);
+            color: var(--loss-red) !important;
+            text-shadow: 0 0 10px rgba(255, 68, 68, 0.3) !important;
         }
         .pred-card.too-late .pred-divider {
-            background: linear-gradient(90deg, transparent, #444, transparent);
+            background: linear-gradient(90deg, transparent, #444, transparent) !important;
         }
         .pred-card.too-late .pred-cta {
-            background: var(--loss-red);
-            color: #000;
-            box-shadow: 0 0 20px rgba(255, 68, 68, 0.4);
-            cursor: not-allowed;
-            pointer-events: none;
+            background: var(--loss-red) !important;
+            color: #000 !important;
+            box-shadow: 0 0 20px rgba(255, 68, 68, 0.4) !important;
+            cursor: not-allowed !important;
+            pointer-events: none !important;
         }
         .pred-card.too-late .pred-footer-note {
-            color: #444;
+            color: #444 !important;
         }
 
         /* WHATSAPP CONTAINER */
@@ -539,16 +539,16 @@
     </div>
 
     <script>
-        // Gestion des Modales légales
         function openModal(id) { document.getElementById(id).style.display = 'flex'; }
         function closeModal(id) { document.getElementById(id).style.display = 'none'; }
 
-        // Système de Compte à Rebours (Heure du match : 17h00 CEST aujourd'hui)
-        const matchTime = new Date("2026-08-24T17:00:00+02:00").getTime();
+        // TIMESTAMP UTC UNIVERSEL : 24 Août 2026 à 17:00 CEST (soit 15:00 UTC)
+        // Évite tout bug de parsing de fuseau horaire sur mobile
+        const matchTime = Date.UTC(2026, 7, 24, 15, 0, 0);
 
         function startCountdown() {
             function update() {
-                const now = new Date().getTime();
+                const now = Date.now();
                 const diff = matchTime - now;
 
                 if (diff <= 0) {
@@ -576,8 +576,4 @@
                 }
             }
             update();
-            var countdownInterval = setInterval(update, 1000);
-        }
-
-        // Système de Tracking Telegram Bulletproof (Sans blocage CORS)
-        const
+            var 
