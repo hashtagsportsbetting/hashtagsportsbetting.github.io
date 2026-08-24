@@ -18,21 +18,18 @@
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
 
-        html, body {
-            height: 100dvh;
-            overflow: hidden;
-        }
-
         body {
             background-color: var(--dark-bg);
             color: #fff;
             font-family: 'Share Tech Mono', monospace;
             display: flex;
             flex-direction: column;
+            min-height: 100vh;
             background-image:
                 linear-gradient(var(--grid-color) 1px, transparent 1px),
                 linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
             background-size: 40px 40px;
+            overflow-x: hidden;
         }
 
         header {
@@ -95,11 +92,10 @@
             align-items: center;
             justify-content: center;
             width: 100%;
-            padding: 10px 20px;
+            padding: 20px 10px;
             max-width: 700px;
             margin: 0 auto;
             gap: 14px;
-            min-height: 0;
         }
 
         .pred-badge {
@@ -111,6 +107,7 @@
             text-transform: uppercase;
             flex-shrink: 0;
             margin-bottom: 8px;
+            text-align: center;
         }
 
         .pred-card {
@@ -160,22 +157,20 @@
             background: transparent;
         }
 
-        .pred-info-label,
+        .pred-info-label {
+            color: #888;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
         .pred-info-value {
             color: transparent;
             background: #1a3a5c;
             border-radius: 3px;
             font-size: 0.8rem;
-        }
-
-        .pred-info-label {
-            width: 80px;
-            height: 14px;
-        }
-
-        .pred-info-value {
-            width: 160px;
-            height: 14px;
+            height: 16px;
+            user-select: none;
         }
 
         .pred-odds-row {
@@ -273,92 +268,34 @@
             transition: color 0.5s ease;
         }
 
+        /* ETAT : TOO LATE */
         .pred-card.too-late {
             border-color: #444;
             box-shadow: 0 0 20px rgba(100, 100, 100, 0.1);
         }
-
         .pred-card.too-late .pred-sport-icon {
             filter: drop-shadow(0 0 8px rgba(100, 100, 100, 0.3));
         }
-
         .pred-card.too-late .pred-odds-value {
             color: #666;
             text-shadow: none;
         }
-
         .pred-card.too-late .pred-countdown-num {
             color: var(--loss-red);
             text-shadow: 0 0 10px rgba(255, 68, 68, 0.3);
         }
-
         .pred-card.too-late .pred-divider {
             background: linear-gradient(90deg, transparent, #444, transparent);
         }
-
         .pred-card.too-late .pred-cta {
-            background: #333;
-            color: #777;
-            box-shadow: none;
+            background: var(--loss-red);
+            color: #000;
+            box-shadow: 0 0 20px rgba(255, 68, 68, 0.4);
             cursor: not-allowed;
             pointer-events: none;
         }
-
         .pred-card.too-late .pred-footer-note {
             color: #444;
-        }
-
-        .pred-too-late-banner {
-            background: var(--loss-red);
-            color: #000;
-            font-family: 'Righteous', cursive;
-            text-align: center;
-            padding: 10px;
-            margin: -28px -32px 18px -32px;
-            font-size: 1.1rem;
-            letter-spacing: 3px;
-            animation: bannerSlide 0.4s ease-out;
-        }
-
-        @keyframes bannerSlide {
-            from { transform: translateY(-100%); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-
-        .next-pred {
-            width: 100%;
-            max-width: 480px;
-            text-align: center;
-            flex-shrink: 0;
-        }
-
-        .next-pred-label {
-            color: #555;
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            margin-bottom: 8px;
-        }
-
-        .next-pred-card {
-            background: linear-gradient(145deg, #0d0d0d 0%, #050505 100%);
-            border: 1px solid #333;
-            border-radius: 12px;
-            padding: 14px;
-            opacity: 0.7;
-        }
-
-        .next-pred-odds {
-            font-family: 'Righteous', cursive;
-            font-size: 2rem;
-            color: #555;
-            margin: 6px 0;
-        }
-
-        .next-pred-text {
-            color: #444;
-            font-size: 0.8rem;
-            margin-top: 6px;
         }
 
         .alert-form {
@@ -367,6 +304,7 @@
             display: flex;
             gap: 8px;
             flex-shrink: 0;
+            margin-top: 10px;
         }
 
         input {
@@ -472,38 +410,20 @@
             header { height: 50px; padding: 0 16px; }
             .logo-home { font-size: 1.8rem; }
             .btn-nav { padding: 6px 12px; font-size: 0.8rem; }
-
-            main { padding: 8px 16px; gap: 10px; }
-
+            main { padding: 15px 16px; gap: 10px; }
             .pred-badge { font-size: 1.6rem; margin-bottom: 6px; }
-
-            .pred-card {
-                max-width: 100%;
-                padding: 20px 22px;
-                border-radius: 14px;
-            }
-
+            .pred-card { max-width: 100%; padding: 20px 22px; border-radius: 14px; }
             .pred-sport-icon { font-size: 2.4rem; margin-bottom: 10px; }
-
-            .pred-info-label { width: 60px; height: 12px; }
-            .pred-info-value { width: 130px; height: 12px; }
-
             .pred-odds-label { font-size: 0.8rem; }
             .pred-odds-value { font-size: 3.2rem; }
-
             .pred-countdown { gap: 16px; margin-bottom: 14px; }
             .pred-countdown-num { font-size: 1.8rem; min-width: 45px; }
             .pred-countdown-label { font-size: 0.6rem; }
-
             .pred-cta { padding: 12px; font-size: 1rem; border-radius: 10px; }
             .pred-footer-note { font-size: 0.7rem; margin-top: 8px; }
-
             .alert-form { max-width: 100%; }
             input { padding: 10px; font-size: 0.8rem; }
             .btn-subscribe { padding: 10px 14px; font-size: 0.8rem; }
-
-            .pred-too-late-banner { margin: -20px -22px 14px -22px; padding: 8px; font-size: 1rem; }
-
             footer { height: 46px; font-size: 0.75rem; }
         }
 
@@ -512,7 +432,6 @@
             .pred-countdown-num { font-size: 1.6rem; }
             .pred-cta { font-size: 0.95rem; padding: 10px; }
             .pred-card { padding: 16px 18px; }
-            .pred-info-value { width: 110px; }
         }
     </style>
 </head>
@@ -532,16 +451,28 @@
             <div class="pred-sport-icon" id="pred-sport">&#127934;</div>
 
             <div class="pred-info-blur">
-                <div class="pred-info-row"><span class="pred-info-label"></span><span class="pred-info-value"></span></div>
-                <div class="pred-info-row"><span class="pred-info-label"></span><span class="pred-info-value"></span></div>
-                <div class="pred-info-row"><span class="pred-info-label"></span><span class="pred-info-value"></span></div>
-                <div class="pred-info-row"><span class="pred-info-label"></span><span class="pred-info-value"></span></div>
-                <div class="pred-info-row"><span class="pred-info-label"></span><span class="pred-info-value"></span></div>
+                <!-- 4 Lignes exactes ! -->
+                <div class="pred-info-row">
+                    <span class="pred-info-label">Match</span>
+                    <span class="pred-info-value" style="width: 180px;">R. Strombachs vs K. Wehnelt</span>
+                </div>
+                <div class="pred-info-row">
+                    <span class="pred-info-label">Tournoi</span>
+                    <span class="pred-info-value" style="width: 110px;">ATP Challenger</span>
+                </div>
+                <div class="pred-info-row">
+                    <span class="pred-info-label">Surface</span>
+                    <span class="pred-info-value" style="width: 80px;">Dur</span>
+                </div>
+                <div class="pred-info-row">
+                    <span class="pred-info-label">Sélection</span>
+                    <span class="pred-info-value" style="width: 130px;">Kai Wehnelt ML</span>
+                </div>
             </div>
 
             <div class="pred-odds-row">
                 <span class="pred-odds-label">Odds</span>
-                <span class="pred-odds-value" id="pred-odds">1.57</span>
+                <span class="pred-odds-value" id="pred-odds">1.80</span>
             </div>
 
             <div class="pred-divider"></div>
@@ -565,16 +496,7 @@
                 <span class="lock-icon">&#128274;</span> UNLOCK FOR 4,90€
             </a>
 
-            <div class="pred-footer-note" id="pred-footer">Match starts at 14:00 CET</div>
-        </div>
-
-        <div class="next-pred" id="next-pred" style="display:none;">
-            <div class="next-pred-label">Next Prediction</div>
-            <div class="next-pred-card">
-                <div style="font-size:1.8rem;">&#127936;</div>
-                <div class="next-pred-odds">2.10</div>
-                <div class="next-pred-text">Coming soon...</div>
-            </div>
+            <div class="pred-footer-note" id="pred-footer">Match starts at 10:30 CEST</div>
         </div>
 
         <form action="https://hooks.zapier.com/hooks/catch/28613327/4tfmq4u/" method="POST" class="alert-form">
@@ -610,7 +532,7 @@
         <div class="modal-content">
             <span class="close-modal" onclick="closeModal('modal-privacy')">X</span>
             <h2 class="modal-title">Privacy Policy</h2>
-            <p>Votre email est utilis&eacute; exclusivement pour l'envoi d'alertes de pr&eacute;dictions et ne sera jamais partag&eacute; avec des agences de marketing tierces.</p>
+            <p>Votre email est utilisé exclusivement pour l'envoi d'alertes de prédictions et ne sera jamais partagé avec des agences de marketing tierces.</p>
         </div>
     </div>
 
@@ -618,5 +540,44 @@
         function openModal(id) { document.getElementById(id).style.display = 'flex'; }
         function closeModal(id) { document.getElementById(id).style.display = 'none'; }
 
-        (function() {
-            v
+        // Heure calée sur le début de match (aujourd'hui 10h30)
+        const matchTime = new Date("2026-08-24T10:30:00+02:00").getTime();
+
+        function startCountdown() {
+            function update() {
+                const now = new Date().getTime();
+                const diff = matchTime - now;
+
+                if (diff <= 0) {
+                    // Match commencé : on bloque tout et on passe en mode TOO LATE
+                    document.getElementById('cd-h').innerText = "00";
+                    document.getElementById('cd-m').innerText = "00";
+                    document.getElementById('cd-s').innerText = "00";
+                    
+                    document.getElementById('pred-card').classList.add('too-late');
+                    
+                    const cta = document.getElementById('pred-cta');
+                    cta.innerHTML = "TOO LATE :(";
+                    cta.href = "#";
+
+                    document.getElementById('pred-footer').innerText = "MATCH IN PROGRESS / FINISHED";
+                    
+                    clearInterval(countdownInterval);
+                } else {
+                    const hours = Math.floor(diff / (1000 * 60 * 60));
+                    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+                    document.getElementById('cd-h').innerText = String(hours).padStart(2, '0');
+                    document.getElementById('cd-m').innerText = String(minutes).padStart(2, '0');
+                    document.getElementById('cd-s').innerText = String(seconds).padStart(2, '0');
+                }
+            }
+            update();
+            var countdownInterval = setInterval(update, 1000);
+        }
+
+        window.onload = startCountdown;
+    </script>
+</body>
+</html>
