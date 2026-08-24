@@ -422,7 +422,6 @@
             .pred-cta { padding: 12px; font-size: 1rem; border-radius: 10px; }
             .pred-footer-note { font-size: 0.7rem; margin-top: 8px; }
             
-            /* Responsive WhatsApp button */
             .whatsapp-container { max-width: 100%; }
             .btn-whatsapp { padding: 12px; font-size: 1rem; }
             
@@ -453,7 +452,6 @@
             <div class="pred-sport-icon" id="pred-sport">&#127934;</div>
 
             <div class="pred-info-blur">
-                <!-- 4 Lignes exactes ! -->
                 <div class="pred-info-row">
                     <span class="pred-info-label">Match</span>
                     <span class="pred-info-value" style="width: 180px;">F. Ferro vs R. Marino</span>
@@ -541,10 +539,11 @@
     </div>
 
     <script>
+        // Gestion des Modales légales
         function openModal(id) { document.getElementById(id).style.display = 'flex'; }
         function closeModal(id) { document.getElementById(id).style.display = 'none'; }
 
-        // Heure calée sur le début de match (Aujourd'hui 17h00)
+        // Système de Compte à Rebours (Heure du match : 17h00 CEST aujourd'hui)
         const matchTime = new Date("2026-08-24T17:00:00+02:00").getTime();
 
         function startCountdown() {
@@ -553,7 +552,6 @@
                 const diff = matchTime - now;
 
                 if (diff <= 0) {
-                    // Match commencé : on bloque tout et on passe en mode TOO LATE
                     document.getElementById('cd-h').innerText = "00";
                     document.getElementById('cd-m').innerText = "00";
                     document.getElementById('cd-s').innerText = "00";
@@ -581,7 +579,5 @@
             var countdownInterval = setInterval(update, 1000);
         }
 
-        window.onload = startCountdown;
-    </script>
-</body>
-</html>
+        // Système de Tracking Telegram en Direct
+        const TELEGRAM_BOT_TOKEN = 
