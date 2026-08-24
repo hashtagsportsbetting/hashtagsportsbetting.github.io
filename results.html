@@ -2,14 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    
-    <!-- BALISES ANTI-CACHE -->
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-    <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Expires" content="0">
-    
-    <title>#sportsbetting - RESULTS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>#sportsbetting - RESULTS & DASHBOARD</title>
     <link href="https://fonts.googleapis.com/css2?family=Righteous&family=Share+Tech+Mono&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -19,7 +13,7 @@
             --grid-color: rgba(0, 255, 255, 0.05);
             --win-green: #00ff00;
             --loss-red: #ff4444;
-            --brand-orange: #ff5733;
+            --void-gray: #aaaaaa;
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -85,6 +79,7 @@
             transition: all 0.2s;
             font-family: 'Share Tech Mono', monospace;
         }
+
         .btn-nav:hover {
             background-color: var(--neon-cyan);
             color: #000;
@@ -93,136 +88,210 @@
 
         main {
             flex: 1;
+            padding: 20px 10px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            width: 100%;
-            padding: 30px 10px;
-            max-width: 700px;
+            max-width: 800px;
             margin: 0 auto;
-            gap: 20px;
-        }
-
-        .page-title {
-            font-family: 'Righteous', cursive;
-            font-size: 2rem;
-            color: #fff;
-            text-shadow: 2px 2px var(--neon-cyan);
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            text-align: center;
-            margin-bottom: 10px;
-        }
-
-        /* HISTORIQUE DES RÉSULTATS */
-        .result-card {
             width: 100%;
-            max-width: 480px;
-            background: linear-gradient(145deg, #110022 0%, #0a0014 100%);
-            border: 2px solid #444;
-            border-radius: 16px;
-            padding: 24px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
         }
 
-        .result-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid #333;
-            padding-bottom: 10px;
-        }
-
-        .result-date {
-            color: #888;
-            font-size: 0.8rem;
-            letter-spacing: 1px;
-        }
-
-        /* BADGES WIN / LOSS */
-        .result-badge-loss {
-            background: rgba(255, 68, 68, 0.15);
-            color: var(--loss-red);
-            border: 1px solid var(--loss-red);
-            padding: 4px 10px;
-            border-radius: 4px;
+        h1 {
             font-family: 'Righteous', cursive;
-            font-size: 0.85rem;
-            letter-spacing: 1px;
-            box-shadow: 0 0 10px rgba(255, 68, 68, 0.2);
+            color: #fff;
+            text-shadow: 2px 2px var(--neon-pink);
+            margin-bottom: 25px;
+            font-size: 2rem;
         }
 
-        .result-badge-win {
-            background: rgba(0, 255, 0, 0.15);
-            color: var(--win-green);
-            border: 1px solid var(--win-green);
-            padding: 4px 10px;
-            border-radius: 4px;
-            font-family: 'Righteous', cursive;
-            font-size: 0.85rem;
-            letter-spacing: 1px;
-            box-shadow: 0 0 10px rgba(0, 255, 0, 0.2);
-        }
-
-        .result-match-info {
-            display: flex;
-            align-items: center;
+        .dashboard {
+            width: 100%;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
             gap: 15px;
+            margin-bottom: 30px;
         }
 
-        .result-sport-icon {
-            font-size: 2.2rem;
+        @media(min-width: 600px) {
+            .dashboard { grid-template-columns: repeat(4, 1fr); }
         }
 
-        .result-details {
+        .stat-box {
+            background: rgba(0, 255, 255, 0.05);
+            border: 1px solid var(--neon-cyan);
+            border-radius: 6px;
+            padding: 15px;
+            text-align: center;
+            box-shadow: inset 0 0 10px rgba(0, 255, 255, 0.1);
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            color: #aaa;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+
+        .stat-value {
+            font-family: 'Righteous', cursive;
+            font-size: 1.5rem;
+            color: #fff;
+        }
+
+        .stat-profit {
+            color: var(--win-green);
+            text-shadow: 0 0 5px var(--win-green);
+        }
+
+        .mosaic-container {
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .mosaic-title {
+            font-size: 1.2rem;
+            color: var(--neon-cyan);
+            margin-bottom: 15px;
+            border-bottom: 1px solid #333;
+            padding-bottom: 5px;
+            text-align: left;
+        }
+
+        .mosaic-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            width: 100%;
+        }
+
+        .mosaic-item {
+            aspect-ratio: 1;
             display: flex;
-            flex-direction: column;
-            gap: 4px;
-        }
-
-        .result-teams {
+            justify-content: center;
+            align-items: center;
+            border-radius: 6px;
             font-family: 'Righteous', cursive;
             font-size: 1.1rem;
+            cursor: pointer;
+            transition: transform 0.1s, box-shadow 0.2s;
+            user-select: none;
+            min-height: 70px;
+        }
+
+        .mosaic-item:hover { transform: scale(1.05); }
+        .mosaic-item:active { transform: scale(0.95); }
+
+        .mosaic-win {
+            background: rgba(0, 255, 0, 0.15);
+            border: 2px solid var(--win-green);
+            color: var(--win-green);
+            box-shadow: 0 0 10px rgba(0, 255, 0, 0.2);
+        }
+        .mosaic-loss {
+            background: rgba(255, 68, 68, 0.15);
+            border: 2px solid var(--loss-red);
+            color: var(--loss-red);
+            box-shadow: 0 0 10px rgba(255, 68, 68, 0.2);
+        }
+        .mosaic-void {
+            background: rgba(170, 170, 170, 0.15);
+            border: 2px solid var(--void-gray);
+            color: var(--void-gray);
+        }
+
+        /* Styling the Bet detail modal inside Results */
+        .opt2-card {
+            background: linear-gradient(135deg, rgba(255, 0, 255, 0.05), rgba(0, 255, 255, 0.05));
+            background-color: #050010;
+            border-left: 4px solid var(--win-green);
+            border-right: 1px solid rgba(0, 255, 255, 0.3);
+            border-top: 1px solid rgba(0, 255, 255, 0.3);
+            border-bottom: 1px solid rgba(0, 255, 255, 0.3);
+            border-radius: 8px;
+            padding: 20px;
+            width: 100%;
+            max-width: 450px;
+            box-shadow: 0 0 25px rgba(0, 255, 0, 0.1);
+            position: relative;
+        }
+
+        .close-bet-modal {
+            position: absolute;
+            top: 10px;
+            right: 15px;
             color: #fff;
+            font-size: 1.5rem;
+            cursor: pointer;
+            font-family: sans-serif;
+            opacity: 0.7;
         }
 
-        .result-tournament {
-            color: #aaa;
-            font-size: 0.8rem;
-        }
-
-        .result-stats-row {
+        .opt2-top {
             display: flex;
             justify-content: space-between;
-            background: rgba(255, 255, 255, 0.02);
-            padding: 8px 12px;
-            border-radius: 6px;
-            font-size: 0.85rem;
+            align-items: center;
+            margin-bottom: 15px;
+            margin-top: 10px;
         }
 
-        .stat-label { color: #888; }
-        .stat-val { color: #fff; font-weight: bold; }
-        
-        .stat-val.loss { color: var(--loss-red); }
-        .stat-val.win { color: var(--win-green); }
+        .opt2-badge {
+            padding: 3px 8px;
+            border-radius: 3px;
+            font-weight: bold;
+            font-family: 'Righteous', cursive;
+            letter-spacing: 1px;
+        }
+
+        .opt2-match {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #fff;
+            margin-bottom: 8px;
+        }
+
+        .opt2-details {
+            color: #ccc;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .opt2-odds-box {
+            margin-top: 20px;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 15px;
+            border-radius: 4px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid #333;
+        }
+
+        .modal-win { border-left-color: var(--win-green); box-shadow: 0 0 25px rgba(0, 255, 0, 0.15); }
+        .modal-win .opt2-badge { background: rgba(0, 255, 0, 0.2); color: var(--win-green); }
+        .modal-win .opt2-odds { color: var(--win-green); }
+
+        .modal-loss { border-left-color: var(--loss-red); box-shadow: 0 0 25px rgba(255, 68, 68, 0.15); }
+        .modal-loss .opt2-badge { background: rgba(255, 68, 68, 0.2); color: var(--loss-red); }
+        .modal-loss .opt2-odds { color: var(--loss-red); }
+
+        .modal-void { border-left-color: var(--void-gray); box-shadow: 0 0 25px rgba(170, 170, 170, 0.15); }
+        .modal-void .opt2-badge { background: rgba(170, 170, 170, 0.2); color: var(--void-gray); }
+        .modal-void .opt2-odds { color: var(--void-gray); }
 
         footer {
             width: 100%;
             background: #000;
             height: 50px;
+            padding: 0;
             text-align: center;
             border-top: 1px solid #222;
             color: #888;
             font-size: 0.8rem;
-            flex-shrink: 0;
+            margin-top: auto;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            margin-top: auto;
         }
 
         .footer-links a {
@@ -234,16 +303,18 @@
 
         .footer-links a:hover { color: var(--neon-cyan); }
 
+        /* Unified Modals (Bet Modals & Legal Modals) */
         .modal-overlay {
             display: none;
             position: fixed;
             top: 0; left: 0;
             width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(3px);
-            z-index: 200;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(5px);
+            z-index: 100;
             justify-content: center;
             align-items: center;
+            padding: 15px;
         }
 
         .modal-content {
@@ -254,7 +325,7 @@
             max-width: 600px;
             color: #fff;
             position: relative;
-            box-shadow: 0 0 20px rgba(0,255,255,0.2);
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
         }
 
         .close-modal {
@@ -276,9 +347,24 @@
             header { height: 50px; padding: 0 16px; }
             .logo-home { font-size: 1.8rem; }
             .btn-nav { padding: 6px 12px; font-size: 0.8rem; }
-            main { padding: 20px 16px; }
-            .page-title { font-size: 1.6rem; }
-            .result-card { padding: 18px; }
+            main { padding: 15px 10px; }
+            h1 { font-size: 1.6rem; margin-bottom: 18px; }
+            .stat-box { padding: 12px; }
+            .stat-label { font-size: 0.7rem; }
+            .stat-value { font-size: 1.2rem; }
+            .mosaic-title { font-size: 1rem; margin-bottom: 10px; }
+            .mosaic-grid { gap: 8px; }
+            .mosaic-item { font-size: 0.9rem; min-height: 60px; }
+            .opt2-card { padding: 15px; }
+            .opt2-match { font-size: 1.1rem; }
+            .opt2-odds { font-size: 1.5rem; }
+            footer { height: 46px; font-size: 0.75rem; }
+        }
+
+        @media (max-width: 480px) {
+            .dashboard { gap: 10px; }
+            .stat-value { font-size: 1rem; }
+            .mosaic-item { font-size: 0.8rem; min-height: 50px; }
         }
     </style>
 </head>
@@ -292,70 +378,30 @@
     </header>
 
     <main>
-        <h1 class="page-title">TRACK RECORD</h1>
-
-        <!-- ============================================== -->
-        <!-- RÉSULTAT DU 24 AOÛT (DÉFAITE FERRO) -->
-        <!-- ============================================== -->
-        <div class="result-card">
-            <div class="result-header">
-                <span class="result-date">24.08.2026</span>
-                <span class="result-badge-loss">LOSS (-1.0U)</span>
+        <h1>DASHBOARD</h1>
+        <div class="dashboard">
+            <div class="stat-box">
+                <div class="stat-label">Total Bets</div>
+                <div class="stat-value" id="stat-total">0</div>
             </div>
-
-            <div class="result-match-info">
-                <div class="result-sport-icon">&#127934;</div>
-                <div class="result-details">
-                    <div class="result-teams">F. Ferro vs R. Marino</div>
-                    <div class="result-tournament">US Open Qualifiers (Hard)</div>
-                </div>
+            <div class="stat-box">
+                <div class="stat-label">Win Rate</div>
+                <div class="stat-value" id="stat-winrate">0%</div>
             </div>
-
-            <div class="result-stats-row">
-                <span class="stat-label">Sélection :</span>
-                <span class="stat-val">Fiona Ferro ML</span>
+            <div class="stat-box">
+                <div class="stat-label">Profit (Units)</div>
+                <div class="stat-value" id="stat-profit">+0.00 U</div>
             </div>
-            <div class="result-stats-row">
-                <span class="stat-label">Cote :</span>
-                <span class="stat-val">1.51</span>
-            </div>
-            <div class="result-stats-row">
-                <span class="stat-label">Résultat :</span>
-                <span class="stat-val loss">Défaite (0-2 : 1-6, 4-6)</span>
+            <div class="stat-box">
+                <div class="stat-label">Yield (ROI)</div>
+                <div class="stat-value" id="stat-roi">+0.00%</div>
             </div>
         </div>
 
-        <!-- ============================================== -->
-        <!-- EXEMPLE DE WIN (REMPLACE PAR TES ANCIENS MATCHS ICI) -->
-        <!-- ============================================== -->
-        <div class="result-card">
-            <div class="result-header">
-                <span class="result-date">23.08.2026</span>
-                <span class="result-badge-win">WIN (+0.85U)</span>
-            </div>
-
-            <div class="result-match-info">
-                <div class="result-sport-icon">&#127934;</div>
-                <div class="result-details">
-                    <div class="result-teams">Joueur A vs Joueur B</div>
-                    <div class="result-tournament">Nom du Tournoi</div>
-                </div>
-            </div>
-
-            <div class="result-stats-row">
-                <span class="stat-label">Sélection :</span>
-                <span class="stat-val">Joueur A ML</span>
-            </div>
-            <div class="result-stats-row">
-                <span class="stat-label">Cote :</span>
-                <span class="stat-val">1.85</span>
-            </div>
-            <div class="result-stats-row">
-                <span class="stat-label">Résultat :</span>
-                <span class="stat-val win">Victoire (2-0)</span>
-            </div>
+        <div class="mosaic-container">
+            <div class="mosaic-title">BET HISTORY (NEW TO OLD)</div>
+            <div class="mosaic-grid" id="mosaic-grid"></div>
         </div>
-
     </main>
 
     <footer>
@@ -367,6 +413,7 @@
         <p style="margin-top:4px;">&copy; 2026 HashtagSportsBetting.com</p>
     </footer>
 
+    <!-- LEGAL MODALS (Homogenized with index.html) -->
     <div class="modal-overlay" id="modal-legal">
         <div class="modal-content">
             <span class="close-modal" onclick="closeModal('modal-legal')">X</span>
@@ -389,9 +436,120 @@
         </div>
     </div>
 
+    <!-- BET DETAIL MODAL -->
+    <div class="modal-overlay" id="bet-modal" onclick="closeBetModal(event)">
+        <div class="opt2-card" id="modal-card">
+            <div class="close-bet-modal" onclick="document.getElementById('bet-modal').style.display='none'">✕</div>
+            <div class="opt2-top">
+                <span style="color:#aaa; font-size:0.85rem;" id="modal-date-tourney">Date • Tournoi</span>
+                <span class="opt2-badge" id="modal-badge">WON</span>
+            </div>
+            <div class="opt2-match" id="modal-match">Player A vs Player B</div>
+            <div class="opt2-details">
+                Selection: <span style="color:var(--neon-cyan)" id="modal-selection">Selection ML</span><br>
+                Stake: <span id="modal-stake">1</span> Unit(s)
+            </div>
+            <div class="opt2-odds-box">
+                <span style="font-family:'Righteous',cursive; color:var(--neon-pink)">ODDS</span>
+                <span style="font-size:1.8rem; font-family:'Righteous',cursive" class="opt2-odds" id="modal-odds">@ 1.00</span>
+            </div>
+        </div>
+    </div>
+
     <script>
         function openModal(id) { document.getElementById(id).style.display = 'flex'; }
         function closeModal(id) { document.getElementById(id).style.display = 'none'; }
+
+        var bets = [
+            { id: 1, date: '2026-08-18', tournament: 'Challenger Sion', match: 'T. Compagnucci vs M. Dahlin', selection: 'M. Dahlin ML', odds: 1.55, stake: 1, status: 'LOSS' },
+            { id: 2, date: '2026-08-19', tournament: 'ITF W15 Logrono', match: 'A. Gillan vs J. Garcia', selection: 'J. Garcia ML', odds: 1.80, stake: 2, status: 'WIN' },
+            { id: 3, date: '2026-08-19', tournament: 'ATP 1000 Cincinnati', match: 'A. Fils vs A. de Minaur', selection: 'A. Fils ML', odds: 1.55, stake: 1, status: 'WIN' },
+            { id: 4, date: '2026-08-20', tournament: 'ITF M15 Asuncion', match: 'M. Exsted vs S. de la Fuente', selection: 'M. Exsted ML', odds: 1.55, stake: 1, status: 'WIN' },
+            { id: 5, date: '2026-08-21', tournament: 'ITF W75 Kursumlijska Banja 3', match: 'G. Pedone vs L. Zaar', selection: 'L. Zaar ML', odds: 1.57, stake: 1, status: 'WIN' },
+            { id: 6, date: '2026-08-24', tournament: 'US Open Qualifiers (Hard)', match: 'F. Ferro vs R. Marino', selection: 'Fiona Ferro ML', odds: 1.51, stake: 1, status: 'LOSS' }
+        ];
+
+        function initDashboard() {
+            var totalBets = 0;
+            var wins = 0;
+            var totalStake = 0;
+            var totalReturn = 0;
+            var grid = document.getElementById('mosaic-grid');
+            grid.innerHTML = '';
+            var reversedBets = bets.slice().reverse();
+
+            for (var i = 0; i < reversedBets.length; i++) {
+                var bet = reversedBets[i];
+                if (bet.status === 'WIN' || bet.status === 'LOSS') {
+                    totalBets++;
+                    totalStake += bet.stake;
+                    if (bet.status === 'WIN') {
+                        wins++;
+                        totalReturn += bet.stake * bet.odds;
+                    }
+                } else if (bet.status === 'VOID') {
+                    totalStake += bet.stake;
+                    totalReturn += bet.stake;
+                }
+                var square = document.createElement('div');
+                square.className = 'mosaic-item mosaic-' + bet.status.toLowerCase();
+                square.innerText = '@ ' + bet.odds.toFixed(2);
+                square.addEventListener('click', (function(b) {
+                    return function() { openBetModal(b); }
+                })(bet));
+                grid.appendChild(square);
+            }
+
+            var profit = totalReturn - totalStake;
+            var roi = totalStake > 0 ? (profit / totalStake) * 100 : 0;
+            var winrate = totalBets > 0 ? (wins / totalBets) * 100 : 0;
+
+            document.getElementById('stat-total').innerText = wins + 'W - ' + (totalBets - wins) + 'L';
+            document.getElementById('stat-winrate').innerText = winrate.toFixed(1) + '%';
+            
+            var profitEl = document.getElementById('stat-profit');
+            var roiEl = document.getElementById('stat-roi');
+            
+            profitEl.innerText = (profit > 0 ? '+' : '') + profit.toFixed(2) + ' U';
+            roiEl.innerText = (roi > 0 ? '+' : '') + roi.toFixed(2) + '%';
+            
+            if (profit < 0) {
+                profitEl.style.color = 'var(--loss-red)';
+                profitEl.style.textShadow = '0 0 5px var(--loss-red)';
+                roiEl.style.color = 'var(--loss-red)';
+                roiEl.style.textShadow = '0 0 5px var(--loss-red)';
+            } else {
+                profitEl.style.color = 'var(--win-green)';
+                profitEl.style.textShadow = '0 0 5px var(--win-green)';
+                roiEl.style.color = 'var(--win-green)';
+                roiEl.style.textShadow = '0 0 5px var(--win-green)';
+            }
+        }
+
+        function openBetModal(bet) {
+            var modal = document.getElementById('bet-modal');
+            var card = document.getElementById('modal-card');
+            
+            document.getElementById('modal-date-tourney').innerText = bet.date + ' • ' + bet.tournament;
+            document.getElementById('modal-match').innerText = bet.match;
+            document.getElementById('modal-selection').innerText = bet.selection;
+            document.getElementById('modal-stake').innerText = bet.stake;
+            document.getElementById('modal-odds').innerText = '@ ' + bet.odds.toFixed(2);
+            document.getElementById('modal-badge').innerText = bet.status;
+            
+            card.classList.remove('modal-win', 'modal-loss', 'modal-void');
+            card.classList.add('modal-' + bet.status.toLowerCase());
+            
+            modal.style.display = 'flex';
+        }
+
+        function closeBetModal(e) {
+            if (e.target.id === 'bet-modal') {
+                document.getElementById('bet-modal').style.display = 'none';
+            }
+        }
+
+        window.onload = initDashboard;
     </script>
 </body>
 </html>
