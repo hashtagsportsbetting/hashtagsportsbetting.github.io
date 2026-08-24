@@ -534,44 +534,40 @@
         function closeModal(id) { document.getElementById(id).style.display = 'none'; }
 
         // ==========================================================
-        // AUTOMATISATION ROBUSTE (TIMESTAMP UTC SANS BUG DE STRING)
-        // Pour les prochains matchs : Date.UTC(Année, Mois_0_à_11, Jour, Heure_UTC, Minute)
-        // Exemple : 17:00 CEST = 15:00 UTC en été.
+        // AUTOMATISATION TOTALE ET INSTANTANÉE (TIMESTAMP UTC)
+        // Date configurée : 24 août 2026 à 17:00 CEST (15:00 UTC)
         // ==========================================================
         const matchTime = Date.UTC(2026, 7, 24, 15, 0, 0);
 
-        function startCountdown() {
-            function update() {
-                const now = Date.now();
-                const diff = matchTime - now;
+        function checkMatchStatus() {
+            const now = Date.now();
+            const diff = matchTime - now;
 
-                const card = document.getElementById('pred-card');
-                const cta = document.getElementById('pred-cta');
-                const footer = document.getElementById('pred-footer');
+            const card = document.getElementById('pred-card');
+            const cta = document.getElementById('pred-cta');
+            const footer = document.getElementById('pred-footer');
 
-                if (diff <= 0) {
-                    // MODE TOO LATE AUTOMATIQUE
-                    card.classList.add('too-late');
-                    
-                    document.getElementById('cd-h').innerText = "00";
-                    document.getElementById('cd-m').innerText = "00";
-                    document.getElementById('cd-s').innerText = "00";
-                    
+            if (diff <= 0) {
+                // S'active instantanément si l'heure est passée
+                if (card) card.classList.add('too-late');
+                
+                if (document.getElementById('cd-h')) document.getElementById('cd-h').innerText = "00";
+                if (document.getElementById('cd-m')) document.getElementById('cd-m').innerText = "00";
+                if (document.getElementById('cd-s')) document.getElementById('cd-s').innerText = "00";
+                
+                if (cta) {
                     cta.innerHTML = "TOO LATE :(";
-                    cta.href = "javascript:void(0);";
-
-                    footer.innerText = "MATCH IN PROGRESS / FINISHED";
-                    
-                    clearInterval(countdownInterval);
-                } else {
-                    const hours = Math.floor(diff / (1000 * 60 * 60));
-                    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-                    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-
-                    document.getElementById('cd-h').innerText = String(hours).padStart(2, '0');
-                    document.getElementById('cd-m').innerText = String(minutes).padStart(2, '0');
-                    document.getElementById('cd-s').innerText = String(seconds).padStart(2, '0');
+                    cta.setAttribute('href', 'javascript:void(0);');
+                    cta.style.cursor = 'not-allowed';
+                    cta.style.pointerEvents = 'none';
                 }
-            }
-            update();
-            var coun
+                
+                if (footer) footer.innerText = "MATCH IN PROGRESS / FINISHED";
+            } else {
+                const hours = Math.floor(diff / (1000 * 60 * 60));
+                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+                if (document.getElementById('cd-h')) document.getElementById('cd-h').innerText = String(hours).padStart(2, '0');
+                if (document.getElementById('cd-m')) document.getElementById('cd-m').innerText = String(minutes).padStart(2, '0');
+                if (document.
