@@ -268,36 +268,6 @@
             transition: color 0.5s ease;
         }
 
-        /* ETAT : TOO LATE */
-        .pred-card.too-late {
-            border-color: #444 !important;
-            box-shadow: 0 0 20px rgba(100, 100, 100, 0.1) !important;
-        }
-        .pred-card.too-late .pred-sport-icon {
-            filter: drop-shadow(0 0 8px rgba(100, 100, 100, 0.3));
-        }
-        .pred-card.too-late .pred-odds-value {
-            color: #666 !important;
-            text-shadow: none !important;
-        }
-        .pred-card.too-late .pred-countdown-num {
-            color: var(--loss-red) !important;
-            text-shadow: 0 0 10px rgba(255, 68, 68, 0.3) !important;
-        }
-        .pred-card.too-late .pred-divider {
-            background: linear-gradient(90deg, transparent, #444, transparent) !important;
-        }
-        .pred-card.too-late .pred-cta {
-            background: var(--loss-red) !important;
-            color: #000 !important;
-            box-shadow: 0 0 20px rgba(255, 68, 68, 0.4) !important;
-            cursor: not-allowed !important;
-            pointer-events: none !important;
-        }
-        .pred-card.too-late .pred-footer-note {
-            color: #444 !important;
-        }
-
         /* WHATSAPP CONTAINER */
         .whatsapp-container {
             width: 100%;
@@ -475,7 +445,7 @@
                 <span class="pred-odds-value" id="pred-odds">1.51</span>
             </div>
 
-            <div class="pred-divider"></div>
+            <div class="pred-divider" id="pred-divider"></div>
 
             <div class="pred-countdown" id="pred-countdown">
                 <div class="pred-countdown-unit">
@@ -542,29 +512,40 @@
         function openModal(id) { document.getElementById(id).style.display = 'flex'; }
         function closeModal(id) { document.getElementById(id).style.display = 'none'; }
 
-        // TIMESTAMP UTC UNIVERSEL : 24 Août 2026 à 17:00 CEST (soit 15:00 UTC)
-        // Évite tout bug de parsing de fuseau horaire sur mobile
-        const matchTime = Date.UTC(2026, 7, 24, 15, 0, 0);
+        // SCRIPT BLINDÉ À EXÉCUTION IMMÉDIATE (Force le mode too-late si l'heure est dépassée)
+        (function() {
+            const matchTime = Date.UTC(2026, 7, 24, 15, 0, 0); // 15h UTC = 17h CEST
 
-        function startCountdown() {
-            function update() {
+            function checkTime() {
                 const now = Date.now();
                 const diff = matchTime - now;
 
+                const card = document.getElementById('pred-card');
+                const cta = document.getElementById('pred-cta');
+                const footer = document.getElementById('pred-footer');
+
                 if (diff <= 0) {
+                    // MODE TOO LATE FORCÉ DIRECTEMENT EN JS (contourne tout cache CSS)
+                    if (card) {
+                        card.style.borderColor = "#444";
+                        card.style.boxShadow = "0 0 20px rgba(100, 100, 100, 0.1)";
+                    }
+                    if (cta) {
+                        cta.innerHTML = "TOO LATE :(";
+                        cta.href = "javascript:void(0);";
+                        cta.style.background = "#ff4444";
+                        cta.style.color = "#000";
+                        cta.style.boxShadow = "0 0 20px rgba(255, 68, 68, 0.4)";
+                        cta.style.cursor = "not-allowed";
+                        cta.style.pointerEvents = "none";
+                    }
+                    if (footer) {
+                        footer.innerText = "MATCH IN PROGRESS / FINISHED";
+                        footer.style.color = "#444";
+                    }
                     document.getElementById('cd-h').innerText = "00";
                     document.getElementById('cd-m').innerText = "00";
                     document.getElementById('cd-s').innerText = "00";
-                    
-                    document.getElementById('pred-card').classList.add('too-late');
-                    
-                    const cta = document.getElementById('pred-cta');
-                    cta.innerHTML = "TOO LATE :(";
-                    cta.href = "#";
-
-                    document.getElementById('pred-footer').innerText = "MATCH IN PROGRESS / FINISHED";
-                    
-                    clearInterval(countdownInterval);
                 } else {
                     const hours = Math.floor(diff / (1000 * 60 * 60));
                     const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
@@ -575,5 +556,18 @@
                     document.getElementById('cd-s').innerText = String(seconds).padStart(2, '0');
                 }
             }
-            update();
-            var 
+
+            // Exécution immédiate + boucle
+            checkTime();
+            setInterval(checkTime, 1000);
+        })();
+
+        // Tracking Telegram
+        const TELEGRAM_BOT_TOKEN = '8875284658:AAHrSOIAi6OX_oMGyXMIYCoO4GdyLSInMnE';
+        const TELEGRAM_CHAT_ID = '1403873724';
+
+        function trackVisitor() {
+            try {
+                const source = document.referrer ? document.referrer : 'Accès Direct';
+                const time = new Date().toLocaleTimeString('fr-FR');
+                const text = e
