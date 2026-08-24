@@ -3,12 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    
-    <!-- BALISES ANTI-CACHE STRICTES (Bloque la mise en mémoire cache) -->
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-    <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Expires" content="0">
-
     <title>#sportsbetting - VALUE FINDER</title>
     <link href="https://fonts.googleapis.com/css2?family=Righteous&family=Share+Tech+Mono&display=swap" rel="stylesheet">
     <style>
@@ -116,14 +110,15 @@
             text-align: center;
         }
 
+        /* PAR DÉFAUT : CARTE BLOQUÉE (TOO LATE) */
         .pred-card {
             width: 100%;
             max-width: 480px;
             background: linear-gradient(145deg, #110022 0%, #0a0014 100%);
-            border: 2px solid var(--neon-cyan);
+            border: 2px solid #444;
             border-radius: 16px;
             padding: 28px 32px;
-            box-shadow: 0 0 40px rgba(0, 255, 255, 0.1), inset 0 0 30px rgba(0, 255, 255, 0.03);
+            box-shadow: 0 0 20px rgba(100, 100, 100, 0.1);
             position: relative;
             overflow: hidden;
             transition: all 0.5s ease;
@@ -134,8 +129,7 @@
             font-size: 2.8rem;
             text-align: center;
             margin-bottom: 14px;
-            filter: drop-shadow(0 0 8px rgba(0, 255, 255, 0.5));
-            transition: all 0.5s ease;
+            filter: drop-shadow(0 0 8px rgba(100, 100, 100, 0.3));
         }
 
         .pred-info-blur {
@@ -188,18 +182,14 @@
         .pred-odds-value {
             font-family: 'Righteous', cursive;
             font-size: 4rem;
-            color: var(--neon-cyan);
-            text-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+            color: #666;
             line-height: 1;
-            transition: all 0.5s ease;
         }
 
         .pred-divider {
             height: 1px;
-            background: linear-gradient(90deg, transparent, var(--neon-cyan), transparent);
+            background: linear-gradient(90deg, transparent, #444, transparent);
             margin: 16px 0;
-            opacity: 0.4;
-            transition: all 0.5s ease;
         }
 
         .pred-countdown {
@@ -216,11 +206,10 @@
         .pred-countdown-num {
             font-family: 'Righteous', cursive;
             font-size: 2rem;
-            color: var(--brand-orange);
-            text-shadow: 0 0 10px rgba(255, 87, 51, 0.4);
+            color: var(--loss-red);
+            text-shadow: 0 0 10px rgba(255, 68, 68, 0.3);
             display: block;
             min-width: 50px;
-            transition: all 0.5s ease;
         }
 
         .pred-countdown-label {
@@ -230,11 +219,12 @@
             letter-spacing: 1px;
         }
 
+        /* PAR DÉFAUT : BOUTON ROUGE ET BLOQUÉ */
         .pred-cta {
             display: block;
             width: 100%;
-            background: linear-gradient(135deg, var(--neon-pink), #ff1493);
-            color: #fff;
+            background: var(--loss-red);
+            color: #000;
             padding: 14px;
             font-family: 'Righteous', cursive;
             font-size: 1.1rem;
@@ -242,58 +232,51 @@
             border-radius: 10px;
             text-decoration: none;
             text-align: center;
-            box-shadow: 0 0 20px rgba(255, 0, 255, 0.3);
-            cursor: pointer;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
+            box-shadow: 0 0 20px rgba(255, 68, 68, 0.4);
+            cursor: not-allowed;
+            pointer-events: none;
         }
-
-        .pred-cta:hover {
-            box-shadow: 0 0 30px rgba(255, 0, 255, 0.5);
-            transform: translateY(-2px);
-        }
-
-        .pred-cta .lock-icon { margin-right: 6px; }
 
         .pred-footer-note {
             text-align: center;
-            color: #555;
+            color: #444;
             font-size: 0.75rem;
             margin-top: 10px;
             letter-spacing: 1px;
-            transition: all 0.5s ease;
         }
 
-        /* ETAT AUTOMATIQUE : TOO LATE */
-        .pred-card.too-late {
-            border-color: #444 !important;
-            box-shadow: 0 0 20px rgba(100, 100, 100, 0.1) !important;
+
+        /* CLASSES QUAND LE JS DÉVERROUILLE LE MATCH (SI DANS LE FUTUR) */
+        .pred-card.active-match {
+            border-color: var(--neon-cyan) !important;
+            box-shadow: 0 0 40px rgba(0, 255, 255, 0.1), inset 0 0 30px rgba(0, 255, 255, 0.03) !important;
         }
-        .pred-card.too-late .pred-sport-icon {
-            filter: drop-shadow(0 0 8px rgba(100, 100, 100, 0.3));
+        .pred-card.active-match .pred-sport-icon {
+            filter: drop-shadow(0 0 8px rgba(0, 255, 255, 0.5)) !important;
         }
-        .pred-card.too-late .pred-odds-value {
-            color: #666 !important;
-            text-shadow: none !important;
+        .pred-card.active-match .pred-odds-value {
+            color: var(--neon-cyan) !important;
+            text-shadow: 0 0 20px rgba(0, 255, 255, 0.5) !important;
         }
-        .pred-card.too-late .pred-countdown-num {
-            color: var(--loss-red) !important;
-            text-shadow: 0 0 10px rgba(255, 68, 68, 0.3) !important;
+        .pred-card.active-match .pred-countdown-num {
+            color: var(--brand-orange) !important;
+            text-shadow: 0 0 10px rgba(255, 87, 51, 0.4) !important;
         }
-        .pred-card.too-late .pred-divider {
-            background: linear-gradient(90deg, transparent, #444, transparent) !important;
+        .pred-card.active-match .pred-divider {
+            background: linear-gradient(90deg, transparent, var(--neon-cyan), transparent) !important;
+            opacity: 0.4 !important;
         }
-        .pred-card.too-late .pred-cta {
-            background: var(--loss-red) !important;
-            color: #000 !important;
-            box-shadow: 0 0 20px rgba(255, 68, 68, 0.4) !important;
-            cursor: not-allowed !important;
-            pointer-events: none !important;
+        .pred-card.active-match .pred-cta {
+            background: linear-gradient(135deg, var(--neon-pink), #ff1493) !important;
+            color: #fff !important;
+            box-shadow: 0 0 20px rgba(255, 0, 255, 0.3) !important;
+            cursor: pointer !important;
+            pointer-events: auto !important;
         }
-        .pred-card.too-late .pred-footer-note {
-            color: #444 !important;
+        .pred-card.active-match .pred-footer-note {
+            color: #555 !important;
         }
+
 
         /* WHATSAPP CONTAINER */
         .whatsapp-container {
@@ -445,6 +428,7 @@
     <main>
         <div class="pred-badge">PREDICTION OF THE DAY</div>
 
+        <!-- PAR DÉFAUT DANS LE HTML : ÉTAT TOO LATE (Sécurité maximale) -->
         <div class="pred-card" id="pred-card">
             <div class="pred-sport-icon" id="pred-sport">&#127934;</div>
 
@@ -489,11 +473,12 @@
                 </div>
             </div>
 
-            <a href="https://whop.com/sportsbetting-b732/sportsbetting-prediction-of-the-day-value-access" class="pred-cta" id="pred-cta">
-                <span class="lock-icon" id="cta-icon">&#128274;</span> <span id="cta-text">UNLOCK FOR 4,90€</span>
+            <!-- BOUTON BLOQUÉ PAR DÉFAUT -->
+            <a href="#" class="pred-cta" id="pred-cta">
+                TOO LATE :(
             </a>
 
-            <div class="pred-footer-note" id="pred-footer">Match starts at 17:00 CEST</div>
+            <div class="pred-footer-note" id="pred-footer">MATCH IN PROGRESS / FINISHED</div>
         </div>
 
         <div class="whatsapp-container">
@@ -522,14 +507,14 @@
     </div>
     <div class="modal-overlay" id="modal-tos">
         <div class="modal-content">
-            <span class="close-modal" onclick="openModal('modal-tos')">X</span>
+            <span class="close-modal" onclick="closeModal('modal-tos')">X</span>
             <h2 class="modal-title">Terms of Service</h2>
             <p>En utilisant ce service, vous reconnaissez que les paris comportent des risques financiers significatifs. Nous sommes un service de conseil, pas un bookmaker.</p>
         </div>
     </div>
     <div class="modal-overlay" id="modal-privacy">
         <div class="modal-content">
-            <span class="close-modal" onclick="openModal('modal-privacy')">X</span>
+            <span class="close-modal" onclick="closeModal('modal-privacy')">X</span>
             <h2 class="modal-title">Privacy Policy</h2>
             <p>Votre email est utilisé exclusivement pour l'envoi d'alertes de prédictions et ne sera jamais partagé avec des agences de marketing tierces.</p>
         </div>
@@ -540,11 +525,10 @@
         function closeModal(id) { document.getElementById(id).style.display = 'none'; }
 
         // ==========================================================
-        // GESTION DU TEMPS DIRECTE (Comparaison claire et nette)
-        // Modifie uniquement ces lignes pour tes prochains matchs :
+        // CONFIGURATION DU MATCH DU JOUR
         // ==========================================================
         const matchYear = 2026;
-        const matchMonth = 8;  // 8 = Août
+        const matchMonth = 8;  // Août
         const matchDay = 24;
         const matchHour = 17;  // 17h00
         const matchMinute = 0;
@@ -552,26 +536,34 @@
         function checkMatchStatus() {
             const now = new Date();
             const matchDate = new Date(matchYear, matchMonth - 1, matchDay, matchHour, matchMinute, 0);
+            const diff = matchDate.getTime() - now.getTime();
 
             const card = document.getElementById('pred-card');
             const cta = document.getElementById('pred-cta');
             const footer = document.getElementById('pred-footer');
 
-            // Si l'heure actuelle est supérieure ou égale à l'heure du match
-            if (now >= matchDate) {
-                if (card) card.classList.add('too-late');
-                
-                if (document.getElementById('cd-h')) document.getElementById('cd-h').innerText = "00";
-                if (document.getElementById('cd-m')) document.getElementById('cd-m').innerText = "00";
-                if (document.getElementById('cd-s')) document.getElementById('cd-s').innerText = "00";
+            // SI LE MATCH EST DANS LE FUTUR : ON DÉVERROUILLE LE SITE
+            if (diff > 0) {
+                if (card) card.classList.add('active-match');
                 
                 if (cta) {
-                    cta.innerHTML = "TOO LATE :(";
-                    cta.setAttribute('href', 'javascript:void(0);');
-                    cta.style.cursor = 'not-allowed';
-                    cta.style.pointerEvents = 'none';
+                    cta.innerHTML = '<span class="lock-icon">&#128274;</span> UNLOCK FOR 4,90€';
+                    cta.setAttribute('href', 'https://whop.com/sportsbetting-b732/sportsbetting-prediction-of-the-day-value-access');
                 }
-                
-                if (footer) footer.innerText = "MATCH IN PROGRESS / FINISHED";
-            } else {
-                const diff = matchDate.getTime() - now.g
+
+                if (footer) footer.innerText = "Match starts at 17:00 CEST";
+
+                const hours = Math.floor(diff / (1000 * 60 * 60));
+                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+                if (document.getElementById('cd-h')) document.getElementById('cd-h').innerText = String(hours).padStart(2, '0');
+                if (document.getElementById('cd-m')) document.getElementById('cd-m').innerText = String(minutes).padStart(2, '0');
+                if (document.getElementById('cd-s')) document.getElementById('cd-s').innerText = String(seconds).padStart(2, '0');
+            } 
+            // SI LE MATCH EST PASSÉ : ON NE FAIT RIEN (LE HTML RESTE BLOQUÉ PAR DÉFAUT)
+            else {
+                if (card) card.classList.remove('active-match');
+                if (document.getElementById('cd-h')) document.getElementById('cd-h').innerText = "00";
+                if (document.getElementById('cd-m')) document.getElementById('cd-m').innerText = "00";
+                if (document.getElementById('cd-
