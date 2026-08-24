@@ -534,21 +534,28 @@
         function closeModal(id) { document.getElementById(id).style.display = 'none'; }
 
         // ==========================================================
-        // AUTOMATISATION TOTALE ET INSTANTANÉE (TIMESTAMP UTC)
-        // Date configurée : 24 août 2026 à 17:00 CEST (15:00 UTC)
+        // CONFIGURATION PAR HEURE LOCALE (Zéro bug de fuseau horaire)
+        // Modifie juste Année, Mois (1-12), Jour, Heure, Minute pour les prochains matchs
         // ==========================================================
-        const matchTime = Date.UTC(2026, 7, 24, 15, 0, 0);
+        const targetYear = 2026;
+        const targetMonth = 8;  // 8 = Août
+        const targetDay = 24;
+        const targetHour = 17;  // 17h00
+        const targetMinute = 0;
 
         function checkMatchStatus() {
-            const now = Date.now();
-            const diff = matchTime - now;
+            const now = new Date();
+            
+            // Création de la date cible en heure locale du visiteur
+            const matchDate = new Date(targetYear, targetMonth - 1, targetDay, targetHour, targetMinute, 0);
+            const diff = matchDate.getTime() - now.getTime();
 
             const card = document.getElementById('pred-card');
             const cta = document.getElementById('pred-cta');
             const footer = document.getElementById('pred-footer');
 
             if (diff <= 0) {
-                // S'active instantanément si l'heure est passée
+                // Le match a commencé ou est passé -> MODE TOO LATE DIRECT
                 if (card) card.classList.add('too-late');
                 
                 if (document.getElementById('cd-h')) document.getElementById('cd-h').innerText = "00";
@@ -557,7 +564,7 @@
                 
                 if (cta) {
                     cta.innerHTML = "TOO LATE :(";
-                    cta.setAttribute('href', 'javascript:void(0);');
+                    cta.setAttribute('href', '#');
                     cta.style.cursor = 'not-allowed';
                     cta.style.pointerEvents = 'none';
                 }
@@ -566,8 +573,4 @@
             } else {
                 const hours = Math.floor(diff / (1000 * 60 * 60));
                 const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-
-                if (document.getElementById('cd-h')) document.getElementById('cd-h').innerText = String(hours).padStart(2, '0');
-                if (document.getElementById('cd-m')) document.getElementById('cd-m').innerText = String(minutes).padStart(2, '0');
-                if (document.
+       
