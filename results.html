@@ -3,9 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    
+    <!-- BALISES ANTI-CACHE -->
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
+    
     <title>#sportsbetting - RESULTS</title>
     <link href="https://fonts.googleapis.com/css2?family=Righteous&family=Share+Tech+Mono&display=swap" rel="stylesheet">
     <style>
@@ -140,6 +143,7 @@
             letter-spacing: 1px;
         }
 
+        /* BADGES WIN / LOSS */
         .result-badge-loss {
             background: rgba(255, 68, 68, 0.15);
             color: var(--loss-red);
@@ -150,6 +154,18 @@
             font-size: 0.85rem;
             letter-spacing: 1px;
             box-shadow: 0 0 10px rgba(255, 68, 68, 0.2);
+        }
+
+        .result-badge-win {
+            background: rgba(0, 255, 0, 0.15);
+            color: var(--win-green);
+            border: 1px solid var(--win-green);
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-family: 'Righteous', cursive;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            box-shadow: 0 0 10px rgba(0, 255, 0, 0.2);
         }
 
         .result-match-info {
@@ -190,7 +206,9 @@
 
         .stat-label { color: #888; }
         .stat-val { color: #fff; font-weight: bold; }
+        
         .stat-val.loss { color: var(--loss-red); }
+        .stat-val.win { color: var(--win-green); }
 
         footer {
             width: 100%;
@@ -276,7 +294,9 @@
     <main>
         <h1 class="page-title">TRACK RECORD</h1>
 
-        <!-- RÉSULTAT DU 24 AOÛT -->
+        <!-- ============================================== -->
+        <!-- RÉSULTAT DU 24 AOÛT (DÉFAITE FERRO) -->
+        <!-- ============================================== -->
         <div class="result-card">
             <div class="result-header">
                 <span class="result-date">24.08.2026</span>
@@ -302,6 +322,37 @@
             <div class="result-stats-row">
                 <span class="stat-label">Résultat :</span>
                 <span class="stat-val loss">Défaite (0-2 : 1-6, 4-6)</span>
+            </div>
+        </div>
+
+        <!-- ============================================== -->
+        <!-- EXEMPLE DE WIN (REMPLACE PAR TES ANCIENS MATCHS ICI) -->
+        <!-- ============================================== -->
+        <div class="result-card">
+            <div class="result-header">
+                <span class="result-date">23.08.2026</span>
+                <span class="result-badge-win">WIN (+0.85U)</span>
+            </div>
+
+            <div class="result-match-info">
+                <div class="result-sport-icon">&#127934;</div>
+                <div class="result-details">
+                    <div class="result-teams">Joueur A vs Joueur B</div>
+                    <div class="result-tournament">Nom du Tournoi</div>
+                </div>
+            </div>
+
+            <div class="result-stats-row">
+                <span class="stat-label">Sélection :</span>
+                <span class="stat-val">Joueur A ML</span>
+            </div>
+            <div class="result-stats-row">
+                <span class="stat-label">Cote :</span>
+                <span class="stat-val">1.85</span>
+            </div>
+            <div class="result-stats-row">
+                <span class="stat-label">Résultat :</span>
+                <span class="stat-val win">Victoire (2-0)</span>
             </div>
         </div>
 
