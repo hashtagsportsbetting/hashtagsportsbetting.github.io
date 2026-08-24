@@ -120,17 +120,8 @@
             box-shadow: 0 0 40px rgba(0, 255, 255, 0.1), inset 0 0 30px rgba(0, 255, 255, 0.03);
             position: relative;
             overflow: hidden;
-            transition: border-color 0.5s ease, box-shadow 0.5s ease;
+            transition: all 0.5s ease;
             flex-shrink: 0;
-        }
-
-        .pred-card::before {
-            content: '';
-            position: absolute;
-            top: -50%; left: -50%;
-            width: 200%; height: 200%;
-            background: radial-gradient(circle at 30% 30%, rgba(255, 0, 255, 0.08) 0%, transparent 50%);
-            pointer-events: none;
         }
 
         .pred-sport-icon {
@@ -138,7 +129,7 @@
             text-align: center;
             margin-bottom: 14px;
             filter: drop-shadow(0 0 8px rgba(0, 255, 255, 0.5));
-            transition: filter 0.5s ease;
+            transition: all 0.5s ease;
         }
 
         .pred-info-blur {
@@ -194,7 +185,7 @@
             color: var(--neon-cyan);
             text-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
             line-height: 1;
-            transition: color 0.5s ease, text-shadow 0.5s ease;
+            transition: all 0.5s ease;
         }
 
         .pred-divider {
@@ -202,7 +193,7 @@
             background: linear-gradient(90deg, transparent, var(--neon-cyan), transparent);
             margin: 16px 0;
             opacity: 0.4;
-            transition: background 0.5s ease;
+            transition: all 0.5s ease;
         }
 
         .pred-countdown {
@@ -223,7 +214,7 @@
             text-shadow: 0 0 10px rgba(255, 87, 51, 0.4);
             display: block;
             min-width: 50px;
-            transition: color 0.5s ease, text-shadow 0.5s ease;
+            transition: all 0.5s ease;
         }
 
         .pred-countdown-label {
@@ -265,7 +256,37 @@
             font-size: 0.75rem;
             margin-top: 10px;
             letter-spacing: 1px;
-            transition: color 0.5s ease;
+            transition: all 0.5s ease;
+        }
+
+        /* ETAT AUTOMATIQUE : TOO LATE */
+        .pred-card.too-late {
+            border-color: #444 !important;
+            box-shadow: 0 0 20px rgba(100, 100, 100, 0.1) !important;
+        }
+        .pred-card.too-late .pred-sport-icon {
+            filter: drop-shadow(0 0 8px rgba(100, 100, 100, 0.3));
+        }
+        .pred-card.too-late .pred-odds-value {
+            color: #666 !important;
+            text-shadow: none !important;
+        }
+        .pred-card.too-late .pred-countdown-num {
+            color: var(--loss-red) !important;
+            text-shadow: 0 0 10px rgba(255, 68, 68, 0.3) !important;
+        }
+        .pred-card.too-late .pred-divider {
+            background: linear-gradient(90deg, transparent, #444, transparent) !important;
+        }
+        .pred-card.too-late .pred-cta {
+            background: var(--loss-red) !important;
+            color: #000 !important;
+            box-shadow: 0 0 20px rgba(255, 68, 68, 0.4) !important;
+            cursor: not-allowed !important;
+            pointer-events: none !important;
+        }
+        .pred-card.too-late .pred-footer-note {
+            color: #444 !important;
         }
 
         /* WHATSAPP CONTAINER */
@@ -445,7 +466,7 @@
                 <span class="pred-odds-value" id="pred-odds">1.51</span>
             </div>
 
-            <div class="pred-divider" id="pred-divider"></div>
+            <div class="pred-divider"></div>
 
             <div class="pred-countdown" id="pred-countdown">
                 <div class="pred-countdown-unit">
@@ -463,7 +484,7 @@
             </div>
 
             <a href="https://whop.com/sportsbetting-b732/sportsbetting-prediction-of-the-day-value-access" class="pred-cta" id="pred-cta">
-                <span class="lock-icon">&#128274;</span> UNLOCK FOR 4,90€
+                <span class="lock-icon" id="cta-icon">&#128274;</span> <span id="cta-text">UNLOCK FOR 4,90€</span>
             </a>
 
             <div class="pred-footer-note" id="pred-footer">Match starts at 17:00 CEST</div>
@@ -512,11 +533,14 @@
         function openModal(id) { document.getElementById(id).style.display = 'flex'; }
         function closeModal(id) { document.getElementById(id).style.display = 'none'; }
 
-        // SCRIPT BLINDÉ À EXÉCUTION IMMÉDIATE (Force le mode too-late si l'heure est dépassée)
-        (function() {
-            const matchTime = Date.UTC(2026, 7, 24, 15, 0, 0); // 15h UTC = 17h CEST
+        // ==========================================================
+        // AUTOMATISATION DU COMPTE À REBOURS ET DU MODE "TOO LATE"
+        // Change simplement cette date/heure pour tes prochains matchs :
+        // ==========================================================
+        const matchTime = new Date("2026-08-24T17:00:00+02:00").getTime();
 
-            function checkTime() {
+        function startCountdown() {
+            function update() {
                 const now = Date.now();
                 const diff = matchTime - now;
 
@@ -525,27 +549,19 @@
                 const footer = document.getElementById('pred-footer');
 
                 if (diff <= 0) {
-                    // MODE TOO LATE FORCÉ DIRECTEMENT EN JS (contourne tout cache CSS)
-                    if (card) {
-                        card.style.borderColor = "#444";
-                        card.style.boxShadow = "0 0 20px rgba(100, 100, 100, 0.1)";
-                    }
-                    if (cta) {
-                        cta.innerHTML = "TOO LATE :(";
-                        cta.href = "javascript:void(0);";
-                        cta.style.background = "#ff4444";
-                        cta.style.color = "#000";
-                        cta.style.boxShadow = "0 0 20px rgba(255, 68, 68, 0.4)";
-                        cta.style.cursor = "not-allowed";
-                        cta.style.pointerEvents = "none";
-                    }
-                    if (footer) {
-                        footer.innerText = "MATCH IN PROGRESS / FINISHED";
-                        footer.style.color = "#444";
-                    }
+                    // C'est l'heure ou c'est dépassé : Automatisation propre
+                    card.classList.add('too-late');
+                    
                     document.getElementById('cd-h').innerText = "00";
                     document.getElementById('cd-m').innerText = "00";
                     document.getElementById('cd-s').innerText = "00";
+                    
+                    cta.innerHTML = "TOO LATE :(";
+                    cta.href = "javascript:void(0);"; // Tue le lien de paiement
+
+                    footer.innerText = "MATCH IN PROGRESS / FINISHED";
+                    
+                    clearInterval(countdownInterval);
                 } else {
                     const hours = Math.floor(diff / (1000 * 60 * 60));
                     const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
@@ -556,18 +572,5 @@
                     document.getElementById('cd-s').innerText = String(seconds).padStart(2, '0');
                 }
             }
-
-            // Exécution immédiate + boucle
-            checkTime();
-            setInterval(checkTime, 1000);
-        })();
-
-        // Tracking Telegram
-        const TELEGRAM_BOT_TOKEN = '8875284658:AAHrSOIAi6OX_oMGyXMIYCoO4GdyLSInMnE';
-        const TELEGRAM_CHAT_ID = '1403873724';
-
-        function trackVisitor() {
-            try {
-                const source = document.referrer ? document.referrer : 'Accès Direct';
-                const time = new Date().toLocaleTimeString('fr-FR');
-                const text = e
+            update();
+            var coun
