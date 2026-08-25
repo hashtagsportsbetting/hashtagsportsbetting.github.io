@@ -380,19 +380,19 @@
         <div class="dashboard">
             <div class="stat-box">
                 <div class="stat-label">Total Bets</div>
-                <div class="stat-value" id="stat-total">4W - 3L</div>
+                <div class="stat-value" id="stat-total">5W - 3L</div>
             </div>
             <div class="stat-box">
                 <div class="stat-label">Win Rate</div>
-                <div class="stat-value" id="stat-winrate">57.1%</div>
+                <div class="stat-value" id="stat-winrate">62.5%</div>
             </div>
             <div class="stat-box">
                 <div class="stat-label">Profit (Units)</div>
-                <div class="stat-value stat-profit" id="stat-profit">+0.42 U</div>
+                <div class="stat-value stat-profit" id="stat-profit">+1.08 U</div>
             </div>
             <div class="stat-box">
                 <div class="stat-label">Yield (ROI)</div>
-                <div class="stat-value stat-profit" id="stat-roi">+5.25%</div>
+                <div class="stat-value stat-profit" id="stat-roi">+12.00%</div>
             </div>
         </div>
 
@@ -401,6 +401,8 @@
             <div class="mosaic-grid" id="mosaic-grid">
                 <div class="mosaic-item mosaic-loss" onclick="openBetById(7)">@ 1.85</div>
                 <div class="mosaic-item mosaic-loss" onclick="openBetById(6)">@ 1.51</div>
+                <div class="mosaic-item mosaic-win" onclick="openBetById(9)">@ 1.66</div>
+                <div class="mosaic-item mosaic-void" onclick="openBetById(8)">@ 1.57</div>
                 <div class="mosaic-item mosaic-win" onclick="openBetById(5)">@ 1.57</div>
                 <div class="mosaic-item mosaic-win" onclick="openBetById(4)">@ 1.55</div>
                 <div class="mosaic-item mosaic-win" onclick="openBetById(3)">@ 1.55</div>
@@ -471,6 +473,8 @@
             { id: 3, date: '2026-08-19', tournament: 'ATP 1000 Cincinnati', match: 'A. Fils vs A. de Minaur', selection: 'A. Fils ML', odds: 1.55, stake: 1, status: 'WIN' },
             { id: 4, date: '2026-08-20', tournament: 'ITF M15 Asuncion', match: 'M. Exsted vs S. de la Fuente', selection: 'M. Exsted ML', odds: 1.55, stake: 1, status: 'WIN' },
             { id: 5, date: '2026-08-21', tournament: 'ITF W75 Kursumlijska Banja 3', match: 'G. Pedone vs L. Zaar', selection: 'L. Zaar ML', odds: 1.57, stake: 1, status: 'WIN' },
+            { id: 8, date: '2026-08-23', tournament: 'Challenger 50 Augsburg', match: 'M. Marterer vs B. Hassan', selection: 'B. Hassan ML', odds: 1.57, stake: 1, status: 'VOID' },
+            { id: 9, date: '2026-08-24', tournament: 'Challenger 50 Augsburg', match: 'R. Strombachs vs K. Wehnelt', selection: 'K. Wehnelt ML', odds: 1.66, stake: 1, status: 'WIN' },
             { id: 6, date: '2026-08-24', tournament: 'US Open Qualifiers (Hard)', match: 'F. Ferro vs R. Marino', selection: 'Fiona Ferro ML', odds: 1.51, stake: 1, status: 'LOSS' },
             { id: 7, date: '2026-08-24', tournament: 'WTA 500 Monterrey (Hard)', match: 'C. Osorio vs A. Li', selection: 'C. Osorio ML', odds: 1.85, stake: 1, status: 'LOSS' }
         ];
