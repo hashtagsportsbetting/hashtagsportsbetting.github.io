@@ -200,7 +200,6 @@
             color: var(--void-gray);
         }
 
-        /* Styling the Bet detail modal inside Results */
         .opt2-card {
             background: linear-gradient(135deg, rgba(255, 0, 255, 0.05), rgba(0, 255, 255, 0.05));
             background-color: #050010;
@@ -303,7 +302,6 @@
 
         .footer-links a:hover { color: var(--neon-cyan); }
 
-        /* Unified Modals (Bet Modals & Legal Modals) */
         .modal-overlay {
             display: none;
             position: fixed;
@@ -413,7 +411,7 @@
         <p style="margin-top:4px;">&copy; 2026 HashtagSportsBetting.com</p>
     </footer>
 
-    <!-- LEGAL MODALS (Homogenized with index.html) -->
+    <!-- LEGAL MODALS -->
     <div class="modal-overlay" id="modal-legal">
         <div class="modal-content">
             <span class="close-modal" onclick="closeModal('modal-legal')">X</span>
@@ -466,7 +464,8 @@
             { id: 3, date: '2026-08-19', tournament: 'ATP 1000 Cincinnati', match: 'A. Fils vs A. de Minaur', selection: 'A. Fils ML', odds: 1.55, stake: 1, status: 'WIN' },
             { id: 4, date: '2026-08-20', tournament: 'ITF M15 Asuncion', match: 'M. Exsted vs S. de la Fuente', selection: 'M. Exsted ML', odds: 1.55, stake: 1, status: 'WIN' },
             { id: 5, date: '2026-08-21', tournament: 'ITF W75 Kursumlijska Banja 3', match: 'G. Pedone vs L. Zaar', selection: 'L. Zaar ML', odds: 1.57, stake: 1, status: 'WIN' },
-            { id: 6, date: '2026-08-24', tournament: 'US Open Qualifiers (Hard)', match: 'F. Ferro vs R. Marino', selection: 'Fiona Ferro ML', odds: 1.51, stake: 1, status: 'LOSS' }
+            { id: 6, date: '2026-08-24', tournament: 'US Open Qualifiers (Hard)', match: 'F. Ferro vs R. Marino', selection: 'Fiona Ferro ML', odds: 1.51, stake: 1, status: 'LOSS' },
+            { id: 7, date: '2026-08-24', tournament: 'WTA 500 Monterrey (Hard)', match: 'C. Osorio vs A. Li', selection: 'C. Osorio ML', odds: 1.85, stake: 1, status: 'LOSS' }
         ];
 
         function initDashboard() {
@@ -475,6 +474,7 @@
             var totalStake = 0;
             var totalReturn = 0;
             var grid = document.getElementById('mosaic-grid');
+            if (!grid) return;
             grid.innerHTML = '';
             var reversedBets = bets.slice().reverse();
 
@@ -537,19 +537,4 @@
             document.getElementById('modal-odds').innerText = '@ ' + bet.odds.toFixed(2);
             document.getElementById('modal-badge').innerText = bet.status;
             
-            card.classList.remove('modal-win', 'modal-loss', 'modal-void');
-            card.classList.add('modal-' + bet.status.toLowerCase());
-            
-            modal.style.display = 'flex';
-        }
-
-        function closeBetModal(e) {
-            if (e.target.id === 'bet-modal') {
-                document.getElementById('bet-modal').style.display = 'none';
-            }
-        }
-
-        window.onload = initDashboard;
-    </script>
-</body>
-</html>
+      
