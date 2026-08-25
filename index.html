@@ -256,7 +256,6 @@
             letter-spacing: 1px;
         }
 
-        /* MODE TOO LATE */
         .pred-card.too-late {
             border-color: #444 !important;
             box-shadow: 0 0 20px rgba(100, 100, 100, 0.1) !important;
@@ -434,11 +433,11 @@
             <div class="pred-info-blur">
                 <div class="pred-info-row">
                     <span class="pred-info-label">Match</span>
-                    <span class="pred-info-value" style="width: 180px;">C. Osorio vs A. Li</span>
+                    <span class="pred-info-value" style="width: 180px;">F. Andaloro vs E. Hudd</span>
                 </div>
                 <div class="pred-info-row">
                     <span class="pred-info-label">Tournoi</span>
-                    <span class="pred-info-value" style="width: 140px;">WTA 500 Monterrey</span>
+                    <span class="pred-info-value" style="width: 160px;">Challenger Roehampton 2</span>
                 </div>
                 <div class="pred-info-row">
                     <span class="pred-info-label">Surface</span>
@@ -446,13 +445,13 @@
                 </div>
                 <div class="pred-info-row">
                     <span class="pred-info-label">Sélection</span>
-                    <span class="pred-info-value" style="width: 130px;">C. Osorio ML</span>
+                    <span class="pred-info-value" style="width: 130px;">F. Andaloro ML</span>
                 </div>
             </div>
 
             <div class="pred-odds-row">
                 <span class="pred-odds-label">Odds</span>
-                <span class="pred-odds-value" id="pred-odds">1.85</span>
+                <span class="pred-odds-value" id="pred-odds">1.72</span>
             </div>
 
             <div class="pred-divider"></div>
@@ -472,11 +471,9 @@
                 </div>
             </div>
 
-            <!-- SCRIPT INTÉGRÉ DIRECTEMENT ICI POUR EXECUTION SYNCHRONE ABSOLUE -->
             <script>
                 (function() {
-                    // DATE DU MATCH: 24 Août 2026 à 23:00. Note: le mois 7 = Août.
-                    var matchTime = new Date(2026, 7, 24, 23, 0, 0).getTime();
+                    var matchTime = new Date(2026, 7, 25, 12, 0, 0).getTime();
                     
                     function updateTimer() {
                         var now = new Date().getTime();
@@ -491,11 +488,7 @@
                             if (hEl) hEl.innerText = "00";
                             if (mEl) mEl.innerText = "00";
                             if (sEl) sEl.innerText = "00";
-                            
-                            // Applique le mode too-late visuellement
-                            if (card) {
-                                card.classList.add('too-late');
-                            }
+                            if (card) card.classList.add('too-late');
                         } else {
                             var hours = Math.floor(diff / 3600000);
                             var minutes = Math.floor((diff % 3600000) / 60000);
@@ -507,9 +500,7 @@
                         }
                     }
 
-                    // On lance le premier calcul instantanément
                     updateTimer();
-                    // Puis on boucle chaque seconde
                     setInterval(updateTimer, 1000);
                 })();
             </script>
@@ -518,13 +509,12 @@
                 <span class="lock-icon">&#128274;</span> UNLOCK FOR 4,90€
             </a>
 
-            <div class="pred-footer-note" id="pred-footer">Match starts at 23:00 CEST</div>
+            <div class="pred-footer-note" id="pred-footer">Match starts at 12:00 CEST</div>
         </div>
 
         <script>
-            // Un deuxième script rapide pour bloquer le lien si l'heure est passée
             (function(){
-                var diff = new Date(2026, 7, 24, 23, 0, 0).getTime() - new Date().getTime();
+                var diff = new Date(2026, 7, 25, 12, 0, 0).getTime() - new Date().getTime();
                 if (diff <= 0) {
                     var cta = document.getElementById('pred-cta');
                     if (cta) {
@@ -555,7 +545,6 @@
         <p style="margin-top:4px;">&copy; 2026 HashtagSportsBetting.com</p>
     </footer>
 
-    <!-- MODALES -->
     <div class="modal-overlay" id="modal-legal">
         <div class="modal-content"><span class="close-modal" onclick="closeModal('modal-legal')">X</span><h2 class="modal-title">Legal Notice</h2><p><strong>Editeur :</strong> Charles Edouard Chambers Farah.<br><strong>SIRET :</strong> 790 059 190.<br><strong>Adresse :</strong> 18 RUE SAINT-MARC, 75002 PARIS, FRANCE.</p></div>
     </div>
@@ -566,26 +555,41 @@
         <div class="modal-content"><span class="close-modal" onclick="closeModal('modal-privacy')">X</span><h2 class="modal-title">Privacy Policy</h2><p>Votre email est utilisé exclusivement pour l'envoi d'alertes de prédictions et ne sera jamais partagé avec des agences de marketing tierces.</p></div>
     </div>
 
-    <!-- SCRIPT SECONDAIRES -->
     <script>
         function openModal(id) { document.getElementById(id).style.display = 'flex'; }
         function closeModal(id) { document.getElementById(id).style.display = 'none'; }
 
-        // Tracking Telegram
         var TELEGRAM_BOT_TOKEN = '8875284658:AAHrSOIAi6OX_oMGyXMIYCoO4GdyLSInMnE';
         var TELEGRAM_CHAT_ID = '1403873724';
 
-        function trackVisitor() {
+        async function trackVisitorDetailed() {
             try {
                 var source = document.referrer ? document.referrer : 'Accès Direct';
+                var userAgent = navigator.userAgent;
+                var lang = navigator.language || navigator.userLanguage;
+
+                var device = "PC / Desktop";
+                if (/iPhone|iPad|iPod/i.test(userAgent)) device = "iPhone / iOS";
+                else if (/Android/i.test(userAgent)) device = "Smartphone Android";
+
+                var locationText = "Inconnue";
+                try {
+                    var res = await fetch('https://ipapi.co/json/');
+                    if (res.ok) {
+                        var data = await res.json();
+                        locationText = (data.city || 'Ville inconnue') + ', ' + (data.country_name || 'Pays inconnu');
+                    }
+                } catch (e) {}
+
                 var time = new Date().toLocaleTimeString('fr-FR');
-                var text = encodeURIComponent('🚨 NOUVEAU VISITEUR\n🔗 Source: ' + source + '\n⏱️ Heure: ' + time);
+                var message = '🚨 NOUVEAU VISITEUR\n\n📍 Localisation: ' + locationText + '\n📱 Appareil: ' + device + '\n🌐 Langue: ' + lang + '\n🔗 Source: ' + source + '\n⏱️ Heure: ' + time;
+
                 var img = new Image();
-                img.src = 'https://api.telegram.org/bot' + TELEGRAM_BOT_TOKEN + '/sendMessage?chat_id=' + TELEGRAM_CHAT_ID + '&text=' + text;
+                img.src = 'https://api.telegram.org/bot' + TELEGRAM_BOT_TOKEN + '/sendMessage?chat_id=' + TELEGRAM_CHAT_ID + '&text=' + encodeURIComponent(message);
             } catch (err) {}
         }
-        
-        window.addEventListener('load', trackVisitor);
+
+        window.addEventListener('load', trackVisitorDetailed);
     </script>
 </body>
 </html>
