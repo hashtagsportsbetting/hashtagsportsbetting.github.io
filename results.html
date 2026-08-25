@@ -14,6 +14,7 @@
             --win-green: #00ff00;
             --loss-red: #ff4444;
             --void-gray: #aaaaaa;
+            --pending-white: #ffffff;
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -198,6 +199,16 @@
             background: rgba(170, 170, 170, 0.15);
             border: 2px solid var(--void-gray);
             color: var(--void-gray);
+        }
+        .mosaic-pending {
+            background: rgba(255, 255, 255, 0.08);
+            border: 2px solid var(--pending-white);
+            color: var(--pending-white);
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+            cursor: default;
+        }
+        .mosaic-pending:hover {
+            transform: none;
         }
 
         .opt2-card {
@@ -399,6 +410,8 @@
         <div class="mosaic-container">
             <div class="mosaic-title">BET HISTORY (NEW TO OLD)</div>
             <div class="mosaic-grid" id="mosaic-grid">
+                <div class="mosaic-item mosaic-pending">@ 1.70</div>
+                <div class="mosaic-item mosaic-pending">@ 1.72</div>
                 <div class="mosaic-item mosaic-loss" onclick="openBetById(7)">@ 1.85</div>
                 <div class="mosaic-item mosaic-loss" onclick="openBetById(6)">@ 1.51</div>
                 <div class="mosaic-item mosaic-win" onclick="openBetById(9)">@ 1.66</div>
