@@ -380,25 +380,33 @@
         <div class="dashboard">
             <div class="stat-box">
                 <div class="stat-label">Total Bets</div>
-                <div class="stat-value" id="stat-total">0</div>
+                <div class="stat-value" id="stat-total">4W - 3L</div>
             </div>
             <div class="stat-box">
                 <div class="stat-label">Win Rate</div>
-                <div class="stat-value" id="stat-winrate">0%</div>
+                <div class="stat-value" id="stat-winrate">57.1%</div>
             </div>
             <div class="stat-box">
                 <div class="stat-label">Profit (Units)</div>
-                <div class="stat-value" id="stat-profit">+0.00 U</div>
+                <div class="stat-value stat-profit" id="stat-profit">+0.42 U</div>
             </div>
             <div class="stat-box">
                 <div class="stat-label">Yield (ROI)</div>
-                <div class="stat-value" id="stat-roi">+0.00%</div>
+                <div class="stat-value stat-profit" id="stat-roi">+5.25%</div>
             </div>
         </div>
 
         <div class="mosaic-container">
             <div class="mosaic-title">BET HISTORY (NEW TO OLD)</div>
-            <div class="mosaic-grid" id="mosaic-grid"></div>
+            <div class="mosaic-grid" id="mosaic-grid">
+                <div class="mosaic-item mosaic-loss" onclick="openBetById(7)">@ 1.85</div>
+                <div class="mosaic-item mosaic-loss" onclick="openBetById(6)">@ 1.51</div>
+                <div class="mosaic-item mosaic-win" onclick="openBetById(5)">@ 1.57</div>
+                <div class="mosaic-item mosaic-win" onclick="openBetById(4)">@ 1.55</div>
+                <div class="mosaic-item mosaic-win" onclick="openBetById(3)">@ 1.55</div>
+                <div class="mosaic-item mosaic-win" onclick="openBetById(2)">@ 1.80</div>
+                <div class="mosaic-item mosaic-loss" onclick="openBetById(1)">@ 1.55</div>
+            </div>
         </div>
     </main>
 
@@ -411,7 +419,6 @@
         <p style="margin-top:4px;">&copy; 2026 HashtagSportsBetting.com</p>
     </footer>
 
-    <!-- LEGAL MODALS -->
     <div class="modal-overlay" id="modal-legal">
         <div class="modal-content">
             <span class="close-modal" onclick="closeModal('modal-legal')">X</span>
@@ -468,61 +475,12 @@
             { id: 7, date: '2026-08-24', tournament: 'WTA 500 Monterrey (Hard)', match: 'C. Osorio vs A. Li', selection: 'C. Osorio ML', odds: 1.85, stake: 1, status: 'LOSS' }
         ];
 
-        function initDashboard() {
-            var totalBets = 0;
-            var wins = 0;
-            var totalStake = 0;
-            var totalReturn = 0;
-            var grid = document.getElementById('mosaic-grid');
-            if (!grid) return;
-            grid.innerHTML = '';
-            var reversedBets = bets.slice().reverse();
-
-            for (var i = 0; i < reversedBets.length; i++) {
-                var bet = reversedBets[i];
-                if (bet.status === 'WIN' || bet.status === 'LOSS') {
-                    totalBets++;
-                    totalStake += bet.stake;
-                    if (bet.status === 'WIN') {
-                        wins++;
-                        totalReturn += bet.stake * bet.odds;
-                    }
-                } else if (bet.status === 'VOID') {
-                    totalStake += bet.stake;
-                    totalReturn += bet.stake;
+        function openBetById(id) {
+            for (var i = 0; i < bets.length; i++) {
+                if (bets[i].id === id) {
+                    openBetModal(bets[i]);
+                    break;
                 }
-                var square = document.createElement('div');
-                square.className = 'mosaic-item mosaic-' + bet.status.toLowerCase();
-                square.innerText = '@ ' + bet.odds.toFixed(2);
-                square.addEventListener('click', (function(b) {
-                    return function() { openBetModal(b); }
-                })(bet));
-                grid.appendChild(square);
-            }
-
-            var profit = totalReturn - totalStake;
-            var roi = totalStake > 0 ? (profit / totalStake) * 100 : 0;
-            var winrate = totalBets > 0 ? (wins / totalBets) * 100 : 0;
-
-            document.getElementById('stat-total').innerText = wins + 'W - ' + (totalBets - wins) + 'L';
-            document.getElementById('stat-winrate').innerText = winrate.toFixed(1) + '%';
-            
-            var profitEl = document.getElementById('stat-profit');
-            var roiEl = document.getElementById('stat-roi');
-            
-            profitEl.innerText = (profit > 0 ? '+' : '') + profit.toFixed(2) + ' U';
-            roiEl.innerText = (roi > 0 ? '+' : '') + roi.toFixed(2) + '%';
-            
-            if (profit < 0) {
-                profitEl.style.color = 'var(--loss-red)';
-                profitEl.style.textShadow = '0 0 5px var(--loss-red)';
-                roiEl.style.color = 'var(--loss-red)';
-                roiEl.style.textShadow = '0 0 5px var(--loss-red)';
-            } else {
-                profitEl.style.color = 'var(--win-green)';
-                profitEl.style.textShadow = '0 0 5px var(--win-green)';
-                roiEl.style.color = 'var(--win-green)';
-                roiEl.style.textShadow = '0 0 5px var(--win-green)';
             }
         }
 
@@ -537,4 +495,17 @@
             document.getElementById('modal-odds').innerText = '@ ' + bet.odds.toFixed(2);
             document.getElementById('modal-badge').innerText = bet.status;
             
-      
+            card.classList.remove('modal-win', 'modal-loss', 'modal-void');
+            card.classList.add('modal-' + bet.status.toLowerCase());
+            
+            modal.style.display = 'flex';
+        }
+
+        function closeBetModal(e) {
+            if (e.target.id === 'bet-modal') {
+                document.getElementById('bet-modal').style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>
