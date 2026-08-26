@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -392,26 +391,26 @@
         <div class="dashboard">
             <div class="stat-box">
                 <div class="stat-label">Total Bets</div>
-                <div class="stat-value" id="stat-total">8W - 5L</div>
+                <div class="stat-value" id="stat-total">8W - 6L</div>
             </div>
             <div class="stat-box">
                 <div class="stat-label">Win Rate</div>
-                <div class="stat-value" id="stat-winrate">61.5%</div>
+                <div class="stat-value" id="stat-winrate">57.1%</div>
             </div>
             <div class="stat-box">
                 <div class="stat-label">Profit (Units)</div>
-                <div class="stat-value stat-profit" id="stat-profit">+3.00 U</div>
+                <div class="stat-value stat-profit" id="stat-profit">+2.00 U</div>
             </div>
             <div class="stat-box">
                 <div class="stat-label">Yield (ROI)</div>
-                <div class="stat-value stat-profit" id="stat-roi">+21.43%</div>
+                <div class="stat-value stat-profit" id="stat-roi">+13.33%</div>
             </div>
         </div>
 
         <div class="mosaic-container">
             <div class="mosaic-title">BET HISTORY (NEW TO OLD)</div>
             <div class="mosaic-grid" id="mosaic-grid">
-                <div class="mosaic-item mosaic-pending">@ 1.72</div>
+                <div class="mosaic-item mosaic-loss" onclick="openBetById(14)">@ 1.72</div>
                 <div class="mosaic-item mosaic-win" onclick="openBetById(13)">@ 2.60</div>
                 <div class="mosaic-item mosaic-win" onclick="openBetById(12)">@ 1.75</div>
                 <div class="mosaic-item mosaic-loss" onclick="openBetById(11)">@ 1.70</div>
@@ -497,7 +496,8 @@
             { id: 10, date: '2026-08-25', tournament: 'Challenger Roehampton 2', match: 'F. Andaloro vs E. Hudd', selection: 'F. Andaloro ML', odds: 1.72, stake: 1, status: 'LOSS', badge: 'LOSS' },
             { id: 11, date: '2026-08-25', tournament: 'US Open Qualifiers (Hard)', match: 'J. Riera vs V. Hruncakova', selection: 'J. Riera ML', odds: 1.70, stake: 1, status: 'LOSS', badge: 'LOSS' },
             { id: 12, date: '2026-08-25', tournament: 'ATP 250 Winston-Salem', match: 'L. Darderi vs Match', selection: 'L. Darderi ML', odds: 1.75, stake: 1, status: 'WIN', badge: 'WON' },
-            { id: 13, date: '2026-08-26', tournament: 'ITF M15 Pecs', match: 'T. Gubi vs R. Behr', selection: 'R. Behr +1.5 Sets', odds: 2.60, stake: 1, status: 'WIN', badge: 'WON' }
+            { id: 13, date: '2026-08-26', tournament: 'ITF M15 Pecs', match: 'T. Gubi vs R. Behr', selection: 'R. Behr +1.5 Sets', odds: 2.60, stake: 1, status: 'WIN', badge: 'WON' },
+            { id: 14, date: '2026-08-26', tournament: 'Challenger 50 Augsburg', match: 'M. Möller vs M. Soto', selection: 'M. Soto +1.5 Sets', odds: 1.72, stake: 1, status: 'LOSS', badge: 'LOSS' }
         ];
 
         function openBetById(id) {
