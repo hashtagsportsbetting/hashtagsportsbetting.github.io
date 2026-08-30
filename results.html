@@ -455,26 +455,25 @@
         <div class="dashboard">
             <div class="stat-box">
                 <div class="stat-label">Total Bets</div>
-                <div class="stat-value" id="stat-total">13W - 6L</div>
+                <div class="stat-value" id="stat-total">14W - 6L</div>
             </div>
             <div class="stat-box">
                 <div class="stat-label">Win Rate</div>
-                <div class="stat-value" id="stat-winrate">68.4%</div>
+                <div class="stat-value" id="stat-winrate">70.0%</div>
             </div>
             <div class="stat-box">
                 <div class="stat-label">Profit (Units)</div>
-                <div class="stat-value stat-profit" id="stat-profit">+6.30 U</div>
+                <div class="stat-value stat-profit" id="stat-profit">+6.58 U</div>
             </div>
             <div class="stat-box">
                 <div class="stat-label">Yield (ROI)</div>
-                <div class="stat-value stat-profit" id="stat-roi">+31.50%</div>
+                <div class="stat-value stat-profit" id="stat-roi">+31.33%</div>
             </div>
         </div>
 
         <div class="mosaic-container">
             <div class="mosaic-title">BET HISTORY (NEW TO OLD)</div>
             <div class="mosaic-grid" id="mosaic-grid">
-                <!-- LE PARI LIVE LE PLUS RÉCENT PLACÉ EN PREMIÈRE POSITION -->
                 <div class="mosaic-item mosaic-win live-square" onclick="openBetById(22)">
                     <span class="live-badge-small">LIVE</span>
                     <span>@ 1.09</span>
@@ -486,6 +485,12 @@
                 
                 <div class="mosaic-item mosaic-win" onclick="openBetById(18)">@ 2.00</div>
                 <div class="mosaic-item mosaic-win" onclick="openBetById(17)">@ 2.11</div>
+
+                <div class="mosaic-item mosaic-win live-square" onclick="openBetById(23)">
+                    <span class="live-badge-small">LIVE</span>
+                    <span>@ 1.28</span>
+                </div>
+
                 <div class="mosaic-item mosaic-win" onclick="openBetById(16)">@ 2.34</div>
                 <div class="mosaic-item mosaic-win" onclick="openBetById(15)">@ 1.76</div>
                 <div class="mosaic-item mosaic-loss" onclick="openBetById(14)">@ 1.72</div>
@@ -581,6 +586,7 @@
             { id: 14, date: '2026-08-26', tournament: 'Challenger 50 Augsburg', match: 'M. Möller vs M. Soto', selection: 'M. Soto +1.5 Sets', odds: 1.72, stake: 1, status: 'LOSS', badge: 'LOSS' },
             { id: 15, date: '2026-08-27', tournament: 'Accumulator (2)', match: '<span style="font-size:1rem; line-height:1.4;">1. Lloyd Harris vs Pablo Llamas Ruiz<br>2. Francesca Jones vs Joanna Garland</span>', selection: '1. Joueur 1 gagne un set : Oui<br>2. Vainqueur du match : 1', odds: 1.76, stake: 1, status: 'WIN', badge: 'WON' },
             { id: 16, date: '2026-08-27', tournament: 'Accumulator (3)', match: '<span style="font-size:1rem; line-height:1.4;">1. Lloyd Harris vs Pablo Llamas Ruiz<br>2. Zsombor Piros vs Christopher O\'Connell<br>3. Francesca Jones vs Joanna Garland</span>', selection: '1. Regular time, 1X2: W1<br>2. Regular time, Sets Handicap: 2 (1.5)<br>3. Regular time, Sets Handicap: 1 (1.5)', odds: 2.34, stake: 1, status: 'WIN', badge: 'WON' },
+            { id: 23, date: '2026-08-27', tournament: 'ITF W50 Kursumlijska Banja', match: 'G. Pedone vs L. Encheva', selection: 'G. Pedone ML', odds: 1.28, stake: 1, status: 'WIN', badge: 'WON', isLive: true },
             { id: 17, date: '2026-08-28', tournament: 'Accumulator (4)', match: '<span style="font-size:1rem; line-height:1.4;">1. Pieter De Lange vs Eric Vanshelboim<br>2. Andrej Martin vs Lorenzo Rottoli<br>3. Lloyd Harris vs Pablo Llamas Ruiz<br>4. Zsombor Piros vs Christopher O\'Connell</span>', selection: '1. Regular time, Sets Handicap: 2 (1.5)<br>2. Regular time, Sets Handicap: 1 (1.5)<br>3. Regular time, Sets Handicap: 1 (1.5)<br>4. Regular time, Sets Handicap: 2 (1.5)', odds: 2.11, stake: 1, status: 'WIN', badge: 'WON' },
             { id: 18, date: '2026-08-28', tournament: 'Accumulator (2)', match: '<span style="font-size:1rem; line-height:1.4;">1. Lloyd Harris vs Pablo Llamas Ruiz<br>2. Pieter De Lange vs Eric Vanshelboim</span>', selection: '1. Regular time, 1X2: W1<br>2. Regular time, Win In All Sets: W1 - No', odds: 2.00, stake: 1, status: 'WIN', badge: 'WON' },
             { id: 19, date: '2026-08-30', tournament: 'Accumulator (3)', match: '<span style="font-size:1.1rem; color:#aaa;">🔒 MATCHES HIDDEN</span>', selection: '<span style="color:#888;">LOCKED - Unlock on Homepage</span>', odds: 2.14, stake: 10, status: 'PENDING', badge: 'PENDING' },
