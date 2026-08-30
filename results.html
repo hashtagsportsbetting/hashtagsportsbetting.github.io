@@ -205,10 +205,6 @@
             border: 2px solid var(--pending-white);
             color: var(--pending-white);
             box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
-            cursor: default;
-        }
-        .mosaic-pending:hover {
-            transform: none;
         }
 
         .opt2-card {
@@ -288,6 +284,10 @@
         .modal-void { border-left-color: var(--void-gray); box-shadow: 0 0 25px rgba(170, 170, 170, 0.15); }
         .modal-void .opt2-badge { background: rgba(170, 170, 170, 0.2); color: var(--void-gray); }
         .modal-void .opt2-odds { color: var(--void-gray); }
+
+        .modal-pending { border-left-color: var(--pending-white); box-shadow: 0 0 25px rgba(255, 255, 255, 0.15); }
+        .modal-pending .opt2-badge { background: rgba(255, 255, 255, 0.2); color: var(--pending-white); }
+        .modal-pending .opt2-odds { color: var(--pending-white); }
 
         footer {
             width: 100%;
@@ -410,6 +410,9 @@
         <div class="mosaic-container">
             <div class="mosaic-title">BET HISTORY (NEW TO OLD)</div>
             <div class="mosaic-grid" id="mosaic-grid">
+                <div class="mosaic-item mosaic-pending" onclick="openBetById(21)">@ 5.01</div>
+                <div class="mosaic-item mosaic-pending" onclick="openBetById(20)">@ 2.15</div>
+                <div class="mosaic-item mosaic-pending" onclick="openBetById(19)">@ 2.14</div>
                 <div class="mosaic-item mosaic-win" onclick="openBetById(18)">@ 2.00</div>
                 <div class="mosaic-item mosaic-win" onclick="openBetById(17)">@ 2.11</div>
                 <div class="mosaic-item mosaic-win" onclick="openBetById(16)">@ 2.34</div>
@@ -505,7 +508,10 @@
             { id: 15, date: '2026-08-27', tournament: 'US Open Qualifiers / ITF', match: 'L. Harris + F. Jones', selection: 'Harris gagne un set + Jones ML', odds: 1.76, stake: 1, status: 'WIN', badge: 'WON' },
             { id: 16, date: '2026-08-27', tournament: 'US Open Qualifiers / ITF', match: 'Harris + O\'Connell + Jones', selection: 'Harris ML + O\'Connell +1.5s + Jones +1.5s', odds: 2.34, stake: 1, status: 'WIN', badge: 'WON' },
             { id: 17, date: '2026-08-28', tournament: 'US Open Qualifiers / ITF', match: 'De Lange/Vanshelboim + Martin/Rottoli + Harris', selection: 'Vanshelboim +1.5s + Martin +1.5s + Harris +1.5s', odds: 2.11, stake: 1, status: 'WIN', badge: 'WON' },
-            { id: 18, date: '2026-08-28', tournament: 'US Open Qualifiers / ITF', match: 'L. Harris + De Lange/Vanshelboim', selection: 'Harris ML + Vanshelboim no 2-0 loss', odds: 2.00, stake: 1, status: 'WIN', badge: 'WON' }
+            { id: 18, date: '2026-08-28', tournament: 'US Open Qualifiers / ITF', match: 'L. Harris + De Lange/Vanshelboim', selection: 'Harris ML + Vanshelboim no 2-0 loss', odds: 2.00, stake: 1, status: 'WIN', badge: 'WON' },
+            { id: 19, date: '2026-08-30', tournament: 'US Open / ITF Combiné', match: 'Wang + Navarro + Atmane', selection: 'Wang ML + Navarro ML + Atmane +1.5s', odds: 2.14, stake: 10, status: 'PENDING', badge: 'PENDING' },
+            { id: 20, date: '2026-08-30', tournament: 'US Open / ITF Combiné', match: 'Nakashima/Amariei/Wang/Atmane/Navarro', selection: 'Combiné 5 Sélections (+1.5s)', odds: 2.15, stake: 1, status: 'PENDING', badge: 'PENDING' },
+            { id: 21, date: '2026-08-30', tournament: 'US Open / ITF Combiné', match: 'Amariei/Nakashima/Wang/Atmane/Navarro', selection: 'Combiné 5 Sélections (ML)', odds: 5.01, stake: 0.3, status: 'PENDING', badge: 'PENDING' }
         ];
 
         function openBetById(id) {
@@ -528,7 +534,7 @@
             document.getElementById('modal-odds').innerText = '@ ' + bet.odds.toFixed(2);
             document.getElementById('modal-badge').innerText = bet.badge || (bet.status === 'WIN' ? 'WON' : bet.status);
             
-            card.classList.remove('modal-win', 'modal-loss', 'modal-void');
+            card.classList.remove('modal-win', 'modal-loss', 'modal-void', 'modal-pending');
             card.classList.add('modal-' + bet.status.toLowerCase());
             
             modal.style.display = 'flex';
