@@ -180,6 +180,11 @@
             min-height: 70px;
         }
 
+        .mosaic-item.live-square {
+            flex-direction: column;
+            gap: 6px;
+        }
+
         .mosaic-item:hover { transform: scale(1.05); }
         .mosaic-item:active { transform: scale(0.95); }
 
@@ -205,6 +210,60 @@
             border: 2px solid var(--pending-white);
             color: var(--pending-white);
             box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+        }
+
+        /* LIVE BADGES STYLES */
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+
+        .live-badge-small {
+            display: inline-flex;
+            align-items: center;
+            border: 1.5px solid #e62020;
+            border-radius: 4px;
+            padding: 2px 4px;
+            color: #e62020;
+            background-color: #fff;
+            font-family: Arial, sans-serif;
+            font-weight: 900;
+            font-size: 0.55rem;
+            text-transform: uppercase;
+            line-height: 1;
+        }
+        .live-badge-small::before {
+            content: '';
+            display: inline-block;
+            width: 5px;
+            height: 5px;
+            background-color: #e62020;
+            border-radius: 50%;
+            margin-right: 4px;
+            animation: blink 1s infinite;
+        }
+
+        .live-badge-modal {
+            display: inline-flex;
+            align-items: center;
+            border: 2px solid #e62020;
+            border-radius: 6px;
+            padding: 3px 6px;
+            color: #e62020;
+            background-color: #fff;
+            font-family: Arial, sans-serif;
+            font-weight: 900;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            line-height: 1;
+            margin-right: 10px;
+        }
+        .live-badge-modal::before {
+            content: '';
+            display: inline-block;
+            width: 7px;
+            height: 7px;
+            background-color: #e62020;
+            border-radius: 50%;
+            margin-right: 5px;
+            animation: blink 1s infinite;
         }
 
         .opt2-card {
@@ -239,6 +298,11 @@
             align-items: center;
             margin-bottom: 15px;
             margin-top: 10px;
+        }
+        
+        .opt2-top-left {
+            display: flex;
+            align-items: center;
         }
 
         .opt2-badge {
@@ -391,28 +455,35 @@
         <div class="dashboard">
             <div class="stat-box">
                 <div class="stat-label">Total Bets</div>
-                <div class="stat-value" id="stat-total">12W - 6L</div>
+                <div class="stat-value" id="stat-total">13W - 6L</div>
             </div>
             <div class="stat-box">
                 <div class="stat-label">Win Rate</div>
-                <div class="stat-value" id="stat-winrate">66.7%</div>
+                <div class="stat-value" id="stat-winrate">68.4%</div>
             </div>
             <div class="stat-box">
                 <div class="stat-label">Profit (Units)</div>
-                <div class="stat-value stat-profit" id="stat-profit">+6.21 U</div>
+                <div class="stat-value stat-profit" id="stat-profit">+6.30 U</div>
             </div>
             <div class="stat-box">
                 <div class="stat-label">Yield (ROI)</div>
-                <div class="stat-value stat-profit" id="stat-roi">+32.68%</div>
+                <div class="stat-value stat-profit" id="stat-roi">+31.50%</div>
             </div>
         </div>
 
         <div class="mosaic-container">
             <div class="mosaic-title">BET HISTORY (NEW TO OLD)</div>
             <div class="mosaic-grid" id="mosaic-grid">
+                <!-- LE PARI LIVE LE PLUS RÉCENT PLACÉ EN PREMIÈRE POSITION -->
+                <div class="mosaic-item mosaic-win live-square" onclick="openBetById(22)">
+                    <span class="live-badge-small">LIVE</span>
+                    <span>@ 1.09</span>
+                </div>
+                
                 <div class="mosaic-item mosaic-pending" onclick="openBetById(21)">@ 5.01</div>
                 <div class="mosaic-item mosaic-pending" onclick="openBetById(20)">@ 2.15</div>
                 <div class="mosaic-item mosaic-pending" onclick="openBetById(19)">@ 2.14</div>
+                
                 <div class="mosaic-item mosaic-win" onclick="openBetById(18)">@ 2.00</div>
                 <div class="mosaic-item mosaic-win" onclick="openBetById(17)">@ 2.11</div>
                 <div class="mosaic-item mosaic-win" onclick="openBetById(16)">@ 2.34</div>
@@ -471,7 +542,10 @@
         <div class="opt2-card" id="modal-card">
             <div class="close-bet-modal" onclick="document.getElementById('bet-modal').style.display='none'">✕</div>
             <div class="opt2-top">
-                <span style="color:#aaa; font-size:0.85rem;" id="modal-date-tourney">Date • Tournoi</span>
+                <div class="opt2-top-left">
+                    <span id="modal-live-badge" class="live-badge-modal" style="display:none;">LIVE</span>
+                    <span style="color:#aaa; font-size:0.85rem;" id="modal-date-tourney">Date • Tournoi</span>
+                </div>
                 <span class="opt2-badge" id="modal-badge">WON</span>
             </div>
             <div class="opt2-match" id="modal-match">Player A vs Player B</div>
@@ -505,13 +579,14 @@
             { id: 12, date: '2026-08-25', tournament: 'ATP 250 Winston-Salem', match: 'L. Darderi vs Match', selection: 'L. Darderi ML', odds: 1.75, stake: 1, status: 'WIN', badge: 'WON' },
             { id: 13, date: '2026-08-26', tournament: 'ITF M15 Pecs', match: 'T. Gubi vs R. Behr', selection: 'R. Behr +1.5 Sets', odds: 2.60, stake: 1, status: 'WIN', badge: 'WON' },
             { id: 14, date: '2026-08-26', tournament: 'Challenger 50 Augsburg', match: 'M. Möller vs M. Soto', selection: 'M. Soto +1.5 Sets', odds: 1.72, stake: 1, status: 'LOSS', badge: 'LOSS' },
-            { id: 15, date: '2026-08-27', tournament: 'US Open Qualifiers / ITF', match: 'L. Harris + F. Jones', selection: 'Harris gagne un set + Jones ML', odds: 1.76, stake: 1, status: 'WIN', badge: 'WON' },
-            { id: 16, date: '2026-08-27', tournament: 'US Open Qualifiers / ITF', match: 'Harris + O\'Connell + Jones', selection: 'Harris ML + O\'Connell +1.5s + Jones +1.5s', odds: 2.34, stake: 1, status: 'WIN', badge: 'WON' },
-            { id: 17, date: '2026-08-28', tournament: 'US Open Qualifiers / ITF', match: 'De Lange/Vanshelboim + Martin/Rottoli + Harris', selection: 'Vanshelboim +1.5s + Martin +1.5s + Harris +1.5s', odds: 2.11, stake: 1, status: 'WIN', badge: 'WON' },
-            { id: 18, date: '2026-08-28', tournament: 'US Open Qualifiers / ITF', match: 'L. Harris + De Lange/Vanshelboim', selection: 'Harris ML + Vanshelboim no 2-0 loss', odds: 2.00, stake: 1, status: 'WIN', badge: 'WON' },
-            { id: 19, date: '2026-08-30', tournament: 'US Open / ITF Combiné', match: 'Wang + Navarro + Atmane', selection: 'Wang ML + Navarro ML + Atmane +1.5s', odds: 2.14, stake: 10, status: 'PENDING', badge: 'PENDING' },
-            { id: 20, date: '2026-08-30', tournament: 'US Open / ITF Combiné', match: 'Nakashima/Amariei/Wang/Atmane/Navarro', selection: 'Combiné 5 Sélections (+1.5s)', odds: 2.15, stake: 1, status: 'PENDING', badge: 'PENDING' },
-            { id: 21, date: '2026-08-30', tournament: 'US Open / ITF Combiné', match: 'Amariei/Nakashima/Wang/Atmane/Navarro', selection: 'Combiné 5 Sélections (ML)', odds: 5.01, stake: 0.3, status: 'PENDING', badge: 'PENDING' }
+            { id: 15, date: '2026-08-27', tournament: 'Accumulator (2)', match: '<span style="font-size:1rem; line-height:1.4;">1. Lloyd Harris vs Pablo Llamas Ruiz<br>2. Francesca Jones vs Joanna Garland</span>', selection: '1. Joueur 1 gagne un set : Oui<br>2. Vainqueur du match : 1', odds: 1.76, stake: 1, status: 'WIN', badge: 'WON' },
+            { id: 16, date: '2026-08-27', tournament: 'Accumulator (3)', match: '<span style="font-size:1rem; line-height:1.4;">1. Lloyd Harris vs Pablo Llamas Ruiz<br>2. Zsombor Piros vs Christopher O\'Connell<br>3. Francesca Jones vs Joanna Garland</span>', selection: '1. Regular time, 1X2: W1<br>2. Regular time, Sets Handicap: 2 (1.5)<br>3. Regular time, Sets Handicap: 1 (1.5)', odds: 2.34, stake: 1, status: 'WIN', badge: 'WON' },
+            { id: 17, date: '2026-08-28', tournament: 'Accumulator (4)', match: '<span style="font-size:1rem; line-height:1.4;">1. Pieter De Lange vs Eric Vanshelboim<br>2. Andrej Martin vs Lorenzo Rottoli<br>3. Lloyd Harris vs Pablo Llamas Ruiz<br>4. Zsombor Piros vs Christopher O\'Connell</span>', selection: '1. Regular time, Sets Handicap: 2 (1.5)<br>2. Regular time, Sets Handicap: 1 (1.5)<br>3. Regular time, Sets Handicap: 1 (1.5)<br>4. Regular time, Sets Handicap: 2 (1.5)', odds: 2.11, stake: 1, status: 'WIN', badge: 'WON' },
+            { id: 18, date: '2026-08-28', tournament: 'Accumulator (2)', match: '<span style="font-size:1rem; line-height:1.4;">1. Lloyd Harris vs Pablo Llamas Ruiz<br>2. Pieter De Lange vs Eric Vanshelboim</span>', selection: '1. Regular time, 1X2: W1<br>2. Regular time, Win In All Sets: W1 - No', odds: 2.00, stake: 1, status: 'WIN', badge: 'WON' },
+            { id: 19, date: '2026-08-30', tournament: 'Accumulator (3)', match: '<span style="font-size:1.1rem; color:#aaa;">🔒 MATCHES HIDDEN</span>', selection: '<span style="color:#888;">LOCKED - Unlock on Homepage</span>', odds: 2.14, stake: 10, status: 'PENDING', badge: 'PENDING' },
+            { id: 20, date: '2026-08-30', tournament: 'Accumulator (5)', match: '<span style="font-size:1.1rem; color:#aaa;">🔒 MATCHES HIDDEN</span>', selection: '<span style="color:#888;">LOCKED - Unlock on Homepage</span>', odds: 2.15, stake: 1, status: 'PENDING', badge: 'PENDING' },
+            { id: 21, date: '2026-08-30', tournament: 'Accumulator (5)', match: '<span style="font-size:1.1rem; color:#aaa;">🔒 MATCHES HIDDEN</span>', selection: '<span style="color:#888;">LOCKED - Unlock on Homepage</span>', odds: 5.01, stake: 0.3, status: 'PENDING', badge: 'PENDING' },
+            { id: 22, date: '2026-08-30', tournament: 'ITF W50 Kursumlijska Banja', match: 'A. Stanković vs S. De Stefano', selection: 'S. De Stefano ML', odds: 1.09, stake: 1, status: 'WIN', badge: 'WON', isLive: true }
         ];
 
         function openBetById(id) {
@@ -528,12 +603,19 @@
             var card = document.getElementById('modal-card');
             
             document.getElementById('modal-date-tourney').innerText = bet.date + ' • ' + bet.tournament;
-            document.getElementById('modal-match').innerText = bet.match;
-            document.getElementById('modal-selection').innerText = bet.selection;
+            document.getElementById('modal-match').innerHTML = bet.match; 
+            document.getElementById('modal-selection').innerHTML = bet.selection; 
             document.getElementById('modal-stake').innerText = bet.stake;
             document.getElementById('modal-odds').innerText = '@ ' + bet.odds.toFixed(2);
             document.getElementById('modal-badge').innerText = bet.badge || (bet.status === 'WIN' ? 'WON' : bet.status);
             
+            var liveBadge = document.getElementById('modal-live-badge');
+            if (bet.isLive) {
+                liveBadge.style.display = 'inline-flex';
+            } else {
+                liveBadge.style.display = 'none';
+            }
+
             card.classList.remove('modal-win', 'modal-loss', 'modal-void', 'modal-pending');
             card.classList.add('modal-' + bet.status.toLowerCase());
             
