@@ -212,7 +212,6 @@
             box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
         }
 
-        /* LIVE BADGES STYLES */
         @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
 
         .live-badge-small {
@@ -276,9 +275,12 @@
             border-radius: 8px;
             padding: 20px;
             width: 100%;
-            max-width: 450px;
+            max-width: 520px;
             box-shadow: 0 0 25px rgba(0, 255, 0, 0.1);
             position: relative;
+            max-height: 85vh;
+            display: flex;
+            flex-direction: column;
         }
 
         .close-bet-modal {
@@ -297,7 +299,8 @@
             justify-content: space-between;
             align-items: center;
             margin-bottom: 15px;
-            margin-top: 10px;
+            margin-top: 5px;
+            flex-shrink: 0;
         }
         
         .opt2-top-left {
@@ -313,21 +316,82 @@
             letter-spacing: 1px;
         }
 
-        .opt2-match {
-            font-size: 1.3rem;
+        .opt2-body-scroll {
+            overflow-y: auto;
+            padding-right: 5px;
+            margin-bottom: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .leg-row {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid #222;
+            border-radius: 6px;
+            padding: 8px 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .leg-win {
+            border-left: 3px solid var(--win-green);
+            background: rgba(0, 255, 0, 0.04);
+        }
+
+        .leg-loss {
+            border-left: 3px solid var(--loss-red);
+            background: rgba(255, 68, 68, 0.05);
+        }
+
+        .leg-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            font-size: 0.85rem;
+        }
+
+        .leg-match {
+            color: #eee;
             font-weight: bold;
-            color: #fff;
-            margin-bottom: 8px;
+        }
+
+        .leg-pick {
+            font-size: 0.8rem;
+        }
+
+        .leg-win .leg-pick { color: var(--win-green); }
+        .leg-loss .leg-pick { color: var(--loss-red); }
+
+        .leg-badge {
+            font-size: 0.7rem;
+            font-weight: bold;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Righteous', cursive;
+        }
+
+        .leg-badge-won {
+            background: rgba(0, 255, 0, 0.2);
+            color: var(--win-green);
+        }
+
+        .leg-badge-lost {
+            background: rgba(255, 68, 68, 0.2);
+            color: var(--loss-red);
         }
 
         .opt2-details {
             color: #ccc;
             font-size: 0.95rem;
             line-height: 1.6;
+            flex-shrink: 0;
         }
 
         .opt2-odds-box {
-            margin-top: 20px;
+            margin-top: 10px;
             background: rgba(0, 0, 0, 0.6);
             padding: 15px;
             border-radius: 4px;
@@ -335,6 +399,7 @@
             justify-content: space-between;
             align-items: center;
             border: 1px solid #333;
+            flex-shrink: 0;
         }
 
         .modal-win { border-left-color: var(--win-green); box-shadow: 0 0 25px rgba(0, 255, 0, 0.15); }
@@ -428,8 +493,7 @@
             .mosaic-title { font-size: 1rem; margin-bottom: 10px; }
             .mosaic-grid { gap: 8px; }
             .mosaic-item { font-size: 0.9rem; min-height: 60px; }
-            .opt2-card { padding: 15px; }
-            .opt2-match { font-size: 1.1rem; }
+            .opt2-card { padding: 15px; max-width: 100%; }
             .opt2-odds { font-size: 1.5rem; }
             footer { height: 46px; font-size: 0.75rem; }
         }
@@ -557,10 +621,12 @@
                 </div>
                 <span class="opt2-badge" id="modal-badge">WON</span>
             </div>
-            <div class="opt2-match" id="modal-match">Player A vs Player B</div>
+
+            <!-- SCROLLABLE LIST OF SELECTIONS -->
+            <div class="opt2-body-scroll" id="modal-selections-container"></div>
+
             <div class="opt2-details">
-                Selection: <span style="color:var(--neon-cyan)" id="modal-selection">Selection ML</span><br>
-                Stake: <span id="modal-stake">1</span> Unit(s)
+                Stake: <span id="modal-stake" style="color:#fff; font-weight:bold;">1</span> Unit(s)
             </div>
             <div class="opt2-odds-box">
                 <span style="font-family:'Righteous',cursive; color:var(--neon-pink)">ODDS</span>
@@ -574,32 +640,115 @@
         function closeModal(id) { document.getElementById(id).style.display = 'none'; }
 
         var bets = [
-            { id: 1, date: '2026-08-18', tournament: 'Challenger Sion', match: 'T. Compagnucci vs M. Dahlin', selection: 'M. Dahlin ML', odds: 1.55, stake: 1, status: 'LOSS', badge: 'LOSS' },
-            { id: 2, date: '2026-08-19', tournament: 'ITF W15 Logrono', match: 'A. Gillan vs J. Garcia', selection: 'J. Garcia ML', odds: 1.80, stake: 2, status: 'WIN', badge: 'WON' },
-            { id: 3, date: '2026-08-19', tournament: 'ATP 1000 Cincinnati', match: 'A. Fils vs A. de Minaur', selection: 'A. Fils ML', odds: 1.55, stake: 1, status: 'WIN', badge: 'WON' },
-            { id: 4, date: '2026-08-20', tournament: 'ITF M15 Asuncion', match: 'M. Exsted vs S. de la Fuente', selection: 'M. Exsted ML', odds: 1.55, stake: 1, status: 'WIN', badge: 'WON' },
-            { id: 5, date: '2026-08-21', tournament: 'ITF W75 Kursumlijska Banja 3', match: 'G. Pedone vs L. Zaar', selection: 'L. Zaar ML', odds: 1.57, stake: 1, status: 'WIN', badge: 'WON' },
-            { id: 8, date: '2026-08-23', tournament: 'Challenger 50 Augsburg', match: 'M. Marterer vs B. Hassan', selection: 'B. Hassan ML', odds: 1.57, stake: 1, status: 'WIN', badge: 'WON (RET)' },
-            { id: 9, date: '2026-08-24', tournament: 'Challenger 50 Augsburg', match: 'R. Strombachs vs K. Wehnelt', selection: 'K. Wehnelt ML', odds: 1.66, stake: 1, status: 'WIN', badge: 'WON' },
-            { id: 6, date: '2026-08-24', tournament: 'US Open Qualifiers (Hard)', match: 'F. Ferro vs R. Marino', selection: 'Fiona Ferro ML', odds: 1.51, stake: 1, status: 'LOSS', badge: 'LOSS' },
-            { id: 7, date: '2026-08-24', tournament: 'WTA 500 Monterrey (Hard)', match: 'C. Osorio vs A. Li', selection: 'C. Osorio ML', odds: 1.85, stake: 1, status: 'LOSS', badge: 'LOSS' },
-            { id: 10, date: '2026-08-25', tournament: 'Challenger Roehampton 2', match: 'F. Andaloro vs E. Hudd', selection: 'F. Andaloro ML', odds: 1.72, stake: 1, status: 'LOSS', badge: 'LOSS' },
-            { id: 11, date: '2026-08-25', tournament: 'US Open Qualifiers (Hard)', match: 'J. Riera vs V. Hruncakova', selection: 'J. Riera ML', odds: 1.70, stake: 1, status: 'LOSS', badge: 'LOSS' },
-            { id: 12, date: '2026-08-25', tournament: 'ATP 250 Winston-Salem', match: 'L. Darderi vs Match', selection: 'L. Darderi ML', odds: 1.75, stake: 1, status: 'WIN', badge: 'WON' },
-            { id: 13, date: '2026-08-26', tournament: 'ITF M15 Pecs', match: 'T. Gubi vs R. Behr', selection: 'R. Behr +1.5 Sets', odds: 2.60, stake: 1, status: 'WIN', badge: 'WON' },
-            { id: 14, date: '2026-08-26', tournament: 'Challenger 50 Augsburg', match: 'M. Möller vs M. Soto', selection: 'M. Soto +1.5 Sets', odds: 1.72, stake: 1, status: 'LOSS', badge: 'LOSS' },
-            { id: 15, date: '2026-08-27', tournament: 'Accumulator (2)', match: '<span style="font-size:1rem; line-height:1.4;">1. Lloyd Harris vs Pablo Llamas Ruiz<br>2. Francesca Jones vs Joanna Garland</span>', selection: '1. Joueur 1 gagne un set : Oui<br>2. Vainqueur du match : 1', odds: 1.76, stake: 1, status: 'WIN', badge: 'WON' },
-            { id: 16, date: '2026-08-27', tournament: 'Accumulator (3)', match: '<span style="font-size:1rem; line-height:1.4;">1. Lloyd Harris vs Pablo Llamas Ruiz<br>2. Zsombor Piros vs Christopher O\'Connell<br>3. Francesca Jones vs Joanna Garland</span>', selection: '1. Regular time, 1X2: W1<br>2. Regular time, Sets Handicap: 2 (1.5)<br>3. Regular time, Sets Handicap: 1 (1.5)', odds: 2.34, stake: 1, status: 'WIN', badge: 'WON' },
-            { id: 23, date: '2026-08-27', tournament: 'ITF W50 Kursumlijska Banja', match: 'G. Pedone vs L. Encheva', selection: 'G. Pedone ML', odds: 1.28, stake: 1, status: 'WIN', badge: 'WON', isLive: true },
-            { id: 17, date: '2026-08-28', tournament: 'Accumulator (4)', match: '<span style="font-size:1rem; line-height:1.4;">1. Pieter De Lange vs Eric Vanshelboim<br>2. Andrej Martin vs Lorenzo Rottoli<br>3. Lloyd Harris vs Pablo Llamas Ruiz<br>4. Zsombor Piros vs Christopher O\'Connell</span>', selection: '1. Regular time, Sets Handicap: 2 (1.5)<br>2. Regular time, Sets Handicap: 1 (1.5)<br>3. Regular time, Sets Handicap: 1 (1.5)<br>4. Regular time, Sets Handicap: 2 (1.5)', odds: 2.11, stake: 1, status: 'WIN', badge: 'WON' },
-            { id: 18, date: '2026-08-28', tournament: 'Accumulator (2)', match: '<span style="font-size:1rem; line-height:1.4;">1. Lloyd Harris vs Pablo Llamas Ruiz<br>2. Pieter De Lange vs Eric Vanshelboim</span>', selection: '1. Regular time, 1X2: W1<br>2. Regular time, Win In All Sets: W1 - No', odds: 2.00, stake: 1, status: 'WIN', badge: 'WON' },
-            { id: 19, date: '2026-08-30', tournament: 'Accumulator (3)', match: '<span style="font-size:1rem; line-height:1.4;">1. Emiliana Arango vs Xinyu Wang<br>2. Emma Navarro vs Lois Boisson<br>3. Jaume Munar vs Terence Atmane</span>', selection: '1. Vainqueur du match: 2<br>2. Vainqueur du match: 1<br>3. Sets Handicap: 2 (+1.5)', odds: 2.14, stake: 1, status: 'WIN', badge: 'WON' },
-            { id: 20, date: '2026-08-30', tournament: 'Accumulator (5)', match: '<span style="font-size:1rem; line-height:1.4;">1. Jakub Vrba vs Bryce Nakashima<br>2. Ilinca Dalina Amariei vs Ashley Lahey<br>3. Emiliana Arango vs Xinyu Wang<br>4. Jaume Munar vs Terence Atmane<br>5. Emma Navarro vs Lois Boisson</span>', selection: '1. Sets Handicap: 2 (1.5)<br>2. Sets Handicap: 1 (1.5)<br>3. Sets Handicap: 2 (1.5)<br>4. Sets Handicap: 2 (1.5)<br>5. Sets Handicap: 1 (1.5)', odds: 2.15, stake: 1, status: 'WIN', badge: 'WON' },
-            { id: 21, date: '2026-08-30', tournament: 'Accumulator (5)', match: '<span style="font-size:1rem; line-height:1.4;">1. Ilinca Dalina Amariei vs Ashley Lahey<br>2. Jakub Vrba vs Bryce Nakashima<br>3. Emiliana Arango vs Xinyu Wang<br>4. Jaume Munar vs Terence Atmane<br>5. Emma Navarro vs Lois Boisson</span>', selection: '1. Vainqueur du match: 1<br>2. Vainqueur du match: 2<br>3. Vainqueur du match: 2<br>4. Vainqueur du match: 2<br>5. Vainqueur du match: 1', odds: 5.01, stake: 0.3, status: 'LOSS', badge: 'LOSS' },
-            { id: 22, date: '2026-08-30', tournament: 'ITF W50 Kursumlijska Banja', match: 'A. Stanković vs S. De Stefano', selection: 'S. De Stefano ML', odds: 1.09, stake: 1, status: 'WIN', badge: 'WON', isLive: true },
-            { id: 24, date: '2026-08-31', tournament: 'Accumulator (4)', match: '<span style="font-size:1rem; line-height:1.4;">1. Roman Safiullin vs Carlos Alcaraz<br>2. Roman Andres Burruchaga vs Karen Khachanov<br>3. Luciano Darderi vs Harry Wendelken<br>4. Juncheng Shang vs Marco Trungelliti</span>', selection: '1. Vainqueur du match: 2<br>2. Vainqueur du match: 2<br>3. Vainqueur du match: 1<br>4. Joueur 1 gagne un set: Oui', odds: 2.06, stake: 1, status: 'WIN', badge: 'WON' },
-            { id: 25, date: '2026-08-31', tournament: 'Accumulator (9)', match: '<span style="font-size:1rem; line-height:1.4;">1. M. Chwalinska vs T. Townsend<br>2. D. Snigur vs D. Shnaider<br>3. T. Zidansek vs M. Timofeeva<br>4. L. Darderi vs H. Wendelken<br>5. R. Safiullin vs C. Alcaraz<br>6. J. Shang vs M. Trungelliti<br>7. Y. Hanfmann vs A. Tabilo<br>8. Q. Halys vs F. Diaz Acosta<br>9. R. A. Burruchaga vs K. Khachanov</span>', selection: '1. Joueur 2 gagne un set: Oui<br>2. Joueur 2 gagne un set: Oui<br>3. Joueur 2 gagne un set: Oui<br>4. Joueur 1 gagne un set: Oui<br>5. Joueur 2 gagne un set: Oui<br>6. Joueur 1 gagne un set: Oui<br>7. Joueur 2 gagne un set: Oui<br>8. Joueur 1 gagne un set: Oui<br>9. Joueur 2 gagne un set: Oui', odds: 2.11, stake: 1, status: 'WIN', badge: 'WON' },
-            { id: 26, date: '2026-08-31', tournament: 'Accumulator (10)', match: '<span style="font-size:1rem; line-height:1.4;">1. R. Safiullin vs C. Alcaraz<br>2. M. Chwalinska vs T. Townsend<br>3. D. Snigur vs D. Shnaider<br>4. T. Zidansek vs M. Timofeeva<br>5. L. Darderi vs H. Wendelken<br>6. J. Shang vs M. Trungelliti<br>7. Y. Hanfmann vs A. Tabilo<br>8. Q. Halys vs F. Diaz Acosta<br>9. R. A. Burruchaga vs K. Khachanov<br>10. E. Cocciaretto vs K. Siniakova</span>', selection: '1. Vainqueur: C. Alcaraz<br>2. Vainqueur: T. Townsend<br>3. Vainqueur: D. Shnaider<br>4. Vainqueur: M. Timofeeva<br>5. Vainqueur: L. Darderi<br>6. Vainqueur: J. Shang<br>7. Vainqueur: A. Tabilo<br>8. Vainqueur: Q. Halys<br>9. Vainqueur: K. Khachanov<br>10. Vainqueur: K. Siniakova', odds: 27.17, stake: 0.3, status: 'LOSS', badge: 'LOSS' }
+            { id: 1, date: '2026-08-18', tournament: 'Challenger Sion', odds: 1.55, stake: 1, status: 'LOSS', badge: 'LOSS',
+              legs: [{ match: 'T. Compagnucci vs M. Dahlin', pick: 'M. Dahlin ML', won: false }] },
+            { id: 2, date: '2026-08-19', tournament: 'ITF W15 Logrono', odds: 1.80, stake: 2, status: 'WIN', badge: 'WON',
+              legs: [{ match: 'A. Gillan vs J. Garcia', pick: 'J. Garcia ML', won: true }] },
+            { id: 3, date: '2026-08-19', tournament: 'ATP 1000 Cincinnati', odds: 1.55, stake: 1, status: 'WIN', badge: 'WON',
+              legs: [{ match: 'A. Fils vs A. de Minaur', pick: 'A. Fils ML', won: true }] },
+            { id: 4, date: '2026-08-20', tournament: 'ITF M15 Asuncion', odds: 1.55, stake: 1, status: 'WIN', badge: 'WON',
+              legs: [{ match: 'M. Exsted vs S. de la Fuente', pick: 'M. Exsted ML', won: true }] },
+            { id: 5, date: '2026-08-21', tournament: 'ITF W75 Kursumlijska Banja 3', odds: 1.57, stake: 1, status: 'WIN', badge: 'WON',
+              legs: [{ match: 'G. Pedone vs L. Zaar', pick: 'L. Zaar ML', won: true }] },
+            { id: 8, date: '2026-08-23', tournament: 'Challenger 50 Augsburg', odds: 1.57, stake: 1, status: 'WIN', badge: 'WON (RET)',
+              legs: [{ match: 'M. Marterer vs B. Hassan', pick: 'B. Hassan ML', won: true }] },
+            { id: 9, date: '2026-08-24', tournament: 'Challenger 50 Augsburg', odds: 1.66, stake: 1, status: 'WIN', badge: 'WON',
+              legs: [{ match: 'R. Strombachs vs K. Wehnelt', pick: 'K. Wehnelt ML', won: true }] },
+            { id: 6, date: '2026-08-24', tournament: 'US Open Qualifiers (Hard)', odds: 1.51, stake: 1, status: 'LOSS', badge: 'LOSS',
+              legs: [{ match: 'F. Ferro vs R. Marino', pick: 'Fiona Ferro ML', won: false }] },
+            { id: 7, date: '2026-08-24', tournament: 'WTA 500 Monterrey (Hard)', odds: 1.85, stake: 1, status: 'LOSS', badge: 'LOSS',
+              legs: [{ match: 'C. Osorio vs A. Li', pick: 'C. Osorio ML', won: false }] },
+            { id: 10, date: '2026-08-25', tournament: 'Challenger Roehampton 2', odds: 1.72, stake: 1, status: 'LOSS', badge: 'LOSS',
+              legs: [{ match: 'F. Andaloro vs E. Hudd', pick: 'F. Andaloro ML', won: false }] },
+            { id: 11, date: '2026-08-25', tournament: 'US Open Qualifiers (Hard)', odds: 1.70, stake: 1, status: 'LOSS', badge: 'LOSS',
+              legs: [{ match: 'J. Riera vs V. Hruncakova', pick: 'J. Riera ML', won: false }] },
+            { id: 12, date: '2026-08-25', tournament: 'ATP 250 Winston-Salem', odds: 1.75, stake: 1, status: 'WIN', badge: 'WON',
+              legs: [{ match: 'L. Darderi vs N. Borges', pick: 'L. Darderi ML', won: true }] },
+            { id: 13, date: '2026-08-26', tournament: 'ITF M15 Pecs', odds: 2.60, stake: 1, status: 'WIN', badge: 'WON',
+              legs: [{ match: 'T. Gubi vs R. Behr', pick: 'R. Behr +1.5 Sets', won: true }] },
+            { id: 14, date: '2026-08-26', tournament: 'Challenger 50 Augsburg', odds: 1.72, stake: 1, status: 'LOSS', badge: 'LOSS',
+              legs: [{ match: 'M. Möller vs M. Soto', pick: 'M. Soto +1.5 Sets', won: false }] },
+            { id: 15, date: '2026-08-27', tournament: 'Accumulator (2)', odds: 1.76, stake: 1, status: 'WIN', badge: 'WON',
+              legs: [
+                { match: 'Lloyd Harris vs Pablo Llamas Ruiz', pick: 'Joueur 1 gagne un set : Oui', won: true },
+                { match: 'Francesca Jones vs Joanna Garland', pick: 'Vainqueur du match : F. Jones', won: true }
+              ] },
+            { id: 16, date: '2026-08-27', tournament: 'Accumulator (3)', odds: 2.34, stake: 1, status: 'WIN', badge: 'WON',
+              legs: [
+                { match: 'Lloyd Harris vs Pablo Llamas Ruiz', pick: 'Vainqueur: Lloyd Harris (W1)', won: true },
+                { match: 'Zsombor Piros vs Christopher O\'Connell', pick: 'Sets Handicap: 2 (+1.5)', won: true },
+                { match: 'Francesca Jones vs Joanna Garland', pick: 'Sets Handicap: 1 (+1.5)', won: true }
+              ] },
+            { id: 23, date: '2026-08-27', tournament: 'ITF W50 Kursumlijska Banja', odds: 1.28, stake: 1, status: 'WIN', badge: 'WON', isLive: true,
+              legs: [{ match: 'G. Pedone vs L. Encheva', pick: 'G. Pedone ML', won: true }] },
+            { id: 17, date: '2026-08-28', tournament: 'Accumulator (4)', odds: 2.11, stake: 1, status: 'WIN', badge: 'WON',
+              legs: [
+                { match: 'Pieter De Lange vs Eric Vanshelboim', pick: 'Sets Handicap: 2 (+1.5)', won: true },
+                { match: 'Andrej Martin vs Lorenzo Rottoli', pick: 'Sets Handicap: 1 (+1.5)', won: true },
+                { match: 'Lloyd Harris vs Pablo Llamas Ruiz', pick: 'Sets Handicap: 1 (+1.5)', won: true },
+                { match: 'Zsombor Piros vs Christopher O\'Connell', pick: 'Sets Handicap: 2 (+1.5)', won: true }
+              ] },
+            { id: 18, date: '2026-08-28', tournament: 'Accumulator (2)', odds: 2.00, stake: 1, status: 'WIN', badge: 'WON',
+              legs: [
+                { match: 'Lloyd Harris vs Pablo Llamas Ruiz', pick: 'Vainqueur: Lloyd Harris (W1)', won: true },
+                { match: 'Pieter De Lange vs Eric Vanshelboim', pick: 'Win In All Sets: W1 - No', won: true }
+              ] },
+            { id: 19, date: '2026-08-30', tournament: 'Accumulator (3)', odds: 2.14, stake: 1, status: 'WIN', badge: 'WON',
+              legs: [
+                { match: 'Emiliana Arango vs Xinyu Wang', pick: 'Vainqueur: Xinyu Wang', won: true },
+                { match: 'Emma Navarro vs Lois Boisson', pick: 'Vainqueur: Emma Navarro', won: true },
+                { match: 'Jaume Munar vs Terence Atmane', pick: 'Sets Handicap: Terence Atmane (+1.5)', won: true }
+              ] },
+            { id: 20, date: '2026-08-30', tournament: 'Accumulator (5)', odds: 2.15, stake: 1, status: 'WIN', badge: 'WON',
+              legs: [
+                { match: 'Jakub Vrba vs Bryce Nakashima', pick: 'Sets Handicap: Bryce Nakashima (+1.5)', won: true },
+                { match: 'Ilinca Dalina Amariei vs Ashley Lahey', pick: 'Sets Handicap: I. D. Amariei (+1.5)', won: true },
+                { match: 'Emiliana Arango vs Xinyu Wang', pick: 'Sets Handicap: Xinyu Wang (+1.5)', won: true },
+                { match: 'Jaume Munar vs Terence Atmane', pick: 'Sets Handicap: Terence Atmane (+1.5)', won: true },
+                { match: 'Emma Navarro vs Lois Boisson', pick: 'Sets Handicap: Emma Navarro (+1.5)', won: true }
+              ] },
+            { id: 21, date: '2026-08-30', tournament: 'Accumulator (5)', odds: 5.01, stake: 0.3, status: 'LOSS', badge: 'LOSS',
+              legs: [
+                { match: 'Ilinca Dalina Amariei vs Ashley Lahey', pick: 'Vainqueur: I. D. Amariei', won: false },
+                { match: 'Jakub Vrba vs Bryce Nakashima', pick: 'Vainqueur: Bryce Nakashima', won: true },
+                { match: 'Emiliana Arango vs Xinyu Wang', pick: 'Vainqueur: Xinyu Wang', won: true },
+                { match: 'Jaume Munar vs Terence Atmane', pick: 'Vainqueur: Terence Atmane', won: true },
+                { match: 'Emma Navarro vs Lois Boisson', pick: 'Vainqueur: Emma Navarro', won: true }
+              ] },
+            { id: 22, date: '2026-08-30', tournament: 'ITF W50 Kursumlijska Banja', odds: 1.09, stake: 1, status: 'WIN', badge: 'WON', isLive: true,
+              legs: [{ match: 'A. Stanković vs S. De Stefano', pick: 'S. De Stefano ML', won: true }] },
+            { id: 24, date: '2026-08-31', tournament: 'Accumulator (4)', odds: 2.06, stake: 1, status: 'WIN', badge: 'WON',
+              legs: [
+                { match: 'Roman Safiullin vs Carlos Alcaraz', pick: 'Vainqueur: Carlos Alcaraz', won: true },
+                { match: 'R. A. Burruchaga vs Karen Khachanov', pick: 'Vainqueur: Karen Khachanov', won: true },
+                { match: 'Luciano Darderi vs Harry Wendelken', pick: 'Vainqueur: Luciano Darderi', won: true },
+                { match: 'Juncheng Shang vs Marco Trungelliti', pick: 'Joueur 1 gagne un set: Oui', won: true }
+              ] },
+            { id: 25, date: '2026-08-31', tournament: 'Accumulator (9)', odds: 2.11, stake: 1, status: 'WIN', badge: 'WON',
+              legs: [
+                { match: 'M. Chwalinska vs T. Townsend', pick: 'T. Townsend gagne un set: Oui', won: true },
+                { match: 'D. Snigur vs D. Shnaider', pick: 'D. Shnaider gagne un set: Oui', won: true },
+                { match: 'T. Zidansek vs M. Timofeeva', pick: 'M. Timofeeva gagne un set: Oui', won: true },
+                { match: 'L. Darderi vs H. Wendelken', pick: 'L. Darderi gagne un set: Oui', won: true },
+                { match: 'R. Safiullin vs C. Alcaraz', pick: 'C. Alcaraz gagne un set: Oui', won: true },
+                { match: 'J. Shang vs M. Trungelliti', pick: 'J. Shang gagne un set: Oui', won: true },
+                { match: 'Y. Hanfmann vs A. Tabilo', pick: 'A. Tabilo gagne un set: Oui', won: true },
+                { match: 'Q. Halys vs F. Diaz Acosta', pick: 'Q. Halys gagne un set: Oui', won: true },
+                { match: 'R. A. Burruchaga vs K. Khachanov', pick: 'K. Khachanov gagne un set: Oui', won: true }
+              ] },
+            { id: 26, date: '2026-08-31', tournament: 'Accumulator (10)', odds: 27.17, stake: 0.3, status: 'LOSS', badge: 'LOSS',
+              legs: [
+                { match: 'R. Safiullin vs C. Alcaraz', pick: 'Vainqueur: Carlos Alcaraz', won: true },
+                { match: 'M. Chwalinska vs T. Townsend', pick: 'Vainqueur: Taylor Townsend', won: true },
+                { match: 'D. Snigur vs D. Shnaider', pick: 'Vainqueur: Diana Shnaider', won: true },
+                { match: 'T. Zidansek vs M. Timofeeva', pick: 'Vainqueur: Maria Timofeeva', won: true },
+                { match: 'L. Darderi vs H. Wendelken', pick: 'Vainqueur: Luciano Darderi', won: true },
+                { match: 'J. Shang vs M. Trungelliti', pick: 'Vainqueur: Juncheng Shang', won: false },
+                { match: 'Y. Hanfmann vs A. Tabilo', pick: 'Vainqueur: Alejandro Tabilo', won: true },
+                { match: 'Q. Halys vs F. Diaz Acosta', pick: 'Vainqueur: Quentin Halys', won: true },
+                { match: 'R. A. Burruchaga vs K. Khachanov', pick: 'Vainqueur: Karen Khachanov', won: true },
+                { match: 'E. Cocciaretto vs K. Siniakova', pick: 'Vainqueur: Katerina Siniakova', won: true }
+              ] }
         ];
 
         function openBetById(id) {
@@ -614,24 +763,35 @@
         function openBetModal(bet) {
             var modal = document.getElementById('bet-modal');
             var card = document.getElementById('modal-card');
+            var container = document.getElementById('modal-selections-container');
             
             document.getElementById('modal-date-tourney').innerText = bet.date + ' • ' + bet.tournament;
-            document.getElementById('modal-match').innerHTML = bet.match; 
-            document.getElementById('modal-selection').innerHTML = bet.selection; 
             document.getElementById('modal-stake').innerText = bet.stake;
             document.getElementById('modal-odds').innerText = '@ ' + bet.odds.toFixed(2);
             document.getElementById('modal-badge').innerText = bet.badge || (bet.status === 'WIN' ? 'WON' : bet.status);
             
             var liveBadge = document.getElementById('modal-live-badge');
-            if (bet.isLive) {
-                liveBadge.style.display = 'inline-flex';
-            } else {
-                liveBadge.style.display = 'none';
-            }
+            liveBadge.style.display = bet.isLive ? 'inline-flex' : 'none';
 
             card.classList.remove('modal-win', 'modal-loss', 'modal-void', 'modal-pending');
             card.classList.add('modal-' + bet.status.toLowerCase());
-            
+
+            var html = '';
+            for (var i = 0; i < bet.legs.length; i++) {
+                var leg = bet.legs[i];
+                var statusClass = leg.won ? 'leg-win' : 'leg-loss';
+                var badgeClass = leg.won ? 'leg-badge-won' : 'leg-badge-lost';
+                var badgeText = leg.won ? 'WON' : 'LOSS';
+
+                html += '<div class="leg-row ' + statusClass + '">' +
+                            '<div class="leg-info">' +
+                                '<div class="leg-match">' + (i + 1) + '. ' + leg.match + '</div>' +
+                                '<div class="leg-pick">' + leg.pick + '</div>' +
+                            '</div>' +
+                            '<span class="leg-badge ' + badgeClass + '">' + badgeText + '</span>' +
+                        '</div>';
+            }
+            container.innerHTML = html;
             modal.style.display = 'flex';
         }
 
