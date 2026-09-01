@@ -538,6 +538,10 @@
         <div class="mosaic-container">
             <div class="mosaic-title">BET HISTORY (NEW TO OLD)</div>
             <div class="mosaic-grid" id="mosaic-grid">
+                <div class="mosaic-item mosaic-pending" onclick="openBetById(29)">@ 13.83</div>
+                <div class="mosaic-item mosaic-pending" onclick="openBetById(28)">@ 3.42</div>
+                <div class="mosaic-item mosaic-pending" onclick="openBetById(27)">@ 2.09</div>
+
                 <div class="mosaic-item mosaic-loss" onclick="openBetById(26)">@ 27.17</div>
                 <div class="mosaic-item mosaic-win" onclick="openBetById(25)">@ 2.11</div>
                 <div class="mosaic-item mosaic-win" onclick="openBetById(24)">@ 2.06</div>
@@ -748,6 +752,30 @@
                 { match: 'Q. Halys vs F. Diaz Acosta', pick: 'Vainqueur: Quentin Halys', won: true },
                 { match: 'R. A. Burruchaga vs K. Khachanov', pick: 'Vainqueur: Karen Khachanov', won: true },
                 { match: 'E. Cocciaretto vs K. Siniakova', pick: 'Vainqueur: Katerina Siniakova', won: true }
+              ] },
+            { id: 27, date: '2026-09-01', tournament: 'Accumulator (3)', odds: 2.09, stake: 1, status: 'PENDING', badge: 'PENDING',
+              legs: [
+                { match: 'Sascha Gueymard Wayenburg vs Sergio Callejon Hernando', pick: 'Sets Handicap: S. Gueymard Wayenburg (+1.5)', won: null },
+                { match: 'Camilo Ugo Carabelli vs Jan-Lennard Struff', pick: 'Sets Handicap: Jan-Lennard Struff (+1.5)', won: null },
+                { match: 'Magda Linette vs Francesca Jones', pick: 'Sets Handicap: Magda Linette (+1.5)', won: null }
+              ] },
+            { id: 28, date: '2026-09-01', tournament: 'Accumulator (6)', odds: 3.42, stake: 0.3, status: 'PENDING', badge: 'PENDING',
+              legs: [
+                { match: 'Charles Broom vs Mathys Erhard', pick: 'Sets Handicap: Charles Broom (+1.5)', won: null },
+                { match: 'Genaro Alberto Olivieri vs Niels Visker', pick: 'Sets Handicap: G. A. Olivieri (+1.5)', won: null },
+                { match: 'Mattia Bellucci vs Zsombor Piros', pick: 'Sets Handicap: Mattia Bellucci (+1.5)', won: null },
+                { match: 'Sascha Gueymard Wayenburg vs Sergio Callejon Hernando', pick: 'Sets Handicap: S. Gueymard Wayenburg (+1.5)', won: null },
+                { match: 'Camilo Ugo Carabelli vs Jan-Lennard Struff', pick: 'Sets Handicap: Jan-Lennard Struff (+1.5)', won: null },
+                { match: 'Magda Linette vs Francesca Jones', pick: 'Sets Handicap: Magda Linette (+1.5)', won: null }
+              ] },
+            { id: 29, date: '2026-09-01', tournament: 'Accumulator (6)', odds: 13.83, stake: 0.3, status: 'PENDING', badge: 'PENDING',
+              legs: [
+                { match: 'Charles Broom vs Mathys Erhard', pick: 'Vainqueur: Charles Broom', won: null },
+                { match: 'Genaro Alberto Olivieri vs Niels Visker', pick: 'Vainqueur: Genaro Alberto Olivieri', won: null },
+                { match: 'Mattia Bellucci vs Zsombor Piros', pick: 'Vainqueur: Mattia Bellucci', won: null },
+                { match: 'Sascha Gueymard Wayenburg vs Sergio Callejon Hernando', pick: 'Vainqueur: Sascha Gueymard Wayenburg', won: null },
+                { match: 'Camilo Ugo Carabelli vs Jan-Lennard Struff', pick: 'Vainqueur: Jan-Lennard Struff', won: null },
+                { match: 'Magda Linette vs Francesca Jones', pick: 'Vainqueur: Magda Linette', won: null }
               ] }
         ];
 
@@ -777,19 +805,26 @@
             card.classList.add('modal-' + bet.status.toLowerCase());
 
             var html = '';
-            for (var i = 0; i < bet.legs.length; i++) {
-                var leg = bet.legs[i];
-                var statusClass = leg.won ? 'leg-win' : 'leg-loss';
-                var badgeClass = leg.won ? 'leg-badge-won' : 'leg-badge-lost';
-                var badgeText = leg.won ? 'WON' : 'LOSS';
+            if (bet.status === 'PENDING') {
+                html = '<div class="leg-row" style="justify-content:center; text-align:center; padding:22px 10px; color:#aaa; font-family:\'Righteous\',cursive; border:1px dashed #444;">' +
+                            '🔒 MATCHES HIDDEN<br>' +
+                            '<span style="font-size:0.8rem; font-family:\'Share Tech Mono\',monospace; color:#888; margin-top:6px;">LOCKED - Unlock on Homepage</span>' +
+                       '</div>';
+            } else {
+                for (var i = 0; i < bet.legs.length; i++) {
+                    var leg = bet.legs[i];
+                    var statusClass = leg.won ? 'leg-win' : 'leg-loss';
+                    var badgeClass = leg.won ? 'leg-badge-won' : 'leg-badge-lost';
+                    var badgeText = leg.won ? 'WON' : 'LOSS';
 
-                html += '<div class="leg-row ' + statusClass + '">' +
-                            '<div class="leg-info">' +
-                                '<div class="leg-match">' + (i + 1) + '. ' + leg.match + '</div>' +
-                                '<div class="leg-pick">' + leg.pick + '</div>' +
-                            '</div>' +
-                            '<span class="leg-badge ' + badgeClass + '">' + badgeText + '</span>' +
-                        '</div>';
+                    html += '<div class="leg-row ' + statusClass + '">' +
+                                '<div class="leg-info">' +
+                                    '<div class="leg-match">' + (i + 1) + '. ' + leg.match + '</div>' +
+                                    '<div class="leg-pick">' + leg.pick + '</div>' +
+                                '</div>' +
+                                '<span class="leg-badge ' + badgeClass + '">' + badgeText + '</span>' +
+                            '</div>';
+                }
             }
             container.innerHTML = html;
             modal.style.display = 'flex';
