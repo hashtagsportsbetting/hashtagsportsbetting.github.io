@@ -519,28 +519,32 @@
         <div class="dashboard">
             <div class="stat-box">
                 <div class="stat-label">Total Bets</div>
-                <div class="stat-value" id="stat-total">18W - 8L</div>
+                <div class="stat-value" id="stat-total">21W - 11L</div>
             </div>
             <div class="stat-box">
                 <div class="stat-label">Win Rate</div>
-                <div class="stat-value" id="stat-winrate">69.2%</div>
+                <div class="stat-value" id="stat-winrate">65.6%</div>
             </div>
             <div class="stat-box">
                 <div class="stat-label">Profit (Units)</div>
-                <div class="stat-value stat-profit" id="stat-profit">+10.44 U</div>
+                <div class="stat-value stat-profit" id="stat-profit">+11.93 U</div>
             </div>
             <div class="stat-box">
                 <div class="stat-label">Yield (ROI)</div>
-                <div class="stat-value stat-profit" id="stat-roi">+40.78%</div>
+                <div class="stat-value stat-profit" id="stat-roi">+40.44%</div>
             </div>
         </div>
 
         <div class="mosaic-container">
             <div class="mosaic-title">BET HISTORY (NEW TO OLD)</div>
             <div class="mosaic-grid" id="mosaic-grid">
-                <div class="mosaic-item mosaic-pending" onclick="openBetById(29)">@ 13.83</div>
-                <div class="mosaic-item mosaic-pending" onclick="openBetById(28)">@ 3.42</div>
-                <div class="mosaic-item mosaic-pending" onclick="openBetById(27)">@ 2.09</div>
+                <div class="mosaic-item mosaic-loss" onclick="openBetById(32)">@ 10.16</div>
+                <div class="mosaic-item mosaic-win" onclick="openBetById(31)">@ 2.26</div>
+                <div class="mosaic-item mosaic-loss" onclick="openBetById(30)">@ 1.99</div>
+
+                <div class="mosaic-item mosaic-loss" onclick="openBetById(29)">@ 17.89</div>
+                <div class="mosaic-item mosaic-win" onclick="openBetById(28)">@ 3.48</div>
+                <div class="mosaic-item mosaic-win" onclick="openBetById(27)">@ 2.09</div>
 
                 <div class="mosaic-item mosaic-loss" onclick="openBetById(26)">@ 27.17</div>
                 <div class="mosaic-item mosaic-win" onclick="openBetById(25)">@ 2.11</div>
@@ -744,7 +748,7 @@
               legs: [
                 { match: 'R. Safiullin vs C. Alcaraz', pick: 'Vainqueur: Carlos Alcaraz', won: true },
                 { match: 'M. Chwalinska vs T. Townsend', pick: 'Vainqueur: Taylor Townsend', won: true },
-                { match: 'D. Snigur vs D. Shnaider', pick: 'Vainqueur: Diana Shnaider', won: true },
+                { match: 'D. Snigur vs D. Shnaider', pick: 'Vainqueur: Taylor Townsend', won: true },
                 { match: 'T. Zidansek vs M. Timofeeva', pick: 'Vainqueur: Maria Timofeeva', won: true },
                 { match: 'L. Darderi vs H. Wendelken', pick: 'Vainqueur: Luciano Darderi', won: true },
                 { match: 'J. Shang vs M. Trungelliti', pick: 'Vainqueur: Juncheng Shang', won: false },
@@ -753,29 +757,55 @@
                 { match: 'R. A. Burruchaga vs K. Khachanov', pick: 'Vainqueur: Karen Khachanov', won: true },
                 { match: 'E. Cocciaretto vs K. Siniakova', pick: 'Vainqueur: Katerina Siniakova', won: true }
               ] },
-            { id: 27, date: '2026-09-01', tournament: 'Accumulator (3)', odds: 2.09, stake: 1, status: 'PENDING', badge: 'PENDING',
+            { id: 27, date: '2026-09-01', tournament: 'Accumulator (3)', odds: 2.09, stake: 1, status: 'WIN', badge: 'WON',
               legs: [
-                { match: 'Sascha Gueymard Wayenburg vs Sergio Callejon Hernando', pick: 'Sets Handicap: S. Gueymard Wayenburg (+1.5)', won: null },
-                { match: 'Camilo Ugo Carabelli vs Jan-Lennard Struff', pick: 'Sets Handicap: Jan-Lennard Struff (+1.5)', won: null },
-                { match: 'Magda Linette vs Francesca Jones', pick: 'Sets Handicap: Magda Linette (+1.5)', won: null }
+                { match: 'Sascha Gueymard Wayenburg vs Sergio Callejon Hernando', pick: 'Sets Handicap: S. Gueymard Wayenburg (+1.5)', won: true },
+                { match: 'Camilo Ugo Carabelli vs Jan-Lennard Struff', pick: 'Sets Handicap: Jan-Lennard Struff (+1.5)', won: true },
+                { match: 'Magda Linette vs Francesca Jones', pick: 'Sets Handicap: Magda Linette (+1.5)', won: true }
               ] },
-            { id: 28, date: '2026-09-01', tournament: 'Accumulator (6)', odds: 3.42, stake: 0.3, status: 'PENDING', badge: 'PENDING',
+            { id: 28, date: '2026-09-01', tournament: 'Accumulator (6)', odds: 3.48, stake: 0.3, status: 'WIN', badge: 'WON',
               legs: [
-                { match: 'Charles Broom vs Mathys Erhard', pick: 'Sets Handicap: Charles Broom (+1.5)', won: null },
-                { match: 'Genaro Alberto Olivieri vs Niels Visker', pick: 'Sets Handicap: G. A. Olivieri (+1.5)', won: null },
-                { match: 'Mattia Bellucci vs Zsombor Piros', pick: 'Sets Handicap: Mattia Bellucci (+1.5)', won: null },
-                { match: 'Sascha Gueymard Wayenburg vs Sergio Callejon Hernando', pick: 'Sets Handicap: S. Gueymard Wayenburg (+1.5)', won: null },
-                { match: 'Camilo Ugo Carabelli vs Jan-Lennard Struff', pick: 'Sets Handicap: Jan-Lennard Struff (+1.5)', won: null },
-                { match: 'Magda Linette vs Francesca Jones', pick: 'Sets Handicap: Magda Linette (+1.5)', won: null }
+                { match: 'Charles Broom vs Mathys Erhard', pick: 'Sets Handicap: Charles Broom (+1.5)', won: true },
+                { match: 'Genaro Alberto Olivieri vs Niels Visker', pick: 'Sets Handicap: G. A. Olivieri (+1.5)', won: true },
+                { match: 'Mattia Bellucci vs Zsombor Piros', pick: 'Sets Handicap: Mattia Bellucci (+1.5)', won: true },
+                { match: 'Sascha Gueymard Wayenburg vs Sergio Callejon Hernando', pick: 'Sets Handicap: S. Gueymard Wayenburg (+1.5)', won: true },
+                { match: 'Camilo Ugo Carabelli vs Jan-Lennard Struff', pick: 'Sets Handicap: Jan-Lennard Struff (+1.5)', won: true },
+                { match: 'Magda Linette vs Francesca Jones', pick: 'Sets Handicap: Magda Linette (+1.5)', won: true }
               ] },
-            { id: 29, date: '2026-09-01', tournament: 'Accumulator (6)', odds: 13.83, stake: 0.3, status: 'PENDING', badge: 'PENDING',
+            { id: 29, date: '2026-09-01', tournament: 'Accumulator (7)', odds: 17.89, stake: 0.3, status: 'LOSS', badge: 'LOSS',
               legs: [
-                { match: 'Charles Broom vs Mathys Erhard', pick: 'Vainqueur: Charles Broom', won: null },
-                { match: 'Genaro Alberto Olivieri vs Niels Visker', pick: 'Vainqueur: Genaro Alberto Olivieri', won: null },
-                { match: 'Mattia Bellucci vs Zsombor Piros', pick: 'Vainqueur: Mattia Bellucci', won: null },
-                { match: 'Sascha Gueymard Wayenburg vs Sergio Callejon Hernando', pick: 'Vainqueur: Sascha Gueymard Wayenburg', won: null },
-                { match: 'Camilo Ugo Carabelli vs Jan-Lennard Struff', pick: 'Vainqueur: Jan-Lennard Struff', won: null },
-                { match: 'Magda Linette vs Francesca Jones', pick: 'Vainqueur: Magda Linette', won: null }
+                { match: 'Sascha Gueymard Wayenburg vs Sergio Callejon Hernando', pick: 'Vainqueur: Sascha Gueymard Wayenburg', won: true },
+                { match: 'Charles Broom vs Mathys Erhard', pick: 'Vainqueur: Charles Broom', won: false },
+                { match: 'Aurora Zantedeschi vs Amandine Monnot', pick: 'Vainqueur: Aurora Zantedeschi', won: true },
+                { match: 'Genaro Alberto Olivieri vs Niels Visker', pick: 'Vainqueur: Genaro Alberto Olivieri', won: false },
+                { match: 'Mattia Bellucci vs Zsombor Piros', pick: 'Vainqueur: Mattia Bellucci', won: true },
+                { match: 'Camilo Ugo Carabelli vs Jan-Lennard Struff', pick: 'Vainqueur: Jan-Lennard Struff', won: true },
+                { match: 'Magda Linette vs Francesca Jones', pick: 'Vainqueur: Magda Linette', won: false }
+              ] },
+            { id: 30, date: '2026-09-02', tournament: 'Accumulator (4)', odds: 1.99, stake: 1, status: 'LOSS', badge: 'LOSS',
+              legs: [
+                { match: 'Dino Prizmic vs Tommy Paul', pick: 'Vainqueur: Tommy Paul (W2)', won: true },
+                { match: 'Matteo Berrettini vs Mariano Navone', pick: 'Sets Handicap: Matteo Berrettini (+1.5)', won: false },
+                { match: 'Jasmine Paolini vs Lucrezia Stefanini', pick: 'Sets Handicap: Jasmine Paolini (+1.5)', won: true },
+                { match: 'Daniel Merida Aguilar vs Andrey Rublev', pick: 'Sets Handicap: Andrey Rublev (+2.5)', won: true }
+              ] },
+            { id: 31, date: '2026-09-02', tournament: 'Accumulator (6)', odds: 2.26, stake: 1, status: 'WIN', badge: 'WON',
+              legs: [
+                { match: 'Sascha Gueymard Wayenburg vs Michele Ribecai', pick: 'Joueur 1 gagne un set: Oui', won: true },
+                { match: 'Daniel Merida vs Andrey Rublev', pick: 'Joueur 2 pour gagner un set: Oui', won: true },
+                { match: 'Jasmine Paolini vs Lucrezia Stefanini', pick: 'Joueur 1 gagne un set: Oui', won: true },
+                { match: 'Matteo Berrettini vs Mariano Navone', pick: 'Joueur 1 gagne un set: Oui', won: true },
+                { match: 'Valentin Vacherot vs Kamil Majchrzak', pick: 'Joueur 1 gagne un set: Oui', won: true },
+                { match: 'Dino Prizmic vs Tommy Paul', pick: 'Joueur 2 pour gagner un set: Oui', won: true }
+              ] },
+            { id: 32, date: '2026-09-02', tournament: 'Accumulator (6)', odds: 10.16, stake: 0.3, status: 'LOSS', badge: 'LOSS',
+              legs: [
+                { match: 'Sascha Gueymard Wayenburg vs Michele Ribecai', pick: 'Joueur 1 gagne un set: Oui', won: true },
+                { match: 'Daniel Merida vs Andrey Rublev', pick: 'Vainqueur: Andrey Rublev', won: false },
+                { match: 'Jasmine Paolini vs Lucrezia Stefanini', pick: 'Vainqueur: Jasmine Paolini', won: true },
+                { match: 'Matteo Berrettini vs Mariano Navone', pick: 'Vainqueur: Matteo Berrettini', won: false },
+                { match: 'Valentin Vacherot vs Kamil Majchrzak', pick: 'Vainqueur: Valentin Vacherot', won: true },
+                { match: 'Dino Prizmic vs Tommy Paul', pick: 'Vainqueur: Tommy Paul', won: true }
               ] }
         ];
 
