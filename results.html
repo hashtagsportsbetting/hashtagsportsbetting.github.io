@@ -366,57 +366,67 @@
 
         .leg-loss {
             border-left: 3px solid var(--loss-red);
-            background: rgba(255, 68, 68, 0.04);
+            background: rgba(255, 68, 68, 0.05);
         }
 
         .leg-info {
             display: flex;
             flex-direction: column;
-            gap: 3px;
-            flex: 1;
+            gap: 2px;
+            font-size: 0.85rem;
         }
 
         .leg-match {
-            color: #fff;
-            font-size: 0.82rem;
+            color: #eee;
+            font-weight: bold;
         }
 
         .leg-pick {
-            color: #aaa;
-            font-size: 0.75rem;
+            font-size: 0.8rem;
+        }
+
+        .leg-win .leg-pick {
+            color: var(--win-green);
+        }
+
+        .leg-loss .leg-pick {
+            color: var(--loss-red);
         }
 
         .leg-badge {
+            font-size: 0.7rem;
+            font-weight: bold;
             padding: 2px 6px;
             border-radius: 3px;
-            font-size: 0.65rem;
-            font-weight: bold;
-            white-space: nowrap;
+            font-family: 'Righteous', cursive;
         }
 
         .leg-badge-won {
-            color: #000;
-            background: var(--win-green);
+            background: rgba(0, 255, 0, 0.2);
+            color: var(--win-green);
         }
 
         .leg-badge-lost {
-            color: #fff;
-            background: var(--loss-red);
+            background: rgba(255, 68, 68, 0.2);
+            color: var(--loss-red);
         }
 
         .opt2-details {
-            font-size: 0.85rem;
-            color: #aaa;
-            border-top: 1px solid #222;
-            padding-top: 10px;
+            color: #ccc;
+            font-size: 0.95rem;
+            line-height: 1.6;
             flex-shrink: 0;
         }
 
         .opt2-odds-box {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
             margin-top: 10px;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 15px;
+            border-radius: 4px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid #333;
             flex-shrink: 0;
         }
 
@@ -450,10 +460,15 @@
 
         .modal-void {
             border-left-color: var(--void-gray);
+            box-shadow: 0 0 25px rgba(170, 170, 170, 0.15);
         }
 
         .modal-void .opt2-badge {
             background: rgba(170, 170, 170, 0.2);
+            color: var(--void-gray);
+        }
+
+        .modal-void .opt2-odds {
             color: var(--void-gray);
         }
 
@@ -472,16 +487,24 @@
         }
 
         footer {
+            width: 100%;
+            background: #000;
+            height: 50px;
+            padding: 0;
             text-align: center;
-            padding: 20px 10px;
-            color: #666;
-            font-size: 0.75rem;
             border-top: 1px solid #222;
+            color: #888;
+            font-size: 0.8rem;
+            margin-top: auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
         .footer-links a {
-            color: #888;
+            color: #aaa;
             text-decoration: none;
+            margin: 0 10px;
             cursor: pointer;
         }
 
@@ -497,43 +520,44 @@
             width: 100%;
             height: 100%;
             background: rgba(0, 0, 0, 0.85);
-            z-index: 1000;
-            align-items: center;
+            backdrop-filter: blur(5px);
+            z-index: 100;
             justify-content: center;
+            align-items: center;
             padding: 15px;
         }
 
         .modal-content {
-            background: #0d021a;
-            border: 1px solid var(--neon-cyan);
-            border-radius: 8px;
+            background: #0a0a0a;
+            border: 2px solid var(--neon-cyan);
+            padding: 30px;
+            width: 90%;
             max-width: 600px;
-            width: 100%;
-            max-height: 80vh;
-            overflow-y: auto;
-            padding: 25px;
+            color: #fff;
             position: relative;
-            box-shadow: 0 0 30px rgba(0, 255, 255, 0.15);
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
         }
 
         .close-modal {
             position: absolute;
-            top: 12px;
+            top: 10px;
             right: 15px;
+            color: #f00;
+            font-size: 1.5rem;
             cursor: pointer;
-            color: #fff;
-            font-size: 1.4rem;
+            font-weight: bold;
         }
 
         .modal-title {
             color: var(--neon-cyan);
+            margin-bottom: 20px;
             font-family: 'Righteous', cursive;
-            margin-bottom: 15px;
         }
 
-        @media(max-width: 600px) {
+        @media (max-width: 768px) {
             header {
-                padding: 0 12px;
+                height: 50px;
+                padding: 0 16px;
             }
 
             .logo-home {
@@ -541,8 +565,34 @@
             }
 
             .btn-nav {
-                padding: 7px 10px;
-                font-size: 0.75rem;
+                padding: 6px 12px;
+                font-size: 0.8rem;
+            }
+
+            main {
+                padding: 15px 10px;
+            }
+
+            h1 {
+                font-size: 1.6rem;
+                margin-bottom: 18px;
+            }
+
+            .stat-box {
+                padding: 12px;
+            }
+
+            .stat-label {
+                font-size: 0.7rem;
+            }
+
+            .stat-value {
+                font-size: 1.2rem;
+            }
+
+            .mosaic-title {
+                font-size: 1rem;
+                margin-bottom: 10px;
             }
 
             .mosaic-grid {
@@ -553,9 +603,31 @@
                 font-size: 0.9rem;
                 min-height: 60px;
             }
+
+            .opt2-card {
+                padding: 15px;
+                max-width: 100%;
+            }
+
+            .opt2-odds {
+                font-size: 1.5rem;
+            }
+
+            footer {
+                height: 46px;
+                font-size: 0.75rem;
+            }
         }
 
-        @media(max-width: 400px) {
+        @media (max-width: 480px) {
+            .dashboard {
+                gap: 10px;
+            }
+
+            .stat-value {
+                font-size: 1rem;
+            }
+
             .mosaic-item {
                 font-size: 0.8rem;
                 min-height: 50px;
@@ -567,20 +639,19 @@
 <body>
 
     <header>
-        <a class="logo-home" href="index.html">
-            #sportsbetting
-            <span class="sports-icons-header">🎾 🏀 ⚽</span>
-        </a>
+        <a href="index.html" class="logo-home"># <span class="sports-icons-header">&#127934;&#127936;&#127952;</span></a>
 
         <div class="nav-links">
-            <a class="btn-nav" href="index.html">HOME</a>
+            <a href="index.html" class="btn-nav">HOME</a>
         </div>
     </header>
 
     <main>
+
         <h1>DASHBOARD</h1>
 
         <div class="dashboard">
+
             <div class="stat-box">
                 <div class="stat-label">Total Bets</div>
                 <div class="stat-value" id="stat-total">26W - 14L</div>
@@ -600,325 +671,201 @@
                 <div class="stat-label">Yield (ROI)</div>
                 <div class="stat-value stat-profit" id="stat-roi">+42.88%</div>
             </div>
+
         </div>
 
         <div class="mosaic-container">
+
             <div class="mosaic-title">BET HISTORY (NEW TO OLD)</div>
 
             <div class="mosaic-grid" id="mosaic-grid">
 
-                <!-- NEW PENDING BETS — 06/09/2026 -->
+                <!-- NEW PENDING BETS -->
 
-                <div
-                    class="mosaic-item mosaic-pending"
-                    onclick="openBetById(41)"
-                >
+                <div class="mosaic-item mosaic-pending" onclick="openBetById(41)">
                     @ 2.13
                 </div>
 
-                <div
-                    class="mosaic-item mosaic-pending"
-                    onclick="openBetById(42)"
-                >
+                <div class="mosaic-item mosaic-pending" onclick="openBetById(42)">
                     @ 2.77
                 </div>
 
-                <div
-                    class="mosaic-item mosaic-pending"
-                    onclick="openBetById(43)"
-                >
+                <div class="mosaic-item mosaic-pending" onclick="openBetById(43)">
                     @ 4.16
                 </div>
 
                 <!-- SETTLED BETS -->
 
-                <div
-                    class="mosaic-item mosaic-loss"
-                    onclick="openBetById(40)"
-                >
+                <div class="mosaic-item mosaic-loss" onclick="openBetById(40)">
                     @ 2.03
                 </div>
 
-                <div
-                    class="mosaic-item mosaic-win"
-                    onclick="openBetById(39)"
-                >
+                <div class="mosaic-item mosaic-win" onclick="openBetById(39)">
                     @ 1.90
                 </div>
 
-                <div
-                    class="mosaic-item mosaic-win"
-                    onclick="openBetById(38)"
-                >
+                <div class="mosaic-item mosaic-win" onclick="openBetById(38)">
                     @ 5.14
                 </div>
 
-                <div
-                    class="mosaic-item mosaic-win"
-                    onclick="openBetById(37)"
-                >
+                <div class="mosaic-item mosaic-win" onclick="openBetById(37)">
                     @ 2.35
                 </div>
 
-                <div
-                    class="mosaic-item mosaic-win"
-                    onclick="openBetById(36)"
-                >
+                <div class="mosaic-item mosaic-win" onclick="openBetById(36)">
                     @ 2.02
                 </div>
 
-                <div
-                    class="mosaic-item mosaic-loss"
-                    onclick="openBetById(35)"
-                >
+                <div class="mosaic-item mosaic-loss" onclick="openBetById(35)">
                     @ 5.24
                 </div>
 
-                <div
-                    class="mosaic-item mosaic-loss"
-                    onclick="openBetById(34)"
-                >
+                <div class="mosaic-item mosaic-loss" onclick="openBetById(34)">
                     @ 1.93
                 </div>
 
-                <div
-                    class="mosaic-item mosaic-win"
-                    onclick="openBetById(33)"
-                >
+                <div class="mosaic-item mosaic-win" onclick="openBetById(33)">
                     @ 1.98
                 </div>
 
-                <div
-                    class="mosaic-item mosaic-loss"
-                    onclick="openBetById(32)"
-                >
+                <div class="mosaic-item mosaic-loss" onclick="openBetById(32)">
                     @ 10.16
                 </div>
 
-                <div
-                    class="mosaic-item mosaic-win"
-                    onclick="openBetById(31)"
-                >
+                <div class="mosaic-item mosaic-win" onclick="openBetById(31)">
                     @ 2.26
                 </div>
 
-                <div
-                    class="mosaic-item mosaic-loss"
-                    onclick="openBetById(30)"
-                >
+                <div class="mosaic-item mosaic-loss" onclick="openBetById(30)">
                     @ 1.99
                 </div>
 
-                <div
-                    class="mosaic-item mosaic-loss"
-                    onclick="openBetById(29)"
-                >
+                <div class="mosaic-item mosaic-loss" onclick="openBetById(29)">
                     @ 17.89
                 </div>
 
-                <div
-                    class="mosaic-item mosaic-win"
-                    onclick="openBetById(28)"
-                >
+                <div class="mosaic-item mosaic-win" onclick="openBetById(28)">
                     @ 3.48
                 </div>
 
-                <div
-                    class="mosaic-item mosaic-win"
-                    onclick="openBetById(27)"
-                >
+                <div class="mosaic-item mosaic-win" onclick="openBetById(27)">
                     @ 2.09
                 </div>
 
-                <div
-                    class="mosaic-item mosaic-loss"
-                    onclick="openBetById(26)"
-                >
+                <div class="mosaic-item mosaic-loss" onclick="openBetById(26)">
                     @ 27.17
                 </div>
 
-                <div
-                    class="mosaic-item mosaic-win"
-                    onclick="openBetById(25)"
-                >
+                <div class="mosaic-item mosaic-win" onclick="openBetById(25)">
                     @ 2.11
                 </div>
 
-                <div
-                    class="mosaic-item mosaic-win"
-                    onclick="openBetById(24)"
-                >
+                <div class="mosaic-item mosaic-win" onclick="openBetById(24)">
                     @ 2.06
                 </div>
 
-                <div
-                    class="mosaic-item mosaic-win live-square"
-                    onclick="openBetById(22)"
-                >
+                <div class="mosaic-item mosaic-win live-square" onclick="openBetById(22)">
                     <span class="live-badge-small">LIVE</span>
                     <span>@ 1.09</span>
                 </div>
 
-                <div
-                    class="mosaic-item mosaic-loss"
-                    onclick="openBetById(21)"
-                >
+                <div class="mosaic-item mosaic-loss" onclick="openBetById(21)">
                     @ 5.01
                 </div>
 
-                <div
-                    class="mosaic-item mosaic-win"
-                    onclick="openBetById(20)"
-                >
+                <div class="mosaic-item mosaic-win" onclick="openBetById(20)">
                     @ 2.15
                 </div>
 
-                <div
-                    class="mosaic-item mosaic-win"
-                    onclick="openBetById(19)"
-                >
+                <div class="mosaic-item mosaic-win" onclick="openBetById(19)">
                     @ 2.14
                 </div>
 
-                <div
-                    class="mosaic-item mosaic-win"
-                    onclick="openBetById(18)"
-                >
+                <div class="mosaic-item mosaic-win" onclick="openBetById(18)">
                     @ 2.00
                 </div>
 
-                <div
-                    class="mosaic-item mosaic-win"
-                    onclick="openBetById(17)"
-                >
+                <div class="mosaic-item mosaic-win" onclick="openBetById(17)">
                     @ 2.11
                 </div>
 
-                <div
-                    class="mosaic-item mosaic-win live-square"
-                    onclick="openBetById(23)"
-                >
+                <div class="mosaic-item mosaic-win live-square" onclick="openBetById(23)">
                     <span class="live-badge-small">LIVE</span>
                     <span>@ 1.28</span>
                 </div>
 
-                <div
-                    class="mosaic-item mosaic-win"
-                    onclick="openBetById(16)"
-                >
+                <div class="mosaic-item mosaic-win" onclick="openBetById(16)">
                     @ 2.34
                 </div>
 
-                <div
-                    class="mosaic-item mosaic-win"
-                    onclick="openBetById(15)"
-                >
+                <div class="mosaic-item mosaic-win" onclick="openBetById(15)">
                     @ 1.76
                 </div>
 
-                <div
-                    class="mosaic-item mosaic-loss"
-                    onclick="openBetById(14)"
-                >
+                <div class="mosaic-item mosaic-loss" onclick="openBetById(14)">
                     @ 1.72
                 </div>
 
-                <div
-                    class="mosaic-item mosaic-win"
-                    onclick="openBetById(13)"
-                >
+                <div class="mosaic-item mosaic-win" onclick="openBetById(13)">
                     @ 2.60
                 </div>
 
-                <div
-                    class="mosaic-item mosaic-win"
-                    onclick="openBetById(12)"
-                >
+                <div class="mosaic-item mosaic-win" onclick="openBetById(12)">
                     @ 1.75
                 </div>
 
-                <div
-                    class="mosaic-item mosaic-loss"
-                    onclick="openBetById(11)"
-                >
+                <div class="mosaic-item mosaic-loss" onclick="openBetById(11)">
                     @ 1.70
                 </div>
 
-                <div
-                    class="mosaic-item mosaic-loss"
-                    onclick="openBetById(10)"
-                >
+                <div class="mosaic-item mosaic-loss" onclick="openBetById(10)">
                     @ 1.72
                 </div>
 
-                <div
-                    class="mosaic-item mosaic-loss"
-                    onclick="openBetById(7)"
-                >
+                <div class="mosaic-item mosaic-loss" onclick="openBetById(7)">
                     @ 1.85
                 </div>
 
-                <div
-                    class="mosaic-item mosaic-loss"
-                    onclick="openBetById(6)"
-                >
+                <div class="mosaic-item mosaic-loss" onclick="openBetById(6)">
                     @ 1.51
                 </div>
 
-                <div
-                    class="mosaic-item mosaic-win"
-                    onclick="openBetById(9)"
-                >
+                <div class="mosaic-item mosaic-win" onclick="openBetById(9)">
                     @ 1.66
                 </div>
 
-                <div
-                    class="mosaic-item mosaic-win"
-                    onclick="openBetById(8)"
-                >
+                <div class="mosaic-item mosaic-win" onclick="openBetById(8)">
                     @ 1.57
                 </div>
 
-                <div
-                    class="mosaic-item mosaic-win"
-                    onclick="openBetById(5)"
-                >
+                <div class="mosaic-item mosaic-win" onclick="openBetById(5)">
                     @ 1.57
                 </div>
 
-                <div
-                    class="mosaic-item mosaic-win"
-                    onclick="openBetById(4)"
-                >
+                <div class="mosaic-item mosaic-win" onclick="openBetById(4)">
                     @ 1.55
                 </div>
 
-                <div
-                    class="mosaic-item mosaic-win"
-                    onclick="openBetById(3)"
-                >
+                <div class="mosaic-item mosaic-win" onclick="openBetById(3)">
                     @ 1.55
                 </div>
 
-                <div
-                    class="mosaic-item mosaic-win"
-                    onclick="openBetById(2)"
-                >
+                <div class="mosaic-item mosaic-win" onclick="openBetById(2)">
                     @ 1.80
                 </div>
 
-                <div
-                    class="mosaic-item mosaic-loss"
-                    onclick="openBetById(1)"
-                >
+                <div class="mosaic-item mosaic-loss" onclick="openBetById(1)">
                     @ 1.55
                 </div>
 
             </div>
+
         </div>
+
     </main>
 
     <footer>
+
         <div class="footer-links">
             <a onclick="openModal('modal-tos')">TOS</a> |
             <a onclick="openModal('modal-privacy')">Privacy</a> |
@@ -928,6 +875,7 @@
         <p style="margin-top:4px;">
             &copy; 2026 HashtagSportsBetting.com
         </p>
+
     </footer>
 
 
@@ -937,14 +885,13 @@
 
         <div class="modal-content">
 
-            <span
-                class="close-modal"
-                onclick="closeModal('modal-legal')"
-            >
+            <span class="close-modal" onclick="closeModal('modal-legal')">
                 X
             </span>
 
-            <h2 class="modal-title">Legal Notice</h2>
+            <h2 class="modal-title">
+                Legal Notice
+            </h2>
 
             <p>
                 <strong>Editeur :</strong>
@@ -972,10 +919,7 @@
 
         <div class="modal-content">
 
-            <span
-                class="close-modal"
-                onclick="closeModal('modal-tos')"
-            >
+            <span class="close-modal" onclick="closeModal('modal-tos')">
                 X
             </span>
 
@@ -1002,10 +946,7 @@
 
         <div class="modal-content">
 
-            <span
-                class="close-modal"
-                onclick="closeModal('modal-privacy')"
-            >
+            <span class="close-modal" onclick="closeModal('modal-privacy')">
                 X
             </span>
 
@@ -1082,14 +1023,18 @@
             ></div>
 
             <div class="opt2-details">
+
                 Stake:
+
                 <span
                     id="modal-stake"
                     style="color:#fff; font-weight:bold;"
                 >
                     1
                 </span>
+
                 Unit(s)
+
             </div>
 
             <div class="opt2-odds-box">
@@ -1124,11 +1069,16 @@
     <script>
 
         function openModal(id) {
+
             document.getElementById(id).style.display = 'flex';
+
         }
 
+
         function closeModal(id) {
+
             document.getElementById(id).style.display = 'none';
+
         }
 
 
@@ -1281,7 +1231,7 @@
             {
                 id: 7,
                 date: '2026-08-24',
-                tournament: 'US Open Qualifiers (Hard)',
+                tournament: 'WTA 500 Monterrey (Hard)',
                 odds: 1.85,
                 stake: 1,
                 status: 'LOSS',
@@ -1289,8 +1239,8 @@
 
                 legs: [
                     {
-                        match: 'B. Andreescu vs S. Stephens',
-                        pick: 'Bianca Andreescu ML',
+                        match: 'C. Osorio vs A. Li',
+                        pick: 'C. Osorio ML',
                         won: false
                     }
                 ]
@@ -1299,7 +1249,7 @@
             {
                 id: 10,
                 date: '2026-08-25',
-                tournament: 'US Open',
+                tournament: 'Challenger Roehampton 2',
                 odds: 1.72,
                 stake: 1,
                 status: 'LOSS',
@@ -1307,8 +1257,8 @@
 
                 legs: [
                     {
-                        match: 'J. Mensik vs N. Borges',
-                        pick: 'Jakub Mensik ML',
+                        match: 'F. Andaloro vs E. Hudd',
+                        pick: 'F. Andaloro ML',
                         won: false
                     }
                 ]
@@ -1317,7 +1267,7 @@
             {
                 id: 11,
                 date: '2026-08-25',
-                tournament: 'US Open',
+                tournament: 'US Open Qualifiers (Hard)',
                 odds: 1.70,
                 stake: 1,
                 status: 'LOSS',
@@ -1325,8 +1275,8 @@
 
                 legs: [
                     {
-                        match: 'D. Shapovalov vs B. Nakashima',
-                        pick: 'Denis Shapovalov ML',
+                        match: 'J. Riera vs V. Hruncakova',
+                        pick: 'J. Riera ML',
                         won: false
                     }
                 ]
@@ -1334,8 +1284,8 @@
 
             {
                 id: 12,
-                date: '2026-08-26',
-                tournament: 'US Open',
+                date: '2026-08-25',
+                tournament: 'ATP 250 Winston-Salem',
                 odds: 1.75,
                 stake: 1,
                 status: 'WIN',
@@ -1343,8 +1293,8 @@
 
                 legs: [
                     {
-                        match: 'A. Michelsen vs T. Schoolkate',
-                        pick: 'Alex Michelsen ML',
+                        match: 'L. Darderi vs N. Borges',
+                        pick: 'L. Darderi ML',
                         won: true
                     }
                 ]
@@ -1353,7 +1303,7 @@
             {
                 id: 13,
                 date: '2026-08-26',
-                tournament: 'US Open',
+                tournament: 'ITF M15 Pecs',
                 odds: 2.60,
                 stake: 1,
                 status: 'WIN',
@@ -1361,8 +1311,8 @@
 
                 legs: [
                     {
-                        match: 'J. Thompson vs B. Bonzi',
-                        pick: 'Jordan Thompson ML',
+                        match: 'T. Gubi vs R. Behr',
+                        pick: 'R. Behr +1.5 Sets',
                         won: true
                     }
                 ]
@@ -1370,8 +1320,8 @@
 
             {
                 id: 14,
-                date: '2026-08-27',
-                tournament: 'US Open',
+                date: '2026-08-26',
+                tournament: 'Challenger 50 Augsburg',
                 odds: 1.72,
                 stake: 1,
                 status: 'LOSS',
@@ -1379,8 +1329,8 @@
 
                 legs: [
                     {
-                        match: 'L. Sonego vs A. Tabilo',
-                        pick: 'Lorenzo Sonego ML',
+                        match: 'M. Möller vs M. Soto',
+                        pick: 'M. Soto +1.5 Sets',
                         won: false
                     }
                 ]
@@ -1389,7 +1339,7 @@
             {
                 id: 15,
                 date: '2026-08-27',
-                tournament: 'US Open',
+                tournament: 'Accumulator (2)',
                 odds: 1.76,
                 stake: 1,
                 status: 'WIN',
@@ -1397,8 +1347,13 @@
 
                 legs: [
                     {
-                        match: 'D. Galan vs T. Etcheverry',
-                        pick: 'Tomas Martin Etcheverry ML',
+                        match: 'Lloyd Harris vs Pablo Llamas Ruiz',
+                        pick: 'Joueur 1 gagne un set : Oui',
+                        won: true
+                    },
+                    {
+                        match: 'Francesca Jones vs Joanna Garland',
+                        pick: 'Vainqueur du match : F. Jones',
                         won: true
                     }
                 ]
@@ -1406,8 +1361,8 @@
 
             {
                 id: 16,
-                date: '2026-08-28',
-                tournament: 'US Open',
+                date: '2026-08-27',
+                tournament: 'Accumulator (3)',
                 odds: 2.34,
                 stake: 1,
                 status: 'WIN',
@@ -1415,8 +1370,18 @@
 
                 legs: [
                     {
-                        match: 'C. Eubanks vs A. Walton',
-                        pick: 'Adam Walton ML',
+                        match: 'Lloyd Harris vs Pablo Llamas Ruiz',
+                        pick: 'Vainqueur: Lloyd Harris (W1)',
+                        won: true
+                    },
+                    {
+                        match: 'Zsombor Piros vs Christopher O\'Connell',
+                        pick: 'Sets Handicap: 2 (+1.5)',
+                        won: true
+                    },
+                    {
+                        match: 'Francesca Jones vs Joanna Garland',
+                        pick: 'Sets Handicap: 1 (+1.5)',
                         won: true
                     }
                 ]
@@ -1424,8 +1389,8 @@
 
             {
                 id: 23,
-                date: '2026-08-28',
-                tournament: 'Live Tennis',
+                date: '2026-08-27',
+                tournament: 'ITF W50 Kursumlijska Banja',
                 odds: 1.28,
                 stake: 1,
                 status: 'WIN',
@@ -1434,8 +1399,8 @@
 
                 legs: [
                     {
-                        match: 'Live Selection',
-                        pick: 'Live Bet',
+                        match: 'G. Pedone vs L. Encheva',
+                        pick: 'G. Pedone ML',
                         won: true
                     }
                 ]
@@ -1443,8 +1408,8 @@
 
             {
                 id: 17,
-                date: '2026-08-29',
-                tournament: 'Accumulator',
+                date: '2026-08-28',
+                tournament: 'Accumulator (4)',
                 odds: 2.11,
                 stake: 1,
                 status: 'WIN',
@@ -1452,8 +1417,23 @@
 
                 legs: [
                     {
-                        match: 'Accumulator Selection',
-                        pick: 'Winning Selection',
+                        match: 'Pieter De Lange vs Eric Vanshelboim',
+                        pick: 'Sets Handicap: 2 (+1.5)',
+                        won: true
+                    },
+                    {
+                        match: 'Andrej Martin vs Lorenzo Rottoli',
+                        pick: 'Sets Handicap: 1 (+1.5)',
+                        won: true
+                    },
+                    {
+                        match: 'Lloyd Harris vs Pablo Llamas Ruiz',
+                        pick: 'Sets Handicap: 1 (+1.5)',
+                        won: true
+                    },
+                    {
+                        match: 'Zsombor Piros vs Christopher O\'Connell',
+                        pick: 'Sets Handicap: 2 (+1.5)',
                         won: true
                     }
                 ]
@@ -1461,8 +1441,8 @@
 
             {
                 id: 18,
-                date: '2026-08-29',
-                tournament: 'Accumulator',
+                date: '2026-08-28',
+                tournament: 'Accumulator (2)',
                 odds: 2.00,
                 stake: 1,
                 status: 'WIN',
@@ -1470,8 +1450,13 @@
 
                 legs: [
                     {
-                        match: 'Accumulator Selection',
-                        pick: 'Winning Selection',
+                        match: 'Lloyd Harris vs Pablo Llamas Ruiz',
+                        pick: 'Vainqueur: Lloyd Harris (W1)',
+                        won: true
+                    },
+                    {
+                        match: 'Pieter De Lange vs Eric Vanshelboim',
+                        pick: 'Win In All Sets: W1 - No',
                         won: true
                     }
                 ]
@@ -1480,7 +1465,7 @@
             {
                 id: 19,
                 date: '2026-08-30',
-                tournament: 'Accumulator',
+                tournament: 'Accumulator (3)',
                 odds: 2.14,
                 stake: 1,
                 status: 'WIN',
@@ -1488,8 +1473,18 @@
 
                 legs: [
                     {
-                        match: 'Accumulator Selection',
-                        pick: 'Winning Selection',
+                        match: 'Emiliana Arango vs Xinyu Wang',
+                        pick: 'Vainqueur: Xinyu Wang',
+                        won: true
+                    },
+                    {
+                        match: 'Emma Navarro vs Lois Boisson',
+                        pick: 'Vainqueur: Emma Navarro',
+                        won: true
+                    },
+                    {
+                        match: 'Jaume Munar vs Terence Atmane',
+                        pick: 'Sets Handicap: Terence Atmane (+1.5)',
                         won: true
                     }
                 ]
@@ -1498,7 +1493,7 @@
             {
                 id: 20,
                 date: '2026-08-30',
-                tournament: 'Accumulator',
+                tournament: 'Accumulator (5)',
                 odds: 2.15,
                 stake: 1,
                 status: 'WIN',
@@ -1506,8 +1501,28 @@
 
                 legs: [
                     {
-                        match: 'Accumulator Selection',
-                        pick: 'Winning Selection',
+                        match: 'Jakub Vrba vs Bryce Nakashima',
+                        pick: 'Sets Handicap: Bryce Nakashima (+1.5)',
+                        won: true
+                    },
+                    {
+                        match: 'Ilinca Dalina Amariei vs Ashley Lahey',
+                        pick: 'Sets Handicap: I. D. Amariei (+1.5)',
+                        won: true
+                    },
+                    {
+                        match: 'Emiliana Arango vs Xinyu Wang',
+                        pick: 'Sets Handicap: Xinyu Wang (+1.5)',
+                        won: true
+                    },
+                    {
+                        match: 'Jaume Munar vs Terence Atmane',
+                        pick: 'Sets Handicap: Terence Atmane (+1.5)',
+                        won: true
+                    },
+                    {
+                        match: 'Emma Navarro vs Lois Boisson',
+                        pick: 'Sets Handicap: Emma Navarro (+1.5)',
                         won: true
                     }
                 ]
@@ -1516,7 +1531,7 @@
             {
                 id: 21,
                 date: '2026-08-30',
-                tournament: 'Accumulator',
+                tournament: 'Accumulator (5)',
                 odds: 5.01,
                 stake: 0.3,
                 status: 'LOSS',
@@ -1524,9 +1539,29 @@
 
                 legs: [
                     {
-                        match: 'Accumulator Selection',
-                        pick: 'Losing Selection',
+                        match: 'Ilinca Dalina Amariei vs Ashley Lahey',
+                        pick: 'Vainqueur: I. D. Amariei',
                         won: false
+                    },
+                    {
+                        match: 'Jakub Vrba vs Bryce Nakashima',
+                        pick: 'Vainqueur: Bryce Nakashima',
+                        won: true
+                    },
+                    {
+                        match: 'Emiliana Arango vs Xinyu Wang',
+                        pick: 'Vainqueur: Xinyu Wang',
+                        won: true
+                    },
+                    {
+                        match: 'Jaume Munar vs Terence Atmane',
+                        pick: 'Vainqueur: Terence Atmane',
+                        won: true
+                    },
+                    {
+                        match: 'Emma Navarro vs Lois Boisson',
+                        pick: 'Vainqueur: Emma Navarro',
+                        won: true
                     }
                 ]
             },
@@ -1534,7 +1569,7 @@
             {
                 id: 22,
                 date: '2026-08-30',
-                tournament: 'Live Tennis',
+                tournament: 'ITF W50 Kursumlijska Banja',
                 odds: 1.09,
                 stake: 1,
                 status: 'WIN',
@@ -1543,8 +1578,8 @@
 
                 legs: [
                     {
-                        match: 'Live Selection',
-                        pick: 'Live Bet',
+                        match: 'A. Stanković vs S. De Stefano',
+                        pick: 'S. De Stefano ML',
                         won: true
                     }
                 ]
@@ -1553,7 +1588,7 @@
             {
                 id: 24,
                 date: '2026-08-31',
-                tournament: 'Accumulator',
+                tournament: 'Accumulator (4)',
                 odds: 2.06,
                 stake: 1,
                 status: 'WIN',
@@ -1561,8 +1596,23 @@
 
                 legs: [
                     {
-                        match: 'Accumulator Selection',
-                        pick: 'Winning Selection',
+                        match: 'Roman Safiullin vs Carlos Alcaraz',
+                        pick: 'Vainqueur: Carlos Alcaraz',
+                        won: true
+                    },
+                    {
+                        match: 'R. A. Burruchaga vs Karen Khachanov',
+                        pick: 'Vainqueur: Karen Khachanov',
+                        won: true
+                    },
+                    {
+                        match: 'Luciano Darderi vs Harry Wendelken',
+                        pick: 'Vainqueur: Luciano Darderi',
+                        won: true
+                    },
+                    {
+                        match: 'Juncheng Shang vs Marco Trungelliti',
+                        pick: 'Joueur 1 gagne un set: Oui',
                         won: true
                     }
                 ]
@@ -1571,7 +1621,7 @@
             {
                 id: 25,
                 date: '2026-08-31',
-                tournament: 'Accumulator',
+                tournament: 'Accumulator (9)',
                 odds: 2.11,
                 stake: 1,
                 status: 'WIN',
@@ -1579,8 +1629,48 @@
 
                 legs: [
                     {
-                        match: 'Accumulator Selection',
-                        pick: 'Winning Selection',
+                        match: 'M. Chwalinska vs T. Townsend',
+                        pick: 'T. Townsend gagne un set: Oui',
+                        won: true
+                    },
+                    {
+                        match: 'D. Snigur vs D. Shnaider',
+                        pick: 'D. Shnaider gagne un set: Oui',
+                        won: true
+                    },
+                    {
+                        match: 'T. Zidansek vs M. Timofeeva',
+                        pick: 'M. Timofeeva gagne un set: Oui',
+                        won: true
+                    },
+                    {
+                        match: 'L. Darderi vs H. Wendelken',
+                        pick: 'L. Darderi gagne un set: Oui',
+                        won: true
+                    },
+                    {
+                        match: 'R. Safiullin vs C. Alcaraz',
+                        pick: 'C. Alcaraz gagne un set: Oui',
+                        won: true
+                    },
+                    {
+                        match: 'J. Shang vs M. Trungelliti',
+                        pick: 'J. Shang gagne un set: Oui',
+                        won: true
+                    },
+                    {
+                        match: 'Y. Hanfmann vs A. Tabilo',
+                        pick: 'A. Tabilo gagne un set: Oui',
+                        won: true
+                    },
+                    {
+                        match: 'Q. Halys vs F. Diaz Acosta',
+                        pick: 'Q. Halys gagne un set: Oui',
+                        won: true
+                    },
+                    {
+                        match: 'R. A. Burruchaga vs K. Khachanov',
+                        pick: 'K. Khachanov gagne un set: Oui',
                         won: true
                     }
                 ]
@@ -1589,7 +1679,7 @@
             {
                 id: 26,
                 date: '2026-08-31',
-                tournament: 'Accumulator',
+                tournament: 'Accumulator (10)',
                 odds: 27.17,
                 stake: 0.3,
                 status: 'LOSS',
@@ -1597,9 +1687,54 @@
 
                 legs: [
                     {
-                        match: 'Accumulator Selection',
-                        pick: 'Losing Selection',
+                        match: 'R. Safiullin vs C. Alcaraz',
+                        pick: 'Vainqueur: Carlos Alcaraz',
+                        won: true
+                    },
+                    {
+                        match: 'M. Chwalinska vs T. Townsend',
+                        pick: 'Vainqueur: Taylor Townsend',
+                        won: true
+                    },
+                    {
+                        match: 'D. Snigur vs D. Shnaider',
+                        pick: 'Vainqueur: Taylor Townsend',
+                        won: true
+                    },
+                    {
+                        match: 'T. Zidansek vs M. Timofeeva',
+                        pick: 'Vainqueur: Maria Timofeeva',
+                        won: true
+                    },
+                    {
+                        match: 'L. Darderi vs H. Wendelken',
+                        pick: 'Vainqueur: Luciano Darderi',
+                        won: true
+                    },
+                    {
+                        match: 'J. Shang vs M. Trungelliti',
+                        pick: 'Vainqueur: Juncheng Shang',
                         won: false
+                    },
+                    {
+                        match: 'Y. Hanfmann vs A. Tabilo',
+                        pick: 'Vainqueur: Alejandro Tabilo',
+                        won: true
+                    },
+                    {
+                        match: 'Q. Halys vs F. Diaz Acosta',
+                        pick: 'Vainqueur: Quentin Halys',
+                        won: true
+                    },
+                    {
+                        match: 'R. A. Burruchaga vs K. Khachanov',
+                        pick: 'Vainqueur: Karen Khachanov',
+                        won: true
+                    },
+                    {
+                        match: 'E. Cocciaretto vs K. Siniakova',
+                        pick: 'Vainqueur: Katerina Siniakova',
+                        won: true
                     }
                 ]
             },
@@ -1607,7 +1742,7 @@
             {
                 id: 27,
                 date: '2026-09-01',
-                tournament: 'Accumulator',
+                tournament: 'Accumulator (3)',
                 odds: 2.09,
                 stake: 1,
                 status: 'WIN',
@@ -1615,8 +1750,18 @@
 
                 legs: [
                     {
-                        match: 'Accumulator Selection',
-                        pick: 'Winning Selection',
+                        match: 'Sascha Gueymard Wayenburg vs Sergio Callejon Hernando',
+                        pick: 'Sets Handicap: S. Gueymard Wayenburg (+1.5)',
+                        won: true
+                    },
+                    {
+                        match: 'Camilo Ugo Carabelli vs Jan-Lennard Struff',
+                        pick: 'Sets Handicap: Jan-Lennard Struff (+1.5)',
+                        won: true
+                    },
+                    {
+                        match: 'Magda Linette vs Francesca Jones',
+                        pick: 'Sets Handicap: Magda Linette (+1.5)',
                         won: true
                     }
                 ]
@@ -1625,16 +1770,41 @@
             {
                 id: 28,
                 date: '2026-09-01',
-                tournament: 'Accumulator',
+                tournament: 'Accumulator (6)',
                 odds: 3.48,
-                stake: 1,
+                stake: 0.3,
                 status: 'WIN',
                 badge: 'WON',
 
                 legs: [
                     {
-                        match: 'Accumulator Selection',
-                        pick: 'Winning Selection',
+                        match: 'Charles Broom vs Mathys Erhard',
+                        pick: 'Sets Handicap: Charles Broom (+1.5)',
+                        won: true
+                    },
+                    {
+                        match: 'Genaro Alberto Olivieri vs Niels Visker',
+                        pick: 'Sets Handicap: G. A. Olivieri (+1.5)',
+                        won: true
+                    },
+                    {
+                        match: 'Mattia Bellucci vs Zsombor Piros',
+                        pick: 'Sets Handicap: Mattia Bellucci (+1.5)',
+                        won: true
+                    },
+                    {
+                        match: 'Sascha Gueymard Wayenburg vs Sergio Callejon Hernando',
+                        pick: 'Sets Handicap: S. Gueymard Wayenburg (+1.5)',
+                        won: true
+                    },
+                    {
+                        match: 'Camilo Ugo Carabelli vs Jan-Lennard Struff',
+                        pick: 'Sets Handicap: Jan-Lennard Struff (+1.5)',
+                        won: true
+                    },
+                    {
+                        match: 'Magda Linette vs Francesca Jones',
+                        pick: 'Sets Handicap: Magda Linette (+1.5)',
                         won: true
                     }
                 ]
@@ -2064,9 +2234,6 @@
 
             /* ============================================================
                NEW PENDING BET #41
-               06/09/2026
-               Odds: 2.13
-               2 selections
                ============================================================ */
 
             {
@@ -2094,9 +2261,6 @@
 
             /* ============================================================
                NEW PENDING BET #42
-               06/09/2026
-               Odds: 2.77
-               5 selections
                ============================================================ */
 
             {
@@ -2124,9 +2288,6 @@
 
             /* ============================================================
                NEW PENDING BET #43
-               06/09/2026
-               Odds: 4.16
-               4 selections
                ============================================================ */
 
             {
@@ -2246,33 +2407,25 @@
             var html = '';
 
 
-            /*
-             * STRICT CENSORSHIP FOR PENDING BETS
-             */
-
             if (bet.status === 'PENDING') {
 
                 html =
-                    '<div ' +
-                        'class="leg-row" ' +
-                        'style="' +
-                            'justify-content:center;' +
-                            'text-align:center;' +
-                            'padding:22px 10px;' +
-                            'color:#aaa;' +
-                            'font-family:\\'Righteous\\',cursive;' +
-                            'border:1px dashed #444;' +
-                        '"' +
-                    '>' +
+                    '<div class="leg-row" ' +
+                    'style="' +
+                    'justify-content:center;' +
+                    'text-align:center;' +
+                    'padding:22px 10px;' +
+                    'color:#aaa;' +
+                    'font-family:\'Righteous\',cursive;' +
+                    'border:1px dashed #444;' +
+                    '">' +
 
                         '<div>' +
 
-                            '<span ' +
-                                'style="' +
-                                    'font-size:1.1rem;' +
-                                    'color:#aaa;' +
-                                '"' +
-                            '>' +
+                            '<span style="' +
+                            'font-size:1.1rem;' +
+                            'color:#aaa;' +
+                            '">' +
 
                                 '🔒 MATCHES HIDDEN' +
 
@@ -2280,17 +2433,13 @@
 
                             '<br>' +
 
-                            '<span ' +
-                                'style="' +
-                                    'display:inline-block;' +
-                                    'font-size:0.8rem;' +
-                                    'font-family:' +
-                                    '\\'Share Tech Mono\\',' +
-                                    'monospace;' +
-                                    'color:#888;' +
-                                    'margin-top:6px;' +
-                                '"' +
-                            '>' +
+                            '<span style="' +
+                            'display:inline-block;' +
+                            'font-size:0.8rem;' +
+                            'font-family:\'Share Tech Mono\',monospace;' +
+                            'color:#888;' +
+                            'margin-top:6px;' +
+                            '">' +
 
                                 'LOCKED - Unlock on Homepage' +
 
