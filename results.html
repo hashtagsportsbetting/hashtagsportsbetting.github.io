@@ -549,171 +549,240 @@ min-height: 50px;
 </style>
 </head>
 <body>
+
 <header>
 <a href="index.html" class="logo-home"># <span class="sports-icons-header">&#127934;&#127936;&#127952;</span></a>
 <div class="nav-links">
 <a href="index.html" class="btn-nav">HOME</a>
 </div>
 </header>
+
 <main>
 <h1>DASHBOARD</h1>
+
 <div class="dashboard">
 <div class="stat-box">
 <div class="stat-label">Total Bets</div>
 <div class="stat-value" id="stat-total">28W - 15L</div>
 </div>
+
 <div class="stat-box">
 <div class="stat-label">Win Rate</div>
 <div class="stat-value" id="stat-winrate">65.1%</div>
 </div>
+
 <div class="stat-box">
 <div class="stat-label">Profit (Units)</div>
 <div class="stat-value stat-profit" id="stat-profit">+15.36 U</div>
 </div>
+
 <div class="stat-box">
 <div class="stat-label">Yield (ROI)</div>
 <div class="stat-value stat-profit" id="stat-roi">+42.31%</div>
 </div>
 </div>
+
 <div class="mosaic-container">
 <div class="mosaic-title">BET HISTORY (NEW TO OLD)</div>
+
 <div class="mosaic-grid" id="mosaic-grid">
+
+<!-- NEW PENDING BETS -->
+
+<div class="mosaic-item mosaic-pending" onclick="openBetById(44)">
+@ 4.73
+</div>
+
+<div class="mosaic-item mosaic-pending" onclick="openBetById(45)">
+@ 2.03
+</div>
+
+<div class="mosaic-item mosaic-pending" onclick="openBetById(46)">
+@ 2.15
+</div>
+
 <!-- LATEST SETTLED BETS -->
+
 <div class="mosaic-item mosaic-loss" onclick="openBetById(41)">
 @ 2.13
 </div>
+
 <div class="mosaic-item mosaic-win" onclick="openBetById(42)">
 @ 2.77
 </div>
+
 <div class="mosaic-item mosaic-win" onclick="openBetById(43)">
 @ 4.16
 </div>
+
 <!-- SETTLED BETS -->
+
 <div class="mosaic-item mosaic-loss" onclick="openBetById(40)">
 @ 2.03
 </div>
+
 <div class="mosaic-item mosaic-win" onclick="openBetById(39)">
 @ 1.90
 </div>
+
 <div class="mosaic-item mosaic-win" onclick="openBetById(38)">
 @ 5.14
 </div>
+
 <div class="mosaic-item mosaic-win" onclick="openBetById(37)">
 @ 2.35
 </div>
+
 <div class="mosaic-item mosaic-win" onclick="openBetById(36)">
 @ 2.02
 </div>
+
 <div class="mosaic-item mosaic-loss" onclick="openBetById(35)">
 @ 5.24
 </div>
+
 <div class="mosaic-item mosaic-loss" onclick="openBetById(34)">
 @ 1.93
 </div>
+
 <div class="mosaic-item mosaic-win" onclick="openBetById(33)">
 @ 1.98
 </div>
+
 <div class="mosaic-item mosaic-loss" onclick="openBetById(32)">
 @ 10.16
 </div>
+
 <div class="mosaic-item mosaic-win" onclick="openBetById(31)">
 @ 2.26
 </div>
+
 <div class="mosaic-item mosaic-loss" onclick="openBetById(30)">
 @ 1.99
 </div>
+
 <div class="mosaic-item mosaic-loss" onclick="openBetById(29)">
 @ 17.89
 </div>
+
 <div class="mosaic-item mosaic-win" onclick="openBetById(28)">
 @ 3.48
 </div>
+
 <div class="mosaic-item mosaic-win" onclick="openBetById(27)">
 @ 2.09
 </div>
+
 <div class="mosaic-item mosaic-loss" onclick="openBetById(26)">
 @ 27.17
 </div>
+
 <div class="mosaic-item mosaic-win" onclick="openBetById(25)">
 @ 2.11
 </div>
+
 <div class="mosaic-item mosaic-win" onclick="openBetById(24)">
 @ 2.06
 </div>
+
 <div class="mosaic-item mosaic-win live-square" onclick="openBetById(22)">
 <span class="live-badge-small">LIVE</span>
 <span>@ 1.09</span>
 </div>
+
 <div class="mosaic-item mosaic-loss" onclick="openBetById(21)">
 @ 5.01
 </div>
+
 <div class="mosaic-item mosaic-win" onclick="openBetById(20)">
 @ 2.15
 </div>
+
 <div class="mosaic-item mosaic-win" onclick="openBetById(19)">
 @ 2.14
 </div>
+
 <div class="mosaic-item mosaic-win" onclick="openBetById(18)">
 @ 2.00
 </div>
+
 <div class="mosaic-item mosaic-win" onclick="openBetById(17)">
 @ 2.11
 </div>
+
 <div class="mosaic-item mosaic-win live-square" onclick="openBetById(23)">
 <span class="live-badge-small">LIVE</span>
 <span>@ 1.28</span>
 </div>
+
 <div class="mosaic-item mosaic-win" onclick="openBetById(16)">
 @ 2.34
 </div>
+
 <div class="mosaic-item mosaic-win" onclick="openBetById(15)">
 @ 1.76
 </div>
+
 <div class="mosaic-item mosaic-loss" onclick="openBetById(14)">
 @ 1.72
 </div>
+
 <div class="mosaic-item mosaic-win" onclick="openBetById(13)">
 @ 2.60
 </div>
+
 <div class="mosaic-item mosaic-win" onclick="openBetById(12)">
 @ 1.75
 </div>
+
 <div class="mosaic-item mosaic-loss" onclick="openBetById(11)">
 @ 1.70
 </div>
+
 <div class="mosaic-item mosaic-loss" onclick="openBetById(10)">
 @ 1.72
 </div>
+
 <div class="mosaic-item mosaic-loss" onclick="openBetById(7)">
 @ 1.85
 </div>
+
 <div class="mosaic-item mosaic-loss" onclick="openBetById(6)">
 @ 1.51
 </div>
+
 <div class="mosaic-item mosaic-win" onclick="openBetById(9)">
 @ 1.66
 </div>
+
 <div class="mosaic-item mosaic-win" onclick="openBetById(8)">
 @ 1.57
 </div>
+
 <div class="mosaic-item mosaic-win" onclick="openBetById(5)">
 @ 1.57
 </div>
+
 <div class="mosaic-item mosaic-win" onclick="openBetById(4)">
 @ 1.55
 </div>
+
 <div class="mosaic-item mosaic-win" onclick="openBetById(3)">
 @ 1.55
 </div>
+
 <div class="mosaic-item mosaic-win" onclick="openBetById(2)">
 @ 1.80
 </div>
+
 <div class="mosaic-item mosaic-loss" onclick="openBetById(1)">
 @ 1.55
 </div>
+
 </div>
 </div>
 </main>
+
 <footer>
 <div class="footer-links">
 <a onclick="openModal('modal-tos')">TOS</a> |
@@ -724,15 +793,19 @@ min-height: 50px;
 &copy; 2026 HashtagSportsBetting.com
 </p>
 </footer>
+
 <!-- LEGAL -->
+
 <div class="modal-overlay" id="modal-legal">
 <div class="modal-content">
 <span class="close-modal" onclick="closeModal('modal-legal')">
 X
 </span>
+
 <h2 class="modal-title">
 Legal Notice
 </h2>
+
 <p>
 <strong>Editeur :</strong>
 Charles Edouard Chambers Farah.
@@ -745,17 +818,22 @@ Charles Edouard Chambers Farah.
 75002 PARIS,
 FRANCE.
 </p>
+
 </div>
 </div>
+
 <!-- TERMS -->
+
 <div class="modal-overlay" id="modal-tos">
 <div class="modal-content">
 <span class="close-modal" onclick="closeModal('modal-tos')">
 X
 </span>
+
 <h2 class="modal-title">
 Terms of Service
 </h2>
+
 <p>
 En utilisant ce service,
 vous reconnaissez que les paris comportent des risques
@@ -763,44 +841,57 @@ financiers significatifs.
 Nous sommes un service de conseil,
 pas un bookmaker.
 </p>
+
 </div>
 </div>
+
 <!-- PRIVACY -->
+
 <div class="modal-overlay" id="modal-privacy">
 <div class="modal-content">
 <span class="close-modal" onclick="closeModal('modal-privacy')">
 X
 </span>
+
 <h2 class="modal-title">
 Privacy Policy
 </h2>
+
 <p>
 Votre email est utilisé exclusivement
 pour l'envoi d'alertes de prédictions
 et ne sera jamais partagé
 avec des agences de marketing tierces.
 </p>
+
 </div>
 </div>
+
 <!-- BET DETAIL MODAL -->
+
 <div
 class="modal-overlay"
 id="bet-modal"
 onclick="closeBetModal(event)"
 >
+
 <div
 class="opt2-card"
 id="modal-card"
 onclick="event.stopPropagation()"
 >
+
 <div
 class="close-bet-modal"
 onclick="document.getElementById('bet-modal').style.display='none'"
 >
 ✕
 </div>
+
 <div class="opt2-top">
+
 <div class="opt2-top-left">
+
 <span
 id="modal-live-badge"
 class="live-badge-modal"
@@ -808,35 +899,45 @@ style="display:none;"
 >
 LIVE
 </span>
+
 <span
 style="color:#aaa; font-size:0.85rem;"
 id="modal-date-tourney"
 >
 Date • Tournoi
 </span>
+
 </div>
+
 <span
 class="opt2-badge"
 id="modal-badge"
 >
 WON
 </span>
+
 </div>
+
 <div
 class="opt2-body-scroll"
 id="modal-selections-container"
 ></div>
+
 <div class="opt2-details">
 Stake:
+
 <span
 id="modal-stake"
 style="color:#fff; font-weight:bold;"
 >
 1
 </span>
+
 Unit(s)
 </div>
+
 <div class="opt2-odds-box">
+
 <span
 style="
 font-family:'Righteous',cursive;
@@ -845,6 +946,7 @@ color:var(--neon-pink)
 >
 ODDS
 </span>
+
 <span
 style="
 font-size:1.8rem;
@@ -855,17 +957,23 @@ id="modal-odds"
 >
 @ 1.00
 </span>
+
 </div>
 </div>
 </div>
+
 <script>
+
 function openModal(id) {
 document.getElementById(id).style.display = 'flex';
 }
+
 function closeModal(id) {
 document.getElementById(id).style.display = 'none';
 }
+
 var bets = [
+
 {
 id: 1,
 date: '2026-08-18',
@@ -882,6 +990,7 @@ won: false
 }
 ]
 },
+
 {
 id: 2,
 date: '2026-08-19',
@@ -898,6 +1007,7 @@ won: true
 }
 ]
 },
+
 {
 id: 3,
 date: '2026-08-19',
@@ -914,6 +1024,7 @@ won: true
 }
 ]
 },
+
 {
 id: 4,
 date: '2026-08-20',
@@ -930,6 +1041,7 @@ won: true
 }
 ]
 },
+
 {
 id: 5,
 date: '2026-08-21',
@@ -946,6 +1058,7 @@ won: true
 }
 ]
 },
+
 {
 id: 8,
 date: '2026-08-23',
@@ -962,6 +1075,7 @@ won: true
 }
 ]
 },
+
 {
 id: 9,
 date: '2026-08-24',
@@ -978,6 +1092,7 @@ won: true
 }
 ]
 },
+
 {
 id: 6,
 date: '2026-08-24',
@@ -994,6 +1109,7 @@ won: false
 }
 ]
 },
+
 {
 id: 7,
 date: '2026-08-24',
@@ -1010,6 +1126,7 @@ won: false
 }
 ]
 },
+
 {
 id: 10,
 date: '2026-08-25',
@@ -1026,6 +1143,7 @@ won: false
 }
 ]
 },
+
 {
 id: 11,
 date: '2026-08-25',
@@ -1042,6 +1160,7 @@ won: false
 }
 ]
 },
+
 {
 id: 12,
 date: '2026-08-25',
@@ -1058,6 +1177,7 @@ won: true
 }
 ]
 },
+
 {
 id: 13,
 date: '2026-08-26',
@@ -1074,6 +1194,7 @@ won: true
 }
 ]
 },
+
 {
 id: 14,
 date: '2026-08-26',
@@ -1090,6 +1211,7 @@ won: false
 }
 ]
 },
+
 {
 id: 15,
 date: '2026-08-27',
@@ -1111,6 +1233,7 @@ won: true
 }
 ]
 },
+
 {
 id: 16,
 date: '2026-08-27',
@@ -1137,6 +1260,7 @@ won: true
 }
 ]
 },
+
 {
 id: 23,
 date: '2026-08-27',
@@ -1154,6 +1278,7 @@ won: true
 }
 ]
 },
+
 {
 id: 17,
 date: '2026-08-28',
@@ -1185,6 +1310,7 @@ won: true
 }
 ]
 },
+
 {
 id: 18,
 date: '2026-08-28',
@@ -1206,6 +1332,7 @@ won: true
 }
 ]
 },
+
 {
 id: 19,
 date: '2026-08-30',
@@ -1232,6 +1359,7 @@ won: true
 }
 ]
 },
+
 {
 id: 20,
 date: '2026-08-30',
@@ -1268,6 +1396,7 @@ won: true
 }
 ]
 },
+
 {
 id: 21,
 date: '2026-08-30',
@@ -1304,6 +1433,7 @@ won: true
 }
 ]
 },
+
 {
 id: 22,
 date: '2026-08-30',
@@ -1321,6 +1451,7 @@ won: true
 }
 ]
 },
+
 {
 id: 24,
 date: '2026-08-31',
@@ -1352,6 +1483,7 @@ won: true
 }
 ]
 },
+
 {
 id: 25,
 date: '2026-08-31',
@@ -1408,6 +1540,7 @@ won: true
 }
 ]
 },
+
 {
 id: 26,
 date: '2026-08-31',
@@ -1469,6 +1602,7 @@ won: true
 }
 ]
 },
+
 {
 id: 27,
 date: '2026-09-01',
@@ -1495,6 +1629,7 @@ won: true
 }
 ]
 },
+
 {
 id: 28,
 date: '2026-09-01',
@@ -1536,6 +1671,7 @@ won: true
 }
 ]
 },
+
 {
 id: 29,
 date: '2026-09-01',
@@ -1582,6 +1718,7 @@ won: false
 }
 ]
 },
+
 {
 id: 30,
 date: '2026-09-02',
@@ -1613,6 +1750,7 @@ won: true
 }
 ]
 },
+
 {
 id: 31,
 date: '2026-09-02',
@@ -1654,6 +1792,7 @@ won: true
 }
 ]
 },
+
 {
 id: 32,
 date: '2026-09-02',
@@ -1695,6 +1834,7 @@ won: true
 }
 ]
 },
+
 {
 id: 33,
 date: '2026-09-03',
@@ -1721,6 +1861,7 @@ won: true
 }
 ]
 },
+
 {
 id: 34,
 date: '2026-09-03',
@@ -1757,6 +1898,7 @@ won: false
 }
 ]
 },
+
 {
 id: 35,
 date: '2026-09-03',
@@ -1803,6 +1945,7 @@ won: false
 }
 ]
 },
+
 {
 id: 36,
 date: '2026-09-04',
@@ -1824,6 +1967,7 @@ won: true
 }
 ]
 },
+
 {
 id: 37,
 date: '2026-09-04',
@@ -1855,6 +1999,7 @@ won: true
 }
 ]
 },
+
 {
 id: 38,
 date: '2026-09-04',
@@ -1886,6 +2031,7 @@ won: true
 }
 ]
 },
+
 {
 id: 39,
 date: '2026-09-05',
@@ -1912,6 +2058,7 @@ won: true
 }
 ]
 },
+
 {
 id: 40,
 date: '2026-09-05',
@@ -1933,9 +2080,11 @@ won: false
 }
 ]
 },
+
 /* ============================================================
 SETTLED BET #41 — LOSS
 ============================================================ */
+
 {
 id: 41,
 date: '2026-09-06',
@@ -1957,9 +2106,11 @@ won: true
 }
 ]
 },
+
 /* ============================================================
 SETTLED BET #42 — WIN
 ============================================================ */
+
 {
 id: 42,
 date: '2026-09-06',
@@ -1996,9 +2147,11 @@ won: true
 }
 ]
 },
+
 /* ============================================================
 SETTLED BET #43 — WIN
 ============================================================ */
+
 {
 id: 43,
 date: '2026-09-06',
@@ -2029,40 +2182,126 @@ pick: 'Vainqueur du match: Alex Michelsen',
 won: true
 }
 ]
+},
+
+/* ============================================================
+NEW PENDING BET #44
+============================================================ */
+
+{
+id: 44,
+date: '2026-09-07',
+tournament: 'Accumulator (4)',
+odds: 4.73,
+stake: 0.3,
+status: 'PENDING',
+badge: 'PENDING',
+match:
+'<span style="font-size:1.1rem; color:#aaa;">' +
+'🔒 MATCHES HIDDEN' +
+'</span>',
+selection:
+'<span style="color:#888;">' +
+'LOCKED - Unlock on Homepage' +
+'</span>',
+legs: []
+},
+
+/* ============================================================
+NEW PENDING BET #45
+============================================================ */
+
+{
+id: 45,
+date: '2026-09-07',
+tournament: 'Accumulator (4)',
+odds: 2.03,
+stake: 1,
+status: 'PENDING',
+badge: 'PENDING',
+match:
+'<span style="font-size:1.1rem; color:#aaa;">' +
+'🔒 MATCHES HIDDEN' +
+'</span>',
+selection:
+'<span style="color:#888;">' +
+'LOCKED - Unlock on Homepage' +
+'</span>',
+legs: []
+},
+
+/* ============================================================
+NEW PENDING BET #46
+============================================================ */
+
+{
+id: 46,
+date: '2026-09-07',
+tournament: 'Accumulator (2)',
+odds: 2.15,
+stake: 1,
+status: 'PENDING',
+badge: 'PENDING',
+match:
+'<span style="font-size:1.1rem; color:#aaa;">' +
+'🔒 MATCHES HIDDEN' +
+'</span>',
+selection:
+'<span style="color:#888;">' +
+'LOCKED - Unlock on Homepage' +
+'</span>',
+legs: []
 }
+
 ];
+
 function openBetById(id) {
+
 for (var i = 0; i < bets.length; i++) {
+
 if (bets[i].id === id) {
+
 openBetModal(bets[i]);
+
 break;
+
 }
+
 }
+
 }
+
 function openBetModal(bet) {
+
 var modal =
 document.getElementById('bet-modal');
+
 var card =
 document.getElementById('modal-card');
+
 var container =
 document.getElementById(
 'modal-selections-container'
 );
+
 document.getElementById(
 'modal-date-tourney'
 ).innerText =
 bet.date +
 ' • ' +
 bet.tournament;
+
 document.getElementById(
 'modal-stake'
 ).innerText =
 bet.stake;
+
 document.getElementById(
 'modal-odds'
 ).innerText =
 '@ ' +
 bet.odds.toFixed(2);
+
 document.getElementById(
 'modal-badge'
 ).innerText =
@@ -2072,26 +2311,33 @@ bet.status === 'WIN'
 ? 'WON'
 : bet.status
 );
+
 var liveBadge =
 document.getElementById(
 'modal-live-badge'
 );
+
 liveBadge.style.display =
 bet.isLive
 ? 'inline-flex'
 : 'none';
+
 card.classList.remove(
 'modal-win',
 'modal-loss',
 'modal-void',
 'modal-pending'
 );
+
 card.classList.add(
 'modal-' +
 bet.status.toLowerCase()
 );
+
 var html = '';
+
 if (bet.status === 'PENDING') {
+
 html =
 '<div class="leg-row" ' +
 'style="' +
@@ -2121,26 +2367,33 @@ html =
 '</span>' +
 '</div>' +
 '</div>';
+
 } else {
+
 for (
 var i = 0;
 i < bet.legs.length;
 i++
 ) {
+
 var leg =
 bet.legs[i];
+
 var statusClass =
 leg.won
 ? 'leg-win'
 : 'leg-loss';
+
 var badgeClass =
 leg.won
 ? 'leg-badge-won'
 : 'leg-badge-lost';
+
 var badgeText =
 leg.won
 ? 'WON'
 : 'LOSS';
+
 html +=
 '<div class="' +
 'leg-row ' +
@@ -2163,24 +2416,36 @@ badgeClass +
 badgeText +
 '</span>' +
 '</div>';
+
 }
+
 }
+
 container.innerHTML =
 html;
+
 modal.style.display =
 'flex';
+
 }
+
 function closeBetModal(e) {
+
 if (
 e.target.id ===
 'bet-modal'
 ) {
+
 document.getElementById(
 'bet-modal'
 ).style.display =
 'none';
+
 }
+
 }
+
 </script>
+
 </body>
 </html>
