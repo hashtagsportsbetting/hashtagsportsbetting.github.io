@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>#sportsbetting - RESULTS & DASHBOARD</title>
 <link href="https://fonts.googleapis.com/css2?family=Righteous&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+
 <style>
 :root {
 --neon-pink: #ff00ff;
@@ -16,7 +17,13 @@
 --void-gray: #aaaaaa;
 --pending-white: #ffffff;
 }
-* { box-sizing: border-box; margin: 0; padding: 0; }
+
+* {
+box-sizing: border-box;
+margin: 0;
+padding: 0;
+}
+
 body {
 background-color: var(--dark-bg);
 color: #fff;
@@ -30,6 +37,7 @@ linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
 background-size: 40px 40px;
 overflow-x: hidden;
 }
+
 header {
 width: 100%;
 height: 56px;
@@ -43,6 +51,7 @@ backdrop-filter: blur(5px);
 z-index: 10;
 flex-shrink: 0;
 }
+
 .logo-home {
 text-decoration: none;
 font-family: 'Righteous', cursive;
@@ -52,17 +61,20 @@ display: flex;
 align-items: center;
 text-shadow: 0 0 10px var(--neon-pink);
 }
+
 .sports-icons-header {
 font-size: 0.55em;
 vertical-align: middle;
 margin-left: 5px;
 text-shadow: none;
 }
+
 .nav-links {
 display: flex;
 align-items: center;
 gap: 15px;
 }
+
 .btn-nav {
 background-color: transparent;
 color: var(--neon-cyan);
@@ -77,11 +89,13 @@ text-decoration: none;
 transition: all 0.2s;
 font-family: 'Share Tech Mono', monospace;
 }
+
 .btn-nav:hover {
 background-color: var(--neon-cyan);
 color: #000;
 box-shadow: 0 0 10px var(--neon-cyan);
 }
+
 main {
 flex: 1;
 padding: 20px 10px;
@@ -92,6 +106,7 @@ max-width: 800px;
 margin: 0 auto;
 width: 100%;
 }
+
 h1 {
 font-family: 'Righteous', cursive;
 color: #fff;
@@ -99,6 +114,7 @@ text-shadow: 2px 2px var(--neon-pink);
 margin-bottom: 25px;
 font-size: 2rem;
 }
+
 .dashboard {
 width: 100%;
 display: grid;
@@ -106,11 +122,13 @@ grid-template-columns: repeat(2, 1fr);
 gap: 15px;
 margin-bottom: 30px;
 }
+
 @media(min-width: 600px) {
 .dashboard {
 grid-template-columns: repeat(4, 1fr);
 }
 }
+
 .stat-box {
 background: rgba(0, 255, 255, 0.05);
 border: 1px solid var(--neon-cyan);
@@ -119,25 +137,30 @@ padding: 15px;
 text-align: center;
 box-shadow: inset 0 0 10px rgba(0, 255, 255, 0.1);
 }
+
 .stat-label {
 font-size: 0.8rem;
 color: #aaa;
 text-transform: uppercase;
 margin-bottom: 5px;
 }
+
 .stat-value {
 font-family: 'Righteous', cursive;
 font-size: 1.5rem;
 color: #fff;
 }
+
 .stat-profit {
 color: var(--win-green);
 text-shadow: 0 0 5px var(--win-green);
 }
+
 .mosaic-container {
 width: 100%;
 margin-top: 10px;
 }
+
 .mosaic-title {
 font-size: 1.2rem;
 color: var(--neon-cyan);
@@ -146,12 +169,14 @@ border-bottom: 1px solid #333;
 padding-bottom: 5px;
 text-align: left;
 }
+
 .mosaic-grid {
 display: grid;
 grid-template-columns: repeat(4, 1fr);
 gap: 10px;
 width: 100%;
 }
+
 .mosaic-item {
 aspect-ratio: 1;
 display: flex;
@@ -165,43 +190,52 @@ transition: transform 0.1s, box-shadow 0.2s;
 user-select: none;
 min-height: 70px;
 }
+
 .mosaic-item.live-square {
 flex-direction: column;
 gap: 6px;
 }
+
 .mosaic-item:hover {
 transform: scale(1.05);
 }
+
 .mosaic-item:active {
 transform: scale(0.95);
 }
+
 .mosaic-win {
 background: rgba(0, 255, 0, 0.15);
 border: 2px solid var(--win-green);
 color: var(--win-green);
 box-shadow: 0 0 10px rgba(0, 255, 0, 0.2);
 }
+
 .mosaic-loss {
 background: rgba(255, 68, 68, 0.15);
 border: 2px solid var(--loss-red);
 color: var(--loss-red);
 box-shadow: 0 0 10px rgba(255, 68, 68, 0.2);
 }
+
 .mosaic-void {
 background: rgba(170, 170, 170, 0.15);
 border: 2px solid var(--void-gray);
 color: var(--void-gray);
 }
+
 .mosaic-pending {
 background: rgba(255, 255, 255, 0.08);
 border: 2px solid var(--pending-white);
 color: var(--pending-white);
 box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
 }
+
 @keyframes blink {
 0%, 100% { opacity: 1; }
 50% { opacity: 0.3; }
 }
+
 .live-badge-small {
 display: inline-flex;
 align-items: center;
@@ -216,6 +250,7 @@ font-size: 0.55rem;
 text-transform: uppercase;
 line-height: 1;
 }
+
 .live-badge-small::before {
 content: '';
 display: inline-block;
@@ -226,6 +261,7 @@ border-radius: 50%;
 margin-right: 4px;
 animation: blink 1s infinite;
 }
+
 .live-badge-modal {
 display: inline-flex;
 align-items: center;
@@ -241,6 +277,7 @@ text-transform: uppercase;
 line-height: 1;
 margin-right: 10px;
 }
+
 .live-badge-modal::before {
 content: '';
 display: inline-block;
@@ -251,6 +288,7 @@ border-radius: 50%;
 margin-right: 5px;
 animation: blink 1s infinite;
 }
+
 .opt2-card {
 background: linear-gradient(
 135deg,
@@ -272,6 +310,7 @@ max-height: 85vh;
 display: flex;
 flex-direction: column;
 }
+
 .close-bet-modal {
 position: absolute;
 top: 10px;
@@ -282,6 +321,7 @@ cursor: pointer;
 font-family: sans-serif;
 opacity: 0.7;
 }
+
 .opt2-top {
 display: flex;
 justify-content: space-between;
@@ -290,10 +330,12 @@ margin-bottom: 15px;
 margin-top: 5px;
 flex-shrink: 0;
 }
+
 .opt2-top-left {
 display: flex;
 align-items: center;
 }
+
 .opt2-badge {
 padding: 3px 8px;
 border-radius: 3px;
@@ -301,6 +343,7 @@ font-weight: bold;
 font-family: 'Righteous', cursive;
 letter-spacing: 1px;
 }
+
 .opt2-body-scroll {
 overflow-y: auto;
 padding-right: 5px;
@@ -309,6 +352,7 @@ display: flex;
 flex-direction: column;
 gap: 8px;
 }
+
 .leg-row {
 background: rgba(255, 255, 255, 0.03);
 border: 1px solid #222;
@@ -319,33 +363,41 @@ justify-content: space-between;
 align-items: center;
 gap: 10px;
 }
+
 .leg-win {
 border-left: 3px solid var(--win-green);
 background: rgba(0, 255, 0, 0.04);
 }
+
 .leg-loss {
 border-left: 3px solid var(--loss-red);
 background: rgba(255, 68, 68, 0.05);
 }
+
 .leg-info {
 display: flex;
 flex-direction: column;
 gap: 2px;
 font-size: 0.85rem;
 }
+
 .leg-match {
 color: #eee;
 font-weight: bold;
 }
+
 .leg-pick {
 font-size: 0.8rem;
 }
+
 .leg-win .leg-pick {
 color: var(--win-green);
 }
+
 .leg-loss .leg-pick {
 color: var(--loss-red);
 }
+
 .leg-badge {
 font-size: 0.7rem;
 font-weight: bold;
@@ -353,20 +405,24 @@ padding: 2px 6px;
 border-radius: 3px;
 font-family: 'Righteous', cursive;
 }
+
 .leg-badge-won {
 background: rgba(0, 255, 0, 0.2);
 color: var(--win-green);
 }
+
 .leg-badge-lost {
 background: rgba(255, 68, 68, 0.2);
 color: var(--loss-red);
 }
+
 .opt2-details {
 color: #ccc;
 font-size: 0.95rem;
 line-height: 1.6;
 flex-shrink: 0;
 }
+
 .opt2-odds-box {
 margin-top: 10px;
 background: rgba(0, 0, 0, 0.6);
@@ -378,50 +434,63 @@ align-items: center;
 border: 1px solid #333;
 flex-shrink: 0;
 }
+
 .modal-win {
 border-left-color: var(--win-green);
 box-shadow: 0 0 25px rgba(0, 255, 0, 0.15);
 }
+
 .modal-win .opt2-badge {
 background: rgba(0, 255, 0, 0.2);
 color: var(--win-green);
 }
+
 .modal-win .opt2-odds {
 color: var(--win-green);
 }
+
 .modal-loss {
 border-left-color: var(--loss-red);
 box-shadow: 0 0 25px rgba(255, 68, 68, 0.15);
 }
+
 .modal-loss .opt2-badge {
 background: rgba(255, 68, 68, 0.2);
 color: var(--loss-red);
 }
+
 .modal-loss .opt2-odds {
 color: var(--loss-red);
 }
+
 .modal-void {
 border-left-color: var(--void-gray);
 box-shadow: 0 0 25px rgba(170, 170, 170, 0.15);
 }
+
 .modal-void .opt2-badge {
 background: rgba(170, 170, 170, 0.2);
 color: var(--void-gray);
 }
+
 .modal-void .opt2-odds {
 color: var(--void-gray);
 }
+
 .modal-pending {
 border-left-color: var(--pending-white);
 box-shadow: 0 0 25px rgba(255, 255, 255, 0.15);
 }
+
 .modal-pending .opt2-badge {
 background: rgba(255, 255, 255, 0.2);
 color: var(--pending-white);
 }
+
 .modal-pending .opt2-odds {
 color: var(--pending-white);
 }
+
 footer {
 width: 100%;
 background: #000;
@@ -436,15 +505,18 @@ display: flex;
 flex-direction: column;
 justify-content: center;
 }
+
 .footer-links a {
 color: #aaa;
 text-decoration: none;
 margin: 0 10px;
 cursor: pointer;
 }
+
 .footer-links a:hover {
 color: var(--neon-cyan);
 }
+
 .modal-overlay {
 display: none;
 position: fixed;
@@ -459,6 +531,7 @@ justify-content: center;
 align-items: center;
 padding: 15px;
 }
+
 .modal-content {
 background: #0a0a0a;
 border: 2px solid var(--neon-cyan);
@@ -469,6 +542,7 @@ color: #fff;
 position: relative;
 box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
 }
+
 .close-modal {
 position: absolute;
 top: 10px;
@@ -478,130 +552,180 @@ font-size: 1.5rem;
 cursor: pointer;
 font-weight: bold;
 }
+
 .modal-title {
 color: var(--neon-cyan);
 margin-bottom: 20px;
 font-family: 'Righteous', cursive;
 }
+
 @media (max-width: 768px) {
+
 header {
 height: 50px;
 padding: 0 16px;
 }
+
 .logo-home {
 font-size: 1.8rem;
 }
+
 .btn-nav {
 padding: 6px 12px;
 font-size: 0.8rem;
 }
+
 main {
 padding: 15px 10px;
 }
+
 h1 {
 font-size: 1.6rem;
 margin-bottom: 18px;
 }
+
 .stat-box {
 padding: 12px;
 }
+
 .stat-label {
 font-size: 0.7rem;
 }
+
 .stat-value {
 font-size: 1.2rem;
 }
+
 .mosaic-title {
 font-size: 1rem;
 margin-bottom: 10px;
 }
+
 .mosaic-grid {
 gap: 8px;
 }
+
 .mosaic-item {
 font-size: 0.9rem;
 min-height: 60px;
 }
+
 .opt2-card {
 padding: 15px;
 max-width: 100%;
 }
+
 .opt2-odds {
 font-size: 1.5rem;
 }
+
 footer {
 height: 46px;
 font-size: 0.75rem;
 }
+
 }
+
 @media (max-width: 480px) {
+
 .dashboard {
 gap: 10px;
 }
+
 .stat-value {
 font-size: 1rem;
 }
+
 .mosaic-item {
 font-size: 0.8rem;
 min-height: 50px;
 }
+
 }
+
 </style>
 </head>
+
 <body>
 
 <header>
-<a href="index.html" class="logo-home"># <span class="sports-icons-header">&#127934;&#127936;&#127952;</span></a>
+
+<a href="index.html" class="logo-home">
+#
+<span class="sports-icons-header">&#127934;&#127936;&#127952;</span>
+</a>
+
 <div class="nav-links">
 <a href="index.html" class="btn-nav">HOME</a>
 </div>
+
 </header>
 
 <main>
+
 <h1>DASHBOARD</h1>
 
 <div class="dashboard">
+
 <div class="stat-box">
 <div class="stat-label">Total Bets</div>
-<div class="stat-value" id="stat-total">28W - 15L</div>
+<div class="stat-value" id="stat-total">29W - 17L</div>
 </div>
 
 <div class="stat-box">
 <div class="stat-label">Win Rate</div>
-<div class="stat-value" id="stat-winrate">65.1%</div>
+<div class="stat-value" id="stat-winrate">63.0%</div>
 </div>
 
 <div class="stat-box">
 <div class="stat-label">Profit (Units)</div>
-<div class="stat-value stat-profit" id="stat-profit">+15.36 U</div>
+<div class="stat-value stat-profit" id="stat-profit">+14.06 U</div>
 </div>
 
 <div class="stat-box">
 <div class="stat-label">Yield (ROI)</div>
-<div class="stat-value stat-profit" id="stat-roi">+42.31%</div>
+<div class="stat-value stat-profit" id="stat-roi">+36.42%</div>
 </div>
+
 </div>
 
 <div class="mosaic-container">
-<div class="mosaic-title">BET HISTORY (NEW TO OLD)</div>
+
+<div class="mosaic-title">
+BET HISTORY (NEW TO OLD)
+</div>
 
 <div class="mosaic-grid" id="mosaic-grid">
 
-<!-- NEW PENDING BETS -->
+<!-- LATEST PENDING BETS -->
 
-<div class="mosaic-item mosaic-pending" onclick="openBetById(44)">
-@ 4.73
+<div class="mosaic-item mosaic-pending" onclick="openBetById(47)">
+@ 42.70
 </div>
 
-<div class="mosaic-item mosaic-pending" onclick="openBetById(45)">
-@ 2.03
+<div class="mosaic-item mosaic-pending" onclick="openBetById(48)">
+@ 1.93
 </div>
 
-<div class="mosaic-item mosaic-pending" onclick="openBetById(46)">
-@ 2.15
+<div class="mosaic-item mosaic-pending" onclick="openBetById(49)">
+@ 4.36
 </div>
 
 <!-- LATEST SETTLED BETS -->
+
+<div class="mosaic-item mosaic-loss" onclick="openBetById(44)">
+@ 4.73
+</div>
+
+<div class="mosaic-item mosaic-loss" onclick="openBetById(45)">
+@ 2.03
+</div>
+
+<div class="mosaic-item mosaic-win" onclick="openBetById(46)">
+@ 2.15
+</div>
+
+<!-- PREVIOUS SETTLED BETS -->
 
 <div class="mosaic-item mosaic-loss" onclick="openBetById(41)">
 @ 2.13
@@ -781,24 +905,47 @@ min-height: 50px;
 
 </div>
 </div>
+
 </main>
 
 <footer>
+
 <div class="footer-links">
-<a onclick="openModal('modal-tos')">TOS</a> |
-<a onclick="openModal('modal-privacy')">Privacy</a> |
-<a onclick="openModal('modal-legal')">Legal Notice</a>
+
+<a onclick="openModal('modal-tos')">
+TOS
+</a>
+
+|
+
+<a onclick="openModal('modal-privacy')">
+Privacy
+</a>
+
+|
+
+<a onclick="openModal('modal-legal')">
+Legal Notice
+</a>
+
 </div>
+
 <p style="margin-top:4px;">
 &copy; 2026 HashtagSportsBetting.com
 </p>
+
 </footer>
 
 <!-- LEGAL -->
 
 <div class="modal-overlay" id="modal-legal">
+
 <div class="modal-content">
-<span class="close-modal" onclick="closeModal('modal-legal')">
+
+<span
+class="close-modal"
+onclick="closeModal('modal-legal')"
+>
 X
 </span>
 
@@ -807,16 +954,22 @@ Legal Notice
 </h2>
 
 <p>
+
 <strong>Editeur :</strong>
 Charles Edouard Chambers Farah.
+
 <br>
+
 <strong>SIRET :</strong>
 790 059 190.
+
 <br>
+
 <strong>Adresse :</strong>
 18 RUE SAINT-MARC,
 75002 PARIS,
 FRANCE.
+
 </p>
 
 </div>
@@ -825,8 +978,13 @@ FRANCE.
 <!-- TERMS -->
 
 <div class="modal-overlay" id="modal-tos">
+
 <div class="modal-content">
-<span class="close-modal" onclick="closeModal('modal-tos')">
+
+<span
+class="close-modal"
+onclick="closeModal('modal-tos')"
+>
 X
 </span>
 
@@ -848,8 +1006,13 @@ pas un bookmaker.
 <!-- PRIVACY -->
 
 <div class="modal-overlay" id="modal-privacy">
+
 <div class="modal-content">
-<span class="close-modal" onclick="closeModal('modal-privacy')">
+
+<span
+class="close-modal"
+onclick="closeModal('modal-privacy')"
+>
 X
 </span>
 
@@ -924,6 +1087,7 @@ id="modal-selections-container"
 ></div>
 
 <div class="opt2-details">
+
 Stake:
 
 <span
@@ -934,6 +1098,7 @@ style="color:#fff; font-weight:bold;"
 </span>
 
 Unit(s)
+
 </div>
 
 <div class="opt2-odds-box">
@@ -959,6 +1124,7 @@ id="modal-odds"
 </span>
 
 </div>
+
 </div>
 </div>
 
@@ -2081,10 +2247,6 @@ won: false
 ]
 },
 
-/* ============================================================
-SETTLED BET #41 — LOSS
-============================================================ */
-
 {
 id: 41,
 date: '2026-09-06',
@@ -2106,10 +2268,6 @@ won: true
 }
 ]
 },
-
-/* ============================================================
-SETTLED BET #42 — WIN
-============================================================ */
 
 {
 id: 42,
@@ -2148,10 +2306,6 @@ won: true
 ]
 },
 
-/* ============================================================
-SETTLED BET #43 — WIN
-============================================================ */
-
 {
 id: 43,
 date: '2026-09-06',
@@ -2184,32 +2338,37 @@ won: true
 ]
 },
 
-/* ============================================================
-NEW PENDING BET #44
-============================================================ */
-
 {
 id: 44,
 date: '2026-09-07',
 tournament: 'Accumulator (4)',
 odds: 4.73,
 stake: 0.3,
-status: 'PENDING',
-badge: 'PENDING',
-match:
-'<span style="font-size:1.1rem; color:#aaa;">' +
-'🔒 MATCHES HIDDEN' +
-'</span>',
-selection:
-'<span style="color:#888;">' +
-'LOCKED - Unlock on Homepage' +
-'</span>',
-legs: []
+status: 'LOSS',
+badge: 'LOSS',
+legs: [
+{
+match: 'Norbert Gombos vs Olle Wallin',
+pick: 'Match Winner: Norbert Gombos',
+won: false
 },
-
-/* ============================================================
-NEW PENDING BET #45
-============================================================ */
+{
+match: 'Radu Albot vs Radu David Turcanu',
+pick: 'Match Winner: Radu Albot',
+won: true
+},
+{
+match: 'Ognjen Milic vs Alex Barrena',
+pick: 'Match Winner: Alex Barrena',
+won: true
+},
+{
+match: 'Marko Topo vs Daniel Elahi Galan',
+pick: 'Match Winner: Daniel Elahi Galan',
+won: false
+}
+]
+},
 
 {
 id: 45,
@@ -2217,22 +2376,31 @@ date: '2026-09-07',
 tournament: 'Accumulator (4)',
 odds: 2.03,
 stake: 1,
-status: 'PENDING',
-badge: 'PENDING',
-match:
-'<span style="font-size:1.1rem; color:#aaa;">' +
-'🔒 MATCHES HIDDEN' +
-'</span>',
-selection:
-'<span style="color:#888;">' +
-'LOCKED - Unlock on Homepage' +
-'</span>',
-legs: []
+status: 'LOSS',
+badge: 'LOSS',
+legs: [
+{
+match: 'Norbert Gombos vs Olle Wallin',
+pick: 'Player 1 to Win a Set: Yes — Norbert Gombos',
+won: false
 },
-
-/* ============================================================
-NEW PENDING BET #46
-============================================================ */
+{
+match: 'Radu Albot vs Radu David Turcanu',
+pick: 'Player 1 to Win a Set: Yes — Radu Albot',
+won: true
+},
+{
+match: 'Ognjen Milic vs Alex Barrena',
+pick: 'Player 2 to Win a Set: Yes — Alex Barrena',
+won: true
+},
+{
+match: 'Marko Topo vs Daniel Elahi Galan',
+pick: 'Player 2 to Win a Set: Yes — Daniel Elahi Galan',
+won: true
+}
+]
+},
 
 {
 id: 46,
@@ -2240,16 +2408,64 @@ date: '2026-09-07',
 tournament: 'Accumulator (2)',
 odds: 2.15,
 stake: 1,
+status: 'WIN',
+badge: 'WON',
+legs: [
+{
+match: 'Radu Albot vs Radu David Turcanu',
+pick: 'Match Winner: Radu Albot',
+won: true
+},
+{
+match: 'Ognjen Milic vs Alex Barrena',
+pick: 'Match Winner: Alex Barrena',
+won: true
+}
+]
+},
+
+/* ============================================================
+PENDING BET #47 — Accumulator (10)
+============================================================ */
+
+{
+id: 47,
+date: '2026-09-08',
+tournament: 'Accumulator (10)',
+odds: 42.70,
+stake: 0.3,
 status: 'PENDING',
 badge: 'PENDING',
-match:
-'<span style="font-size:1.1rem; color:#aaa;">' +
-'🔒 MATCHES HIDDEN' +
-'</span>',
-selection:
-'<span style="color:#888;">' +
-'LOCKED - Unlock on Homepage' +
-'</span>',
+legs: []
+},
+
+/* ============================================================
+PENDING BET #48 — Accumulator (3)
+============================================================ */
+
+{
+id: 48,
+date: '2026-09-08',
+tournament: 'Accumulator (3)',
+odds: 1.93,
+stake: 1,
+status: 'PENDING',
+badge: 'PENDING',
+legs: []
+},
+
+/* ============================================================
+PENDING BET #49 — Accumulator (8)
+============================================================ */
+
+{
+id: 49,
+date: '2026-09-08',
+tournament: 'Accumulator (8)',
+odds: 4.36,
+stake: 0.3,
+status: 'PENDING',
+badge: 'PENDING',
 legs: []
 }
 
