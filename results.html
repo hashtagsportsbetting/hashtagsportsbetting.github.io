@@ -669,22 +669,22 @@ min-height: 50px;
 
 <div class="stat-box">
 <div class="stat-label">Total Bets</div>
-<div class="stat-value" id="stat-total">29W - 17L</div>
+<div class="stat-value" id="stat-total">29W - 20L</div>
 </div>
 
 <div class="stat-box">
 <div class="stat-label">Win Rate</div>
-<div class="stat-value" id="stat-winrate">63.0%</div>
+<div class="stat-value" id="stat-winrate">59.2%</div>
 </div>
 
 <div class="stat-box">
 <div class="stat-label">Profit (Units)</div>
-<div class="stat-value stat-profit" id="stat-profit">+14.06 U</div>
+<div class="stat-value stat-profit" id="stat-profit">+12.46 U</div>
 </div>
 
 <div class="stat-box">
 <div class="stat-label">Yield (ROI)</div>
-<div class="stat-value stat-profit" id="stat-roi">+36.42%</div>
+<div class="stat-value stat-profit" id="stat-roi">+31.00%</div>
 </div>
 
 </div>
@@ -699,15 +699,25 @@ BET HISTORY (NEW TO OLD)
 
 <!-- LATEST PENDING BETS -->
 
-<div class="mosaic-item mosaic-pending" onclick="openBetById(47)">
+<div class="mosaic-item mosaic-pending" onclick="openBetById(50)">
+@ 3.49
+</div>
+
+<div class="mosaic-item mosaic-pending" onclick="openBetById(51)">
+@ 2.02
+</div>
+
+<!-- SETTLED BETS — 2026-09-08 -->
+
+<div class="mosaic-item mosaic-loss" onclick="openBetById(47)">
 @ 42.70
 </div>
 
-<div class="mosaic-item mosaic-pending" onclick="openBetById(48)">
+<div class="mosaic-item mosaic-loss" onclick="openBetById(48)">
 @ 1.93
 </div>
 
-<div class="mosaic-item mosaic-pending" onclick="openBetById(49)">
+<div class="mosaic-item mosaic-loss" onclick="openBetById(49)">
 @ 4.36
 </div>
 
@@ -2425,7 +2435,7 @@ won: true
 },
 
 /* ============================================================
-PENDING BET #47 — Accumulator (10)
+SETTLED BET #47 — LOSS
 ============================================================ */
 
 {
@@ -2434,13 +2444,64 @@ date: '2026-09-08',
 tournament: 'Accumulator (10)',
 odds: 42.70,
 stake: 0.3,
-status: 'PENDING',
-badge: 'PENDING',
-legs: []
+status: 'LOSS',
+badge: 'LOSS',
+legs: [
+{
+match: 'Alvaro Peiro Serrano vs Richard Zusman',
+pick: 'Match Winner: Alvaro Peiro Serrano',
+won: false
+},
+{
+match: 'Gabriel Ghetu vs Edas Butvilas',
+pick: 'Match Winner: Edas Butvilas',
+won: true
+},
+{
+match: 'Gauthier Onclin vs Raphael Perot',
+pick: 'Match Winner: Gauthier Onclin',
+won: false
+},
+{
+match: 'Svyatoslav Gulin vs Lukas Neumayer',
+pick: 'Match Winner: Lukas Neumayer',
+won: true
+},
+{
+match: 'Radu Albot vs Georgii Kravchenko',
+pick: 'Match Winner: Radu Albot',
+won: true
+},
+{
+match: 'Pedro Martinez vs Francesco Forti',
+pick: 'Match Winner: Pedro Martinez',
+won: true
+},
+{
+match: 'Maximo Zeitune vs Alvaro Guillen Meza',
+pick: 'Match Winner: Alvaro Guillen Meza',
+won: false
+},
+{
+match: 'Juan Pablo Varillas vs Federico Arnaboldi',
+pick: 'Match Winner: Juan Pablo Varillas',
+won: true
+},
+{
+match: 'Aryna Sabalenka vs Linda Noskova',
+pick: 'Match Winner: Aryna Sabalenka',
+won: true
+},
+{
+match: 'Roberto Carballes Baena vs Alexander Ritschard',
+pick: 'Match Winner: Roberto Carballes Baena',
+won: false
+}
+]
 },
 
 /* ============================================================
-PENDING BET #48 — Accumulator (3)
+SETTLED BET #48 — LOSS
 ============================================================ */
 
 {
@@ -2449,13 +2510,29 @@ date: '2026-09-08',
 tournament: 'Accumulator (3)',
 odds: 1.93,
 stake: 1,
-status: 'PENDING',
-badge: 'PENDING',
-legs: []
+status: 'LOSS',
+badge: 'LOSS',
+legs: [
+{
+match: 'Gabriel Ghetu vs Edas Butvilas',
+pick: 'Match Winner: Edas Butvilas',
+won: true
+},
+{
+match: 'Gauthier Onclin vs Raphael Perot',
+pick: 'Player 1 to Win a Set: Yes — Gauthier Onclin',
+won: false
+},
+{
+match: 'Roberto Carballes Baena vs Alexander Ritschard',
+pick: 'Player 1 to Win a Set: Yes — Roberto Carballes Baena',
+won: false
+}
+]
 },
 
 /* ============================================================
-PENDING BET #49 — Accumulator (8)
+SETTLED BET #49 — LOSS
 ============================================================ */
 
 {
@@ -2464,6 +2541,77 @@ date: '2026-09-08',
 tournament: 'Accumulator (8)',
 odds: 4.36,
 stake: 0.3,
+status: 'LOSS',
+badge: 'LOSS',
+legs: [
+{
+match: 'Pedro Martinez vs Francesco Forti',
+pick: 'Player 1 to Win a Set: Yes — Pedro Martinez',
+won: true
+},
+{
+match: 'Maximo Zeitune vs Alvaro Guillen Meza',
+pick: 'Player 2 to Win a Set: Yes — Alvaro Guillen Meza',
+won: true
+},
+{
+match: 'Gauthier Onclin vs Raphael Perot',
+pick: 'Player 1 to Win a Set: Yes — Gauthier Onclin',
+won: false
+},
+{
+match: 'Radu Albot vs Georgii Kravchenko',
+pick: 'Player 1 to Win a Set: Yes — Radu Albot',
+won: true
+},
+{
+match: 'Svyatoslav Gulin vs Lukas Neumayer',
+pick: 'Player 2 to Win a Set: Yes — Lukas Neumayer',
+won: true
+},
+{
+match: 'Juan Pablo Varillas vs Federico Arnaboldi',
+pick: 'Player 1 to Win a Set: Yes — Juan Pablo Varillas',
+won: true
+},
+{
+match: 'Aryna Sabalenka vs Linda Noskova',
+pick: 'Player 1 to Win a Set: Yes — Aryna Sabalenka',
+won: true
+},
+{
+match: 'Roberto Carballes Baena vs Alexander Ritschard',
+pick: 'Player 1 to Win a Set: Yes — Roberto Carballes Baena',
+won: false
+}
+]
+},
+
+/* ============================================================
+PENDING BET #50 — Accumulator (4)
+============================================================ */
+
+{
+id: 50,
+date: '2026-09-09',
+tournament: 'Accumulator (4)',
+odds: 3.49,
+stake: 0.3,
+status: 'PENDING',
+badge: 'PENDING',
+legs: []
+},
+
+/* ============================================================
+PENDING BET #51 — Accumulator (3)
+============================================================ */
+
+{
+id: 51,
+date: '2026-09-09',
+tournament: 'Accumulator (3)',
+odds: 2.02,
+stake: 1,
 status: 'PENDING',
 badge: 'PENDING',
 legs: []
