@@ -374,6 +374,11 @@ border-left: 3px solid var(--loss-red);
 background: rgba(255, 68, 68, 0.05);
 }
 
+.leg-void {
+border-left: 3px solid var(--void-gray);
+background: rgba(170, 170, 170, 0.05);
+}
+
 .leg-info {
 display: flex;
 flex-direction: column;
@@ -398,6 +403,10 @@ color: var(--win-green);
 color: var(--loss-red);
 }
 
+.leg-void .leg-pick {
+color: var(--void-gray);
+}
+
 .leg-badge {
 font-size: 0.7rem;
 font-weight: bold;
@@ -414,6 +423,11 @@ color: var(--win-green);
 .leg-badge-lost {
 background: rgba(255, 68, 68, 0.2);
 color: var(--loss-red);
+}
+
+.leg-badge-void {
+background: rgba(170, 170, 170, 0.2);
+color: var(--void-gray);
 }
 
 .opt2-details {
@@ -434,6 +448,54 @@ align-items: center;
 border: 1px solid #333;
 flex-shrink: 0;
 }
+
+.opt2-summary-grid {
+margin-top: 10px;
+display: grid;
+grid-template-columns: repeat(3, minmax(0, 1fr));
+gap: 8px;
+flex-shrink: 0;
+}
+
+.opt2-summary-item {
+background: rgba(0, 0, 0, 0.6);
+border: 1px solid #333;
+border-radius: 4px;
+padding: 11px 7px;
+text-align: center;
+min-width: 0;
+}
+
+.opt2-summary-label {
+display: block;
+font-family: 'Righteous', cursive;
+font-size: 0.68rem;
+letter-spacing: 0.5px;
+color: var(--neon-pink);
+margin-bottom: 5px;
+}
+
+.opt2-summary-value {
+display: block;
+font-family: 'Righteous', cursive;
+font-size: 1.12rem;
+color: #fff;
+white-space: nowrap;
+}
+
+.opt2-summary-note {
+display: block;
+font-family: 'Share Tech Mono', monospace;
+font-size: 0.62rem;
+color: #888;
+margin-top: 3px;
+min-height: 0.75rem;
+}
+
+.modal-win #modal-result { color: var(--win-green); }
+.modal-loss #modal-result { color: var(--loss-red); }
+.modal-void #modal-result { color: var(--void-gray); }
+.modal-pending #modal-result { color: var(--pending-white); }
 
 .modal-win {
 border-left-color: var(--win-green);
@@ -669,22 +731,22 @@ min-height: 50px;
 
 <div class="stat-box">
 <div class="stat-label">Total Bets</div>
-<div class="stat-value" id="stat-total">29W - 20L</div>
+<div class="stat-value" id="stat-total">31W - 20L</div>
 </div>
 
 <div class="stat-box">
 <div class="stat-label">Win Rate</div>
-<div class="stat-value" id="stat-winrate">59.2%</div>
+<div class="stat-value" id="stat-winrate">60.8%</div>
 </div>
 
 <div class="stat-box">
 <div class="stat-label">Profit (Units)</div>
-<div class="stat-value stat-profit" id="stat-profit">+12.46 U</div>
+<div class="stat-value stat-profit" id="stat-profit">+13.00 U</div>
 </div>
 
 <div class="stat-box">
 <div class="stat-label">Yield (ROI)</div>
-<div class="stat-value stat-profit" id="stat-roi">+31.00%</div>
+<div class="stat-value stat-profit" id="stat-roi">+31.33%</div>
 </div>
 
 </div>
@@ -699,11 +761,25 @@ BET HISTORY (NEW TO OLD)
 
 <!-- LATEST PENDING BETS -->
 
-<div class="mosaic-item mosaic-pending" onclick="openBetById(50)">
+<div class="mosaic-item mosaic-pending" onclick="openBetById(52)">
+@ 3.327
+</div>
+
+<div class="mosaic-item mosaic-pending" onclick="openBetById(53)">
+@ 8.81
+</div>
+
+<div class="mosaic-item mosaic-pending" onclick="openBetById(54)">
+@ 2.06
+</div>
+
+<!-- SETTLED BETS — 2026-09-09 -->
+
+<div class="mosaic-item mosaic-win" onclick="openBetById(50)">
 @ 3.49
 </div>
 
-<div class="mosaic-item mosaic-pending" onclick="openBetById(51)">
+<div class="mosaic-item mosaic-win" onclick="openBetById(51)">
 @ 2.02
 </div>
 
@@ -1096,42 +1172,25 @@ class="opt2-body-scroll"
 id="modal-selections-container"
 ></div>
 
-<div class="opt2-details">
+<div class="opt2-summary-grid">
 
-Stake:
-
-<span
-id="modal-stake"
-style="color:#fff; font-weight:bold;"
->
-1
-</span>
-
-Unit(s)
-
+<div class="opt2-summary-item">
+<span class="opt2-summary-label">STAKE</span>
+<span class="opt2-summary-value" id="modal-stake">1.00 U</span>
+<span class="opt2-summary-note">RISKED</span>
 </div>
 
-<div class="opt2-odds-box">
+<div class="opt2-summary-item">
+<span class="opt2-summary-label" id="modal-odds-label">ODDS</span>
+<span class="opt2-summary-value opt2-odds" id="modal-odds">@ 1.00</span>
+<span class="opt2-summary-note" id="modal-odds-note"></span>
+</div>
 
-<span
-style="
-font-family:'Righteous',cursive;
-color:var(--neon-pink)
-"
->
-ODDS
-</span>
-
-<span
-style="
-font-size:1.8rem;
-font-family:'Righteous',cursive
-"
-class="opt2-odds"
-id="modal-odds"
->
-@ 1.00
-</span>
+<div class="opt2-summary-item">
+<span class="opt2-summary-label" id="modal-result-label">NET P/L</span>
+<span class="opt2-summary-value" id="modal-result">+0.00 U</span>
+<span class="opt2-summary-note" id="modal-result-note">SETTLED</span>
+</div>
 
 </div>
 
@@ -2588,7 +2647,7 @@ won: false
 },
 
 /* ============================================================
-PENDING BET #50 — Accumulator (4)
+SETTLED BET #50 — WIN — 2 VOID
 ============================================================ */
 
 {
@@ -2596,14 +2655,36 @@ id: 50,
 date: '2026-09-09',
 tournament: 'Accumulator (4)',
 odds: 3.49,
+settledOdds: 1.823,
 stake: 0.3,
-status: 'PENDING',
-badge: 'PENDING',
-legs: []
+status: 'WIN',
+badge: 'WON',
+legs: [
+{
+match: 'Gabi Adrian Boitan vs Harold Mayot',
+pick: 'Match Winner: Harold Mayot',
+won: true
+},
+{
+match: 'Mirra Andreeva vs Coco Gauff',
+pick: 'Match Winner: Coco Gauff',
+won: true
+},
+{
+match: 'Jaume Munar vs Gonzalo Bueno',
+pick: 'Match Winner: Jaume Munar',
+void: true
+},
+{
+match: 'Karen Khachanov vs Alexander Blockx',
+pick: 'Match Winner: Karen Khachanov',
+void: true
+}
+]
 },
 
 /* ============================================================
-PENDING BET #51 — Accumulator (3)
+SETTLED BET #51 — WIN — 1 VOID
 ============================================================ */
 
 {
@@ -2611,6 +2692,70 @@ id: 51,
 date: '2026-09-09',
 tournament: 'Accumulator (3)',
 odds: 2.02,
+settledOdds: 1.2966666667,
+stake: 1,
+status: 'WIN',
+badge: 'WON',
+legs: [
+{
+match: 'Gabi Adrian Boitan vs Harold Mayot',
+pick: 'Player 2 to Win a Set: Yes — Harold Mayot',
+won: true
+},
+{
+match: 'Mirra Andreeva vs Coco Gauff',
+pick: 'Player 2 to Win a Set: Yes — Coco Gauff',
+won: true
+},
+{
+match: 'Karen Khachanov vs Alexander Blockx',
+pick: 'Match Winner: Karen Khachanov',
+void: true
+}
+]
+},
+
+/* ============================================================
+PENDING BET #52 — Accumulator (9)
+============================================================ */
+
+{
+id: 52,
+date: '2026-09-10',
+tournament: 'Accumulator (9)',
+odds: 3.327,
+oddsDisplay: '3.327',
+stake: 0.3,
+status: 'PENDING',
+badge: 'PENDING',
+legs: []
+},
+
+/* ============================================================
+PENDING BET #53 — Accumulator (7)
+============================================================ */
+
+{
+id: 53,
+date: '2026-09-10',
+tournament: 'Accumulator (7)',
+odds: 8.81,
+stake: 0.3,
+status: 'PENDING',
+badge: 'PENDING',
+legs: []
+},
+
+/*
+============================================================
+PENDING BET #54 — Accumulator (3)
+============================================================ */
+
+{
+id: 54,
+date: '2026-09-10',
+tournament: 'Accumulator (3)',
+odds: 2.06,
 stake: 1,
 status: 'PENDING',
 badge: 'PENDING',
@@ -2658,13 +2803,73 @@ bet.tournament;
 document.getElementById(
 'modal-stake'
 ).innerText =
-bet.stake;
+bet.stake.toFixed(2) +
+' U';
+
+var displayedOdds =
+bet.settledOdds ||
+bet.odds;
 
 document.getElementById(
 'modal-odds'
 ).innerText =
 '@ ' +
-bet.odds.toFixed(2);
+(bet.oddsDisplay ||
+displayedOdds.toFixed(2));
+
+document.getElementById(
+'modal-odds-label'
+).innerText =
+bet.settledOdds
+? 'SETTLED ODDS'
+: 'ODDS';
+
+document.getElementById(
+'modal-odds-note'
+).innerText =
+bet.settledOdds
+? 'ORIGINAL @ ' +
+bet.odds.toFixed(2)
+: '';
+
+var resultLabel = 'NET P/L';
+var resultValue = 0;
+var resultNote = 'SETTLED';
+
+if (bet.status === 'WIN') {
+resultLabel = 'NET PROFIT';
+resultValue =
+bet.stake *
+(displayedOdds - 1);
+} else if (bet.status === 'LOSS') {
+resultLabel = 'NET LOSS';
+resultValue = -bet.stake;
+} else if (bet.status === 'VOID') {
+resultValue = 0;
+} else {
+resultLabel = 'POTENTIAL PROFIT';
+resultValue =
+bet.stake *
+(bet.odds - 1);
+resultNote = 'IF WON';
+}
+
+document.getElementById(
+'modal-result-label'
+).innerText =
+resultLabel;
+
+document.getElementById(
+'modal-result'
+).innerText =
+(resultValue > 0 ? '+' : '') +
+resultValue.toFixed(2) +
+' U';
+
+document.getElementById(
+'modal-result-note'
+).innerText =
+resultNote;
 
 document.getElementById(
 'modal-badge'
@@ -2744,17 +2949,23 @@ var leg =
 bet.legs[i];
 
 var statusClass =
-leg.won
+leg.void
+? 'leg-void'
+: leg.won
 ? 'leg-win'
 : 'leg-loss';
 
 var badgeClass =
-leg.won
+leg.void
+? 'leg-badge-void'
+: leg.won
 ? 'leg-badge-won'
 : 'leg-badge-lost';
 
 var badgeText =
-leg.won
+leg.void
+? 'VOID'
+: leg.won
 ? 'WON'
 : 'LOSS';
 
