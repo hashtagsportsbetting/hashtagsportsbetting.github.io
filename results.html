@@ -731,22 +731,22 @@ min-height: 50px;
 
 <div class="stat-box">
 <div class="stat-label">Total Bets</div>
-<div class="stat-value" id="stat-total">31W - 20L</div>
+<div class="stat-value" id="stat-total">34W - 20L</div>
 </div>
 
 <div class="stat-box">
 <div class="stat-label">Win Rate</div>
-<div class="stat-value" id="stat-winrate">60.8%</div>
+<div class="stat-value" id="stat-winrate">63.0%</div>
 </div>
 
 <div class="stat-box">
 <div class="stat-label">Profit (Units)</div>
-<div class="stat-value stat-profit" id="stat-profit">+13.00 U</div>
+<div class="stat-value stat-profit" id="stat-profit">+16.97 U</div>
 </div>
 
 <div class="stat-box">
 <div class="stat-label">Yield (ROI)</div>
-<div class="stat-value stat-profit" id="stat-roi">+31.33%</div>
+<div class="stat-value stat-profit" id="stat-roi">+39.36%</div>
 </div>
 
 </div>
@@ -759,17 +759,17 @@ BET HISTORY (NEW TO OLD)
 
 <div class="mosaic-grid" id="mosaic-grid">
 
-<!-- LATEST PENDING BETS -->
+<!-- SETTLED BETS — 2026-09-10 -->
 
-<div class="mosaic-item mosaic-pending" onclick="openBetById(52)">
+<div class="mosaic-item mosaic-win" onclick="openBetById(52)">
 @ 3.327
 </div>
 
-<div class="mosaic-item mosaic-pending" onclick="openBetById(53)">
+<div class="mosaic-item mosaic-win" onclick="openBetById(53)">
 @ 8.81
 </div>
 
-<div class="mosaic-item mosaic-pending" onclick="openBetById(54)">
+<div class="mosaic-item mosaic-win" onclick="openBetById(54)">
 @ 2.06
 </div>
 
@@ -2716,7 +2716,7 @@ void: true
 },
 
 /* ============================================================
-PENDING BET #52 — Accumulator (9)
+SETTLED BET #52 — WIN — 1 VOID
 ============================================================ */
 
 {
@@ -2724,15 +2724,62 @@ id: 52,
 date: '2026-09-10',
 tournament: 'Accumulator (9)',
 odds: 3.327,
-oddsDisplay: '3.327',
+settledOdds: 2.8631669535283994,
+oddsDisplay: '2.863',
 stake: 0.3,
-status: 'PENDING',
-badge: 'PENDING',
-legs: []
+status: 'WIN',
+badge: 'WON',
+legs: [
+{
+match: 'Miguel Tobon vs Edas Butvilas',
+pick: 'Win in All Sets: Miguel Tobon — No',
+won: true
+},
+{
+match: 'Goncalo Marques vs Tomas Curras Abasolo',
+pick: 'Sets Handicap +1.5: Goncalo Marques',
+won: true
+},
+{
+match: 'Joao Dinis Silva vs Francisco Rocha',
+pick: 'Sets Handicap +1.5: Francisco Rocha',
+won: true
+},
+{
+match: 'Iannis Miletich vs Adrian Andreev',
+pick: 'Sets Handicap +1.5: Adrian Andreev',
+void: true
+},
+{
+match: 'Mate Valkusz vs Lorenzo Comino',
+pick: 'Sets Handicap +1.5: Mate Valkusz',
+won: true
+},
+{
+match: 'Giorgio Tabacco vs Jack Anthrop',
+pick: 'Sets Handicap +1.5: Jack Anthrop',
+won: true
+},
+{
+match: 'Adan Freire Da Silva vs Nikola Slavic',
+pick: 'Sets Handicap +1.5: Nikola Slavic',
+won: true
+},
+{
+match: 'Ignacio Monzon vs Daniel Khazime',
+pick: 'Sets Handicap +1.5: Ignacio Monzon',
+won: true
+},
+{
+match: 'Pavel Lagutin vs Max Alcala Gurri',
+pick: 'Sets Handicap +1.5: Max Alcala Gurri',
+won: true
+}
+]
 },
 
 /* ============================================================
-PENDING BET #53 — Accumulator (7)
+SETTLED BET #53 — WIN
 ============================================================ */
 
 {
@@ -2741,14 +2788,50 @@ date: '2026-09-10',
 tournament: 'Accumulator (7)',
 odds: 8.81,
 stake: 0.3,
-status: 'PENDING',
-badge: 'PENDING',
-legs: []
+status: 'WIN',
+badge: 'WON',
+legs: [
+{
+match: 'Miguel Tobon vs Edas Butvilas',
+pick: 'Match Winner: Edas Butvilas',
+won: true
+},
+{
+match: 'Ignacio Monzon vs Daniel Khazime',
+pick: 'Match Winner: Ignacio Monzon',
+won: true
+},
+{
+match: 'Goncalo Marques vs Tomas Curras Abasolo',
+pick: 'Match Winner: Goncalo Marques',
+won: true
+},
+{
+match: 'Mate Valkusz vs Lorenzo Comino',
+pick: 'Match Winner: Mate Valkusz',
+won: true
+},
+{
+match: 'Adan Freire Da Silva vs Nikola Slavic',
+pick: 'Match Winner: Nikola Slavic',
+won: true
+},
+{
+match: 'Giorgio Tabacco vs Jack Anthrop',
+pick: 'Match Winner: Jack Anthrop',
+won: true
+},
+{
+match: 'Pavel Lagutin vs Max Alcala Gurri',
+pick: 'Match Winner: Max Alcala Gurri',
+won: true
+}
+]
 },
 
 /*
 ============================================================
-PENDING BET #54 — Accumulator (3)
+SETTLED BET #54 — WIN
 ============================================================ */
 
 {
@@ -2757,9 +2840,25 @@ date: '2026-09-10',
 tournament: 'Accumulator (3)',
 odds: 2.06,
 stake: 1,
-status: 'PENDING',
-badge: 'PENDING',
-legs: []
+status: 'WIN',
+badge: 'WON',
+legs: [
+{
+match: 'Ignacio Monzon vs Daniel Khazime',
+pick: 'Match Winner: Ignacio Monzon',
+won: true
+},
+{
+match: 'Mate Valkusz vs Lorenzo Comino',
+pick: 'Match Winner: Mate Valkusz',
+won: true
+},
+{
+match: 'Adan Freire Da Silva vs Nikola Slavic',
+pick: 'Sets Handicap +1.5: Nikola Slavic',
+won: true
+}
+]
 }
 
 ];
